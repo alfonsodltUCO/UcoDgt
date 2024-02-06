@@ -17,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import mvc.model.business.user.admin_and_client.UserDTO;
-import mvc.model.business.user.typeof;
 import mvc.model.business.user.worker.WorkerDTO;
 
 public class UserDAO{
@@ -37,7 +36,6 @@ public class UserDAO{
                 usr.setAge(user.getAge());
                 usr.setName(user.getName());
                 usr.setSurname(user.getSurname());
-                usr.setType(user.getType());
                 usr.setPassword(user.getPassword());
                 usr.setLicencepoints(user.getLicencepoints());
                 usr.setDni(user.getDni());
@@ -75,7 +73,7 @@ public class UserDAO{
                             String jsonEmpty= "{}";
                             JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
 
-                            if("{}" != jsonEmptyObject.toString()){
+                            if(!"{}".equals(jsonEmptyObject.toString())){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
@@ -129,7 +127,6 @@ public class UserDAO{
                 usr.setAge(user.getAge());
                 usr.setName(user.getName());
                 usr.setSurname(user.getSurname());
-                usr.setType(user.getType());
                 usr.setPassword(user.getPassword());
                 usr.setLicencepoints(user.getLicencepoints());
                 usr.setDni(user.getDni());
