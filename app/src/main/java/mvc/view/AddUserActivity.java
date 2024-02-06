@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +18,12 @@ import mvc.controller.CheckUserToAdd;
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
     Button checkAddUser;
     String typeofuser;
+    String typeofusertoadd;
     EditText editTextName,editTextDni,editTextSurname,editTextAge,editTextPassword,editTextLicencePoints,editTextEmail;
+
+    RadioButton rbuttonworker, rbuttonclient;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.d("ADebugTag","----mecoco-");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.introduce_user);
@@ -29,12 +32,15 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         editTextDni=findViewById(R.id.editTextDNI);
         editTextName=findViewById(R.id.editTextName);
         editTextSurname=findViewById(R.id.editTextSurname);
+        rbuttonclient=findViewById(R.id.radioButtonClient);
+        rbuttonclient=findViewById(R.id.radioButtonWorker);
         editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
         editTextPassword=findViewById(R.id.editTextPassword);
         checkAddUser=findViewById(R.id.checkAdd);
         checkAddUser.setOnClickListener(this);
         Intent intent=getIntent();
         typeofuser =intent.getStringExtra("typeofuser");
+
     }
 
     @Override
@@ -51,7 +57,5 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
            checkUserToAdd.putExtra("type",typeofuser);
            startActivity(checkUserToAdd);
        }
-
-
     }
 }

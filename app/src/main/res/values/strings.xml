@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UcoDgt</string>
+    <string name="client">client</string>
+    <string name="worker">worker</string>
 </resources>

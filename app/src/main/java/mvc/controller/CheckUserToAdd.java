@@ -18,7 +18,6 @@ public class CheckUserToAdd extends AppCompatActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check);
         Intent intentReceived=getIntent();
         name=intentReceived.getStringExtra("name");
         surname=intentReceived.getStringExtra("surname");
