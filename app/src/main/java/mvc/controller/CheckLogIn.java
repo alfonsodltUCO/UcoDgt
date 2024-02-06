@@ -34,7 +34,7 @@ public class CheckLogIn extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(CheckLogIn.this, "Success client", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }else{//admin
@@ -48,8 +48,9 @@ public class CheckLogIn extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(CheckLogIn.this, "Success admin", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
                                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
+                                                intentAdmin.putExtra("type","admin");
                                                 startActivity(intentAdmin);
                                             }
                                         });
@@ -74,7 +75,8 @@ public class CheckLogIn extends AppCompatActivity {
                                                             runOnUiThread(new Runnable() {
                                                                 @Override
                                                                 public void run() {
-                                                                    Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
+
                                                                 }
                                                             });
                                                         }else{
