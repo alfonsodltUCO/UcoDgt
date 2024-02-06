@@ -18,21 +18,18 @@ public class UserDTO {
 
     private String email;
 
-    private typeof type;
-
     private Integer licencepoints;
     public UserDTO(){
 
     }
 
-    public UserDTO(String dni,String password,String name, String surname, Date age, String email, typeof type,Integer licencepoints){
+    public UserDTO(String dni,String password,String name, String surname, Date age, String email,Integer licencepoints){
         this.dni=dni;
         this.password=password;
         this.name=name;
         this.surname=surname;
         this.age=age;
         this.email=email;
-        this.type=type;
         this.licencepoints=licencepoints;
     }
 
@@ -68,9 +65,6 @@ public class UserDTO {
         return email;
     }
 
-    public typeof getType() {
-        return type;
-    }
 
     public void setDni(String dni) {
         this.dni = dni;
@@ -96,9 +90,6 @@ public class UserDTO {
         this.surname = surname;
     }
 
-    public void setType(typeof type) {
-        this.type = type;
-    }
 
 
     @Override
@@ -109,7 +100,6 @@ public class UserDTO {
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
-                ", type=" + type +
                 ", licencepoints=" + licencepoints +
                 '}';
     }

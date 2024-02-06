@@ -16,7 +16,7 @@ public class ManagerUser {
 
     public void checkLogInClient(String email, String password, Context applicationContext,UserCallback callback){
         UserDAO userD=new UserDAO();
-        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null,null);
+        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null);
         userD.checkLogInClient(userToCheck, applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(UserDTO user) {
@@ -36,7 +36,7 @@ public class ManagerUser {
     }
     public void checkLogInAdmin(String email, String password, Context applicationContext,UserCallback callback){
         UserDAO userD=new UserDAO();
-        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null,null);
+        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null);
         userD.checkLogInAdmin(userToCheck, applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(UserDTO user) {

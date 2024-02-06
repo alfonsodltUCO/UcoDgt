@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +19,11 @@ import mvc.controller.CheckUserToAdd;
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
     Button checkAddUser;
     String typeofuser;
-    String typeofusertoadd;
+    String selectedOption;
     EditText editTextName,editTextDni,editTextSurname,editTextAge,editTextPassword,editTextLicencePoints,editTextEmail;
 
-    RadioButton rbuttonworker, rbuttonclient;
+    RadioGroup radiogrouptypeuser;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -32,16 +34,25 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         editTextDni=findViewById(R.id.editTextDNI);
         editTextName=findViewById(R.id.editTextName);
         editTextSurname=findViewById(R.id.editTextSurname);
-        rbuttonclient=findViewById(R.id.radioButtonClient);
-        rbuttonclient=findViewById(R.id.radioButtonWorker);
+        radiogrouptypeuser=findViewById(R.id.radioGroupTypeUserToAdd);
         editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
         editTextPassword=findViewById(R.id.editTextPassword);
         checkAddUser=findViewById(R.id.checkAdd);
         checkAddUser.setOnClickListener(this);
         Intent intent=getIntent();
         typeofuser =intent.getStringExtra("typeofuser");
+        radiogrouptypeuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = findViewById(checkedId);
+                if (radioButton != null) {
+                    selectedOption = radioButton.getText().toString();
+                }
+            }
+        });
 
     }
+
 
     @Override
     public void onClick(View v) {
@@ -55,6 +66,8 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
            checkUserToAdd.putExtra("age",editTextAge.toString().trim());
            checkUserToAdd.putExtra("licencepoints",editTextLicencePoints.getText().toString().trim());
            checkUserToAdd.putExtra("type",typeofuser);
+           checkUserToAdd.putExtra("tpeofusertoadd",selectedOption);
+           checkUserToAdd.putExtra("whodotheadd",typeofuser);
            startActivity(checkUserToAdd);
        }
     }

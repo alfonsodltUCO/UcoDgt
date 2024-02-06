@@ -249,25 +249,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/checkAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.892"
         tools:ignore="MissingConstraints">
 
+        <RadioButton
+            android:id="@+id/radioButtonClient"
+            android:layout_width="146dp"
+            android:layout_height="27dp"
+            android:text="@string/client" />
+
+        <RadioButton
+            android:id="@+id/radioButtonWorker"
+            android:layout_width="146dp"
+            android:layout_height="27dp"
+            android:text="@string/worker" />
+
     </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/radioButtonWorker"
-        android:layout_width="90dp"
-        android:layout_height="42dp"
-        android:text="@string/worker"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="583dp" />
-
-    <RadioButton
-        android:id="@+id/radioButtonClient"
-        android:layout_width="89dp"
-        android:layout_height="40dp"
-        android:text="@string/client"
-        tools:layout_editor_absoluteX="226dp"
-        tools:layout_editor_absoluteY="585dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

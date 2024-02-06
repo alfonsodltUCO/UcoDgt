@@ -90,12 +90,12 @@ public class UserDAO{
                                     throw new RuntimeException(e);
                                 }
                                 Integer licencep=Integer.parseInt(licencepoints);
-                                UserDTO user=new UserDTO(null,password,name,surname,dateBirth,email,null,licencep);
+                                UserDTO user=new UserDTO(null,password,name,surname,dateBirth,email,licencep);
                                 callback.onUserReceived(user);
 
                             }
                         } catch (JSONException e) {
-                            UserDTO user=new UserDTO(null,null,null,null,null,null,null,null);
+                            UserDTO user=new UserDTO(null,null,null,null,null,null,null);
 
                             callback.onUserReceived(user);
                         }
@@ -181,12 +181,12 @@ public class UserDAO{
                                     throw new RuntimeException(e);
                                 }
                                 Integer licencep=Integer.parseInt(licencepoints);
-                                UserDTO user=new UserDTO(null,password,name,surname,dateBirth,email,null,licencep);
+                                UserDTO user=new UserDTO(null,password,name,surname,dateBirth,email,licencep);
                                 callback.onUserReceived(user);
 
                             }
                         } catch (JSONException e) {
-                            UserDTO user=new UserDTO(null,null,null,null,null,null,null,null);
+                            UserDTO user=new UserDTO(null,null,null,null,null,null,null);
 
                             callback.onUserReceived(user);
                         }
