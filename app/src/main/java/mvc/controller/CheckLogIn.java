@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
 
-import mvc.model.business.user.client.ManagerUserLogIn;
+import mvc.model.business.user.admin.AdminDTO;
+import mvc.model.business.user.admin.ManagerAdmin;
+import mvc.model.business.user.client.ManagerClient;
 import mvc.model.business.user.client.ClientDTO;
+import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.AdminActivity;
@@ -23,7 +26,9 @@ public class CheckLogIn extends AppCompatActivity {
         Intent intent=getIntent();
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
-        ManagerUserLogIn mngusr=new ManagerUserLogIn();
+        ManagerClient mngusr=new ManagerClient();
+        ManagerWorker mngwrk=new ManagerWorker();
+        ManagerAdmin mngadm=new ManagerAdmin();
         mngusr.checkLogInClient(email, password, CheckLogIn.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {//client
@@ -38,7 +43,7 @@ public class CheckLogIn extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mngusr.checkLogInAdmin(email, password, CheckLogIn.this, new UserCallback() {
+                            mngadm.checkLogInAdmin(email, password, CheckLogIn.this, new UserCallback() {
                                 @Override
                                 public void onUserReceived(ClientDTO user) {
                                     if(user.getEmail()!=null){
@@ -55,7 +60,7 @@ public class CheckLogIn extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                mngusr.checkLogInWorker(email, password, CheckLogIn.this, new UserCallback() {
+                                                mngwrk.checkLogInWorker(email, password, CheckLogIn.this, new UserCallback() {
                                                     @Override
                                                     public void onUserReceived(ClientDTO user) {
 
@@ -81,6 +86,11 @@ public class CheckLogIn extends AppCompatActivity {
 
                                                         }
                                                     }
+
+                                                    @Override
+                                                    public void onAdminReceived(AdminDTO user) {
+
+                                                    }
                                                 });
                                             }
                                         });
@@ -97,6 +107,11 @@ public class CheckLogIn extends AppCompatActivity {
                                 public void onWorkerReceived(WorkerDTO user) {
 
                                 }
+
+                                @Override
+                                public void onAdminReceived(AdminDTO user) {
+
+                                }
                             });
                         }
                     });
@@ -110,6 +125,11 @@ public class CheckLogIn extends AppCompatActivity {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
 
             }
         });

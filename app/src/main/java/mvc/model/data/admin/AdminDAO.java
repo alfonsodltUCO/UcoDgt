@@ -27,7 +27,7 @@ public class AdminDAO {
     RequestQueue requestQueue;
 
 
-    public void checkLogInAdmin(ClientDTO userToFind, Context applicationContext, UserCallback callback){
+    public void checkLogInAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
         String email=userToFind.getEmail().toString();
         String password= userToFind.getPassword().toString();
         requestQueue= Volley.newRequestQueue(applicationContext);
@@ -94,13 +94,13 @@ public class AdminDAO {
                                     throw new RuntimeException(e);
                                 }
                                 AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth,email);
-                                callback.onUserReceived(user);
+                                callback.onAdminReceived(user);
 
                             }
                         } catch (JSONException e) {
                             AdminDTO user=new AdminDTO(null,null,null,null,null,null);
 
-                            callback.onUserReceived(user);
+                            callback.onAdminReceived(user);
                         }
 
 
