@@ -1,10 +1,8 @@
-package mvc.model.business.user.admin_and_client;
+package mvc.model.business.user.admin;
 
 import java.util.Date;
 
-import mvc.model.business.user.typeof;
-
-public class UserDTO {
+public class AdminDTO {
 
     private String dni;
 
@@ -18,28 +16,20 @@ public class UserDTO {
 
     private String email;
 
-    private Integer licencepoints;
-    public UserDTO(){
+    public AdminDTO(){
 
     }
 
-    public UserDTO(String dni,String password,String name, String surname, Date age, String email,Integer licencepoints){
+    public AdminDTO(String dni, String password, String name, String surname, Date age, String email){
         this.dni=dni;
         this.password=password;
         this.name=name;
         this.surname=surname;
         this.age=age;
         this.email=email;
-        this.licencepoints=licencepoints;
     }
 
-    public Integer getLicencepoints() {
-        return licencepoints;
-    }
 
-    public void setLicencepoints(Integer licencepoints) {
-        this.licencepoints = licencepoints;
-    }
 
     public String getDni() {
         return dni;
@@ -100,7 +90,6 @@ public class UserDTO {
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
-                ", licencepoints=" + licencepoints +
                 '}';
     }
 }

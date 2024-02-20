@@ -1,4 +1,4 @@
-package mvc.model.business.user.admin_and_client;
+package mvc.model.business.user.client;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,20 +6,20 @@ import android.util.Log;
 import com.android.volley.VolleyError;
 
 import mvc.model.business.user.worker.WorkerDTO;
-import mvc.model.data.admin_and_client.UserCallback;
-import mvc.model.data.admin_and_client.UserDAO;
+import mvc.model.data.UserCallback;
+import mvc.model.data.client.ClientDAO;
 
-public class ManagerUser {
-    public ManagerUser(){
+public class ManagerUserLogIn {
+    public ManagerUserLogIn(){
 
     }
 
     public void checkLogInClient(String email, String password, Context applicationContext,UserCallback callback){
-        UserDAO userD=new UserDAO();
-        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null);
+        ClientDAO userD=new ClientDAO();
+        ClientDTO userToCheck=new ClientDTO(null,password,null,null,null,email,null);
         userD.checkLogInClient(userToCheck, applicationContext, new UserCallback() {
             @Override
-            public void onUserReceived(UserDTO user) {
+            public void onUserReceived(ClientDTO user) {
                 callback.onUserReceived(user);
             }
 
@@ -35,11 +35,11 @@ public class ManagerUser {
         });
     }
     public void checkLogInAdmin(String email, String password, Context applicationContext,UserCallback callback){
-        UserDAO userD=new UserDAO();
-        UserDTO userToCheck=new UserDTO(null,password,null,null,null,email,null);
+        ClientDAO userD=new ClientDAO();
+        ClientDTO userToCheck=new ClientDTO(null,password,null,null,null,email,null);
         userD.checkLogInAdmin(userToCheck, applicationContext, new UserCallback() {
             @Override
-            public void onUserReceived(UserDTO user) {
+            public void onUserReceived(ClientDTO user) {
                 callback.onUserReceived(user);
             }
 
@@ -55,12 +55,12 @@ public class ManagerUser {
         });
     }
     public void checkLogInWorker(String email, String password, Context applicationContext,UserCallback callback){
-        UserDAO userD=new UserDAO();
+        ClientDAO userD=new ClientDAO();
         WorkerDTO userToCheck=new WorkerDTO(null,password,null,null,null,email,null,null);
         userD.checkLogInWorker(userToCheck, applicationContext, new UserCallback() {
 
             @Override
-            public void onUserReceived(UserDTO user) {
+            public void onUserReceived(ClientDTO user) {
 
             }
 
