@@ -4,5 +4,5 @@ public enum stateof {
     paid,
     cancelled,
     processed,
-    processin;
+    processing;
 }
