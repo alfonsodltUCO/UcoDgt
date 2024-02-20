@@ -21,7 +21,6 @@ public class ManagerAdmin {
         userD.checkLogInAdmin(userToCheck, applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                callback.onUserReceived(user);
             }
 
             @Override
@@ -36,6 +35,7 @@ public class ManagerAdmin {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+                callback.onAdminReceived(user);
 
             }
         });

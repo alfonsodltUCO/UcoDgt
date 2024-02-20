@@ -46,6 +46,21 @@ public class CheckLogIn extends AppCompatActivity {
                             mngadm.checkLogInAdmin(email, password, CheckLogIn.this, new UserCallback() {
                                 @Override
                                 public void onUserReceived(ClientDTO user) {
+
+                                }
+
+                                @Override
+                                public void onError(VolleyError error) {
+
+                                }
+
+                                @Override
+                                public void onWorkerReceived(WorkerDTO user) {
+
+                                }
+
+                                @Override
+                                public void onAdminReceived(AdminDTO user) {
                                     if(user.getEmail()!=null){
                                         runOnUiThread(new Runnable() {
                                             @Override
@@ -82,7 +97,7 @@ public class CheckLogIn extends AppCompatActivity {
                                                                 }
                                                             });
                                                         }else{
-                                                            Toast.makeText(CheckLogIn.this, "Fail", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(CheckLogIn.this, "Fail dddddddd", Toast.LENGTH_SHORT).show();
 
                                                         }
                                                     }
@@ -95,22 +110,6 @@ public class CheckLogIn extends AppCompatActivity {
                                             }
                                         });
                                     }
-
-                                }
-
-                                @Override
-                                public void onError(VolleyError error) {
-
-                                }
-
-                                @Override
-                                public void onWorkerReceived(WorkerDTO user) {
-
-                                }
-
-                                @Override
-                                public void onAdminReceived(AdminDTO user) {
-
                                 }
                             });
                         }
