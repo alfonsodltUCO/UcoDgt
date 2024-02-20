@@ -29,22 +29,21 @@ public class CheckLogIn extends AppCompatActivity {
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
         mngusr.checkLogInClient(email, password, CheckLogIn.this, new UserCallback() {
+
             @Override
             public void onUserReceived(ClientDTO user) {//client
-                Log.d("ADebugTag", "llego");
 
                 if(user.getEmail()!=null){
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CheckLogIn.this, "Success Client", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }else{//admin
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("ADebugTag", "llego");
 
                             ManagerAdmin mngadm=new ManagerAdmin();
 
@@ -66,7 +65,6 @@ public class CheckLogIn extends AppCompatActivity {
 
                                 @Override
                                 public void onAdminReceived(AdminDTO user) {
-                                    Log.d("ADebugTag", "llego");
 
                                     if(user.getEmail()!=null){
                                         runOnUiThread(new Runnable() {
@@ -101,7 +99,7 @@ public class CheckLogIn extends AppCompatActivity {
                                                             runOnUiThread(new Runnable() {
                                                                 @Override
                                                                 public void run() {
-                                                                    Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
 
                                                                 }
                                                             });

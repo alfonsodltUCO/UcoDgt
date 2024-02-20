@@ -26,6 +26,7 @@ public class ClientDAO {
     RequestQueue requestQueue;
 
     public void checkLogInClient(ClientDTO userToFind, Context applicationContext, UserCallback callback){
+
         String email=userToFind.getEmail().toString();
         String password= userToFind.getPassword().toString();
         requestQueue= Volley.newRequestQueue(applicationContext);
@@ -33,7 +34,6 @@ public class ClientDAO {
         checkClient(email,password, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-
                 usr.setEmail(user.getEmail());
                 usr.setAge(user.getAge());
                 usr.setName(user.getName());
@@ -80,7 +80,7 @@ public class ClientDAO {
                             String jsonEmpty= "{}";
                             JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
 
-                            if(!"{}".equals(jsonEmptyObject.toString())){
+                            if("{}" != jsonEmptyObject.toString()){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
@@ -100,6 +100,7 @@ public class ClientDAO {
 
                             }
                         } catch (JSONException e) {
+
                             ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
 
                             callback.onUserReceived(user);

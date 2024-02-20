@@ -18,9 +18,11 @@ public class ManagerClient {
     public void checkLogInClient(String email, String password, Context applicationContext,UserCallback callback){
         ClientDAO userD=new ClientDAO();
         ClientDTO userToCheck=new ClientDTO(null,password,null,null,null,email,null);
+
         userD.checkLogInClient(userToCheck, applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
+
                 callback.onUserReceived(user);
             }
 
