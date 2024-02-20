@@ -20,14 +20,13 @@ public class WorkerDTO {
 
     private typeof type;
 
-    private Integer licencepoints;
 
     private Integer numberOfWorker;
     public WorkerDTO(){
 
     }
 
-    public WorkerDTO(String dni,String password,String name, String surname, Date age, String email, typeof type,Integer licencepoints,Integer numberOfWorker){
+    public WorkerDTO(String dni,String password,String name, String surname, Date age, String email, typeof type,Integer numberOfWorker){
         this.dni=dni;
         this.password=password;
         this.name=name;
@@ -35,13 +34,9 @@ public class WorkerDTO {
         this.age=age;
         this.email=email;
         this.type=type;
-        this.licencepoints=licencepoints;
         this.numberOfWorker=numberOfWorker;
     }
 
-    public Integer getLicencepoints() {
-        return licencepoints;
-    }
 
     public Integer getNumberOfWorker() {
         return numberOfWorker;
@@ -51,9 +46,6 @@ public class WorkerDTO {
         this.numberOfWorker = numberOfWorker;
     }
 
-    public void setLicencepoints(Integer licencepoints) {
-        this.licencepoints = licencepoints;
-    }
 
     public String getDni() {
         return dni;
@@ -121,7 +113,6 @@ public class WorkerDTO {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", type=" + type +
-                ", licencepoints=" + licencepoints +
                 '}';
     }
 }

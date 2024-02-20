@@ -272,12 +272,12 @@ public class UserDAO{
                                 }
                                 Integer nWorker=Integer.parseInt(numberOfWorker);
 
-                                WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth,email,null,null,nWorker);
+                                WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth,email,null,nWorker);
                                 callback.onWorkerReceived(user);
 
                             }
                         } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null,null,null);
+                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null,null);
 
                             callback.onWorkerReceived(user);
                         }
