@@ -2,6 +2,7 @@ package mvc.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,11 +28,11 @@ public class CheckLogIn extends AppCompatActivity {
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
-        ManagerWorker mngwrk=new ManagerWorker();
-        ManagerAdmin mngadm=new ManagerAdmin();
         mngusr.checkLogInClient(email, password, CheckLogIn.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {//client
+                Log.d("ADebugTag", "llego");
+
                 if(user.getEmail()!=null){
                     runOnUiThread(new Runnable() {
                         @Override
@@ -43,6 +44,10 @@ public class CheckLogIn extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            Log.d("ADebugTag", "llego");
+
+                            ManagerAdmin mngadm=new ManagerAdmin();
+
                             mngadm.checkLogInAdmin(email, password, CheckLogIn.this, new UserCallback() {
                                 @Override
                                 public void onUserReceived(ClientDTO user) {
@@ -61,6 +66,8 @@ public class CheckLogIn extends AppCompatActivity {
 
                                 @Override
                                 public void onAdminReceived(AdminDTO user) {
+                                    Log.d("ADebugTag", "llego");
+
                                     if(user.getEmail()!=null){
                                         runOnUiThread(new Runnable() {
                                             @Override
@@ -75,6 +82,8 @@ public class CheckLogIn extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
+                                                ManagerWorker mngwrk=new ManagerWorker();
+
                                                 mngwrk.checkLogInWorker(email, password, CheckLogIn.this, new UserCallback() {
                                                     @Override
                                                     public void onUserReceived(ClientDTO user) {
