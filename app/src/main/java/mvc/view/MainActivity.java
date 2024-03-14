@@ -15,19 +15,21 @@ import mvc.controller.SignUp;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button loginButton;
-    Button signupButton;
-
     EditText editTextEmail,editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        setTheme(R.style.Theme_UcoDgt);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginButton=findViewById(R.id.checkLogIn);
         editTextEmail=findViewById(R.id.editTextEmail);
         editTextPassword=findViewById(R.id.editTextPassword);
-        signupButton=findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(this);
         loginButton.setOnClickListener(this);
 
     }
@@ -37,8 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id=v.getId();
         if (id == R.id.checkLogIn) {
             goCheckLogIn();
-        } else if (id == R.id.signupButton) {
-            goSignUp();
         }
     }
 
@@ -50,10 +50,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("password", password);
         startActivity(intent);
     }
-
-    private void goSignUp(){
-        Intent intentSignUp = new Intent(MainActivity.this, SignUp.class);
-        startActivity(intentSignUp);
-    }
-
 }

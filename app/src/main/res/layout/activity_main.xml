@@ -1,122 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CardView.Dark"
+    android:background="#74969E"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAlignment="gravity"
-    tools:context="mvc.view.MainActivity">
-
-    <TextView
-        android:id="@+id/textViewLogin"
-        android:layout_width="76dp"
-        android:layout_height="68dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginEnd="169dp"
-        android:layout_marginBottom="603dp"
-        android:text="Log In"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/checkLogIn"
+    android:orientation="vertical"
+    tools:context="mvc.view.MainActivity"
+    >
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="161dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="329dp"
-        android:text="check"
-        tools:ignore="HardcodedText" />
+        android:layout_height="10dp"
+        android:layout_weight="0.1"
+        android:src="@drawable/logoempresa"
+        android:layout_gravity="center"
+        >
+    </ImageView>
 
-    <TextView
-        android:id="@+id/textViewEmail"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="552dp"
-        android:text="Introduce your email"
-        android:textSize="18sp"
-        tools:ignore="HardcodedText" />
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/textViewLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="Introduce your email"
+                android:textSize="18dp"
+                tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/textViewPassword"
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Introduce your password"
+                android:textSize="18dp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <EditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/editTextEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:autofillHints=""
+                android:ems="10"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:text="example@gmail.com"
+                tools:ignore="HardcodedText,LabelFor" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:text="MyPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:ems="10"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="textPassword"
+                android:autofillHints=""
+              />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="452dp"
-        android:text="Introduce your password"
-        android:textSize="18sp"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="542dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="example@gmail.com"
-        tools:ignore="HardcodedText,LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:text="MyPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="441dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:autofillHints=""
-        tools:ignore="HardcodedText,LabelFor" />
-
-    <TextView
-        android:id="@+id/textViewSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="241dp"
-        android:text="If you are not signed up in the system please do it here"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/signupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="159dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="135dp"
-        android:text="Sign up"
-        tools:ignore="HardcodedText" />
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:layout_gravity="center"
+        >
+        <Button
+            android:id="@+id/checkLogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="check"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
 
-</RelativeLayout>
+
+</LinearLayout>
