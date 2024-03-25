@@ -2,8 +2,6 @@ package mvc.model.business.user.worker;
 
 import java.util.Date;
 
-import mvc.model.business.user.typeof;
-
 public class WorkerDTO {
 
     private String dni;
@@ -18,22 +16,19 @@ public class WorkerDTO {
 
     private String email;
 
-    private typeof type;
-
 
     private Integer numberOfWorker;
     public WorkerDTO(){
 
     }
 
-    public WorkerDTO(String dni,String password,String name, String surname, Date age, String email, typeof type,Integer numberOfWorker){
+    public WorkerDTO(String dni,String password,String name, String surname, Date age, String email,Integer numberOfWorker){
         this.dni=dni;
         this.password=password;
         this.name=name;
         this.surname=surname;
         this.age=age;
         this.email=email;
-        this.type=type;
         this.numberOfWorker=numberOfWorker;
     }
 
@@ -71,9 +66,6 @@ public class WorkerDTO {
         return email;
     }
 
-    public typeof getType() {
-        return type;
-    }
 
     public void setDni(String dni) {
         this.dni = dni;
@@ -99,10 +91,6 @@ public class WorkerDTO {
         this.surname = surname;
     }
 
-    public void setType(typeof type) {
-        this.type = type;
-    }
-
 
     @Override
     public String toString() {
@@ -112,7 +100,6 @@ public class WorkerDTO {
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
-                ", type=" + type +
                 '}';
     }
 }

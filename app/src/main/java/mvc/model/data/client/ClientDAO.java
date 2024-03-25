@@ -44,7 +44,7 @@ public class ClientDAO {
                 usr.setDni(user.getDni());
                 callback.onUserReceived(usr);
 
-             }
+            }
 
             @Override
             public void onError(VolleyError error) {
@@ -62,7 +62,7 @@ public class ClientDAO {
             }
         });
     }
-// tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClient(final String email,final String password,final UserCallback callback){
         String URL="http://192.168.1.19/api/ucodgt/user/checkLoginClient.php?email="+email;
 
@@ -76,20 +76,26 @@ public class ClientDAO {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("aaa",response.toString());
+
                         try {
-                            if(!response.toString().equals("{}")){
-                                Log.d("aaa",password);
-                                Log.d("aaa",response.toString());
+                            String jsonEmpty= "{}";
+                            Log.d("aaa","aaaa");
+                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
+                            Log.d("aaa","aaaa2");
+
+                            if("{}" != jsonEmptyObject.toString()){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
                                 String passwordhashed=response.getString("password");
                                 if(!BCrypt.checkpw(password,passwordhashed)){
+
                                     ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
+
                                     callback.onUserReceived(user);
-                                }else{
+                                }else {
                                     String age=response.getString("age");
-                                    String licencepoints=response.getString("licencepoints");
                                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                     Date dateBirth;
                                     try {
@@ -97,14 +103,14 @@ public class ClientDAO {
                                     } catch (ParseException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    Integer licencep=Integer.parseInt(licencepoints);
+                                    Integer licencep=Integer.parseInt(response.getString("licencepoints"));
                                     ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth,email,licencep);
                                     callback.onUserReceived(user);
-
                                 }
+
                             }
                         } catch (JSONException e) {
-
+                            Log.e("eeee",e.toString());
                             ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
 
                             callback.onUserReceived(user);

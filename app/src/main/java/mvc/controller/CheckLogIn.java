@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import org.mindrot.jbcrypt.BCrypt;
+
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.admin.ManagerAdmin;
 import mvc.model.business.user.client.ManagerClient;
@@ -33,7 +33,7 @@ public class CheckLogIn extends AppCompatActivity {
             @Override
             public void onUserReceived(ClientDTO user) {//client
 
-                if(!user.getEmail().isEmpty()){
+                if(user.getEmail()!=null){
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -66,7 +66,7 @@ public class CheckLogIn extends AppCompatActivity {
                                 @Override
                                 public void onAdminReceived(AdminDTO user) {
 
-                                    if(!user.getEmail().isEmpty()){
+                                    if(user.getEmail()!=null){
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -95,7 +95,7 @@ public class CheckLogIn extends AppCompatActivity {
 
                                                     @Override
                                                     public void onWorkerReceived(WorkerDTO user) {
-                                                        if(!user.getEmail().isEmpty()){
+                                                        if(user.getEmail()!=null){
                                                             runOnUiThread(new Runnable() {
                                                                 @Override
                                                                 public void run() {
@@ -104,7 +104,7 @@ public class CheckLogIn extends AppCompatActivity {
                                                                 }
                                                             });
                                                         }else{
-                                                            Toast.makeText(CheckLogIn.this, "Wrong password or email", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(CheckLogIn.this, "Fail dddddddd", Toast.LENGTH_SHORT).show();
 
                                                         }
                                                     }

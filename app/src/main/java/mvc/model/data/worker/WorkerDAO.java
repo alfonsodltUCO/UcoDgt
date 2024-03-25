@@ -66,7 +66,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkWorker(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginWorker.php?email="+email;
+        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginWorker.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -80,17 +80,21 @@ public class WorkerDAO {
                     public void onResponse(JSONObject response) {
 
                         try {
-                          if(!response.toString().equals("{}")){
+                            String jsonEmpty= "{}";
+                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
+
+                            if("{}" != jsonEmptyObject.toString()){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
                                 String passwordhashed=response.getString("password");
                                 if(!BCrypt.checkpw(password,passwordhashed)){
-                                    WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null,null);
+
+                                    WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+
                                     callback.onWorkerReceived(user);
-                                }else{
+                                }else {
                                     String age=response.getString("age");
-                                    String numberOfWorker=response.getString("numberOfWorker");
                                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                     Date dateBirth;
                                     try {
@@ -98,15 +102,14 @@ public class WorkerDAO {
                                     } catch (ParseException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    Integer nWorker=Integer.parseInt(numberOfWorker);
-
-                                    WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth,email,null,nWorker);
+                                    String number=response.getString("numberOfWorker");
+                                    WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth,email,Integer.parseInt(number));
                                     callback.onWorkerReceived(user);
-
                                 }
+
                             }
                         } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null,null);
+                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
 
                             callback.onWorkerReceived(user);
                         }

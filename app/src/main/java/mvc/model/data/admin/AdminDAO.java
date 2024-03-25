@@ -64,7 +64,7 @@ public class AdminDAO {
         });
     }
     private void checkAdmin(final String email,final String password,final UserCallback callback){
-        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginAdmin.php?email="+email+"&password="+password;
+        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginAdmin.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -78,14 +78,14 @@ public class AdminDAO {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            if(!response.toString().equals("{}")){
+                            String jsonEmpty= "{}";
+                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
+
+                            if("{}" != jsonEmptyObject.toString()){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
-                                Log.d("ADebugTag",BCrypt.hashpw(password,BCrypt.gensalt()));
-                                Log.d("ADebugTag", String.valueOf(BCrypt.checkpw("hola","$2a$10$XyFAGcOESIARPNEsUR.0FeEyfuOnEPrwCinwntTFhuRGh3QWHbyc2")));
                                 String passwordhashed=response.getString("password");
-                                Log.d("ADebugTag", String.valueOf(BCrypt.checkpw(password.trim(),response.getString("password"))));
                                 if(!BCrypt.checkpw(password,passwordhashed)){
 
                                     AdminDTO user=new AdminDTO(null,null,null,null,null,null);

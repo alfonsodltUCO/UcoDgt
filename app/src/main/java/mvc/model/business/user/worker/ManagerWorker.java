@@ -17,7 +17,8 @@ public class ManagerWorker {
     }
     public void checkLogInWorker(String email, String password, Context applicationContext, UserCallback callback){
         WorkerDAO userD=new WorkerDAO();
-        WorkerDTO userToCheck=new WorkerDTO(null,password,null,null,null,email,null,null);
+        WorkerDTO userToCheck=new WorkerDTO(null,password,null,null,null,email,null);
+
         userD.checkLogInWorker(userToCheck, applicationContext, new UserCallback() {
 
             @Override

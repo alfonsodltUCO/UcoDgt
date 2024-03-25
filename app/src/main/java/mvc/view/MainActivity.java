@@ -45,12 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void goCheckLogIn(){
-
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         Intent intent = new Intent(MainActivity.this, CheckLogIn.class);
         intent.putExtra("email", email);
-        Log.d("ADebeb",BCrypt.hashpw(password,BCrypt.gensalt()));
         intent.putExtra("password", password);
         startActivity(intent);
     }
