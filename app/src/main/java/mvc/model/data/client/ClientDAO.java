@@ -76,13 +76,10 @@ public class ClientDAO {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("aaa",response.toString());
 
                         try {
                             String jsonEmpty= "{}";
-                            Log.d("aaa","aaaa");
                             JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-                            Log.d("aaa","aaaa2");
 
                             if("{}" != jsonEmptyObject.toString()){
                                 String name=response.getString("name");
@@ -110,7 +107,6 @@ public class ClientDAO {
 
                             }
                         } catch (JSONException e) {
-                            Log.e("eeee",e.toString());
                             ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
 
                             callback.onUserReceived(user);
