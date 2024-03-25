@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
@@ -63,7 +64,7 @@ public class ClientDAO {
     }
 // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClient(final String email,final String password,final UserCallback callback){
-        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginClient.php?email="+email+"&password="+password;
+        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginClient.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -75,29 +76,32 @@ public class ClientDAO {
 
                     @Override
                     public void onResponse(JSONObject response) {
-
                         try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
+                            if(!response.toString().equals("{}")){
+                                Log.d("aaa",password);
+                                Log.d("aaa",response.toString());
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
-                                String password=response.getString("password");
-                                String age=response.getString("age");
-                                String licencepoints=response.getString("licencepoints");
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dateBirth;
-                                try {
-                                    dateBirth = format.parse(age);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Integer licencep=Integer.parseInt(licencepoints);
-                                ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth,email,licencep);
-                                callback.onUserReceived(user);
+                                String passwordhashed=response.getString("password");
+                                if(!BCrypt.checkpw(password,passwordhashed)){
+                                    ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
+                                    callback.onUserReceived(user);
+                                }else{
+                                    String age=response.getString("age");
+                                    String licencepoints=response.getString("licencepoints");
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                    Date dateBirth;
+                                    try {
+                                        dateBirth = format.parse(age);
+                                    } catch (ParseException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    Integer licencep=Integer.parseInt(licencepoints);
+                                    ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth,email,licencep);
+                                    callback.onUserReceived(user);
 
+                                }
                             }
                         } catch (JSONException e) {
 
