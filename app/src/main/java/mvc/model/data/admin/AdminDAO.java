@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,25 +78,31 @@ public class AdminDAO {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
+                            if(!response.toString().equals("{}")){
                                 String name=response.getString("name");
                                 String surname=response.getString("surname");
                                 String email=response.getString("email");
-                                String password=response.getString("password");
-                                String age=response.getString("age");
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dateBirth;
-                                try {
-                                    dateBirth = format.parse(age);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth,email);
-                                callback.onAdminReceived(user);
+                                Log.d("ADebugTag",BCrypt.hashpw(password,BCrypt.gensalt()));
+                                Log.d("ADebugTag", String.valueOf(BCrypt.checkpw("hola","$2a$10$XyFAGcOESIARPNEsUR.0FeEyfuOnEPrwCinwntTFhuRGh3QWHbyc2")));
+                                String passwordhashed=response.getString("password");
+                                Log.d("ADebugTag", String.valueOf(BCrypt.checkpw(password.trim(),response.getString("password"))));
+                                if(!BCrypt.checkpw(password,passwordhashed)){
 
+                                    AdminDTO user=new AdminDTO(null,null,null,null,null,null);
+
+                                    callback.onAdminReceived(user);
+                                }else {
+                                    String age=response.getString("age");
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                    Date dateBirth;
+                                    try {
+                                        dateBirth = format.parse(age);
+                                    } catch (ParseException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                    AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth,email);
+                                    callback.onAdminReceived(user);
+                                }
                             }
                         } catch (JSONException e) {
                             AdminDTO user=new AdminDTO(null,null,null,null,null,null);
