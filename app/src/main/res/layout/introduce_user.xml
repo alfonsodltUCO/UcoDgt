@@ -97,18 +97,6 @@
             android:orientation="vertical"
             >
             <EditText
-                android:id="@+id/editTextEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:text="example@gmail.com"
-                android:backgroundTint="@android:color/transparent"
-                />
-
-            <EditText
                 android:id="@+id/editTextName"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -119,7 +107,6 @@
                 android:text="Pedro"
                 android:backgroundTint="@android:color/transparent"
                 />
-
             <EditText
                 android:id="@+id/editTextSurname"
                 android:layout_width="wrap_content"
@@ -131,7 +118,6 @@
                 android:text="Garcia Navarro"
                 android:backgroundTint="@android:color/transparent"
                 />
-
             <EditText
                 android:id="@+id/editTextLicencePoints"
                 android:backgroundTint="@android:color/transparent"
@@ -142,7 +128,7 @@
                 android:ems="10"
                 android:text="8"
                 android:inputType="number"
-               />
+                />
 
             <EditText
                 android:id="@+id/editTextDateBirth"
@@ -151,8 +137,20 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:text="10/10/2002"
+                android:text="2002-10-10"
                 android:inputType="datetime"
+                android:backgroundTint="@android:color/transparent"
+                />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="example@gmail.com"
                 android:backgroundTint="@android:color/transparent"
                 />
 
@@ -176,8 +174,8 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:inputType="textPassword"
-                android:text="MyDni"
+                android:inputType="text"
+                android:text="31878744P"
                 />
         </LinearLayout>
     </LinearLayout>

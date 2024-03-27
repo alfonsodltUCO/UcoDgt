@@ -28,7 +28,8 @@ public class CheckLogIn extends AppCompatActivity {
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
-        mngusr.checkLogInClient(email, password, CheckLogIn.this, new UserCallback() {
+        ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
+        mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 
             @Override
             public void onUserReceived(ClientDTO user) {//client
@@ -46,8 +47,8 @@ public class CheckLogIn extends AppCompatActivity {
                         public void run() {
 
                             ManagerAdmin mngadm=new ManagerAdmin();
-
-                            mngadm.checkLogInAdmin(email, password, CheckLogIn.this, new UserCallback() {
+                            AdminDTO admin = new AdminDTO(null,password,null,null,null,email);
+                            mngadm.checkLogInAdmin(admin, CheckLogIn.this, new UserCallback() {
                                 @Override
                                 public void onUserReceived(ClientDTO user) {
 
@@ -81,8 +82,8 @@ public class CheckLogIn extends AppCompatActivity {
                                             @Override
                                             public void run() {
                                                 ManagerWorker mngwrk=new ManagerWorker();
-
-                                                mngwrk.checkLogInWorker(email, password, CheckLogIn.this, new UserCallback() {
+                                                WorkerDTO worker = new WorkerDTO(null,password,null,null,null,email,null);
+                                                mngwrk.checkLogInWorker(worker, CheckLogIn.this, new UserCallback() {
                                                     @Override
                                                     public void onUserReceived(ClientDTO user) {
 

@@ -38,7 +38,7 @@ public class AdminActivity extends AppCompatActivity{
         switch (item.getItemId()){
             case R.id.item1AdminAddUser:
                 Intent intentAddUser=new Intent(AdminActivity.this,AddUserActivity.class);
-                intentAddUser.putExtra("typeofuser",typeofuser);
+                intentAddUser.putExtra("typeofuser","admin");
                 startActivity(intentAddUser);
             default:
                 return super.onOptionsItemSelected(item);

@@ -12,4 +12,5 @@ public interface UserCallback {
     void onWorkerReceived(WorkerDTO user);
 
     void onAdminReceived(AdminDTO user);
+
 }

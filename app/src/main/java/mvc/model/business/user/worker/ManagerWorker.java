@@ -15,9 +15,9 @@ public class ManagerWorker {
     public ManagerWorker(){
 
     }
-    public void checkLogInWorker(String email, String password, Context applicationContext, UserCallback callback){
+    public void checkLogInWorker(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO userD=new WorkerDAO();
-        WorkerDTO userToCheck=new WorkerDTO(null,password,null,null,null,email,null);
+        WorkerDTO userToCheck=new WorkerDTO(null,worker.getPassword(),null,null,null, worker.getEmail(), null);
 
         userD.checkLogInWorker(userToCheck, applicationContext, new UserCallback() {
 
@@ -29,6 +29,52 @@ public class ManagerWorker {
             @Override
             public void onError(VolleyError error) {
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
+
+    public void checkEmailNotExists(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        WorkerDTO userToCheck=new WorkerDTO(null,null,null,null,null, worker.getEmail(), null);
+        workerD.checkWorkerEmail(userToCheck, applicationContext, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {}
+
+            @Override
+            public void onError(VolleyError error) {
+                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {callback.onWorkerReceived(user);}
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {}
+        });
+    }
+
+    public void addUser(WorkerDTO worker, Context applicationContext, UserCallback callback) {
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.addUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+
             }
 
             @Override

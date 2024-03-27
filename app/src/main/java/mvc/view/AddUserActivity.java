@@ -37,8 +37,6 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         radiogrouptypeuser=findViewById(R.id.radioGroupTypeUserToAdd);
         editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
         editTextPassword=findViewById(R.id.editTextPassword);
-        checkAddUser=findViewById(R.id.checkAdd);
-        checkAddUser.setOnClickListener(this);
         Intent intent=getIntent();
         typeofuser =intent.getStringExtra("typeofuser");
         radiogrouptypeuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -46,28 +44,33 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = findViewById(checkedId);
                 if (radioButton != null) {
-                    selectedOption = radioButton.getText().toString();
+                    selectedOption = radioButton.getText().toString().trim();
+                    Log.d("AAA",selectedOption);
                 }
             }
         });
+        checkAddUser=findViewById(R.id.checkAdd);
 
+        checkAddUser.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
-       if(v.getId()==R.id.checkAdd){
+
+
+        if(v.getId()==R.id.checkAdd){
            Intent checkUserToAdd=new Intent(AddUserActivity.this, CheckUserToAdd.class);
            checkUserToAdd.putExtra("name",editTextName.getText().toString().trim());
            checkUserToAdd.putExtra("surname",editTextSurname.getText().toString().trim());
            checkUserToAdd.putExtra("dni",editTextDni.getText().toString().trim());
            checkUserToAdd.putExtra("email",editTextEmail.getText().toString().trim());
            checkUserToAdd.putExtra("password",editTextPassword.getText().toString().trim());
-           checkUserToAdd.putExtra("age",editTextAge.toString().trim());
+           checkUserToAdd.putExtra("age",editTextAge.getText().toString().trim());
            checkUserToAdd.putExtra("licencepoints",editTextLicencePoints.getText().toString().trim());
            checkUserToAdd.putExtra("type",typeofuser);
-           checkUserToAdd.putExtra("tpeofusertoadd",selectedOption);
-           checkUserToAdd.putExtra("whodotheadd",typeofuser);
+           checkUserToAdd.putExtra("typeofusertoadd",selectedOption);
+           checkUserToAdd.putExtra("typeofuser",typeofuser);
            startActivity(checkUserToAdd);
        }
     }
