@@ -23,7 +23,7 @@ import mvc.model.data.UserCallback;
 
 public class ForCheckUsertoAdd {
     public static boolean checkDni(String dni){//used in CheckUserToadd
-        Pattern pattern = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+        Pattern pattern = Pattern.compile("[0-9]{8}[A-Z a-z]");
         Matcher mat = pattern.matcher(dni);
         return mat.matches();
     }
@@ -63,7 +63,6 @@ public class ForCheckUsertoAdd {
 
     public static void checkAdminEmailNotExists(String email, Context context, UserCallback callback){
         ManagerAdmin mngAd = new ManagerAdmin();
-        Log.d("AAAAA","entro admin");
 
         AdminDTO admin = new AdminDTO(null,null,null,null,null,email);
         mngAd.checkEmailNotExists(admin, context, new UserCallback() {
@@ -90,7 +89,6 @@ public class ForCheckUsertoAdd {
     }
     public static void checkClientEmailNotExists(String email, Context context, UserCallback callback){
         ManagerClient mngCl = new ManagerClient();
-        Log.d("AAAAA","entro client");
 
         ClientDTO client = new ClientDTO(null,null,null,null,null,email,null);
         mngCl.checkEmailNotExists(client, context, new UserCallback() {
@@ -109,7 +107,6 @@ public class ForCheckUsertoAdd {
 
     public static void checkWorkerEmailNotExists(String email, Context context, UserCallback callback){
         ManagerWorker mngWk = new ManagerWorker();
-        Log.d("AAAAA","entro worker");
 
         WorkerDTO worker = new WorkerDTO(null,null,null,null,null,email,null);
         mngWk.checkEmailNotExists(worker, context, new UserCallback() {
@@ -140,7 +137,6 @@ public class ForCheckUsertoAdd {
     }
 
     public static boolean checkDateOfBirth(String age){
-        Log.d("AAAAA",age);
         String patternofdate = "^\\d{4}-\\d{2}-\\d{2}$";
 
         Pattern pattern = Pattern.compile(patternofdate);

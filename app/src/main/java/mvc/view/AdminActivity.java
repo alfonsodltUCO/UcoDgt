@@ -1,5 +1,6 @@
 package mvc.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -24,12 +25,15 @@ public class AdminActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState, persistentState);
         Intent intent=getIntent();
         typeofuser=intent.getStringExtra("type");
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
        Toast.makeText(AdminActivity.this,"Welcome ADMIN, here is your menu of the app",Toast.LENGTH_LONG).show();
        getMenuInflater().inflate(R.menu.adminmenu,menu);
-       return super.onCreateOptionsMenu(menu);
+       setContentView(R.layout.adminmain);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

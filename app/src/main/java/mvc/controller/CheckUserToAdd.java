@@ -46,7 +46,6 @@ public class CheckUserToAdd extends AppCompatActivity {
         licencepoints=intentReceived.getStringExtra("licencepoints");
         typeofuserWhoDoTheAdd=intentReceived.getStringExtra("typeofuser");
         typeofuserAdded=intentReceived.getStringExtra("typeofusertoadd");
-        Log.d("AAAA",name+surname+email+password+dni+age+licencepoints+typeofuserAdded+typeofuserWhoDoTheAdd);
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(typeofuserAdded) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(surname) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(age) && !TextUtils.isEmpty(licencepoints)){
             if(!checkDni(dni)){//no valid
                 Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);

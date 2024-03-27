@@ -26,7 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name="mvc.controller.CheckLogIn"/>
-        <activity android:name="mvc.controller.SignUp"/>
         <activity android:name="mvc.view.AdminActivity"/>
         <activity android:name="mvc.view.AddUserActivity"/>
         <activity android:name="mvc.controller.CheckUserToAdd"/>
