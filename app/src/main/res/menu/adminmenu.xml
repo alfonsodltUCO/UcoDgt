@@ -4,5 +4,45 @@
     <item
         android:id="@+id/item1AdminAddUser"
         android:title="Add user" />
+    <item
+        android:id="@+id/item2AdminDeleteUser"
+        android:title="Delete user" />
+    <item
+        android:id="@+id/item3AdminListUsers"
+        android:title="List users" />
+    <!--Por dni-->
+    <item
+        android:id="@+id/item4AdminFindUser"
+        android:title="Find user" />
+    <!--Por dni-->
+    <item
+        android:id="@+id/item5AdminAddVehicle"
+        android:title="Add vehicle" />
+    <item
+        android:id="@+id/item6AdminDeleteVehicle"
+        android:title="Delete vehicle" />
+    <item
+        android:id="@+id/item7AdminListVehicles"
+        android:title="List vehicles" />
+    <item
+        android:id="@+id/item8AdminFindVehicles"
+        android:title="Find vehicles" />
+    <item
+        android:id="@+id/item9AdminListPenalties"
+        android:title="List penalties" />
+    <item
+        android:id="@+id/item10AdminAddPenalty"
+        android:title="Add penalty" />
+    <!--Este llevará a otra página-->
+    <item
+        android:id="@+id/item11AdminDeletePenalty"
+        android:title="Delete penalty" />
+    <!--Este llevará a otra página-->
+    <item
+        android:id="@+id/item12FindPenalty"
+        android:title="Find penalty" />
+
+
+
 
 </menu>

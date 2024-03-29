@@ -78,7 +78,7 @@ public class ManagerClient {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override

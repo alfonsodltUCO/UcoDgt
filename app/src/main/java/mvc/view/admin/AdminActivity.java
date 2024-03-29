@@ -1,15 +1,10 @@
-package mvc.view;
+package mvc.view.admin;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -32,7 +27,6 @@ public class AdminActivity extends AppCompatActivity{
        Toast.makeText(AdminActivity.this,"Welcome ADMIN, here is your menu of the app",Toast.LENGTH_LONG).show();
        getMenuInflater().inflate(R.menu.adminmenu,menu);
        setContentView(R.layout.adminmain);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -41,9 +35,11 @@ public class AdminActivity extends AppCompatActivity{
 
         switch (item.getItemId()){
             case R.id.item1AdminAddUser:
-                Intent intentAddUser=new Intent(AdminActivity.this,AddUserActivity.class);
-                intentAddUser.putExtra("typeofuser","admin");
+                Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
                 startActivity(intentAddUser);
+            case R.id.item4AdminFindUser:
+                Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
+                startActivity(intentFindUser);
             default:
                 return super.onOptionsItemSelected(item);
 

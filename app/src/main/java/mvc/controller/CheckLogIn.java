@@ -2,7 +2,6 @@ package mvc.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +15,7 @@ import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
-import mvc.view.AdminActivity;
+import mvc.view.admin.AdminActivity;
 
 public class CheckLogIn extends AppCompatActivity {
 

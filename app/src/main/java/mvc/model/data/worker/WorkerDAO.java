@@ -234,7 +234,7 @@ public class WorkerDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -282,11 +282,9 @@ public class WorkerDAO {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Manejar el error de la solicitud
-                        Log.e("Error", "Error en la solicitud", error);
-                        Toast.makeText(applicationContext,"The DNI exists", Toast.LENGTH_LONG).show();
-                        callback.onWorkerReceived(new WorkerDTO(null, null, null, null, null, null, null));
-
+                       if(error.networkResponse.statusCode==500){
+                           callback.onError(error);
+                       }
                     }
                 }
         ) {
