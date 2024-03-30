@@ -31,6 +31,10 @@
         <activity android:name="mvc.controller.admin.CheckUserToAdd"/>
         <activity android:name="mvc.view.admin.FindUserActivity"/>
         <activity android:name="mvc.controller.admin.CheckUserToFind"/>
+        <activity android:name="mvc.view.admin.DeleteUserActivity"/>
+        <activity android:name="mvc.controller.admin.CheckUserToDelete"/>
+
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

@@ -347,25 +347,19 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsetToFind(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getClient.php?dni="+dni;
-
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
-
-                Request.Method.GET,
+        String URL="http://192.168.1.19/api/ucodgt/user/getClient.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
                 URL,
-                null,
-                new Response.Listener<JSONObject>(){
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
+                new Response.Listener<String>() {
+                    public void onResponse(String response) {
                         try {
-                            String name=response.getString("name");
-                            String surname=response.getString("surname");
-                            String email=response.getString("email");
-                            String dni=response.getString("dni_client");
-                            String age=response.getString("age");
+                            JSONObject jsonResponse = new JSONObject(response);
+                            String name = jsonResponse.getString("name");
+                            String surname = jsonResponse.getString("surname");
+                            String email = jsonResponse.getString("email");
+                            String dni = jsonResponse.getString("dni_client");
+                            String age = jsonResponse.getString("age");
                             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                             Date dateBirth;
                             try {
@@ -373,12 +367,12 @@ public class ClientDAO {
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }
-                            Integer licencep=Integer.parseInt(response.getString("licencepoints"));
-                            ClientDTO user=new ClientDTO(dni,null,name,surname,dateBirth,email,licencep);
+                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                            ClientDTO user = new ClientDTO(dni, null, name, surname, dateBirth, email, licencep);
                             callback.onUserReceived(user);
+
                         } catch (JSONException e) {
-                            ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-                            callback.onUserReceived(user);
+                            throw new RuntimeException(e);
                         }
                     }
                 },
@@ -391,9 +385,17 @@ public class ClientDAO {
 
                     }
                 }
-        );
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", dni);
+                return params;
+            }
+        };
 
-        requestQueue.add(JsonObjectRequest);
+        // Agregar la solicitud a la cola de solicitudes
+        requestQueue.add(request);
     }
 
 }

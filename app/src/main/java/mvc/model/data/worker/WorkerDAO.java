@@ -337,25 +337,20 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsetToFind(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getWorker.php?dni="+dni;
-
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
-
-                Request.Method.GET,
+        String URL="http://192.168.1.19/api/ucodgt/user/getWorker.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
                 URL,
-                null,
-                new Response.Listener<JSONObject>(){
-
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-
+                    public void onResponse(String response) {
                         try {
-                            String name=response.getString("name");
-                            String surname=response.getString("surname");
-                            String email=response.getString("email");
-                            String dni=response.getString("dni_client");
-                            String age=response.getString("age");
+                            JSONObject jsonObject=new JSONObject(response);
+                            String name=jsonObject.getString("name");
+                            String surname=jsonObject.getString("surname");
+                            String email=jsonObject.getString("email");
+                            String dni=jsonObject.getString("dni_client");
+                            String age=jsonObject.getString("age");
                             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                             Date dateBirth;
                             try {
@@ -363,7 +358,7 @@ public class WorkerDAO {
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }
-                            Integer nworker=Integer.parseInt(response.getString("numberOfWorker"));
+                            Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
                             WorkerDTO user=new WorkerDTO(dni,null,name,surname,dateBirth,email,nworker);
                             callback.onWorkerReceived(user);
                         } catch (JSONException e) {
@@ -372,8 +367,7 @@ public class WorkerDAO {
                         }
                     }
                 },
-                new Response.ErrorListener(){
-
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         callback.onError(error);
@@ -381,11 +375,14 @@ public class WorkerDAO {
 
                     }
                 }
-        );
-
-        requestQueue.add(JsonObjectRequest);
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", dni);
+                return params;
+            }
+        };
+        requestQueue.add(request);
     }
-
-
-
 }

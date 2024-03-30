@@ -139,18 +139,11 @@ public class CheckUserToFind  extends AppCompatActivity {
     }
 
     private void showLoading() {
-        // Muestra la pantalla de carga
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
     private void hideLoading() {
-        // Oculta la pantalla de carga
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(ProgressBar.INVISIBLE);
-            }
-        });
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
 
 
