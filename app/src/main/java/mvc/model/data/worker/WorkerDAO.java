@@ -33,8 +33,8 @@ public class WorkerDAO {
 
 
     public void checkLogInWorker(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail().toString();
-        String password= userToFind.getPassword().toString();
+        String email=userToFind.getEmail();
+        String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
         WorkerDTO usr = userToFind;
         checkWorker(email,password, new UserCallback() {
@@ -47,7 +47,7 @@ public class WorkerDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -70,7 +70,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkWorker(final String email,final String password,final UserCallback callback){
-        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginWorker.php?email="+email;
+        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginWorker.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -78,57 +78,40 @@ public class WorkerDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String passwordhashed=response.getString("password");
-                                if(!BCrypt.checkpw(password,passwordhashed)){
-
-                                    WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-
-                                    callback.onWorkerReceived(user);
-                                }else {
-                                    String age=response.getString("age");
-                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                    Date dateBirth;
-                                    try {
-                                        dateBirth = format.parse(age);
-                                    } catch (ParseException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    String number=response.getString("numberOfWorker");
-                                    WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth,email,Integer.parseInt(number));
-                                    callback.onWorkerReceived(user);
-                                }
-
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String passwordhashed=response.getString("password");
+                        if(!BCrypt.checkpw(password,passwordhashed)){
+                            callback.onError(new VolleyError());
+                        }else {
+                            String age=response.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
                             }
-                        } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-
+                            String number=response.getString("numberOfWorker");
+                            WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth, email1,Integer.parseInt(number));
                             callback.onWorkerReceived(user);
                         }
+                    } catch (JSONException e) {
+                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
 
-
+                        callback.onWorkerReceived(user);
                     }
+
+
                 },
-                new Response.ErrorListener(){
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
                 }
         );
 
@@ -144,7 +127,7 @@ public class WorkerDAO {
             public void onUserReceived(ClientDTO user) {}
 
             @Override
-            public void onError(VolleyError error) {}
+            public void onError(VolleyError error) {callback.onError(error);}
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
@@ -163,7 +146,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkEmailWorker(final String email,final UserCallback callback){
-        String URL="http://10.0.2.2/api/ucodgt/user/checkLoginWorker.php?email="+email;
+        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginWorker.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -205,14 +188,8 @@ public class WorkerDAO {
 
                     }
                 },
-                new Response.ErrorListener(){
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
+                error -> {
+                    callback.onError(error);
                 }
         );
 
@@ -307,7 +284,7 @@ public class WorkerDAO {
         String dni=userToFind.getDni().toString();
         requestQueue= Volley.newRequestQueue(applicationContext);
         WorkerDTO usr = userToFind;
-        getUsetToFind(dni, new UserCallback() {
+        getUserToFind(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
             }
@@ -336,8 +313,92 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void getUsetToFind(final String dni,final UserCallback callback){
+    private void getUserToFind(final String dni,final UserCallback callback){
         String URL="http://192.168.1.19/api/ucodgt/user/getWorker.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject=new JSONObject(response);
+                            String name=jsonObject.getString("name");
+                            String surname=jsonObject.getString("surname");
+                            String email=jsonObject.getString("email");
+                            String dni=jsonObject.getString("dni_client");
+                            String age=jsonObject.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
+                            WorkerDTO user=new WorkerDTO(dni,null,name,surname,dateBirth,email,nworker);
+                            callback.onWorkerReceived(user);
+                        } catch (JSONException e) {
+                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+                            callback.onWorkerReceived(user);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onError(error);
+                        Log.d("ADebugTag", "Value: " +error.toString());
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", dni);
+                return params;
+            }
+        };
+        requestQueue.add(request);
+    }
+
+    public void deleteUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
+
+        String dni=userToFind.getDni().toString();
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        WorkerDTO usr = userToFind;
+        deleteUserFromBd(dni, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                usr.setEmail(user.getEmail());
+                usr.setAge(user.getAge());
+                usr.setName(user.getName());
+                usr.setSurname(user.getSurname());
+                usr.setPassword(user.getPassword());
+                usr.setNumberOfWorker(user.getNumberOfWorker());
+                usr.setDni(user.getDni());
+                callback.onWorkerReceived(usr);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void deleteUserFromBd(final String dni,final UserCallback callback){
+        String URL="http://192.168.1.19/api/ucodgt/user/deleteWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,

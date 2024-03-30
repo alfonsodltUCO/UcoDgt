@@ -26,6 +26,7 @@ public class ManagerAdmin {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -52,6 +53,8 @@ public class ManagerAdmin {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
+
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 

@@ -44,7 +44,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.findUser){
+        if(v.getId()==R.id.deleteUser){
             Intent checkUserToAdd=new Intent(DeleteUserActivity.this, CheckUserToDelete.class);
             checkUserToAdd.putExtra("userToDelete",selectedOption);
             checkUserToAdd.putExtra("dni",dniToDelete.getText().toString().trim());

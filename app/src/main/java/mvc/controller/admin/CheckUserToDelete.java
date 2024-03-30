@@ -36,7 +36,6 @@ public class CheckUserToDelete extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
-
         progressBar = findViewById(R.id.progressbar);
         showLoading();
         Intent intent=getIntent();
@@ -75,8 +74,13 @@ public class CheckUserToDelete extends AppCompatActivity {
                                     } catch (InterruptedException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
-                                    hideLoading();
+                                    if(error.networkResponse.statusCode==404) {
+                                        Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                                        hideLoading();
+                                    }else {
+                                        Toast.makeText(CheckUserToDelete.this,"An error has ocurred", Toast.LENGTH_LONG).show();
+                                        hideLoading();
+                                    }
                                 }
 
                                 @Override
@@ -92,7 +96,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                             showLoading();
                             ManagerWorker mngwk=new ManagerWorker();
                             WorkerDTO workerToFind=new WorkerDTO(dni,null,null,null,null,null,null);
-                            mngwk.getUser(workerToFind, CheckUserToDelete.this, new UserCallback() {
+                            mngwk.deleteUser(workerToFind, CheckUserToDelete.this, new UserCallback() {
                                 @Override
                                 public void onUserReceived(ClientDTO user) {
                                 }
@@ -138,7 +142,6 @@ public class CheckUserToDelete extends AppCompatActivity {
         }
 
 
-    }
     }
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);

@@ -38,6 +38,9 @@ public class AdminActivity extends AppCompatActivity{
         }else if(R.id.item4AdminFindUser==item.getItemId()){
             Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(intentFindUser);
+        } else if (R.id.item2AdminDeleteUser==item.getItemId()) {
+            Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
+            startActivity(intentDeleteUser);
         }
         return false;
     }

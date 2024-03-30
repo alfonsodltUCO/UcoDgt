@@ -71,7 +71,7 @@ public class ForCheckUser {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -95,7 +95,8 @@ public class ForCheckUser {
                 callback.onUserReceived(user);
             }
             @Override
-            public void onError(VolleyError error) {}
+            public void onError(VolleyError error) {callback.onError(error);
+            }
             @Override
             public void onWorkerReceived(WorkerDTO user) {}
             @Override
@@ -111,7 +112,8 @@ public class ForCheckUser {
             @Override
             public void onUserReceived(ClientDTO user) {}
             @Override
-            public void onError(VolleyError error) {}
+            public void onError(VolleyError error) {callback.onError(error);
+            }
             @Override
             public void onWorkerReceived(WorkerDTO user) {
                 callback.onWorkerReceived(user);

@@ -29,8 +29,8 @@ public class AdminDAO {
 
 
     public void checkLogInAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail().toString();
-        String password= userToFind.getPassword().toString();
+        String email=userToFind.getEmail();
+        String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
         AdminDTO usr = userToFind;
         checkAdmin(email,password, new UserCallback() {
@@ -54,7 +54,7 @@ public class AdminDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -72,55 +72,40 @@ public class AdminDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String passwordhashed=response.getString("password");
-                                if(!BCrypt.checkpw(password,passwordhashed)){
-
-                                    AdminDTO user=new AdminDTO(null,null,null,null,null,null);
-
-                                    callback.onAdminReceived(user);
-                                }else {
-                                    String age=response.getString("age");
-                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                    Date dateBirth;
-                                    try {
-                                        dateBirth = format.parse(age);
-                                    } catch (ParseException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth,email);
-                                    callback.onAdminReceived(user);
-                                }
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String passwordhashed=response.getString("password");
+                        if(!BCrypt.checkpw(password,passwordhashed)){
+                            callback.onError(new VolleyError());
+                        }else {
+                            String age=response.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
                             }
-                        } catch (JSONException e) {
-                            AdminDTO user=new AdminDTO(null,null,null,null,null,null);
-
+                            AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth, email1);
                             callback.onAdminReceived(user);
                         }
 
+                    } catch (JSONException e) {
+                        AdminDTO user=new AdminDTO(null,null,null,null,null,null);
 
+                        callback.onAdminReceived(user);
                     }
+
+
                 },
-                new Response.ErrorListener(){
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
                 }
         );
 
@@ -152,7 +137,7 @@ public class AdminDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -170,45 +155,29 @@ public class AdminDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String age=response.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String age=response.getString("age");
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dateBirth;
-                                try {
-                                    dateBirth = format.parse(age);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                AdminDTO user=new AdminDTO(null,null,name,surname,dateBirth,email);
-                                callback.onAdminReceived(user);
-
-                            }
-                        } catch (JSONException e) {
-                            AdminDTO user=new AdminDTO(null,null,null,null,null,null);
-                            callback.onAdminReceived(user);
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+                        AdminDTO user=new AdminDTO(null,null,name,surname,dateBirth, email1);
+                        callback.onAdminReceived(user);
+                    } catch (JSONException e) {
+                        AdminDTO user=new AdminDTO(null,null,null,null,null,null);
+                        callback.onAdminReceived(user);
                     }
                 },
-                new Response.ErrorListener(){
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
+                error ->{
+                    callback.onError(error);
                 }
         );
 

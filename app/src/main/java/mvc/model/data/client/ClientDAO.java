@@ -54,7 +54,7 @@ public class ClientDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -78,57 +78,40 @@ public class ClientDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String passwordhashed=response.getString("password");
-                                if(!BCrypt.checkpw(password,passwordhashed)){
-
-                                    ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-
-                                    callback.onUserReceived(user);
-                                }else {
-                                    String age=response.getString("age");
-                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                    Date dateBirth;
-                                    try {
-                                        dateBirth = format.parse(age);
-                                    } catch (ParseException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    Integer licencep=Integer.parseInt(response.getString("licencepoints"));
-                                    ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth,email,licencep);
-                                    callback.onUserReceived(user);
-                                }
-
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String passwordhashed=response.getString("password");
+                        if(!BCrypt.checkpw(password,passwordhashed)){
+                            callback.onError(new VolleyError());
+                        }else {
+                            String age=response.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
                             }
-                        } catch (JSONException e) {
-                            ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-
+                            Integer licencep=Integer.parseInt(response.getString("licencepoints"));
+                            ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth, email1,licencep);
                             callback.onUserReceived(user);
                         }
+                    } catch (JSONException e) {
+                        ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
 
-
+                        callback.onUserReceived(user);
                     }
+
+
                 },
-                new Response.ErrorListener(){
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
                 }
         );
 
@@ -156,7 +139,7 @@ public class ClientDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -180,48 +163,35 @@ public class ClientDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String age=response.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String age=response.getString("age");
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dateBirth;
-                                try {
-                                    dateBirth = format.parse(age);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                Integer licencep=Integer.parseInt(response.getString("licencepoints"));
-                                ClientDTO user=new ClientDTO(null,null,name,surname,dateBirth,email,licencep);
-                                callback.onUserReceived(user);
-                            }
-                        } catch (JSONException e) {
-                            ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-                            callback.onUserReceived(user);
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+                        Integer licencep=Integer.parseInt(response.getString("licencepoints"));
+                        ClientDTO user=new ClientDTO(null,null,name,surname,dateBirth, email1,licencep);
+                        callback.onUserReceived(user);
 
-
+                    } catch (JSONException e) {
+                        ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
+                        callback.onUserReceived(user);
                     }
+
+
                 },
-                new Response.ErrorListener(){
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
+                error ->{
+                    callback.onError(error);
                 }
+
         );
 
         requestQueue.add(JsonObjectRequest);
@@ -269,27 +239,21 @@ public class ClientDAO {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if(!response.isEmpty()){
-                            callback.onUserReceived(client);
-                        }else{
-                            callback.onUserReceived(new ClientDTO(null,null,null,null,null,null,null));
-                        }
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onUserReceived(client);
+                    }else{
+                        callback.onUserReceived(new ClientDTO(null,null,null,null,null,null,null));
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Manejar el error de la solicitud
-                        if(error.networkResponse.statusCode==500){
-                            Log.e("Error", "Error en la solicitud", error);
-                            Toast.makeText(applicationContext,"The DNI exists", Toast.LENGTH_LONG).show();
-                            callback.onError(error);
-                        }
-
+                error -> {
+                    // Manejar el error de la solicitud
+                    if(error.networkResponse.statusCode==500){
+                        Log.e("Error", "Error en la solicitud", error);
+                        Toast.makeText(applicationContext,"The DNI exists", Toast.LENGTH_LONG).show();
+                        callback.onError(error);
                     }
+
                 }
         ) {
             @Override
@@ -306,13 +270,12 @@ public class ClientDAO {
             }
         };
 
-        // Agregar la solicitud a la cola de solicitudes
         requestQueue.add(request);
     }
 
     public void getUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni().toString();
+        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
         ClientDTO usr = userToFind;
         getUserToFind(dni, new UserCallback() {
@@ -351,39 +314,33 @@ public class ClientDAO {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    public void onResponse(String response) {
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String name = jsonResponse.getString("name");
+                        String surname = jsonResponse.getString("surname");
+                        String email = jsonResponse.getString("email");
+                        String dni1 = jsonResponse.getString("dni_client");
+                        String age = jsonResponse.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String name = jsonResponse.getString("name");
-                            String surname = jsonResponse.getString("surname");
-                            String email = jsonResponse.getString("email");
-                            String dni = jsonResponse.getString("dni_client");
-                            String age = jsonResponse.getString("age");
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                            Date dateBirth;
-                            try {
-                                dateBirth = format.parse(age);
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
-                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
-                            ClientDTO user = new ClientDTO(dni, null, name, surname, dateBirth, email, licencep);
-                            callback.onUserReceived(user);
-
-                        } catch (JSONException e) {
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
+                        Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                        ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
+                        callback.onUserReceived(user);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
                     }
                 },
-                new Response.ErrorListener(){
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onError(error);
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
                 }
         ) {
             @Override
@@ -394,13 +351,12 @@ public class ClientDAO {
             }
         };
 
-        // Agregar la solicitud a la cola de solicitudes
         requestQueue.add(request);
     }
 
     public void deleteUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni().toString();
+        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
         ClientDTO usr = userToFind;
         deleteUserFromBd(dni, new UserCallback() {
@@ -439,39 +395,33 @@ public class ClientDAO {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    public void onResponse(String response) {
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String name = jsonResponse.getString("name");
+                        String surname = jsonResponse.getString("surname");
+                        String email = jsonResponse.getString("email");
+                        String dni1 = jsonResponse.getString("dni_client");
+                        String age = jsonResponse.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            String name = jsonResponse.getString("name");
-                            String surname = jsonResponse.getString("surname");
-                            String email = jsonResponse.getString("email");
-                            String dni = jsonResponse.getString("dni_client");
-                            String age = jsonResponse.getString("age");
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                            Date dateBirth;
-                            try {
-                                dateBirth = format.parse(age);
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
-                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
-                            ClientDTO user = new ClientDTO(dni, null, name, surname, dateBirth, email, licencep);
-                            callback.onUserReceived(user);
-
-                        } catch (JSONException e) {
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
+                        Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                        ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
+                        callback.onUserReceived(user);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
                     }
                 },
-                new Response.ErrorListener(){
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onError(error);
-                        Log.d("ADebugTag", "Value: " +error.toString());
-
-                    }
                 }
         ) {
             @Override
@@ -481,8 +431,6 @@ public class ClientDAO {
                 return params;
             }
         };
-
-        // Agregar la solicitud a la cola de solicitudes
         requestQueue.add(request);
     }
 

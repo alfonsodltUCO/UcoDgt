@@ -28,6 +28,7 @@ public class ManagerWorker {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -52,6 +53,8 @@ public class ManagerWorker {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
+
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -95,6 +98,31 @@ public class ManagerWorker {
             @Override
             public void onUserReceived(ClientDTO user) {
 
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
+
+    public void deleteUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.deleteUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
             }
 
             @Override

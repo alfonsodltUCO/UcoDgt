@@ -63,244 +63,231 @@ public class CheckUserToAdd extends AppCompatActivity {
                             @Override
                             public void onUserReceived(ClientDTO user) {}
                             @Override
-                            public void onError(VolleyError error) {}
+                            public void onError(VolleyError error) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        checkClientEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
+                                            @Override
+                                            public void onUserReceived(ClientDTO user) {
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                        startActivity(intentAdmin);
+                                                        Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                            }
+                                            @Override
+                                            public void onError(VolleyError error) { runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    checkWorkerEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
+
+                                                        @Override
+                                                        public void onUserReceived(ClientDTO user) {
+
+                                                        }
+
+                                                        @Override
+                                                        public void onError(VolleyError error) {
+                                                            runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    if(!checkValidEmail(email)){
+                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                        startActivity(intentAdmin);
+                                                                        Toast.makeText(CheckUserToAdd.this, "The email have incorrect form", Toast.LENGTH_LONG).show();
+                                                                    }else{
+                                                                        if(!checkDateOfBirth(age)){
+                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                            startActivity(intentAdmin);
+                                                                            Toast.makeText(CheckUserToAdd.this, "The user is younger than 18 years old\n"+"or the format is incorrect (yyyy-mm-dd)\n", Toast.LENGTH_LONG).show();
+                                                                        }else{
+                                                                            if(!checkPassword(password)){
+                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                startActivity(intentAdmin);
+                                                                                Toast.makeText(CheckUserToAdd.this, "The password must be:\n"+"more that 8 characters\n"+"one capital letter\n"+"one symbol\n"+"one number\n", Toast.LENGTH_LONG).show();
+                                                                            }else{
+                                                                                if(typeofuserAdded.equals("client")){//client
+                                                                                    ManagerClient mngcl = new ManagerClient();
+                                                                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                                                                    Date dateBirth;
+                                                                                    try {
+                                                                                        dateBirth = format.parse(age);
+                                                                                        ClientDTO client = new ClientDTO(dni,BCrypt.hashpw(password,BCrypt.gensalt()),name,surname,dateBirth,email,Integer.parseInt(licencepoints));
+                                                                                        mngcl.addUser(client,CheckUserToAdd.this,new UserCallback(){
+
+                                                                                            @Override
+                                                                                            public void onUserReceived(ClientDTO user) {
+                                                                                                runOnUiThread(new Runnable() {
+                                                                                                    @Override
+                                                                                                    public void run() {
+                                                                                                        runOnUiThread(new Runnable() {
+                                                                                                            @Override
+                                                                                                            public void run() {
+                                                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                                                startActivity(intentAdmin);
+                                                                                                                Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onError(VolleyError error) {
+                                                                                                runOnUiThread(new Runnable() {
+                                                                                                    @Override
+                                                                                                    public void run() {
+                                                                                                        if(error.networkResponse.statusCode==500){
+                                                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                                            startActivity(intentAdmin);
+                                                                                                            Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
+
+                                                                                                        }else{
+                                                                                                            runOnUiThread(new Runnable() {
+                                                                                                                @Override
+                                                                                                                public void run() {
+                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                                                    startActivity(intentAdmin);
+                                                                                                                    Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
+                                                                                                                }
+                                                                                                            });
+                                                                                                        }
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onWorkerReceived(WorkerDTO user) {
+
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onAdminReceived(AdminDTO user) {
+
+                                                                                            }
+                                                                                        });
+                                                                                    } catch (
+                                                                                            ParseException e) {
+                                                                                        throw new RuntimeException(e);
+                                                                                    }
+
+                                                                                }else{//worker
+                                                                                    ManagerWorker mngwk = new ManagerWorker();
+                                                                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                                                                    Date dateBirth;
+                                                                                    try {
+                                                                                        dateBirth = format.parse(age);
+                                                                                        WorkerDTO worker = new WorkerDTO(dni,BCrypt.hashpw(password,BCrypt.gensalt()),name,surname,dateBirth,email,null);
+                                                                                        mngwk.addUser(worker,CheckUserToAdd.this,new UserCallback(){
+
+                                                                                            @Override
+                                                                                            public void onUserReceived(ClientDTO user) {
+
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onError(VolleyError error) {
+                                                                                                runOnUiThread(new Runnable() {
+                                                                                                    @Override
+                                                                                                    public void run() {
+                                                                                                        if(error.networkResponse.statusCode==500){
+                                                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                                            startActivity(intentAdmin);
+                                                                                                            Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
+                                                                                                        }else{
+                                                                                                            runOnUiThread(new Runnable() {
+                                                                                                                @Override
+                                                                                                                public void run() {
+                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                                                    startActivity(intentAdmin);
+                                                                                                                    Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
+                                                                                                                }
+                                                                                                            });
+                                                                                                        }
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onWorkerReceived(WorkerDTO user) {
+                                                                                                runOnUiThread(new Runnable() {
+                                                                                                    @Override
+                                                                                                    public void run() {
+                                                                                                        runOnUiThread(new Runnable() {
+                                                                                                            @Override
+                                                                                                            public void run() {
+                                                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                                                startActivity(intentAdmin);
+                                                                                                                Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+
+                                                                                            @Override
+                                                                                            public void onAdminReceived(AdminDTO user) {
+
+                                                                                            }
+                                                                                        });
+                                                                                    } catch (
+                                                                                            ParseException e) {
+                                                                                        throw new RuntimeException(e);
+                                                                                    }
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+
+                                                        @Override
+                                                        public void onWorkerReceived(WorkerDTO user) {
+                                                            runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                    startActivity(intentAdmin);
+                                                                    Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
+                                                                }
+                                                            });
+                                                        }
+
+                                                        @Override
+                                                        public void onAdminReceived(AdminDTO user) {
+
+                                                        }
+                                                    });
+                                                }
+                                            });}
+                                            @Override
+                                            public void onWorkerReceived(WorkerDTO user) {}
+                                            @Override
+                                            public void onAdminReceived(AdminDTO user) {}
+                                        });
+                                    }
+                                });
+                            }
                             @Override
                             public void onWorkerReceived(WorkerDTO user) {}
                             @Override
                             public void onAdminReceived(AdminDTO user) {
-                                if(user.getName()!=null) {
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                            startActivity(intentAdmin);
-                                            Toast.makeText(CheckUserToAdd.this,"The email already exists as user", Toast.LENGTH_LONG).show();
-                                        }
-                                    });
-                                }else{
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            checkClientEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
-                                                @Override
-                                                public void onUserReceived(ClientDTO user) {
-                                                    if(user.getName()!=null) {
-                                                        runOnUiThread(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                startActivity(intentAdmin);
-                                                                Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
-                                                            }
-                                                        });
-                                                    }else{
-                                                        runOnUiThread(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                checkWorkerEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                        startActivity(intentAdmin);
+                                        Toast.makeText(CheckUserToAdd.this,"The email already exists as user", Toast.LENGTH_LONG).show();
+                                    }
+                                });
 
-                                                                    @Override
-                                                                    public void onUserReceived(ClientDTO user) {
 
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onError(VolleyError error) {
-
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onWorkerReceived(WorkerDTO user) {
-                                                                        if(user.getName()!=null) {
-                                                                            runOnUiThread(new Runnable() {
-                                                                                @Override
-                                                                                public void run() {
-                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                    startActivity(intentAdmin);
-                                                                                    Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
-                                                                                }
-                                                                            });
-                                                                        }else{//no existe
-                                                                            runOnUiThread(new Runnable() {
-                                                                                @Override
-                                                                                public void run() {
-                                                                                    if(!checkValidEmail(email)){
-                                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                        startActivity(intentAdmin);
-                                                                                        Toast.makeText(CheckUserToAdd.this, "The email have incorrect form", Toast.LENGTH_LONG).show();
-                                                                                    }else{
-                                                                                        if(!checkDateOfBirth(age)){
-                                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                            startActivity(intentAdmin);
-                                                                                            Toast.makeText(CheckUserToAdd.this, "The user is younger than 18 years old\n"+"or the format is incorrect (yyyy-mm-dd)\n", Toast.LENGTH_LONG).show();
-                                                                                        }else{
-                                                                                            if(!checkPassword(password)){
-                                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                                startActivity(intentAdmin);
-                                                                                                Toast.makeText(CheckUserToAdd.this, "The password must be:\n"+"more that 8 characters\n"+"one capital letter\n"+"one symbol\n"+"one number\n", Toast.LENGTH_LONG).show();
-                                                                                            }else{
-                                                                                                if(typeofuserAdded.equals("client")){//client
-                                                                                                    ManagerClient mngcl = new ManagerClient();
-                                                                                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                                                                                    Date dateBirth;
-                                                                                                    try {
-                                                                                                        dateBirth = format.parse(age);
-                                                                                                        ClientDTO client = new ClientDTO(dni,BCrypt.hashpw(password,BCrypt.gensalt()),name,surname,dateBirth,email,Integer.parseInt(licencepoints));
-                                                                                                        mngcl.addUser(client,CheckUserToAdd.this,new UserCallback(){
-
-                                                                                                            @Override
-                                                                                                            public void onUserReceived(ClientDTO user) {
-                                                                                                                runOnUiThread(new Runnable() {
-                                                                                                                    @Override
-                                                                                                                    public void run() {
-                                                                                                                        if(user.getName()!=null) {
-                                                                                                                            runOnUiThread(new Runnable() {
-                                                                                                                                @Override
-                                                                                                                                public void run() {
-                                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
-                                                                                                                                    startActivity(intentAdmin);
-                                                                                                                                    Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
-                                                                                                                                }
-                                                                                                                            });
-                                                                                                                        }else{
-                                                                                                                            runOnUiThread(new Runnable() {
-                                                                                                                                @Override
-                                                                                                                                public void run() {
-                                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-
-                                                                                                                                    startActivity(intentAdmin);
-                                                                                                                                    Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
-                                                                                                                                }
-                                                                                                                            });
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                });
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onError(VolleyError error) {
-                                                                                                                runOnUiThread(new Runnable() {
-                                                                                                                    @Override
-                                                                                                                    public void run() {
-                                                                                                                        if(error.networkResponse.statusCode==500){
-                                                                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                                                            startActivity(intentAdmin);
-                                                                                                                            Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
-
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                });
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onWorkerReceived(WorkerDTO user) {
-
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onAdminReceived(AdminDTO user) {
-
-                                                                                                            }
-                                                                                                        });
-                                                                                                    } catch (
-                                                                                                            ParseException e) {
-                                                                                                        throw new RuntimeException(e);
-                                                                                                    }
-
-                                                                                                }else{//worker
-                                                                                                    ManagerWorker mngwk = new ManagerWorker();
-                                                                                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                                                                                    Date dateBirth;
-                                                                                                    try {
-                                                                                                        dateBirth = format.parse(age);
-                                                                                                        WorkerDTO worker = new WorkerDTO(dni,BCrypt.hashpw(password,BCrypt.gensalt()),name,surname,dateBirth,email,null);
-                                                                                                        mngwk.addUser(worker,CheckUserToAdd.this,new UserCallback(){
-
-                                                                                                            @Override
-                                                                                                            public void onUserReceived(ClientDTO user) {
-
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onError(VolleyError error) {
-                                                                                                                runOnUiThread(new Runnable() {
-                                                                                                                    @Override
-                                                                                                                    public void run() {
-                                                                                                                        if(error.networkResponse.statusCode==500){
-                                                                                                                            Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                                                            startActivity(intentAdmin);
-                                                                                                                            Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                });
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onWorkerReceived(WorkerDTO user) {
-                                                                                                                runOnUiThread(new Runnable() {
-                                                                                                                    @Override
-                                                                                                                    public void run() {
-                                                                                                                        if(user.getName()!=null) {
-                                                                                                                            runOnUiThread(new Runnable() {
-                                                                                                                                @Override
-                                                                                                                                public void run() {
-                                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
-                                                                                                                                    startActivity(intentAdmin);
-                                                                                                                                    Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
-                                                                                                                                }
-                                                                                                                            });
-                                                                                                                        }else{
-                                                                                                                            runOnUiThread(new Runnable() {
-                                                                                                                                @Override
-                                                                                                                                public void run() {
-                                                                                                                                    Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
-                                                                                                                                    startActivity(intentAdmin);
-                                                                                                                                    Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
-                                                                                                                                }
-                                                                                                                            });
-                                                                                                                        }
-                                                                                                                    }
-                                                                                                                });
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onAdminReceived(AdminDTO user) {
-
-                                                                                                            }
-                                                                                                        });
-                                                                                                    } catch (
-                                                                                                            ParseException e) {
-                                                                                                        throw new RuntimeException(e);
-                                                                                                    }
-
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            });
-                                                                        }
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onAdminReceived(AdminDTO user) {
-
-                                                                    }
-                                                                });
-                                                            }
-                                                        });
-                                                    }
-                                                }
-                                                @Override
-                                                public void onError(VolleyError error) {}
-                                                @Override
-                                                public void onWorkerReceived(WorkerDTO user) {}
-                                                @Override
-                                                public void onAdminReceived(AdminDTO user) {}
-                                            });
-                                        }
-                                    });
-                                }
                             }
                         });
                    }

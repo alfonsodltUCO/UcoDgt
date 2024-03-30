@@ -28,6 +28,7 @@ public class ManagerClient {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -53,6 +54,7 @@ public class ManagerClient {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -118,7 +120,7 @@ public class ManagerClient {
     }
     public void deleteUser(ClientDTO client, Context applicationContext, UserCallback callback){
         ClientDAO clientD=new ClientDAO();
-        clientD.getUser(client, applicationContext, new UserCallback(){
+        clientD.deleteUser(client, applicationContext, new UserCallback(){
 
             @Override
             public void onUserReceived(ClientDTO user) {
