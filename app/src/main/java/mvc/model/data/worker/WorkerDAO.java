@@ -2,13 +2,11 @@ package mvc.model.data.worker;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -24,7 +22,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import mvc.controller.CheckUserToAdd;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;

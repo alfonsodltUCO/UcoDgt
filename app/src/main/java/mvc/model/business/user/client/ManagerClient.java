@@ -5,11 +5,9 @@ import android.util.Log;
 
 import com.android.volley.VolleyError;
 
-import mvc.controller.CheckUserToAdd;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
-import mvc.model.data.admin.AdminDAO;
 import mvc.model.data.client.ClientDAO;
 
 public class ManagerClient {

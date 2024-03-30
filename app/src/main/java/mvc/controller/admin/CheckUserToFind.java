@@ -1,4 +1,4 @@
-package mvc.controller;
+package mvc.controller.admin;
 
 import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.CheckUserToAdd;
+import mvc.controller.admin.CheckUserToAdd;
 
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
     Button checkAddUser;
@@ -27,7 +27,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduce_user);
+        setContentView(R.layout.);
         editTextAge=findViewById(R.id.editTextDateBirth);
         editTextEmail=findViewById(R.id.editTextEmail);
         editTextDni=findViewById(R.id.editTextDNI);
