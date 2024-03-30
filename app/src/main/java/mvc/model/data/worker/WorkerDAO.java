@@ -305,6 +305,90 @@ public class WorkerDAO {
         requestQueue.add(request);
     }
 
+    public void getUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
+
+        String dni=userToFind.getDni().toString();
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        WorkerDTO usr = userToFind;
+        getUsetToFind(dni, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                usr.setEmail(user.getEmail());
+                usr.setAge(user.getAge());
+                usr.setName(user.getName());
+                usr.setSurname(user.getSurname());
+                usr.setPassword(user.getPassword());
+                usr.setNumberOfWorker(user.getNumberOfWorker());
+                usr.setDni(user.getDni());
+                callback.onWorkerReceived(usr);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void getUsetToFind(final String dni,final UserCallback callback){
+        String URL="http://192.168.1.19/api/ucodgt/user/getWorker.php?dni="+dni;
+
+        JsonObjectRequest JsonObjectRequest;
+        JsonObjectRequest = new JsonObjectRequest(
+
+                Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONObject>(){
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            String name=response.getString("name");
+                            String surname=response.getString("surname");
+                            String email=response.getString("email");
+                            String dni=response.getString("dni_client");
+                            String age=response.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Integer nworker=Integer.parseInt(response.getString("numberOfWorker"));
+                            WorkerDTO user=new WorkerDTO(dni,null,name,surname,dateBirth,email,nworker);
+                            callback.onWorkerReceived(user);
+                        } catch (JSONException e) {
+                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+                            callback.onWorkerReceived(user);
+                        }
+                    }
+                },
+                new Response.ErrorListener(){
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onError(error);
+                        Log.d("ADebugTag", "Value: " +error.toString());
+
+                    }
+                }
+        );
+
+        requestQueue.add(JsonObjectRequest);
+    }
+
 
 
 }

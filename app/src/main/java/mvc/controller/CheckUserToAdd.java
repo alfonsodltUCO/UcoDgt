@@ -1,6 +1,6 @@
 package mvc.controller;
 
-import static mvc.controller.commonFunctions.ForCheckUsertoAdd.*;
+import static mvc.controller.commonFunctions.ForCheckUser.*;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -3,6 +3,7 @@ package mvc.view.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -24,7 +25,6 @@ public class AdminActivity extends AppCompatActivity{
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-       Toast.makeText(AdminActivity.this,"Welcome ADMIN, here is your menu of the app",Toast.LENGTH_LONG).show();
        getMenuInflater().inflate(R.menu.adminmenu,menu);
        setContentView(R.layout.adminmain);
         return super.onCreateOptionsMenu(menu);
@@ -32,18 +32,13 @@ public class AdminActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.item1AdminAddUser:
-                Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
-                startActivity(intentAddUser);
-            case R.id.item4AdminFindUser:
-                Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
-                startActivity(intentFindUser);
-            default:
-                return super.onOptionsItemSelected(item);
-
-
+        if(R.id.item1AdminAddUser == item.getItemId()){
+            Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
+            startActivity(intentAddUser);
+        }else if(R.id.item4AdminFindUser==item.getItemId()){
+            Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
+            startActivity(intentFindUser);
         }
+        return false;
     }
 }

@@ -1,14 +1,12 @@
 package mvc.controller.commonFunctions;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.VolleyError;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +19,7 @@ import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 
-public class ForCheckUsertoAdd {
+public class ForCheckUser {
     public static boolean checkDni(String dni){//used in CheckUserToadd
         Pattern pattern = Pattern.compile("[0-9]{8}[A-Z a-z]");
         Matcher mat = pattern.matcher(dni);

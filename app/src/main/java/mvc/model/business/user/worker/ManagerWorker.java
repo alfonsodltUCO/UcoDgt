@@ -88,4 +88,29 @@ public class ManagerWorker {
             }
         });
     }
+    public void getUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.getUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
 }

@@ -2,6 +2,7 @@ package mvc.view.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,15 +17,17 @@ import com.example.ucodgt.R;
 import mvc.controller.CheckUserToFind;
 
 public class FindUserActivity extends AppCompatActivity implements View.OnClickListener {
-    RadioGroup radiogrouptypeuser = findViewById(R.id.radioGroupTypeUserToFind);
+    RadioGroup radiogrouptypeuser;
     String selectedOption;
-    EditText dniToSearch = findViewById(R.id.editTextDniToFind);
-    Button search=findViewById(R.id.findUser);
+    EditText dniToSearch;
+    Button search;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_user);
-
+        search=findViewById(R.id.findUser);
+        radiogrouptypeuser = findViewById(R.id.radioGroupTypeUserToFind);
+        dniToSearch = findViewById(R.id.editTextDniToFind);
         radiogrouptypeuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -39,10 +42,10 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.checkAdd){
+        if(v.getId()==R.id.findUser){
             Intent checkUserToAdd=new Intent(FindUserActivity.this, CheckUserToFind.class);
             checkUserToAdd.putExtra("userToFind",selectedOption);
-            checkUserToAdd.putExtra("dni",dniToSearch.toString().trim());
+            checkUserToAdd.putExtra("dni",dniToSearch.getText().toString().trim());
             startActivity(checkUserToAdd);
         }
     }

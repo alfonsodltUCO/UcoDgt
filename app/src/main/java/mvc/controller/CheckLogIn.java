@@ -70,7 +70,6 @@ public class CheckLogIn extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Toast.makeText(CheckLogIn.this, "Success", Toast.LENGTH_SHORT).show();
                                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
                                                 intentAdmin.putExtra("type","admin");
                                                 startActivity(intentAdmin);
