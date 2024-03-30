@@ -21,6 +21,15 @@
         android:gravity="center"
         >
         <TextView
+            android:id="@+id/textviewpageinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="User found:"
+            android:textSize="25sp"
+            android:layout_gravity="start"
+            />
+        <TextView
             android:id="@+id/textViewFoundName"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -62,15 +71,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="Introduce the email"
-            android:textSize="18sp"
-            />
-
-        <TextView
-            android:id="@+id/textViewFoundPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the password"
             android:textSize="18sp"
             />
 
