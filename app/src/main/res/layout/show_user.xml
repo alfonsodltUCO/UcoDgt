@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#74969E"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:src="@drawable/logoempresa"
+        android:layout_gravity="center"
+        >
+    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/textViewFoundName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the name"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the surname"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundLicencePoints_numberworker"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the licence points"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundDateBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the date of birth"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the email"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the password"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundDni"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the DNI"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

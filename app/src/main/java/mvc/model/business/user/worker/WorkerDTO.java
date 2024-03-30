@@ -1,8 +1,9 @@
 package mvc.model.business.user.worker;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class WorkerDTO {
+public class WorkerDTO implements Serializable {
 
     private String dni;
 

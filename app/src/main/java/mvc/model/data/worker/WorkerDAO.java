@@ -281,7 +281,7 @@ public class WorkerDAO {
 
     public void getUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni().toString();
+        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
         WorkerDTO usr = userToFind;
         getUserToFind(dni, new UserCallback() {
@@ -296,6 +296,7 @@ public class WorkerDAO {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
+
                 usr.setEmail(user.getEmail());
                 usr.setAge(user.getAge());
                 usr.setName(user.getName());
@@ -318,39 +319,34 @@ public class WorkerDAO {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+                response -> {
+                    try {
+                        JSONObject jsonObject=new JSONObject(response);
+                        String name=jsonObject.getString("name");
+                        String surname=jsonObject.getString("surname");
+                        String email=jsonObject.getString("email");
+                        String dni1 =jsonObject.getString("dni_worker");
+                        String age=jsonObject.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            JSONObject jsonObject=new JSONObject(response);
-                            String name=jsonObject.getString("name");
-                            String surname=jsonObject.getString("surname");
-                            String email=jsonObject.getString("email");
-                            String dni=jsonObject.getString("dni_client");
-                            String age=jsonObject.getString("age");
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                            Date dateBirth;
-                            try {
-                                dateBirth = format.parse(age);
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
-                            Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
-                            WorkerDTO user=new WorkerDTO(dni,null,name,surname,dateBirth,email,nworker);
-                            callback.onWorkerReceived(user);
-                        } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-                            callback.onWorkerReceived(user);
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+                        Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
+                        WorkerDTO user=new WorkerDTO(dni1,null,name,surname,dateBirth,email,nworker);
+
+                        callback.onWorkerReceived(user);
+                    } catch (JSONException e) {
+                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+                        callback.onWorkerReceived(user);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onError(error);
-                        Log.d("ADebugTag", "Value: " +error.toString());
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    }
                 }
         ) {
             @Override
@@ -365,7 +361,7 @@ public class WorkerDAO {
 
     public void deleteUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni().toString();
+        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
         WorkerDTO usr = userToFind;
         deleteUserFromBd(dni, new UserCallback() {
@@ -402,39 +398,33 @@ public class WorkerDAO {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+                response -> {
+                    try {
+                        JSONObject jsonObject=new JSONObject(response);
+                        String name=jsonObject.getString("name");
+                        String surname=jsonObject.getString("surname");
+                        String email=jsonObject.getString("email");
+                        String dni1 =jsonObject.getString("dni_client");
+                        String age=jsonObject.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            JSONObject jsonObject=new JSONObject(response);
-                            String name=jsonObject.getString("name");
-                            String surname=jsonObject.getString("surname");
-                            String email=jsonObject.getString("email");
-                            String dni=jsonObject.getString("dni_client");
-                            String age=jsonObject.getString("age");
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                            Date dateBirth;
-                            try {
-                                dateBirth = format.parse(age);
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
-                            Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
-                            WorkerDTO user=new WorkerDTO(dni,null,name,surname,dateBirth,email,nworker);
-                            callback.onWorkerReceived(user);
-                        } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-                            callback.onWorkerReceived(user);
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+                        Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
+                        WorkerDTO user=new WorkerDTO(dni1,null,name,surname,dateBirth,email,nworker);
+                        callback.onWorkerReceived(user);
+                    } catch (JSONException e) {
+                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+                        callback.onWorkerReceived(user);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onError(error);
-                        Log.d("ADebugTag", "Value: " +error.toString());
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
 
-                    }
                 }
         ) {
             @Override

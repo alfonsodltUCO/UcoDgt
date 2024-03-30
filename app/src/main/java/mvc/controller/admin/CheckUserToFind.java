@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
+import java.io.Serializable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -25,6 +27,7 @@ import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.admin.FindUserActivity;
+import mvc.view.admin.ShowUser;
 
 public class CheckUserToFind  extends AppCompatActivity {
     private ProgressBar progressBar;
@@ -115,8 +118,13 @@ public class CheckUserToFind  extends AppCompatActivity {
                                     } catch (InterruptedException e) {
                                         throw new RuntimeException(e);
                                     }
+                                    Log.d("aaaa",user.toString());
                                     Toast.makeText(CheckUserToFind.this,"Worker Found", Toast.LENGTH_LONG).show();
+                                    Intent intentSeeWorker=new Intent(CheckUserToFind.this, ShowUser.class);
+                                    intentSeeWorker.putExtra("worker", user);
+                                    startActivity(intentSeeWorker);
                                     hideLoading();
+
                                 }
 
                                 @Override
