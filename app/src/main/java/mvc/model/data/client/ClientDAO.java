@@ -315,7 +315,7 @@ public class ClientDAO {
         String dni=userToFind.getDni().toString();
         requestQueue= Volley.newRequestQueue(applicationContext);
         ClientDTO usr = userToFind;
-        getUsetToFind(dni, new UserCallback() {
+        getUserToFind(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 usr.setEmail(user.getEmail());
@@ -346,8 +346,96 @@ public class ClientDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void getUsetToFind(final String dni,final UserCallback callback){
+    private void getUserToFind(final String dni,final UserCallback callback){
         String URL="http://192.168.1.19/api/ucodgt/user/getClient.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                new Response.Listener<String>() {
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            String name = jsonResponse.getString("name");
+                            String surname = jsonResponse.getString("surname");
+                            String email = jsonResponse.getString("email");
+                            String dni = jsonResponse.getString("dni_client");
+                            String age = jsonResponse.getString("age");
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dateBirth;
+                            try {
+                                dateBirth = format.parse(age);
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                            ClientDTO user = new ClientDTO(dni, null, name, surname, dateBirth, email, licencep);
+                            callback.onUserReceived(user);
+
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener(){
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onError(error);
+                        Log.d("ADebugTag", "Value: " +error.toString());
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", dni);
+                return params;
+            }
+        };
+
+        // Agregar la solicitud a la cola de solicitudes
+        requestQueue.add(request);
+    }
+
+    public void deleteUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
+
+        String dni=userToFind.getDni().toString();
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        ClientDTO usr = userToFind;
+        deleteUserFromBd(dni, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                usr.setEmail(user.getEmail());
+                usr.setAge(user.getAge());
+                usr.setName(user.getName());
+                usr.setSurname(user.getSurname());
+                usr.setPassword(user.getPassword());
+                usr.setLicencepoints(user.getLicencepoints());
+                usr.setDni(user.getDni());
+                callback.onUserReceived(usr);
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void deleteUserFromBd(final String dni,final UserCallback callback){
+        String URL="http://192.168.1.19/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,

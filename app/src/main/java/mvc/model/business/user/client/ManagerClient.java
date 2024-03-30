@@ -116,4 +116,29 @@ public class ManagerClient {
             }
         });
     }
+    public void deleteUser(ClientDTO client, Context applicationContext, UserCallback callback){
+        ClientDAO clientD=new ClientDAO();
+        clientD.getUser(client, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                callback.onUserReceived(user);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+        });
+    }
 }
