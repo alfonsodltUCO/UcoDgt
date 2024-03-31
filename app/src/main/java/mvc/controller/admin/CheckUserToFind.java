@@ -63,7 +63,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 } catch (InterruptedException e) {
                                     throw new RuntimeException(e);
                                 }
-                                Toast.makeText(CheckUserToFind.this,"Worker Found", Toast.LENGTH_LONG).show();
+                                Toast.makeText(CheckUserToFind.this,"Client Found", Toast.LENGTH_LONG).show();
                                 Intent intentSeeWorker=new Intent(CheckUserToFind.this, ShowUser.class);
                                 intentSeeWorker.putExtra("client", user);
                                 intentSeeWorker.putExtra("type","client");

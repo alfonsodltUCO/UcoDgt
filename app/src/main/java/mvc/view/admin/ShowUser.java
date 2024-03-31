@@ -15,6 +15,7 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
+import mvc.controller.admin.CheckUserToDelete;
 import mvc.controller.admin.CheckUserToFind;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
@@ -23,13 +24,16 @@ import mvc.model.business.user.worker.WorkerDTO;
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {
     TextView name,surname,email,numberofworker_licencepoints,birth,dni;
     String strDate;
-    Button goMenu;
+    String type;
+    String dniNoText;
+    Button goMenu,deleteUser;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_user);
         Intent intentFound=getIntent();
-        String type=intentFound.getStringExtra("type");
+        type=intentFound.getStringExtra("type");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         name=findViewById(R.id.textViewFoundName);
         birth=findViewById(R.id.textViewFoundDateBirth);
@@ -37,8 +41,10 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         email=findViewById(R.id.textViewFoundEmail);
         dni=findViewById(R.id.textViewFoundDni);
         goMenu=findViewById(R.id.goMainMenu);
+        deleteUser=findViewById(R.id.deleteUser);
         numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
         goMenu.setOnClickListener(this);
+        deleteUser.setOnClickListener(this);
 
         if(type.equals("worker")){
 
@@ -48,6 +54,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             email.setText("email= "+worker.getEmail());
             numberofworker_licencepoints.setText("worker number= "+worker.getNumberOfWorker().toString());
             dni.setText("dni= "+worker.getDni());
+            dniNoText=worker.getDni();
             strDate= formatter.format(worker.getAge());
             birth.setText("birth= "+strDate);
 
@@ -59,6 +66,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             email.setText("email= "+client.getEmail());
             numberofworker_licencepoints.setText("licence points= "+client.getLicencepoints().toString());
             dni.setText("dni= "+client.getDni());
+            dniNoText=client.getDni();
             strDate= formatter.format(client.getAge());
             birth.setText("birth= "+strDate);
         }
@@ -67,6 +75,11 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         if(v.getId()==R.id.goMainMenu){
             Intent checkUserToAdd=new Intent(ShowUser.this, AdminActivity.class);
             startActivity(checkUserToAdd);
+        }else if(v.getId()==R.id.deleteUser){
+            Intent checkUserToDelete=new Intent(ShowUser.this, CheckUserToDelete.class);
+            checkUserToDelete.putExtra("dni",dniNoText);
+            checkUserToDelete.putExtra("type",type);
+            startActivity(checkUserToDelete);
         }
     }
 }

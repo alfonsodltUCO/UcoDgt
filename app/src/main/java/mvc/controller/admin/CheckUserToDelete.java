@@ -5,6 +5,7 @@ import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -28,16 +29,17 @@ import mvc.view.admin.DeleteUserActivity;
 
 public class CheckUserToDelete extends AppCompatActivity {
     private ProgressBar progressBar;
-    String dni,userToDelete;
+    String dni,userToDelete,type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar = findViewById(R.id.progressbar);
-        showLoading();
         Intent intent=getIntent();
+        showLoading();
         userToDelete=intent.getStringExtra("userToDelete");
+        type=intent.getStringExtra("type");
         dni=intent.getStringExtra("dni");
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(userToDelete)){
             if(!checkDni(dni)){//no valid
@@ -140,6 +142,74 @@ public class CheckUserToDelete extends AppCompatActivity {
                 });
             }
 
+        }else if(!TextUtils.isEmpty(type)){
+            if(type.equals("client")){
+                showLoading();
+                ManagerClient mngcl=new ManagerClient();
+                ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
+                mngcl.deleteUser(clientToFind, CheckUserToDelete.this, new UserCallback() {
+                    @Override
+                    public void onUserReceived(ClientDTO user) {//recibo un usuario
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Toast.makeText(CheckUserToDelete.this,"Client deleted", Toast.LENGTH_LONG).show();
+                        Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
+                        startActivity(intentGoBack);
+                        hideLoading();
+
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {//it will not happened
+
+                    }
+
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {
+                    }
+
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
+
+                    }
+                });
+            }else{//worker
+                showLoading();
+                ManagerWorker mngwk=new ManagerWorker();
+                WorkerDTO workerToFind=new WorkerDTO(dni,null,null,null,null,null,null);
+                mngwk.deleteUser(workerToFind, CheckUserToDelete.this, new UserCallback() {
+                    @Override
+                    public void onUserReceived(ClientDTO user) {
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {//error no encotnrado
+
+
+                    }
+
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {//found
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Toast.makeText(CheckUserToDelete.this,"Worker deleted", Toast.LENGTH_LONG).show();
+                        Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
+                        startActivity(intentGoBack);
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
+
+                    }
+                });
+            }
         }else{
             Intent intentAdmin=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
             startActivity(intentAdmin);
