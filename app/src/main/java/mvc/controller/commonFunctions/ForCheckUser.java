@@ -21,7 +21,7 @@ import mvc.model.data.UserCallback;
 
 public class ForCheckUser {
     public static boolean checkDni(String dni){//used in CheckUserToadd
-        Pattern pattern = Pattern.compile("[0-9]{8}[A-Z a-z]");
+        Pattern pattern = Pattern.compile("[0-9]{8}[A-Z]");
         Matcher mat = pattern.matcher(dni);
         return mat.matches();
     }

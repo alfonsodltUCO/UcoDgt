@@ -19,7 +19,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     RadioGroup radiogrouptypeuser;
     String selectedOption;
     EditText dniToSearch;
-    Button search;
+    Button search,goMenu;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
         search=findViewById(R.id.findUser);
         radiogrouptypeuser = findViewById(R.id.radioGroupTypeUserToFind);
         dniToSearch = findViewById(R.id.editTextDniToFind);
+        goMenu=findViewById(R.id.goMainMenu);
         radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
             if (radioButton != null) {
@@ -34,6 +35,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             }
         });
         search.setOnClickListener(this);
+        goMenu.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -43,6 +45,9 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             checkUserToAdd.putExtra("userToFind",selectedOption);
             checkUserToAdd.putExtra("dni",dniToSearch.getText().toString().trim());
             startActivity(checkUserToAdd);
+        }else if(v.getId()==R.id.goMainMenu){
+            Intent goMenu=new Intent(FindUserActivity.this, AdminActivity.class);
+            startActivity(goMenu);
         }
     }
 }

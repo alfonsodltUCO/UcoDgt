@@ -17,7 +17,7 @@ import mvc.controller.admin.CheckUserToDelete;
 
 public class DeleteUserActivity extends AppCompatActivity implements View.OnClickListener{
     RadioGroup radioGroupTypeOfUser;
-    Button deleteUser;
+    Button deleteUser,goMenu;
     String selectedOption;
 
     TextView dniToDelete;
@@ -28,12 +28,15 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
         radioGroupTypeOfUser=findViewById(R.id.radioGroupTypeUserToDelete);
         dniToDelete=findViewById(R.id.editTextDniToDelete);
         deleteUser=findViewById(R.id.deleteUser);
+        goMenu=findViewById(R.id.goMainMenu);
+
         radioGroupTypeOfUser.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
             if (radioButton != null) {
                 selectedOption = radioButton.getText().toString().trim();
             }
         });
+        goMenu.setOnClickListener(this);
         deleteUser.setOnClickListener(this);
     }
     @Override
@@ -44,6 +47,9 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
             checkUserToAdd.putExtra("userToDelete",selectedOption);
             checkUserToAdd.putExtra("dni",dniToDelete.getText().toString().trim());
             startActivity(checkUserToAdd);
+        }else if(v.getId()==R.id.goMainMenu){
+            Intent goMenu=new Intent(DeleteUserActivity.this, AdminActivity.class);
+            startActivity(goMenu);
         }
     }
 }

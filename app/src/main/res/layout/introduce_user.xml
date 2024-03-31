@@ -209,7 +209,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:layout_gravity="center"
@@ -217,14 +217,24 @@
         >
         <Button
             android:id="@+id/checkAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-
+            android:layout_gravity="center"
             android:text="Add User"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText" />
+        >
+
+        </Button>
+        <Button
+            android:id="@+id/goMainMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="Go main menu"
+            >
+
+        </Button>
     </LinearLayout>
 </LinearLayout>
 

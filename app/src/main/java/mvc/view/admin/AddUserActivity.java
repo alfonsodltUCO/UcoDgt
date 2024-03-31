@@ -16,7 +16,7 @@ import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUserToAdd;
 
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
-    Button checkAddUser;
+    Button checkAddUser,goMenu;
     String typeofuser;
     String selectedOption;
     EditText editTextName,editTextDni,editTextSurname,editTextAge,editTextPassword,editTextLicencePoints,editTextEmail;
@@ -33,6 +33,8 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         editTextDni=findViewById(R.id.editTextDNI);
         editTextName=findViewById(R.id.editTextName);
         editTextSurname=findViewById(R.id.editTextSurname);
+        checkAddUser=findViewById(R.id.checkAdd);
+        goMenu=findViewById(R.id.goMainMenu);
         radiogrouptypeuser=findViewById(R.id.radioGroupTypeUserToAdd);
         editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
         editTextPassword=findViewById(R.id.editTextPassword);
@@ -42,8 +44,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
                 selectedOption = radioButton.getText().toString().trim();
             }
         });
-        checkAddUser=findViewById(R.id.checkAdd);
-
+        goMenu.setOnClickListener(this);
         checkAddUser.setOnClickListener(this);
     }
 
@@ -63,6 +64,9 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
            checkUserToAdd.putExtra("type",typeofuser);
            checkUserToAdd.putExtra("typeofusertoadd",selectedOption);
            startActivity(checkUserToAdd);
-       }
+       }else if(v.getId()==R.id.goMainMenu){
+            Intent goMenu=new Intent(AddUserActivity.this, AdminActivity.class);
+            startActivity(goMenu);
+        }
     }
 }

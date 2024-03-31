@@ -5,27 +5,34 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-public class AdminActivity extends AppCompatActivity{
-    String typeofuser;
+import mvc.controller.admin.CheckUserToAdd;
+import mvc.view.MainActivity;
+
+public class AdminActivity extends AppCompatActivity implements View.OnClickListener{
+    Button closeSession;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        Intent intent=getIntent();
-        typeofuser=intent.getStringExtra("type");
+
 
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
        getMenuInflater().inflate(R.menu.adminmenu,menu);
        setContentView(R.layout.adminmain);
+        closeSession=findViewById(R.id.closeSession);
+        closeSession.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
@@ -41,5 +48,14 @@ public class AdminActivity extends AppCompatActivity{
             startActivity(intentDeleteUser);
         }
         return false;
+    }
+
+    public void onClick(View v) {
+
+        if(v.getId()==R.id.closeSession){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
