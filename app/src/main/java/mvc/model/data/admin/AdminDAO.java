@@ -5,13 +5,11 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.text.ParseException;
@@ -32,18 +30,17 @@ public class AdminDAO {
         String email=userToFind.getEmail();
         String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        AdminDTO usr = userToFind;
         checkAdmin(email,password, new UserCallback() {
             @Override
             public void onAdminReceived(AdminDTO user) {
 
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setDni(user.getDni());
-                callback.onAdminReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setDni(user.getDni());
+                callback.onAdminReceived(userToFind);
 
             }
 
@@ -115,18 +112,17 @@ public class AdminDAO {
     public void checkEmailAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
         String email= userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        AdminDTO usr = userToFind;
         checkAdminEmail(email, new UserCallback() {
             @Override
             public void onAdminReceived(AdminDTO user) {
 
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setDni(user.getDni());
-                callback.onAdminReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setDni(user.getDni());
+                callback.onAdminReceived(userToFind);
 
             }
 

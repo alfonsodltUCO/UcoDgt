@@ -3,26 +3,20 @@ package mvc.model.data.client;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
-
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
@@ -34,21 +28,20 @@ public class ClientDAO {
 
     public void checkLogInClient(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String email=userToFind.getEmail().toString();
-        String password= userToFind.getPassword().toString();
+        String email=userToFind.getEmail();
+        String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        ClientDTO usr = userToFind;
         checkClient(email,password, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setLicencepoints(user.getLicencepoints());
-                usr.setDni(user.getDni());
-                callback.onUserReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
 
             }
 
@@ -120,20 +113,19 @@ public class ClientDAO {
 
     public void checkEmailClient(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String email=userToFind.getEmail().toString();
+        String email=userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        ClientDTO usr = userToFind;
         checkClientEmail(email, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setLicencepoints(user.getLicencepoints());
-                usr.setDni(user.getDni());
-                callback.onUserReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
 
             }
 
@@ -191,7 +183,6 @@ public class ClientDAO {
                 error ->{
                     callback.onError(error);
                 }
-
         );
 
         requestQueue.add(JsonObjectRequest);
@@ -200,18 +191,17 @@ public class ClientDAO {
     public void addUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
         requestQueue= Volley.newRequestQueue(applicationContext);
-        ClientDTO usr = userToFind;
         addToDb(userToFind,applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setLicencepoints(user.getLicencepoints());
-                usr.setDni(user.getDni());
-                callback.onUserReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
 
             }
 
@@ -257,7 +247,7 @@ public class ClientDAO {
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("name", client.getName());
                 params.put("surname", client.getSurname());
@@ -277,18 +267,17 @@ public class ClientDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        ClientDTO usr = userToFind;
         getUserToFind(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setLicencepoints(user.getLicencepoints());
-                usr.setDni(user.getDni());
-                callback.onUserReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
 
             }
 
@@ -344,7 +333,7 @@ public class ClientDAO {
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", dni);
                 return params;
@@ -358,18 +347,17 @@ public class ClientDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        ClientDTO usr = userToFind;
         deleteUserFromBd(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setLicencepoints(user.getLicencepoints());
-                usr.setDni(user.getDni());
-                callback.onUserReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
 
             }
 
@@ -425,7 +413,7 @@ public class ClientDAO {
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams()  {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", dni);
                 return params;

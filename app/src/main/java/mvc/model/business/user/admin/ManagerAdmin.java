@@ -9,8 +9,7 @@ import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.model.data.admin.AdminDAO;
-import mvc.model.data.client.ClientDAO;
-import mvc.model.data.worker.WorkerDAO;
+
 
 public class ManagerAdmin {
     public ManagerAdmin(){

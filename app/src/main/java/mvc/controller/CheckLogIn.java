@@ -77,7 +77,7 @@ public class CheckLogIn extends AppCompatActivity {
                                     public void onError(VolleyError error11) {
                                         showLoading();
                                         try {
-                                            Thread.sleep(1500);
+                                            Thread.sleep(1000);
                                         } catch (InterruptedException e) {
                                             throw new RuntimeException(e);
                                         }

@@ -36,7 +36,6 @@ public class WorkerDAO {
         String email=userToFind.getEmail();
         String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        WorkerDTO usr = userToFind;
         checkWorker(email,password, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
@@ -52,14 +51,14 @@ public class WorkerDAO {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setDni(user.getDni());
-                usr.setNumberOfWorker(user.getNumberOfWorker());
-                callback.onWorkerReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setDni(user.getDni());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                callback.onWorkerReceived(userToFind);
             }
 
             @Override
@@ -119,9 +118,8 @@ public class WorkerDAO {
     }
 
     public void checkWorkerEmail(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail().toString();
+        String email=userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        WorkerDTO usr = userToFind;
         checkEmailWorker(email, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {}
@@ -131,14 +129,14 @@ public class WorkerDAO {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setDni(user.getDni());
-                usr.setNumberOfWorker(user.getNumberOfWorker());
-                callback.onWorkerReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setDni(user.getDni());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                callback.onWorkerReceived(userToFind);
             }
             @Override
             public void onAdminReceived(AdminDTO user) {}
@@ -154,38 +152,28 @@ public class WorkerDAO {
                 Request.Method.GET,
                 URL,
                 null,
-                new Response.Listener<JSONObject>(){
+                response -> {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String age=response.getString("age");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
                         try {
-                            String jsonEmpty= "{}";
-                            JSONObject jsonEmptyObject = new JSONObject(jsonEmpty);
-
-                            if("{}" != jsonEmptyObject.toString()){
-                                String name=response.getString("name");
-                                String surname=response.getString("surname");
-                                String email=response.getString("email");
-                                String age=response.getString("age");
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dateBirth;
-                                try {
-                                    dateBirth = format.parse(age);
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                String number=response.getString("numberOfWorker");
-                                WorkerDTO user=new WorkerDTO(null,null,name,surname,dateBirth,email,Integer.parseInt(number));
-                                callback.onWorkerReceived(user);
-                            }
-                        } catch (JSONException e) {
-                            WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-
-                            callback.onWorkerReceived(user);
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+                        String number=response.getString("numberOfWorker");
+                        WorkerDTO user=new WorkerDTO(null,null,name,surname,dateBirth, email1,Integer.parseInt(number));
+                        callback.onWorkerReceived(user);
 
+                    } catch (JSONException e) {
+                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
 
+                        callback.onWorkerReceived(user);
                     }
                 },
                 error -> {
@@ -199,8 +187,7 @@ public class WorkerDAO {
     public void addUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
 
         requestQueue= Volley.newRequestQueue(applicationContext);
-        WorkerDTO usr = userToFind;
-        addToDb(userToFind,applicationContext, new UserCallback() {
+        addToDb(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
 
@@ -213,14 +200,14 @@ public class WorkerDAO {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setNumberOfWorker(user.getNumberOfWorker());
-                usr.setDni(user.getDni());
-                callback.onWorkerReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                userToFind.setDni(user.getDni());
+                callback.onWorkerReceived(userToFind);
 
             }
 
@@ -231,39 +218,33 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void addToDb(final WorkerDTO worker,final Context applicationContext, final UserCallback callback) {
+    private void addToDb(final WorkerDTO worker, final UserCallback callback) {
         String URL = "http://192.168.1.19/api/ucodgt/user/addWorker.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(worker.getAge());
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            if (!response.isEmpty()) {
-                                callback.onWorkerReceived(worker);
-                            } else {
-                                callback.onWorkerReceived(new WorkerDTO(null, null, null, null, null, null, null));
-                            }
-                        } catch (Exception e) {
+                response -> {
+                    try {
+                        if (!response.isEmpty()) {
+                            callback.onWorkerReceived(worker);
+                        } else {
                             callback.onWorkerReceived(new WorkerDTO(null, null, null, null, null, null, null));
-                            throw new RuntimeException(e);
                         }
+                    } catch (Exception e) {
+                        callback.onWorkerReceived(new WorkerDTO(null, null, null, null, null, null, null));
+                        throw new RuntimeException(e);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                       if(error.networkResponse.statusCode==500){
-                           callback.onError(error);
-                       }
-                    }
+                error -> {
+                   if(error.networkResponse.statusCode==500){
+                       callback.onError(error);
+                   }
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("name", worker.getName());
                 params.put("surname", worker.getSurname());
@@ -283,7 +264,6 @@ public class WorkerDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        WorkerDTO usr = userToFind;
         getUserToFind(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
@@ -297,14 +277,14 @@ public class WorkerDAO {
             @Override
             public void onWorkerReceived(WorkerDTO user) {
 
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setNumberOfWorker(user.getNumberOfWorker());
-                usr.setDni(user.getDni());
-                callback.onWorkerReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                userToFind.setDni(user.getDni());
+                callback.onWorkerReceived(userToFind);
             }
 
             @Override
@@ -350,7 +330,7 @@ public class WorkerDAO {
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", dni);
                 return params;
@@ -363,7 +343,6 @@ public class WorkerDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        WorkerDTO usr = userToFind;
         deleteUserFromBd(dni, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
@@ -376,14 +355,14 @@ public class WorkerDAO {
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
-                usr.setEmail(user.getEmail());
-                usr.setAge(user.getAge());
-                usr.setName(user.getName());
-                usr.setSurname(user.getSurname());
-                usr.setPassword(user.getPassword());
-                usr.setNumberOfWorker(user.getNumberOfWorker());
-                usr.setDni(user.getDni());
-                callback.onWorkerReceived(usr);
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                userToFind.setDni(user.getDni());
+                callback.onWorkerReceived(userToFind);
             }
 
             @Override
@@ -428,7 +407,7 @@ public class WorkerDAO {
                 }
         ) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", dni);
                 return params;
