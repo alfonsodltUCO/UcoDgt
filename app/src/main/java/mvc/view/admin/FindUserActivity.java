@@ -27,13 +27,10 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
         search=findViewById(R.id.findUser);
         radiogrouptypeuser = findViewById(R.id.radioGroupTypeUserToFind);
         dniToSearch = findViewById(R.id.editTextDniToFind);
-        radiogrouptypeuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                if (radioButton != null) {
-                    selectedOption = radioButton.getText().toString().trim();
-                }
+        radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            if (radioButton != null) {
+                selectedOption = radioButton.getText().toString().trim();
             }
         });
         search.setOnClickListener(this);

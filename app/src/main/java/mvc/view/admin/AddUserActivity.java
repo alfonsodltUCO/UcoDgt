@@ -36,14 +36,10 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         radiogrouptypeuser=findViewById(R.id.radioGroupTypeUserToAdd);
         editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
         editTextPassword=findViewById(R.id.editTextPassword);
-        Intent intent=getIntent();
-        radiogrouptypeuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                if (radioButton != null) {
-                    selectedOption = radioButton.getText().toString().trim();
-                }
+        radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            if (radioButton != null) {
+                selectedOption = radioButton.getText().toString().trim();
             }
         });
         checkAddUser=findViewById(R.id.checkAdd);

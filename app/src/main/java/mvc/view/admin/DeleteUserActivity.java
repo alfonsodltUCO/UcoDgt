@@ -1,6 +1,5 @@
 package mvc.view.admin;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ucodgt.R;
 
 import mvc.controller.admin.CheckUserToDelete;
-import mvc.controller.admin.CheckUserToFind;
 
 public class DeleteUserActivity extends AppCompatActivity implements View.OnClickListener{
     RadioGroup radioGroupTypeOfUser;
@@ -30,13 +28,10 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
         radioGroupTypeOfUser=findViewById(R.id.radioGroupTypeUserToDelete);
         dniToDelete=findViewById(R.id.editTextDniToDelete);
         deleteUser=findViewById(R.id.deleteUser);
-        radioGroupTypeOfUser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                if (radioButton != null) {
-                    selectedOption = radioButton.getText().toString().trim();
-                }
+        radioGroupTypeOfUser.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            if (radioButton != null) {
+                selectedOption = radioButton.getText().toString().trim();
             }
         });
         deleteUser.setOnClickListener(this);

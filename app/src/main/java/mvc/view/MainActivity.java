@@ -3,15 +3,10 @@ package mvc.view;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.ucodgt.R;
-
-import org.mindrot.jbcrypt.BCrypt;
-
 import mvc.controller.CheckLogIn;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

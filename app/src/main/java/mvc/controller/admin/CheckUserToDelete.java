@@ -4,8 +4,6 @@ import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -25,8 +23,8 @@ import mvc.model.business.user.client.ManagerClient;
 import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
+import mvc.view.admin.AdminActivity;
 import mvc.view.admin.DeleteUserActivity;
-import mvc.view.admin.FindUserActivity;
 
 public class CheckUserToDelete extends AppCompatActivity {
     private ProgressBar progressBar;
@@ -48,89 +46,96 @@ public class CheckUserToDelete extends AppCompatActivity {
                 Toast.makeText(CheckUserToDelete.this,"No valid DNI", Toast.LENGTH_LONG).show();
             }else{
                 Executor executor = Executors.newSingleThreadExecutor();
-                executor.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(userToDelete.equals("client")){
-                            showLoading();
-                            ManagerClient mngcl=new ManagerClient();
-                            ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
-                            mngcl.deleteUser(clientToFind, CheckUserToDelete.this, new UserCallback() {
-                                @Override
-                                public void onUserReceived(ClientDTO user) {//recibo un usuario
-                                    try {
-                                        Thread.sleep(3000);
-                                    } catch (InterruptedException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    Toast.makeText(CheckUserToDelete.this,"Client deleted", Toast.LENGTH_LONG).show();
-                                    hideLoading();
+                executor.execute(() -> {
+                    if(userToDelete.equals("client")){
+                        showLoading();
+                        ManagerClient mngcl=new ManagerClient();
+                        ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
+                        mngcl.deleteUser(clientToFind, CheckUserToDelete.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {//recibo un usuario
+                                try {
+                                    Thread.sleep(3000);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
                                 }
+                                Toast.makeText(CheckUserToDelete.this,"Client deleted", Toast.LENGTH_LONG).show();
+                                Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
+                                startActivity(intentGoBack);
+                                hideLoading();
 
-                                @Override
-                                public void onError(VolleyError error) {//error no encotnrado
-                                    try {
-                                        Thread.sleep(3000);
-                                    } catch (InterruptedException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    if(error.networkResponse.statusCode==404) {
-                                        Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
-                                        hideLoading();
-                                    }else {
-                                        Toast.makeText(CheckUserToDelete.this,"An error has ocurred", Toast.LENGTH_LONG).show();
-                                        hideLoading();
-                                    }
+                            }
+
+                            @Override
+                            public void onError(VolleyError error) {//error no encotnrado
+                                try {
+                                    Thread.sleep(3000);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
                                 }
-
-                                @Override
-                                public void onWorkerReceived(WorkerDTO user) {
-                                }
-
-                                @Override
-                                public void onAdminReceived(AdminDTO user) {
-
-                                }
-                            });
-                        }else{//worker
-                            showLoading();
-                            ManagerWorker mngwk=new ManagerWorker();
-                            WorkerDTO workerToFind=new WorkerDTO(dni,null,null,null,null,null,null);
-                            mngwk.deleteUser(workerToFind, CheckUserToDelete.this, new UserCallback() {
-                                @Override
-                                public void onUserReceived(ClientDTO user) {
-                                }
-
-                                @Override
-                                public void onError(VolleyError error) {//error no encotnrado
-                                    try {
-                                        Thread.sleep(3000);
-                                    } catch (InterruptedException e) {
-                                        throw new RuntimeException(e);
-                                    }
+                                if(error.networkResponse.statusCode==404) {
                                     Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                                    Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
+                                    startActivity(intentGoBack);
                                     hideLoading();
+                                }else {
+                                    Toast.makeText(CheckUserToDelete.this,"An error has ocurred", Toast.LENGTH_LONG).show();
+                                    Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
+                                    startActivity(intentGoBack);
+                                    hideLoading();                                }
+                            }
 
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
+                            }
 
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
+
+                            }
+                        });
+                    }else{//worker
+                        showLoading();
+                        ManagerWorker mngwk=new ManagerWorker();
+                        WorkerDTO workerToFind=new WorkerDTO(dni,null,null,null,null,null,null);
+                        mngwk.deleteUser(workerToFind, CheckUserToDelete.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
+                            }
+
+                            @Override
+                            public void onError(VolleyError error) {//error no encotnrado
+                                try {
+                                    Thread.sleep(3000);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
                                 }
+                                Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                                Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
+                                startActivity(intentGoBack);
+                                hideLoading();
 
-                                @Override
-                                public void onWorkerReceived(WorkerDTO user) {//found
-                                    try {
-                                        Thread.sleep(3000);
-                                    } catch (InterruptedException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    Toast.makeText(CheckUserToDelete.this,"Worker deleted", Toast.LENGTH_LONG).show();
-                                    hideLoading();
+
+                            }
+
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {//found
+                                try {
+                                    Thread.sleep(3000);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
                                 }
+                                Toast.makeText(CheckUserToDelete.this,"Worker deleted", Toast.LENGTH_LONG).show();
+                                Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
+                                startActivity(intentGoBack);
+                                hideLoading();
+                            }
 
-                                @Override
-                                public void onAdminReceived(AdminDTO user) {
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
 
-                                }
-                            });
-                        }
+                            }
+                        });
                     }
                 });
             }

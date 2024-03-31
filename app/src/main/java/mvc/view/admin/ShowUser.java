@@ -3,6 +3,8 @@ package mvc.view.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,19 +15,19 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
+import mvc.controller.admin.CheckUserToFind;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 
 
-public class ShowUser extends AppCompatActivity {
+public class ShowUser extends AppCompatActivity implements View.OnClickListener {
     TextView name,surname,email,numberofworker_licencepoints,birth,dni;
     String strDate;
-
+    Button goMenu;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_user);
-
         Intent intentFound=getIntent();
         String type=intentFound.getStringExtra("type");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -34,8 +36,9 @@ public class ShowUser extends AppCompatActivity {
         surname=findViewById(R.id.textViewFoundSurname);
         email=findViewById(R.id.textViewFoundEmail);
         dni=findViewById(R.id.textViewFoundDni);
+        goMenu=findViewById(R.id.goMainMenu);
         numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
-
+        goMenu.setOnClickListener(this);
 
         if(type.equals("worker")){
 
@@ -58,9 +61,12 @@ public class ShowUser extends AppCompatActivity {
             dni.setText("dni= "+client.getDni());
             strDate= formatter.format(client.getAge());
             birth.setText("birth= "+strDate);
-
         }
-
-
+    }
+    public void onClick(View v){
+        if(v.getId()==R.id.goMainMenu){
+            Intent checkUserToAdd=new Intent(ShowUser.this, AdminActivity.class);
+            startActivity(checkUserToAdd);
+        }
     }
 }
