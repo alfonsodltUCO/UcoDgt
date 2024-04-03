@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
+import java.util.List;
+
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.admin.ManagerAdmin;
 import mvc.model.business.user.client.ManagerClient;
@@ -106,6 +108,16 @@ public class CheckLogIn extends AppCompatActivity {
                                     public void onAdminReceived(AdminDTO user) {
 
                                     }
+
+                                    @Override
+                                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                    }
+
+                                    @Override
+                                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                                    }
                                 });
                             });
                         }
@@ -131,6 +143,16 @@ public class CheckLogIn extends AppCompatActivity {
 
                             });
                         }
+
+                        @Override
+                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                        }
+
+                        @Override
+                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                        }
                     });
                 });
             }
@@ -142,6 +164,16 @@ public class CheckLogIn extends AppCompatActivity {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });

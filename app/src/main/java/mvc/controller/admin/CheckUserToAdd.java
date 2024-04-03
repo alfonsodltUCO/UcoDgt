@@ -19,6 +19,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
@@ -159,6 +160,16 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                         public void onAdminReceived(AdminDTO user) {
 
                                                                         }
+
+                                                                        @Override
+                                                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                                                        }
                                                                     });
                                                                 } catch (
                                                                         ParseException e) {
@@ -215,6 +226,16 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                         public void onAdminReceived(AdminDTO user) {
 
                                                                         }
+
+                                                                        @Override
+                                                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                                                        }
                                                                     });
                                                                 } catch (
                                                                         ParseException e) {
@@ -243,11 +264,31 @@ public class CheckUserToAdd extends AppCompatActivity {
                                         public void onAdminReceived(AdminDTO user) {
 
                                         }
+
+                                        @Override
+                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                        }
+
+                                        @Override
+                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                        }
                                     }));}
                                     @Override
                                     public void onWorkerReceived(WorkerDTO user) {}
                                     @Override
                                     public void onAdminReceived(AdminDTO user) {}
+
+                                    @Override
+                                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                    }
+
+                                    @Override
+                                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                                    }
                                 }));
                             }
                             @Override
@@ -262,6 +303,16 @@ public class CheckUserToAdd extends AppCompatActivity {
                                     hideLoading();
                                 });
 
+
+                            }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
 
                             }
                         });

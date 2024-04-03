@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -83,6 +84,16 @@ public class ForCheckUser {
             public void onAdminReceived(AdminDTO user) {
                 callback.onAdminReceived(user);
             }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
     public static void checkClientEmailNotExists(String email, Context context, UserCallback callback){
@@ -101,6 +112,16 @@ public class ForCheckUser {
             public void onWorkerReceived(WorkerDTO user) {}
             @Override
             public void onAdminReceived(AdminDTO user) {}
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 
@@ -120,6 +141,16 @@ public class ForCheckUser {
             }
             @Override
             public void onAdminReceived(AdminDTO user) {}
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 

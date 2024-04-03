@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -95,6 +96,16 @@ public class CheckUserToDelete extends AppCompatActivity {
                             public void onAdminReceived(AdminDTO user) {
 
                             }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
                         });
                     }else{//worker
                         showLoading();
@@ -137,6 +148,16 @@ public class CheckUserToDelete extends AppCompatActivity {
                             public void onAdminReceived(AdminDTO user) {
 
                             }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
                         });
                     }
                 });
@@ -175,6 +196,16 @@ public class CheckUserToDelete extends AppCompatActivity {
                     public void onAdminReceived(AdminDTO user) {
 
                     }
+
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                    }
+
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                    }
                 });
             }else{//worker
                 showLoading();
@@ -206,6 +237,16 @@ public class CheckUserToDelete extends AppCompatActivity {
 
                     @Override
                     public void onAdminReceived(AdminDTO user) {
+
+                    }
+
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                    }
+
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
 
                     }
                 });

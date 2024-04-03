@@ -12,8 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
-
-import mvc.controller.admin.CheckUserToAdd;
+import mvc.controller.admin.CheckUsersToList;
 import mvc.view.MainActivity;
 
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener{
@@ -22,8 +21,6 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -46,6 +43,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         } else if (R.id.item2AdminDeleteUser==item.getItemId()) {
             Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
             startActivity(intentDeleteUser);
+        } else if (R.id.item3AdminListUsers==item.getItemId()) {
+            Intent intentListUsersr=new Intent(AdminActivity.this, CheckUsersToList.class);
+            startActivity(intentListUsersr);
         }
         return false;
     }

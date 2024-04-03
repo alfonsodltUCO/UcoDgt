@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.android.volley.VolleyError;
 
+import java.util.List;
+
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.data.UserCallback;
@@ -40,6 +42,16 @@ public class ManagerWorker {
             public void onAdminReceived(AdminDTO user) {
 
             }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 
@@ -62,6 +74,16 @@ public class ManagerWorker {
 
             @Override
             public void onAdminReceived(AdminDTO user) {}
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 
@@ -86,6 +108,16 @@ public class ManagerWorker {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });
@@ -113,6 +145,16 @@ public class ManagerWorker {
             public void onAdminReceived(AdminDTO user) {
 
             }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 
@@ -136,6 +178,49 @@ public class ManagerWorker {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    public void getUsers(List<WorkerDTO> workers,Context  applicationContext,UserCallback callback){
+        WorkerDAO workD=new WorkerDAO();
+        workD.getUsers(workers, applicationContext,new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+                callback.onWorkersReceived(workers);
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });

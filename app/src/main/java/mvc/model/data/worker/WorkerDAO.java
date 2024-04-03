@@ -12,14 +12,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import mvc.model.business.user.admin.AdminDTO;
@@ -63,6 +66,16 @@ public class WorkerDAO {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });
@@ -140,6 +153,16 @@ public class WorkerDAO {
             }
             @Override
             public void onAdminReceived(AdminDTO user) {}
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
@@ -213,6 +236,16 @@ public class WorkerDAO {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });
@@ -289,6 +322,16 @@ public class WorkerDAO {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });
@@ -369,6 +412,16 @@ public class WorkerDAO {
             public void onAdminReceived(AdminDTO user) {
 
             }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
@@ -415,4 +468,89 @@ public class WorkerDAO {
         };
         requestQueue.add(request);
     }
+
+    public void getUsers(List<WorkerDTO> users, Context applicationContext, UserCallback callback){
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getUsersFromBd(new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+                callback.onWorkersReceived(workers);
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void getUsersFromBd(final UserCallback callback){
+        String URL="http://192.168.1.19/api/ucodgt/user/getAllWorkers.php";
+
+        JsonObjectRequest JsonObjectRequest;
+        JsonObjectRequest = new JsonObjectRequest(
+
+                Request.Method.GET,
+                URL,
+                null,
+                response -> {
+                    if(response.length()>0){
+                        try {
+                            JSONArray listofworkers=response.getJSONArray("workers");
+                            List<WorkerDTO> workersToSend=new ArrayList<WorkerDTO>();
+                            WorkerDTO worker=new WorkerDTO();
+                            for(int i=0;i<response.length();i++){
+                                JSONObject workerJson=listofworkers.getJSONObject(i);
+                                worker.setEmail(workerJson.getString("email"));
+                                worker.setName(workerJson.getString("name"));
+                                worker.setSurname(workerJson.getString("surname"));
+                                worker.setDni(workerJson.getString("dni_client"));
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date dateBirth;
+                                try {
+                                    dateBirth = format.parse(workerJson.getString("age"));
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                worker.setAge(dateBirth);
+                                worker.setNumberOfWorker(workerJson.getInt("numberOfWorker"));
+                                workersToSend.add(worker);
+                            }
+                            callback.onWorkersReceived(workersToSend);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }else{
+                        callback.onWorkersReceived(new ArrayList<WorkerDTO>());
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
+
+                }
+        );
+
+        requestQueue.add(JsonObjectRequest);
+    }
+
 }
