@@ -35,6 +35,7 @@
         <activity android:name="mvc.view.admin.AdminActivity"/>
         <activity android:name="mvc.view.admin.AddUserActivity"/>
         <activity android:name="mvc.view.admin.FindUserActivity"/>
+        <activity android:name="mvc.view.admin.ShowUsers" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

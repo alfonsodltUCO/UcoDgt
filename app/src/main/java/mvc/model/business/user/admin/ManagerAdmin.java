@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.android.volley.VolleyError;
 
+import java.util.List;
+
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
@@ -39,6 +41,16 @@ public class ManagerAdmin {
                 callback.onAdminReceived(user);
 
             }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
         });
     }
 
@@ -65,6 +77,16 @@ public class ManagerAdmin {
             @Override
             public void onAdminReceived(AdminDTO user) {
                 callback.onAdminReceived(user);
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });

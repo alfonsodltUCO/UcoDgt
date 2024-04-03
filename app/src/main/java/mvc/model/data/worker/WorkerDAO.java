@@ -3,10 +3,8 @@ package mvc.model.data.worker;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -469,7 +467,7 @@ public class WorkerDAO {
         requestQueue.add(request);
     }
 
-    public void getUsers(List<WorkerDTO> users, Context applicationContext, UserCallback callback){
+    public void getUsers(Context applicationContext, UserCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getUsersFromBd(new UserCallback() {
             @Override
@@ -522,7 +520,7 @@ public class WorkerDAO {
                                 worker.setEmail(workerJson.getString("email"));
                                 worker.setName(workerJson.getString("name"));
                                 worker.setSurname(workerJson.getString("surname"));
-                                worker.setDni(workerJson.getString("dni_client"));
+                                worker.setDni(workerJson.getString("dni_worker"));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dateBirth;
                                 try {
@@ -544,7 +542,7 @@ public class WorkerDAO {
                     }
                 },
                 error -> {
-                    callback.onError(error);
+                    callback.onWorkersReceived(new ArrayList<WorkerDTO>());
                     Log.d("ADebugTag", "Value: " +error.toString());
 
                 }

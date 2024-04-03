@@ -192,9 +192,9 @@ public class ManagerWorker {
         });
     }
 
-    public void getUsers(List<WorkerDTO> workers,Context  applicationContext,UserCallback callback){
+    public void getUsers(Context  applicationContext,UserCallback callback){
         WorkerDAO workD=new WorkerDAO();
-        workD.getUsers(workers, applicationContext,new UserCallback() {
+        workD.getUsers(applicationContext,new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
 

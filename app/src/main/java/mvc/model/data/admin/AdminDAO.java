@@ -15,6 +15,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
@@ -41,6 +42,16 @@ public class AdminDAO {
                 userToFind.setPassword(user.getPassword());
                 userToFind.setDni(user.getDni());
                 callback.onAdminReceived(userToFind);
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
 
@@ -123,6 +134,16 @@ public class AdminDAO {
                 userToFind.setPassword(user.getPassword());
                 userToFind.setDni(user.getDni());
                 callback.onAdminReceived(userToFind);
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
 

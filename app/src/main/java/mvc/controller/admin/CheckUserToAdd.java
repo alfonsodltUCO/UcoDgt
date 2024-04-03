@@ -54,18 +54,20 @@ public class CheckUserToAdd extends AppCompatActivity {
             if(!checkDni(dni)){//no valid
                 Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                 startActivity(intentAdmin);
-                showLoading();
                 Toast.makeText(CheckUserToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
+                finish();
             }else{//valid dni
                if(!checkNameAndSUrname(name,surname)){
                    Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                    startActivity(intentAdmin);
                    Toast.makeText(CheckUserToAdd.this,"No valid input for name/surname", Toast.LENGTH_LONG).show();
+                   finish();
                }else{
                    if(!checkLicencePoints(licencepoints)){
                        Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                        startActivity(intentAdmin);//son 8 porque interpretamos que cuando te sacas el carnet te meten en el sistema
                        Toast.makeText(CheckUserToAdd.this,"Number have to be 8 exactly", Toast.LENGTH_LONG).show();
+                       finish();
                    }else{
                         checkAdminEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
 
@@ -82,6 +84,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                             startActivity(intentAdmin);
                                             Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                             hideLoading();
+                                            finish();
                                         });
                                     }
                                     @Override
@@ -99,16 +102,19 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                     Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
                                                     startActivity(intentAdmin);
                                                     Toast.makeText(CheckUserToAdd.this, "The email have incorrect form", Toast.LENGTH_LONG).show();
+                                                    finish();
                                                 }else{
                                                     if(!checkDateOfBirth(age)){
                                                         Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
                                                         startActivity(intentAdmin);
                                                         Toast.makeText(CheckUserToAdd.this, "The user is younger than 18 years old\n"+"or the format is incorrect (yyyy-mm-dd)\n", Toast.LENGTH_LONG).show();
+                                                        finish();
                                                     }else{
                                                         if(!checkPassword(password)){
                                                             Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
                                                             startActivity(intentAdmin);
                                                             Toast.makeText(CheckUserToAdd.this, "The password must be:\n"+"more that 8 characters\n"+"one capital letter\n"+"one symbol\n"+"one number\n", Toast.LENGTH_LONG).show();
+                                                            finish();
                                                         }else{
                                                             if(typeofuserAdded.equals("client")){//client
                                                                 ManagerClient mngcl = new ManagerClient();
@@ -127,6 +133,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                 startActivity(intentAdmin);
                                                                                 Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
+                                                                                finish();
                                                                             }));
                                                                         }
 
@@ -139,6 +146,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                     startActivity(intentAdmin);
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
+                                                                                    finish();
                                                                                 }else{
                                                                                     runOnUiThread(() -> {
                                                                                         showLoading();
@@ -146,6 +154,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         startActivity(intentAdmin);
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
+                                                                                        finish();
                                                                                     });
                                                                                 }
                                                                             });
@@ -199,6 +208,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                     startActivity(intentAdmin);
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
+                                                                                    finish();
                                                                                 }else{
                                                                                     runOnUiThread(() -> {
                                                                                         showLoading();
@@ -206,6 +216,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         startActivity(intentAdmin);
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
+                                                                                        finish();
                                                                                     });
                                                                                 }
                                                                             });
@@ -219,6 +230,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                 startActivity(intentAdmin);
                                                                                 Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
+                                                                                finish();
                                                                             }));
                                                                         }
 
@@ -257,6 +269,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                 startActivity(intentAdmin);
                                                 Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                                 hideLoading();
+                                                finish();
                                             });
                                         }
 
@@ -301,6 +314,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                     startActivity(intentAdmin);
                                     Toast.makeText(CheckUserToAdd.this,"The email already exists as user", Toast.LENGTH_LONG).show();
                                     hideLoading();
+                                    finish();
                                 });
 
 
@@ -323,7 +337,7 @@ public class CheckUserToAdd extends AppCompatActivity {
             Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
-
+            finish();
         }
     }
     private void showLoading() {
