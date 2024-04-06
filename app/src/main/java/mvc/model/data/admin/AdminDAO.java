@@ -72,7 +72,7 @@ public class AdminDAO {
         });
     }
     private void checkAdmin(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginAdmin.php?email="+email;
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

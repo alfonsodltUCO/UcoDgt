@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
-import mvc.view.GetVehiclePlate;
+import mvc.view.vehicle.GetVehiclePlate;
 import mvc.view.MainActivity;
 
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener{

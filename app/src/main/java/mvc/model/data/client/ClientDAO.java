@@ -77,7 +77,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClient(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginClient.php?email="+email;
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+email;
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
