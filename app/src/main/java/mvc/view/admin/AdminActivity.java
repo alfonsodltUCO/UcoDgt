@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
+import mvc.view.GetVehiclePlate;
 import mvc.view.MainActivity;
 
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener{
@@ -46,6 +47,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         } else if (R.id.item3AdminListUsers==item.getItemId()) {
             Intent intentListUsersr=new Intent(AdminActivity.this, CheckUsersToList.class);
             startActivity(intentListUsersr);
+        } else if (R.id.item8AdminFindVehicle==item.getItemId()) {
+            Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
+            startActivity(intentFindVehicle);
         }
         return false;
     }

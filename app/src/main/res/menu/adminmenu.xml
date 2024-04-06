@@ -25,8 +25,8 @@
         android:id="@+id/item7AdminListVehicles"
         android:title="List vehicles" />
     <item
-        android:id="@+id/item8AdminFindVehicles"
-        android:title="Find vehicles" />
+        android:id="@+id/item8AdminFindVehicle"
+        android:title="Find vehicle" />
     <item
         android:id="@+id/item9AdminListPenalties"
         android:title="List penalties" />
