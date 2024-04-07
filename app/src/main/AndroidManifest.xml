@@ -3,6 +3,13 @@
 
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
 
         android:allowBackup="true"
@@ -26,13 +33,18 @@
             </intent-filter>
         </activity>
         <activity android:name="mvc.controller.CheckLogIn"/>
-        <activity android:name="mvc.controller.SignUp"/>
-        <activity android:name="mvc.view.AdminActivity"/>
-        <activity android:name="mvc.view.AddUserActivity"/>
-        <activity android:name="mvc.controller.CheckUserToAdd"/>
-
-
-
+        <activity android:name="mvc.controller.admin.CheckUserToAdd"/>
+        <activity android:name="mvc.controller.admin.CheckUserToFind"/>
+        <activity android:name="mvc.controller.admin.CheckUserToDelete"/>
+        <activity android:name="mvc.controller.admin.CheckUsersToList"/>
+        <activity android:name="mvc.controller.vehicle.CheckImage" />
+        <activity android:name="mvc.view.admin.DeleteUserActivity"/>
+        <activity android:name="mvc.view.admin.ShowUser"/>
+        <activity android:name="mvc.view.admin.AdminActivity"/>
+        <activity android:name="mvc.view.admin.AddUserActivity"/>
+        <activity android:name="mvc.view.admin.FindUserActivity"/>
+        <activity android:name="mvc.view.admin.ShowUsers" />
+        <activity android:name="mvc.view.vehicle.GetVehiclePlate" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

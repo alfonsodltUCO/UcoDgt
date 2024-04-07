@@ -11,18 +11,30 @@ public class VehicleDTO {
 
     private Date validItvFrom;
 
+    private int idInsurance;
+
     private Date validItvTo;
 
     public VehicleDTO(){
 
     }
 
-    public VehicleDTO(String licencePlate,typeof typeCar,typeofColor typeColor,Date validItvFrom,Date validItvTo){
+    public VehicleDTO(String licencePlate,typeof typeCar,typeofColor typeColor,Date validItvFrom,Date validItvTo,int idInsurance){
         this.licencePlate=licencePlate;
         this.carType=typeCar;
         this.color=typeColor;
         this.validItvFrom=validItvFrom;
+        this.idInsurance=idInsurance;
         this.validItvTo=validItvTo;
+    }
+
+
+    public int getIdInsurance() {
+        return idInsurance;
+    }
+
+    public void setIdInsurance(int id){
+        this.idInsurance=id;
     }
 
     public Date getValidItvFrom() {

@@ -5,19 +5,21 @@ import android.util.Log;
 
 import com.android.volley.VolleyError;
 
+import java.util.List;
+
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.data.UserCallback;
-import mvc.model.data.client.ClientDAO;
 import mvc.model.data.worker.WorkerDAO;
 
 public class ManagerWorker {
     public ManagerWorker(){
 
     }
-    public void checkLogInWorker(String email, String password, Context applicationContext, UserCallback callback){
+    public void checkLogInWorker(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO userD=new WorkerDAO();
-        WorkerDTO userToCheck=new WorkerDTO(null,password,null,null,null,email,null,null);
+        WorkerDTO userToCheck=new WorkerDTO(null,worker.getPassword(),null,null,null, worker.getEmail(), null);
+
         userD.checkLogInWorker(userToCheck, applicationContext, new UserCallback() {
 
             @Override
@@ -27,6 +29,7 @@ public class ManagerWorker {
 
             @Override
             public void onError(VolleyError error) {
+                callback.onError(error);
                 Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
@@ -37,6 +40,187 @@ public class ManagerWorker {
 
             @Override
             public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    public void checkEmailNotExists(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        WorkerDTO userToCheck=new WorkerDTO(null,null,null,null,null, worker.getEmail(), null);
+        workerD.checkWorkerEmail(userToCheck, applicationContext, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {}
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+
+                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {callback.onWorkerReceived(user);}
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {}
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    public void addUser(WorkerDTO worker, Context applicationContext, UserCallback callback) {
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.addUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+    public void getUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.getUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    public void deleteUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
+        WorkerDAO workerD=new WorkerDAO();
+        workerD.deleteUser(worker, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    public void getUsers(Context  applicationContext,UserCallback callback){
+        WorkerDAO workD=new WorkerDAO();
+        workD.getUsers(applicationContext,new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+                callback.onWorkersReceived(workers);
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
 
             }
         });

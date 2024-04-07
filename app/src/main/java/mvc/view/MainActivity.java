@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.ucodgt.R;
-
 import mvc.controller.CheckLogIn;
-import mvc.controller.SignUp;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
