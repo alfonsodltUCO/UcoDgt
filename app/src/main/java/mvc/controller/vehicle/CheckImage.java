@@ -3,6 +3,7 @@ package mvc.controller.vehicle;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -32,14 +33,22 @@ public class CheckImage extends AppCompatActivity {
             @Override
             public void onVehicleReceived(VehicleDTO vehicle) {
                 runOnUiThread(()->{
-
+                    Log.d("aa",vehicle.toString());
+                    hideLoading();
                 });
             }
 
             @Override
             public void onError(VolleyError error) {
                 runOnUiThread(()->{
+                    if(error.networkResponse.statusCode==404){//not found
+                        Log.d("aa","not found");
+                        hideLoading();
 
+                    }else{
+                        Log.d("aa","not recog");
+                        hideLoading();
+                    }
                 });
             }
         });

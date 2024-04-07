@@ -1,6 +1,5 @@
 package mvc.view.vehicle;
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -19,18 +18,16 @@ import androidx.core.content.ContextCompat;
 import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 import mvc.controller.vehicle.CheckImage;
 
 public class GetVehiclePlate extends AppCompatActivity {
 
-
-    private static final int REQUEST_IMAGE_CAPTURE = 101;
-    private static final int REQUEST_IMAGE_PICK = 102;
     private ImageView imageView;
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
+    private static final int REQUEST_IMAGE_CAPTURE = 101;
+    private static final int REQUEST_IMAGE_PICK = 102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,37 +38,17 @@ public class GetVehiclePlate extends AppCompatActivity {
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
 
-
-        takePhotoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCamera();
-            }
-        });
-
-        pickPhotoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
-
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == Activity.RESULT_OK) {
+            if (result.getResultCode() == RESULT_OK) {
                 Intent data = result.getData();
                 if (data != null) {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
                         imageView.setImageBitmap(imageBitmap);
-                        Intent intentCheckVehiclePlate=new Intent(GetVehiclePlate.this, CheckImage.class);
-
-                        ByteArrayOutputStream bs = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
-                        intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
-                        startActivity(intentCheckVehiclePlate);
-                        finish();
+                        // Aquí puedes lanzar la actividad CheckImage con el bitmap
+                        launchCheckImageActivity(imageBitmap);
                     }
                 }
             }
@@ -83,15 +60,17 @@ public class GetVehiclePlate extends AppCompatActivity {
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
                     imageView.setImageBitmap(selectedImage);
-                    Intent intentCheckVehiclePlate=new Intent(GetVehiclePlate.this, CheckImage.class);
-                    intentCheckVehiclePlate.putExtra("image", selectedImage);
-                    startActivity(intentCheckVehiclePlate);
-                    finish();
-                } catch (IOException e) {
+                    // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
+                    launchCheckImageActivity(selectedImage);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+
+        takePhotoButton.setOnClickListener(v -> openCamera());
+
+        pickPhotoButton.setOnClickListener(v -> openGallery());
     }
 
     private void openCamera() {
@@ -107,6 +86,14 @@ public class GetVehiclePlate extends AppCompatActivity {
         galleryLauncher.launch("image/*");
     }
 
+    private void launchCheckImageActivity(Bitmap bitmap) {
+        Intent intentCheckVehiclePlate = new Intent(GetVehiclePlate.this, CheckImage.class);
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
+        intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
+        startActivity(intentCheckVehiclePlate);
+        finish();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
