@@ -23,7 +23,6 @@ import mvc.controller.vehicle.CheckImage;
 
 public class GetVehiclePlate extends AppCompatActivity {
 
-    private ImageView imageView;
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
@@ -34,7 +33,6 @@ public class GetVehiclePlate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_vehicle);
 
-        imageView = findViewById(R.id.imageView);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
 
@@ -46,7 +44,6 @@ public class GetVehiclePlate extends AppCompatActivity {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        imageView.setImageBitmap(imageBitmap);
                         // Aquí puedes lanzar la actividad CheckImage con el bitmap
                         launchCheckImageActivity(imageBitmap);
                     }
@@ -59,7 +56,6 @@ public class GetVehiclePlate extends AppCompatActivity {
             if (result != null) {
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
-                    imageView.setImageBitmap(selectedImage);
                     // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
                     launchCheckImageActivity(selectedImage);
                 } catch (Exception e) {
