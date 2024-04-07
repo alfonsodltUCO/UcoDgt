@@ -38,6 +38,7 @@
         <activity android:name="mvc.controller.admin.CheckUserToDelete"/>
         <activity android:name="mvc.controller.admin.CheckUsersToList"/>
         <activity android:name="mvc.controller.vehicle.CheckImage" />
+        <activity android:name="mvc.controller.vehicle.CheckVehicleToDelete" />
         <activity android:name="mvc.view.admin.DeleteUserActivity"/>
         <activity android:name="mvc.view.admin.ShowUser"/>
         <activity android:name="mvc.view.admin.AdminActivity"/>
@@ -45,6 +46,7 @@
         <activity android:name="mvc.view.admin.FindUserActivity"/>
         <activity android:name="mvc.view.admin.ShowUsers" />
         <activity android:name="mvc.view.vehicle.GetVehiclePlate" />
+        <activity android:name="mvc.view.vehicle.DeleteVehicleActivity" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

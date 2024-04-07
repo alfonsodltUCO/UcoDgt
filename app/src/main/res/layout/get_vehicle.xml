@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:background="#74969E"
+    android:layout_weight="1"
+    android:gravity="top">
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:src="@drawable/logoempresa"
+        >
 
+    </ImageView>
     <Button
         android:id="@+id/takePhotoButton"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Take Photo" />
@@ -22,6 +25,7 @@
     <Button
         android:id="@+id/pickPhotoButton"
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:text="Pick Photo" />
 

@@ -203,7 +203,6 @@ public class VehicleDAO {
                         typeof carType = typeof.valueOf(jsonResponse.getString("carType"));
                         typeofColor color = typeofColor.valueOf(jsonResponse.getString("color"));
                         String validItvFrom = jsonResponse.getString("validItvFrom");
-                        String dni_client = jsonResponse.getString("dni_client");
                         String idInsurance = jsonResponse.getString("idInsurance");
                         String validItvTo = jsonResponse.getString("validItvTo");
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -238,6 +237,73 @@ public class VehicleDAO {
             }
         };
 
+        requestQueue.add(request);
+    }
+
+    public void deleteVehicle(VehicleDTO vehicle, Context applicationContext, VehicleCallback callback){
+
+        String licencePlate=vehicle.getLicencePlate();
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        deleteVehicleFromBd(licencePlate, new VehicleCallback() {
+
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+                callback.onVehicleReceived(vehicle);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void deleteVehicleFromBd(final String licencePlate,final VehicleCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/deleteVehicle.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    try {
+
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String licenceplate = jsonResponse.getString("licenceplate");
+                        typeof carType = typeof.valueOf(jsonResponse.getString("carType"));
+                        typeofColor color = typeofColor.valueOf(jsonResponse.getString("color"));
+                        String validItvFrom = jsonResponse.getString("validItvFrom");
+                        String idInsurance = jsonResponse.getString("idInsurance");
+                        String validItvTo = jsonResponse.getString("validItvTo");
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date itv1;
+                        Date itv2;
+                        try {
+                            itv1 = format.parse(validItvFrom);
+                            itv2 = format.parse(validItvTo);
+
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        int id=Integer.parseInt(idInsurance);
+                        VehicleDTO vehicle=new VehicleDTO(licencePlate,carType,color,itv1,itv2,id);
+                        callback.onVehicleReceived(vehicle);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                    Log.d("ADebugTag", "Value: " +error.toString());
+
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()  {
+                Map<String, String> params = new HashMap<>();
+                params.put("licencePlate", licencePlate);
+                return params;
+            }
+        };
         requestQueue.add(request);
     }
 

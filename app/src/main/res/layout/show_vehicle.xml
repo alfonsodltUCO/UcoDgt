@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#74969E"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:src="@drawable/logoempresa"
+        android:layout_gravity="center"
+        >
+    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/textviewpageinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Vehicle found:"
+            android:textSize="25sp"
+            android:layout_gravity="start"
+            />
+        <TextView
+            android:id="@+id/textViewFoundLicencePlate"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the licence plate"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewCarType"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the car type"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundColor"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce color"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundValidItvFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the date of itv start"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundValidItvTo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the date of itv end"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/textViewFoundIdInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Introduce the Insurance id"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/goMainMenu"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="Go main menu"
+                >
+
+            </Button>
+
+            <Button
+                android:id="@+id/deleteVehicle"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="Delete vehicle"
+                >
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
