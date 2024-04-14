@@ -47,6 +47,8 @@
         <activity android:name="mvc.view.admin.ShowUsers" />
         <activity android:name="mvc.view.vehicle.GetVehiclePlate" />
         <activity android:name="mvc.view.vehicle.DeleteVehicleActivity" />
+        <activity android:name="mvc.view.vehicle.AddVehicleActivity" />
+        <activity android:name="mvc.controller.vehicle.CheckVehicleToAdd" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
