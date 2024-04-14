@@ -55,9 +55,10 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         }else if(R.id.item6AdminDeleteVehicle== item.getItemId()){
             Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
             startActivity(intentDeleteVehicle);
-        }else if(R.id.item5AdminAddVehicle== item.getItemId()){
-            Intent intentAddVehicle=new Intent(AdminActivity.this, AddVehicleActivity.class);
+        }else if(R.id.item5AdminAddVehicle== item.getItemId()) {
+            Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
             startActivity(intentAddVehicle);
+        }
         return false;
     }
 

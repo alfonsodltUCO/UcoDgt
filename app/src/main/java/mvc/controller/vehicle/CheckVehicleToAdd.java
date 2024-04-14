@@ -20,6 +20,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -113,15 +114,26 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                             @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                             try {
                                                 VehicleDTO vh=new VehicleDTO(licenceplate,getTypeOf(type),getTypeOfColor(color),format.parse(itvfrom),format.parse(itvto),Integer.parseInt(insurance));
-                                                mngV.addVehicle(vh, CheckVehicleToAdd.this, new VehicleCallback() {
+                                                mngV.addVehicle(vh,cl, CheckVehicleToAdd.this, new VehicleCallback() {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
+                                                        Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
 
                                                     }
 
                                                     @Override
                                                     public void onError(VolleyError error) {
-
+                                                        if(error.networkResponse.statusCode==500){
+                                                            Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                                            startActivity(intentAdmin);
+                                                            Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
+                                                            finish();
+                                                        } else if (error.networkResponse.statusCode==501) {
+                                                            Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                                            startActivity(intentAdmin);
+                                                            Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
+                                                            finish();
+                                                        }
                                                     }
                                                 });
                                             } catch (ParseException e) {

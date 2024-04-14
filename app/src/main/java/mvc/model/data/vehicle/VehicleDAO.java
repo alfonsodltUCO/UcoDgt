@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -304,6 +305,58 @@ public class VehicleDAO {
                 return params;
             }
         };
+        requestQueue.add(request);
+    }
+    public void addVehicle(VehicleDTO vehicleToAdd,ClientDTO client, Context applicationContext, VehicleCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        addToDb(vehicleToAdd,client,applicationContext, new VehicleCallback() {
+
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+                callback.onVehicleReceived(vehicleToAdd);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void addToDb(final VehicleDTO vehicle,final ClientDTO client,final Context applicationContext, final VehicleCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/vehicle/addVehicle.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onVehicleReceived(vehicle);
+                    }
+                },
+                error -> {
+                    // Manejar el error de la solicitud
+                   callback.onError(error);
+
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String strDate1= formatter.format(vehicle.getValidItvFrom());
+                String strDate2= formatter.format(vehicle.getValidItvTo());
+                Map<String, String> params = new HashMap<>();
+                params.put("licencePlate", vehicle.getLicencePlate());
+                params.put("carType", vehicle.getCarType().toString().trim());
+                params.put("color", vehicle.getColor().toString().trim());
+                params.put("validItvFrom", strDate1);
+                params.put("validItvTo", strDate2);
+                params.put("dni_client", client.getDni());
+                params.put("idInsurance", String.valueOf(vehicle.getIdInsurance()));
+                return params;
+            }
+        };
+
         requestQueue.add(request);
     }
 

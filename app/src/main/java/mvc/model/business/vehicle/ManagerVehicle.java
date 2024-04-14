@@ -21,9 +21,9 @@ public class ManagerVehicle {
 
     }
 
-    public void addVehicle(VehicleDTO vehicle,Context applicationContext,VehicleCallback callback){
+    public void addVehicle(VehicleDTO vehicle,ClientDTO cl,Context applicationContext,VehicleCallback callback){
         VehicleDAO vehicleD=new VehicleDAO();
-        vehicleD.addVehicle(vehicle,applicationContext, new VehicleCallback() {
+        vehicleD.addVehicle(vehicle,cl,applicationContext, new VehicleCallback() {
             @Override
             public void onVehicleReceived(VehicleDTO vehicle) {
                 callback.onVehicleReceived(vehicle);
