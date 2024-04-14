@@ -1,14 +1,8 @@
 package mvc.controller.vehicle;
 
-import static mvc.controller.commonFunctions.ForCheckUser.checkAdminEmailNotExists;
-import static mvc.controller.commonFunctions.ForCheckUser.checkClientEmailNotExists;
-import static mvc.controller.commonFunctions.ForCheckUser.checkDateOfBirth;
+
 import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
-import static mvc.controller.commonFunctions.ForCheckUser.checkLicencePoints;
-import static mvc.controller.commonFunctions.ForCheckUser.checkNameAndSUrname;
-import static mvc.controller.commonFunctions.ForCheckUser.checkPassword;
-import static mvc.controller.commonFunctions.ForCheckUser.checkValidEmail;
-import static mvc.controller.commonFunctions.ForCheckUser.checkWorkerEmailNotExists;
+
 import static mvc.controller.commonFunctions.ForCheckVehicle.checkColor;
 import static mvc.controller.commonFunctions.ForCheckVehicle.checkDates;
 import static mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
@@ -20,7 +14,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -30,26 +23,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import mvc.controller.admin.CheckUserToAdd;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.client.ManagerClient;
-import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
-import mvc.model.business.vehicle.typeof;
 import mvc.model.data.UserCallback;
 import mvc.model.data.VehicleCallback;
-import mvc.view.admin.AddUserActivity;
-import mvc.view.admin.AdminActivity;
 import mvc.view.vehicle.AddVehicleActivity;
 
 public class CheckVehicleToAdd extends AppCompatActivity {
