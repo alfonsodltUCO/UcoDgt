@@ -38,11 +38,12 @@ public class ForCheckVehicle {
 
                 cal.setTime(itvFrom);
                 cal2.setTime(itvTo);
-                if (cal.compareTo(cal2) < 0) {
-                    return true;
-                } else {
+                Calendar currentDate = Calendar.getInstance();
+                if (cal.compareTo(currentDate) < 0) {
                     return false;
                 }
+                return cal.compareTo(cal2) < 0;
+
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }

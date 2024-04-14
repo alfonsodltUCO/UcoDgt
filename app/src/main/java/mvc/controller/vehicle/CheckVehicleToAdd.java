@@ -65,7 +65,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
         Intent intentReceived=getIntent();
         licenceplate=intentReceived.getStringExtra("licenceplate");
         color=intentReceived.getStringExtra("color");
-        type=intentReceived.getStringExtra("type");
+        type=intentReceived.getStringExtra("cartype");
         itvfrom=intentReceived.getStringExtra("itvfrom");
         dni=intentReceived.getStringExtra("dni");
         insurance=intentReceived.getStringExtra("insurance");
@@ -88,7 +88,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                     if(!checkDates(itvfrom,itvto)){
                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                         startActivity(intentAdmin);
-                        Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second\n And the format is yyyy-mm-dd", Toast.LENGTH_LONG).show();
                         finish();
                     }else{
                         if(!checkColor(color)){

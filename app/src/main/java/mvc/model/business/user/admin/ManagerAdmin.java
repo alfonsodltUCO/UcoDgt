@@ -19,7 +19,7 @@ public class ManagerAdmin {
     }
     public void checkLogInAdmin(AdminDTO admin, Context applicationContext, UserCallback callback){
         AdminDAO userD=new AdminDAO();
-        AdminDTO userToCheck=new AdminDTO(null,admin.getPassword(),null,null,null,admin.getPassword());
+        AdminDTO userToCheck=new AdminDTO(null,admin.getPassword(),null,null,null,admin.getEmail());
         userD.checkLogInAdmin(userToCheck, applicationContext, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {

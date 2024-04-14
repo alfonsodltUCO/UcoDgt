@@ -109,7 +109,6 @@ public class ClientDAO {
                         }
                     } catch (JSONException e) {
                         ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-
                         callback.onUserReceived(user);
                     }
 
@@ -343,7 +342,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUserToFind(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getClient.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
