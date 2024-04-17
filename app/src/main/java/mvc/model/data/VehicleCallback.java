@@ -15,4 +15,6 @@ public interface VehicleCallback {
 
     void onError(VolleyError error);
 
+    void onVehiclesReceived(List<VehicleDTO> vehicles);
+
 }

@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
+import java.util.List;
+
 import mvc.controller.admin.CheckUserToDelete;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
@@ -64,6 +66,11 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                             hideLoading();
                             finish();
                         }
+                    }
+
+                    @Override
+                    public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
                     }
                 });
             }

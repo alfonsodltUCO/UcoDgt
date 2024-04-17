@@ -49,6 +49,10 @@
         <activity android:name="mvc.view.vehicle.DeleteVehicleActivity" />
         <activity android:name="mvc.view.vehicle.AddVehicleActivity" />
         <activity android:name="mvc.controller.vehicle.CheckVehicleToAdd" />
+        <activity android:name="mvc.controller.vehicle.CheckVehiclesToList" />
+        <activity android:name="mvc.view.vehicle.ShowVehicles" />
+        <activity android:name="mvc.view.vehicle.ShowVehicle" />
+        <activity android:name="mvc.view.vehicle.IntroduceManual" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

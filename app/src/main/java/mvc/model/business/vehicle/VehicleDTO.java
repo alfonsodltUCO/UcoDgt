@@ -1,7 +1,8 @@
 package mvc.model.business.vehicle;
+import java.io.Serializable;
 import java.util.Date;
 
-public class VehicleDTO {
+public class VehicleDTO implements Serializable {
 
     private String licencePlate;
 

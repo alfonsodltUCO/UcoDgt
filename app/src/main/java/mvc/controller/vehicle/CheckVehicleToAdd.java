@@ -121,6 +121,11 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                             finish();
                                                         }
                                                     }
+
+                                                    @Override
+                                                    public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+                                                    }
                                                 });
                                             } catch (ParseException e) {
                                                 throw new RuntimeException(e);

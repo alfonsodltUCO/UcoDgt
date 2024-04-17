@@ -86,14 +86,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_gravity="end">
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
             android:textSize="20sp"
             android:text="Go main menu"
             >
@@ -101,11 +101,25 @@
         </Button>
         <Button
             android:id="@+id/deleteUser"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textSize="20sp"
+            android:layout_gravity="center"
             android:text="Delete User"
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/listVehicles"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="List vehicles"
             >
 
         </Button>

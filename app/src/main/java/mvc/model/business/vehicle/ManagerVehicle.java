@@ -33,6 +33,11 @@ public class ManagerVehicle {
             public void onError(VolleyError error) {
                 callback.onError(error);
             }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+            }
         });
     }
     public void checkVehicle(Bitmap image, Context applicationContext, VehicleCallback callback){
@@ -47,7 +52,33 @@ public class ManagerVehicle {
            public void onError(VolleyError error) {
                 callback.onError(error);
            }
+
+           @Override
+           public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+           }
        });
+
+    }
+
+    public void getVehicle(VehicleDTO vehicle, Context applicationContext, VehicleCallback callback){
+        VehicleDAO vehicleD=new VehicleDAO();
+        vehicleD.getVehicle(vehicle,applicationContext, new VehicleCallback() {
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+                callback.onVehicleReceived(vehicle);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+            }
+        });
 
     }
 
@@ -63,6 +94,31 @@ public class ManagerVehicle {
             @Override
             public void onError(VolleyError error) {
                 callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+            }
+        });
+    }
+
+    public void getVehicles(Context applicationContext,VehicleCallback callback){
+        VehicleDAO vehicleD=new VehicleDAO();
+        vehicleD.getVehicles(applicationContext, new VehicleCallback() {
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehiclesReceived) {
+                callback.onVehiclesReceived(vehiclesReceived);
             }
         });
     }

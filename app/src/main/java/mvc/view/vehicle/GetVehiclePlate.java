@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -21,11 +23,13 @@ import com.example.ucodgt.R;
 import java.io.ByteArrayOutputStream;
 
 import mvc.controller.vehicle.CheckImage;
+import mvc.controller.vehicle.CheckVehicleToFind;
 
 public class GetVehiclePlate extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
+    Button manual;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     private static final int REQUEST_IMAGE_PICK = 102;
 
@@ -33,10 +37,14 @@ public class GetVehiclePlate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_vehicle);
-
+        manual.findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
-
+        manual.setOnClickListener(v -> {
+                Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
+                startActivity(intent);
+                finish();
+        });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
@@ -101,4 +109,5 @@ public class GetVehiclePlate extends AppCompatActivity {
             }
         }
     }
+
 }

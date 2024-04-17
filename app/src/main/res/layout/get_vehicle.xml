@@ -29,4 +29,11 @@
         android:layout_height="wrap_content"
         android:text="Pick Photo" />
 
+    <Button
+        android:id="@+id/manualWay"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Introduce manual" />
+
 </LinearLayout>

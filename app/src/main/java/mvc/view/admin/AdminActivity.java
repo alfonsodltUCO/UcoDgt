@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
+import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.view.vehicle.AddVehicleActivity;
 import mvc.view.vehicle.DeleteVehicleActivity;
 import mvc.view.vehicle.GetVehiclePlate;
@@ -58,6 +59,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         }else if(R.id.item5AdminAddVehicle== item.getItemId()) {
             Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
             startActivity(intentAddVehicle);
+        }else if(R.id.item7AdminListVehicles== item.getItemId()) {
+            Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
+            startActivity(intentFindVehicles);
         }
         return false;
     }
