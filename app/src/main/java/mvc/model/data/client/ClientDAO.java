@@ -76,7 +76,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClient(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -165,7 +165,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClientEmail(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -251,7 +251,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
-        String URL = "http://localhost:81/api/ucodgt/user/addClient.php";
+        String URL = "http://192.168.10.160:81/api/ucodgt/user/addClient.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(client.getAge());
         StringRequest request = new StringRequest(
@@ -336,7 +336,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/getClient.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -426,7 +426,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/deleteClient.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -502,7 +502,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/getAllClients.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/user/getAllClients.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -515,22 +515,23 @@ public class ClientDAO {
                         try {
                             JSONArray listofclients=response.getJSONArray("clients");
                             List<ClientDTO> clientsToSend=new ArrayList<ClientDTO>();
-                            ClientDTO client=new ClientDTO();
-                            for(int i=0;i<response.length();i++){
-                                JSONObject workerJson=listofclients.getJSONObject(i);
-                                client.setEmail(workerJson.getString("email"));
-                                client.setName(workerJson.getString("name"));
-                                client.setSurname(workerJson.getString("surname"));
-                                client.setDni(workerJson.getString("dni_client"));
+                            for(int i=0;i<listofclients.length();i++){
+                                ClientDTO client=new ClientDTO();
+                                JSONObject clientJson=listofclients.getJSONObject(i);
+
+                                client.setEmail(clientJson.getString("email"));
+                                client.setName(clientJson.getString("name"));
+                                client.setSurname(clientJson.getString("surname"));
+                                client.setDni(clientJson.getString("dni_client"));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dateBirth;
                                 try {
-                                    dateBirth = format.parse(workerJson.getString("age"));
+                                    dateBirth = format.parse(clientJson.getString("age"));
                                 } catch (ParseException e) {
                                     throw new RuntimeException(e);
                                 }
                                 client.setAge(dateBirth);
-                                client.setLicencepoints(workerJson.getInt("licencepoints"));
+                                client.setLicencepoints(clientJson.getInt("licencepoints"));
                                 clientsToSend.add(client);
                             }
                             callback.onClientsReceived(clientsToSend);

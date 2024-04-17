@@ -65,7 +65,7 @@ public class VehicleDAO {
         });
     }
     private void checkVehicleFromPy(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://localhost:8080/checkImage";
+        String URL = "http://192.168.10.160:8080/checkImage";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -148,7 +148,7 @@ public class VehicleDAO {
     }
 
     private void checkVehicleFromPy2(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://localhost:8080/checkImage2";
+        String URL = "http://192.168.10.160:8080/checkImage2";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -215,7 +215,7 @@ public class VehicleDAO {
     }
 
     private void getVehicle(final String licencePlate,final VehicleCallback callback){
-        String URL="http://localhost:81/api/ucodgt/vehicle/getVehicle.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -286,7 +286,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteVehicleFromBd(final VehicleDTO vehicleSend,final VehicleCallback callback){
-        String URL="http://localhost:81/api/ucodgt/vehicle/deleteVehicle.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/deleteVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -354,7 +354,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final VehicleDTO vehicle,final ClientDTO client,final Context applicationContext, final VehicleCallback callback) {
-        String URL = "http://localhost:81/api/ucodgt/vehicle/addVehicle.php";
+        String URL = "http://192.168.10.160:81/api/ucodgt/vehicle/addVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -412,7 +412,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getVehiclesFromBd(final VehicleCallback callback){
-        String URL="http://localhost:81/api/ucodgt/vehicle/getAllVehicles.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getAllVehicles.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -425,9 +425,11 @@ public class VehicleDAO {
                         try {
                             JSONArray listofvehicles=response.getJSONArray("vehicles");
                             List<VehicleDTO> vehiclestosend=new ArrayList<VehicleDTO>();
-                            VehicleDTO vehicle=new VehicleDTO();
-                            for(int i=0;i<response.length();i++){
+                            for(int i=0;i<listofvehicles.length();i++){
+                                VehicleDTO vehicle=new VehicleDTO();
                                 JSONObject vehicleJson=listofvehicles.getJSONObject(i);
+                                Log.d("a",vehicleJson.toString());
+
                                 vehicle.setLicencePlate(vehicleJson.getString("licenceplate"));
                                 vehicle.setCarType(typeof.valueOf(vehicleJson.getString("carType")));
                                 vehicle.setColor(typeofColor.valueOf(vehicleJson.getString("color")));
@@ -442,8 +444,10 @@ public class VehicleDAO {
                                 }
                                 vehicle.setValidItvFrom(dateItvF);
                                 vehicle.setValidItvTo(dateItvT);
+
                                 vehiclestosend.add(vehicle);
                             }
+                            Log.d("a",vehiclestosend.toString());
                             callback.onVehiclesReceived(vehiclestosend);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -479,7 +483,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getVehicleToFind(final VehicleDTO vehicle,final VehicleCallback callback){
-        String URL="http://localhost:81/api/ucodgt/vehicle/getVehicle.php";
+        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -515,7 +519,7 @@ public class VehicleDAO {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
-                params.put("licenceplate", vehicle.getLicencePlate());
+                params.put("licencePlate", vehicle.getLicencePlate());
                 return params;
             }
         };

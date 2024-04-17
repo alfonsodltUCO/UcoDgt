@@ -72,7 +72,7 @@ public class AdminDAO {
         });
     }
     private void checkAdmin(final AdminDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
+        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -161,7 +161,7 @@ public class AdminDAO {
         });
     }
     private void checkAdminEmail(final AdminDTO userToFind,final UserCallback callback){
-        String URL="http://localhost:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
+        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

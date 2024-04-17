@@ -37,7 +37,7 @@ public class GetVehiclePlate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_vehicle);
-        manual.findViewById(R.id.manualWay);
+        manual=findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
         manual.setOnClickListener(v -> {

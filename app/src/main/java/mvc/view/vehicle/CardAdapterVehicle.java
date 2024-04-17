@@ -43,7 +43,7 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         VehicleDTO vehicle = vehicleList.get(position);
         holder.textPlate.setText(vehicle.getLicencePlate());
-        holder.textType.setText(vehicle.getCarType().ordinal());
+        holder.textType.setText(vehicle.getCarType().toString());
         holder.itemView.setOnClickListener(v -> {
             Intent goShowVehicle = new Intent(context, CheckVehicleToFind.class);
             goShowVehicle.putExtra("licenceplate", vehicle.getLicencePlate());

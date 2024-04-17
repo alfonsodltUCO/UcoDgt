@@ -30,6 +30,7 @@ public class CheckVehicleToFind extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
+        progressBar=findViewById(R.id.progressbar);
         showLoading();
         licenceplate=getIntent().getStringExtra("licenceplate");
         if(!TextUtils.isEmpty(licenceplate)){
