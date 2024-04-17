@@ -36,7 +36,7 @@ import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.UserCallback;
 import mvc.model.data.VehicleCallback;
-import mvc.view.vehicle.AddVehicleActivity;
+import mvc.view.admin.vehicle.AddVehicleActivity;
 
 public class CheckVehicleToAdd extends AppCompatActivity {
     String licenceplate,color,type,itvfrom,itvto,dni,insurance;

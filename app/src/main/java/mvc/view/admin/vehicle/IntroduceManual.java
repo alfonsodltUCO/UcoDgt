@@ -1,4 +1,4 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUserToFind;
 import mvc.controller.vehicle.CheckVehicleToFind;
 import mvc.view.admin.AdminActivity;
-import mvc.view.admin.FindUserActivity;
 
 public class IntroduceManual extends AppCompatActivity implements View.OnClickListener {
     EditText et;

@@ -45,15 +45,19 @@
         <activity android:name="mvc.view.admin.AddUserActivity"/>
         <activity android:name="mvc.view.admin.FindUserActivity"/>
         <activity android:name="mvc.view.admin.ShowUsers" />
-        <activity android:name="mvc.view.vehicle.GetVehiclePlate" />
-        <activity android:name="mvc.view.vehicle.DeleteVehicleActivity" />
-        <activity android:name="mvc.view.vehicle.AddVehicleActivity" />
+        <activity android:name="mvc.view.admin.vehicle.GetVehiclePlate" />
+        <activity android:name="mvc.view.admin.vehicle.DeleteVehicleActivity" />
+        <activity android:name="mvc.view.admin.vehicle.AddVehicleActivity" />
         <activity android:name="mvc.controller.vehicle.CheckVehicleToAdd" />
         <activity android:name="mvc.controller.vehicle.CheckVehiclesToList" />
-        <activity android:name="mvc.view.vehicle.ShowVehicles" />
-        <activity android:name="mvc.view.vehicle.ShowVehicle" />
-        <activity android:name="mvc.view.vehicle.IntroduceManual" />
+        <activity android:name="mvc.view.admin.vehicle.ShowVehicles" />
+        <activity android:name="mvc.view.admin.vehicle.ShowVehicle" />
+        <activity android:name="mvc.view.admin.vehicle.IntroduceManual" />
         <activity android:name="mvc.controller.vehicle.CheckVehicleToFind" />
+        <activity android:name="mvc.view.admin.penalty.FindPenaltyActivity" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltiesToList" />
+        <activity android:name="mvc.view.admin.penalty.ShowPenalties" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltyToFind" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

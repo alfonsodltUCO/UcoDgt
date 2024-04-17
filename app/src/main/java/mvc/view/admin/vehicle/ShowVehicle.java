@@ -1,4 +1,4 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
+import mvc.controller.penalty.CheckPenaltiesToList;
 import mvc.controller.vehicle.CheckVehicleToDelete;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.view.admin.AdminActivity;
@@ -20,7 +21,7 @@ import mvc.view.admin.AdminActivity;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
-    Button goMain,deleteVehicle;
+    Button goMain,deleteVehicle,addPenalty,listPenalties;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,10 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         goMain.setOnClickListener(this);
         deleteVehicle.setOnClickListener(this);
         licplate=vehicle.getLicencePlate();
-
+        listPenalties=findViewById(R.id.listPenalties);
+        addPenalty=findViewById(R.id.addPenalty);
+        listPenalties.setOnClickListener(this);
+        addPenalty.setOnClickListener(this);
     }
 
 
@@ -61,6 +65,13 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goDelete.putExtra("licencePlate",licplate);
             startActivity(goDelete);
             finish();
+        } else if (v.getId()==R.id.listPenalties) {
+            Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
+            goList.putExtra("licencePlate",licplate);
+            startActivity(goList);
+            finish();
+        } else if (v.getId()==R.id.addPenalty) {
+
         }
     }
 

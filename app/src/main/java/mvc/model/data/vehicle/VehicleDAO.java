@@ -65,7 +65,7 @@ public class VehicleDAO {
         });
     }
     private void checkVehicleFromPy(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://192.168.10.160:8080/checkImage";
+        String URL = "http://192.168.1.19:8080/checkImage";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -94,7 +94,7 @@ public class VehicleDAO {
                                 }
                             });
                         }else{
-                            getVehicle(plate, new VehicleCallback() {
+                            getVehicleFromBd(plate, new VehicleCallback() {
                                 @Override
                                 public void onVehicleReceived(VehicleDTO vehicle) {
                                     callback.onVehicleReceived(vehicle);
@@ -148,7 +148,7 @@ public class VehicleDAO {
     }
 
     private void checkVehicleFromPy2(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://192.168.10.160:8080/checkImage2";
+        String URL = "http://192.168.1.19:8080/checkImage2";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -159,9 +159,9 @@ public class VehicleDAO {
                     try {
                         String plate= (String) response.get("plate_text");
                         if(plate.isEmpty()){
-                            callback.onError(new VolleyError(new NetworkResponse(401,null,null,true)));//no reconoce matricula
+
                         }else{
-                            getVehicle(plate, new VehicleCallback() {
+                            getVehicleFromBd(plate, new VehicleCallback() {
                                 @Override
                                 public void onVehicleReceived(VehicleDTO vehicle) {
                                     callback.onVehicleReceived(vehicle);
@@ -185,7 +185,6 @@ public class VehicleDAO {
                 error -> {
                     // Maneja los errores aquí
                     callback.onError(error);
-                    Log.e("Error", error.toString());
                 }
         ) {
             @Override
@@ -214,8 +213,8 @@ public class VehicleDAO {
         requestQueue.add(request);
     }
 
-    private void getVehicle(final String licencePlate,final VehicleCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getVehicle.php";
+    private void getVehicleFromBd(final String licencePlate,final VehicleCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -239,7 +238,8 @@ public class VehicleDAO {
                             throw new RuntimeException(e);
                         }
                         int id=Integer.parseInt(idInsurance);
-                        VehicleDTO vehicle=new VehicleDTO(licencePlate,carType,color,itv1,itv2,id);
+
+                        VehicleDTO vehicle=new VehicleDTO(licenceplate,carType,color,itv1,itv2,id);
                         callback.onVehicleReceived(vehicle);
 
                     } catch (JSONException e) {
@@ -286,7 +286,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteVehicleFromBd(final VehicleDTO vehicleSend,final VehicleCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/deleteVehicle.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/deleteVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -354,7 +354,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final VehicleDTO vehicle,final ClientDTO client,final Context applicationContext, final VehicleCallback callback) {
-        String URL = "http://192.168.10.160:81/api/ucodgt/vehicle/addVehicle.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/vehicle/addVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -412,7 +412,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getVehiclesFromBd(final VehicleCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getAllVehicles.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/getAllVehicles.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -483,7 +483,7 @@ public class VehicleDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getVehicleToFind(final VehicleDTO vehicle,final VehicleCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/vehicle/getVehicle.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,

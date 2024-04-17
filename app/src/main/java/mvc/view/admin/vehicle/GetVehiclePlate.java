@@ -1,15 +1,11 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -23,7 +19,6 @@ import com.example.ucodgt.R;
 import java.io.ByteArrayOutputStream;
 
 import mvc.controller.vehicle.CheckImage;
-import mvc.controller.vehicle.CheckVehicleToFind;
 
 public class GetVehiclePlate extends AppCompatActivity {
 

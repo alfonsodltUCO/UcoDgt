@@ -1,4 +1,4 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 
 import android.os.Bundle;
 
@@ -10,10 +10,7 @@ import com.example.ucodgt.R;
 
 import java.util.List;
 
-import mvc.model.business.user.client.ClientDTO;
-import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.business.vehicle.VehicleDTO;
-import mvc.view.admin.CardAdapter;
 
 public class ShowVehicles extends AppCompatActivity {
     private RecyclerView recyclerView;

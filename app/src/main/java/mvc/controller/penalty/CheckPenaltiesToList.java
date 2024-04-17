@@ -1,4 +1,4 @@
-package mvc.controller.vehicle;
+package mvc.controller.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,45 +14,45 @@ import com.example.ucodgt.R;
 import java.io.Serializable;
 import java.util.List;
 
+import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.model.business.penalty.ManagerPenalty;
+import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
+import mvc.model.data.PenaltyCallback;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
+import mvc.view.admin.penalty.ShowPenalties;
 import mvc.view.admin.vehicle.ShowVehicles;
 
-public class CheckVehiclesToList extends AppCompatActivity {
+public class CheckPenaltiesToList extends AppCompatActivity {
     ProgressBar progressBar;
-    List<VehicleDTO> vehiclelist;
+    List<PenaltyDTO> penalties;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
-        ManagerVehicle mngV=new ManagerVehicle();
-        mngV.getVehicles(CheckVehiclesToList.this, new VehicleCallback() {
-            @Override
-            public void onVehicleReceived(VehicleDTO vehicle) {
-
-            }
+        String lic=getIntent().getStringExtra("licencePlate");
+        VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
+        ManagerPenalty mngP=new ManagerPenalty();
+        mngP.getPenalties(vh,CheckPenaltiesToList.this, new PenaltyCallback() {
 
             @Override
-            public void onError(VolleyError error) {
-                Intent emptyLists = new Intent(CheckVehiclesToList.this, AdminActivity.class);
-                startActivity(emptyLists);
-                Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                Intent goShow=new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                goShow.putExtra("penalties",(Serializable) penalties);
+                startActivity(goShow);
                 hideLoading();
                 finish();
             }
 
             @Override
-            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
-                vehiclelist=vehicles;
-
-                Intent notEmptyLists = new Intent(CheckVehiclesToList.this, ShowVehicles.class);
-                notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
-                Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
-                startActivity(notEmptyLists);
+            public void onError(VolleyError error) {
+                Intent goMain=new Intent(CheckPenaltiesToList.this,AdminActivity.class);
+                Toast.makeText(CheckPenaltiesToList.this,"Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                startActivity(goMain);
                 hideLoading();
                 finish();
             }
@@ -67,4 +67,5 @@ public class CheckVehiclesToList extends AppCompatActivity {
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
+
 }

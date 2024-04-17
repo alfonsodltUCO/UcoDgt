@@ -76,7 +76,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClient(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -165,7 +165,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkClientEmail(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -251,7 +251,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
-        String URL = "http://192.168.10.160:81/api/ucodgt/user/addClient.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/user/addClient.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(client.getAge());
         StringRequest request = new StringRequest(
@@ -336,7 +336,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/getClient.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -426,7 +426,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/deleteClient.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -502,7 +502,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/getAllClients.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getAllClients.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

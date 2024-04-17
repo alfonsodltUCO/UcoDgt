@@ -1,5 +1,4 @@
-package mvc.view.vehicle;
-import android.annotation.SuppressLint;
+package mvc.view.admin.vehicle;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;

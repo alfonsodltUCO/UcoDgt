@@ -79,7 +79,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkWorker(final  WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -161,7 +161,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void checkEmailWorker(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -246,7 +246,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final WorkerDTO worker, final UserCallback callback) {
-        String URL = "http://192.168.10.160:81/api/ucodgt/user/addWorker.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/user/addWorker.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(worker.getAge());
         StringRequest request = new StringRequest(
@@ -332,7 +332,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
         private void getUserToFind(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/getWorker.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -419,7 +419,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteUserFromBd(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/deleteWorker.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/deleteWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -496,7 +496,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://192.168.10.160:81/api/ucodgt/user/getAllWorkers.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getAllWorkers.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

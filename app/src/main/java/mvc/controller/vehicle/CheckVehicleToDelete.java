@@ -5,7 +5,6 @@ import static mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,12 +16,11 @@ import com.example.ucodgt.R;
 
 import java.util.List;
 
-import mvc.controller.admin.CheckUserToDelete;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
-import mvc.view.vehicle.DeleteVehicleActivity;
+import mvc.view.admin.vehicle.DeleteVehicleActivity;
 
 public class CheckVehicleToDelete extends AppCompatActivity {
     private ProgressBar progressBar;

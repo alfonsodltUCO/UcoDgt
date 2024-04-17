@@ -20,8 +20,8 @@ import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
-import mvc.view.vehicle.IntroduceManual;
-import mvc.view.vehicle.ShowVehicle;
+import mvc.view.admin.vehicle.IntroduceManual;
+import mvc.view.admin.vehicle.ShowVehicle;
 
 public class CheckVehicleToFind extends AppCompatActivity {
     private ProgressBar progressBar;

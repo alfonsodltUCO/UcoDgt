@@ -19,7 +19,7 @@ import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
-import mvc.view.vehicle.ShowVehicle;
+import mvc.view.admin.vehicle.ShowVehicle;
 
 public class CheckImage extends AppCompatActivity{
     ProgressBar progressBar;
@@ -30,8 +30,7 @@ public class CheckImage extends AppCompatActivity{
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
-        Bitmap image = BitmapFactory.decodeByteArray(
-                getIntent().getByteArrayExtra("image"),0,getIntent().getByteArrayExtra("image").length);
+        Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0,getIntent().getByteArrayExtra("image").length);
         ManagerVehicle mngV=new ManagerVehicle();
         mngV.checkVehicle(image,CheckImage.this, new VehicleCallback() {
             @Override
@@ -40,6 +39,7 @@ public class CheckImage extends AppCompatActivity{
                     hideLoading();
                     Intent goShow=new Intent(CheckImage.this, ShowVehicle.class);
                     goShow.putExtra("vehicle",vehicle);
+                    startActivity(goShow);
                     finish();
                 });
             }
@@ -47,7 +47,7 @@ public class CheckImage extends AppCompatActivity{
             @Override
             public void onError(VolleyError error) {
                 runOnUiThread(()->{
-                    if(error.networkResponse.statusCode==404){//not found addddd
+                    if(error.networkResponse.statusCode==404){
                         Intent goAdd=new Intent(CheckImage.this, AdminActivity.class);
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);

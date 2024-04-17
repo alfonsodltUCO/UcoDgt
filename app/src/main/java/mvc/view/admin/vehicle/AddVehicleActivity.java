@@ -1,21 +1,17 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUserToAdd;
 import mvc.controller.vehicle.CheckVehicleToAdd;
-import mvc.view.admin.AddUserActivity;
 import mvc.view.admin.AdminActivity;
 
 public class AddVehicleActivity extends AppCompatActivity implements View.OnClickListener{
@@ -27,6 +23,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_vehicle);
+
         etLicencePlate=findViewById(R.id.editTextLicencePlate);
         etCarType=findViewById(R.id.editTextCarType);
         etColor=findViewById(R.id.editTextColor);
