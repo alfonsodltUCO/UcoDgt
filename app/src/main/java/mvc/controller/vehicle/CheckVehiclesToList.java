@@ -62,7 +62,7 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     finish();
                 }
             });
-        }else{//todo
+        }else{
             ManagerVehicle mngV=new ManagerVehicle();
             mngV.getVehicles(CheckVehiclesToList.this, new VehicleCallback() {
                 @Override

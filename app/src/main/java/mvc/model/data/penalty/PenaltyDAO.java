@@ -48,7 +48,7 @@ public class PenaltyDAO {
 
             @Override
             public void onError(VolleyError error) {
-
+                callback.onError(error);
             }
 
             @Override
@@ -220,7 +220,6 @@ public class PenaltyDAO {
 
     private void getPenaltiesFromBd(final ClientDTO cl,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenaltiesFromUser.php";
-        Log.d("d","llego3");
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -303,7 +302,7 @@ public class PenaltyDAO {
     // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
 
     private void getPenaltiesFromBd(final PenaltyCallback callback) {
-        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenaltiesFromCar.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenalties.php";
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,

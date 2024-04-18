@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
 import mvc.controller.penalty.CheckPenaltiesToList;
+import mvc.controller.penalty.CheckPenaltyToFind;
 import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.view.admin.penalty.IntroducePenaltyForSearch;
 import mvc.view.admin.vehicle.AddVehicleActivity;
 import mvc.view.admin.vehicle.DeleteVehicleActivity;
 import mvc.view.admin.vehicle.GetVehiclePlate;
@@ -67,6 +69,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         } else if (R.id.item9AdminListPenalties==item.getItemId()) {
             Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
             startActivity(intentListPenalties);
+        } else if (R.id.item12FindPenalty==item.getItemId()) {
+            Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
+            startActivity(intentFind);
         }
         return false;
     }

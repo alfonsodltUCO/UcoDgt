@@ -47,7 +47,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         holder.textId.setText(penalty.getId().toString().trim());
         holder.itemView.setOnClickListener(v -> {
             Intent goShowPenalty = new Intent(context, CheckPenaltyToFind.class);
-            goShowPenalty.putExtra("id", penalty.getId());
+            goShowPenalty.putExtra("id", penalty.getId().toString());
             context.startActivity(goShowPenalty);
         });
     }
