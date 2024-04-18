@@ -3,6 +3,7 @@ package mvc.view.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
+import mvc.controller.penalty.CheckPenaltiesToList;
 import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.view.admin.vehicle.AddVehicleActivity;
 import mvc.view.admin.vehicle.DeleteVehicleActivity;
@@ -62,6 +64,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         }else if(R.id.item7AdminListVehicles== item.getItemId()) {
             Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
             startActivity(intentFindVehicles);
+        } else if (R.id.item9AdminListPenalties==item.getItemId()) {
+            Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
+            startActivity(intentListPenalties);
         }
         return false;
     }

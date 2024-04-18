@@ -527,4 +527,82 @@ public class VehicleDAO {
         requestQueue.add(request);
     }
 
+    public void getVehicles(ClientDTO client,Context applicationContext, VehicleCallback callback){
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getVehiclesFromBd(client,new VehicleCallback() {
+
+
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+                callback.onVehiclesReceived(vehicles);
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void getVehiclesFromBd(final ClientDTO client,final VehicleCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/getAllVehiclesByDni.php";
+
+        StringRequest stringRequest = new StringRequest(
+
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(response != null && !response.isEmpty()){
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray listofvehicles=jsonResponse.getJSONArray("vehicles");
+                            List<VehicleDTO> vehiclestosend=new ArrayList<VehicleDTO>();
+                            for(int i=0;i<listofvehicles.length();i++){
+                                VehicleDTO vehicle=new VehicleDTO();
+                                JSONObject vehicleJson=listofvehicles.getJSONObject(i);
+                                Log.d("a",vehicleJson.toString());
+
+                                vehicle.setLicencePlate(vehicleJson.getString("licenceplate"));
+                                vehicle.setCarType(typeof.valueOf(vehicleJson.getString("carType")));
+                                vehicle.setColor(typeofColor.valueOf(vehicleJson.getString("color")));
+                                vehicle.setIdInsurance(Integer.parseInt(vehicleJson.getString("idInsurance")));
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date dateItvF,dateItvT;
+                                try {
+                                    dateItvF = format.parse(vehicleJson.getString("validItvFrom"));
+                                    dateItvT = format.parse(vehicleJson.getString("validItvTo"));
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                vehicle.setValidItvFrom(dateItvF);
+                                vehicle.setValidItvTo(dateItvT);
+
+                                vehiclestosend.add(vehicle);
+                            }
+                            Log.d("a",vehiclestosend.toString());
+                            callback.onVehiclesReceived(vehiclestosend);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", client.getDni().toString());
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
 }

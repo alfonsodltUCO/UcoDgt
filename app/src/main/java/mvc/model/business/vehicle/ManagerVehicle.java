@@ -123,6 +123,26 @@ public class ManagerVehicle {
         });
     }
 
+    public void getVehicles(ClientDTO client,Context applicationContext,VehicleCallback callback){
+        VehicleDAO vehicleD=new VehicleDAO();
+        vehicleD.getVehicles(client,applicationContext, new VehicleCallback() {
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehiclesReceived) {
+                callback.onVehiclesReceived(vehiclesReceived);
+            }
+        });
+    }
+
 
 
 }

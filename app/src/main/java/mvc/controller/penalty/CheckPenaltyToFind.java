@@ -17,10 +17,14 @@ import com.example.ucodgt.R;
 import java.util.List;
 
 import mvc.controller.vehicle.CheckVehicleToFind;
+import mvc.model.business.penalty.ManagerPenalty;
+import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
+import mvc.model.data.PenaltyCallback;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
+import mvc.view.admin.penalty.ShowPenalty;
 import mvc.view.admin.vehicle.IntroduceManual;
 import mvc.view.admin.vehicle.ShowVehicle;
 
@@ -35,37 +39,41 @@ public class CheckPenaltyToFind extends AppCompatActivity {
         showLoading();
         id=getIntent().getStringExtra("id");
         if(!TextUtils.isEmpty(id)){
-            ManagerVehicle mngV=new ManagerVehicle();
-            VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null,0);
-            mngV.getVehicle(vehicle, mvc.controller.vehicle.CheckVehicleToFind.this, new VehicleCallback() {
+            ManagerPenalty mngP=new ManagerPenalty();
+            PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,null,null,null,null,false,null,null);
+            mngP.getPenalty(penalty, CheckPenaltyToFind.this, new PenaltyCallback() {
+
+
                 @Override
-                public void onVehicleReceived(VehicleDTO vehicle) {
-                    Intent goShow=new Intent(mvc.controller.vehicle.CheckVehicleToFind.this, ShowVehicle.class);
-                    goShow.putExtra("vehicle",vehicle);
-                    startActivity(goShow);
-                    finish();
-                    hideLoading();
+                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
                 }
 
                 @Override
                 public void onError(VolleyError error) {
-                    Intent goMain=new Intent(mvc.controller.vehicle.CheckVehicleToFind.this, AdminActivity.class);
-                    Toast.makeText(mvc.controller.vehicle.CheckVehicleToFind.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
+                    Intent goMain=new Intent(CheckPenaltyToFind.this, AdminActivity.class);
+                    Toast.makeText(CheckPenaltyToFind.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
                     finish();
                     hideLoading();
                 }
 
                 @Override
-                public void onVehiclesReceived(List<VehicleDTO> vehicles) {
-
+                public void onPenaltyReceived(PenaltyDTO penalty) {
+                    Intent goShow=new Intent(CheckPenaltyToFind.this, ShowPenalty.class);
+                    goShow.putExtra("penalty",penalty);
+                    startActivity(goShow);
+                    finish();
+                    hideLoading();
                 }
+
+
             });
 
         }else{
-            Intent intentAdmin=new Intent(mvc.controller.vehicle.CheckVehicleToFind.this, IntroduceManual.class);
+            Intent intentAdmin=new Intent(CheckPenaltyToFind.this, IntroduceManual.class);
             startActivity(intentAdmin);
-            Toast.makeText(mvc.controller.vehicle.CheckVehicleToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
+            Toast.makeText(CheckPenaltyToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
             finish();
         }
 

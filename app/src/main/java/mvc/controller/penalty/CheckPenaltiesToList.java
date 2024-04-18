@@ -2,6 +2,8 @@ package mvc.controller.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import java.util.List;
 import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
+import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.PenaltyCallback;
@@ -35,28 +38,95 @@ public class CheckPenaltiesToList extends AppCompatActivity {
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         String lic=getIntent().getStringExtra("licencePlate");
-        VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
-        ManagerPenalty mngP=new ManagerPenalty();
-        mngP.getPenalties(vh,CheckPenaltiesToList.this, new PenaltyCallback() {
+        String dni=getIntent().getStringExtra("dni");
+        if(!TextUtils.isEmpty(lic)){//por vehiculo
+            VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
+            ManagerPenalty mngP=new ManagerPenalty();
+            mngP.getPenalties(vh,CheckPenaltiesToList.this, new PenaltyCallback() {
 
-            @Override
-            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
-                Intent goShow=new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
-                goShow.putExtra("penalties",(Serializable) penalties);
-                startActivity(goShow);
-                hideLoading();
-                finish();
-            }
+                @Override
+                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                    Intent goShow=new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                    goShow.putExtra("penalties",(Serializable) penalties);
+                    startActivity(goShow);
+                    hideLoading();
+                    finish();
+                }
 
-            @Override
-            public void onError(VolleyError error) {
-                Intent goMain=new Intent(CheckPenaltiesToList.this,AdminActivity.class);
-                Toast.makeText(CheckPenaltiesToList.this,"Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
-                startActivity(goMain);
-                hideLoading();
-                finish();
-            }
-        });
+                @Override
+                public void onError(VolleyError error) {
+                    Intent goMain=new Intent(CheckPenaltiesToList.this,AdminActivity.class);
+                    Toast.makeText(CheckPenaltiesToList.this,"Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                    startActivity(goMain);
+                    hideLoading();
+                    finish();
+                }
+
+                @Override
+                public void onPenaltyReceived(PenaltyDTO penalty) {
+
+                }
+            });
+
+        } else if (!TextUtils.isEmpty(dni)) {//por usuario
+            ClientDTO client=new ClientDTO(dni,null,null,null,null,null,null);
+            ManagerPenalty mngP=new ManagerPenalty();
+            mngP.getPenalties(client,CheckPenaltiesToList.this, new PenaltyCallback() {
+
+                @Override
+                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                    Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                    goShow.putExtra("penalties", (Serializable) penalties);
+                    startActivity(goShow);
+                    hideLoading();
+                    finish();
+                }
+
+                @Override
+                public void onError(VolleyError error) {
+                    Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                    Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                    startActivity(goMain);
+                    hideLoading();
+                    finish();
+                }
+
+                @Override
+                public void onPenaltyReceived(PenaltyDTO penalty) {
+
+                }
+            });
+        }else{
+            ManagerPenalty mngP=new ManagerPenalty();
+
+            mngP.getPenalties(CheckPenaltiesToList.this, new PenaltyCallback() {
+
+                @Override
+                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                    Log.d("d","llego3");
+
+                    Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                    goShow.putExtra("penalties", (Serializable) penalties);
+                    startActivity(goShow);
+                    hideLoading();
+                    finish();
+                }
+
+                @Override
+                public void onError(VolleyError error) {
+                    Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                    Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                    startActivity(goMain);
+                    hideLoading();
+                    finish();
+                }
+
+                @Override
+                public void onPenaltyReceived(PenaltyDTO penalty) {
+
+                }
+            });
+        }
 
 
     }

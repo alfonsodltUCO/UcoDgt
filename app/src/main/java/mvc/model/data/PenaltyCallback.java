@@ -10,4 +10,6 @@ import mvc.model.business.user.client.ClientDTO;
 public interface PenaltyCallback {
     void onPenaltiesReceived(List<PenaltyDTO> penalties);
     void onError(VolleyError error);
+
+    void onPenaltyReceived(PenaltyDTO penalty);
 }
