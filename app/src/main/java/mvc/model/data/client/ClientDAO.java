@@ -32,10 +32,9 @@ public class ClientDAO {
 
     public void checkLogInClient(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String email=userToFind.getEmail();
-        String password= userToFind.getPassword();
+
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkClient(email,password, new UserCallback() {
+        checkClient(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 userToFind.setEmail(user.getEmail());
@@ -76,8 +75,8 @@ public class ClientDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void checkClient(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+email;
+    private void checkClient(final ClientDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -92,7 +91,7 @@ public class ClientDAO {
                         String surname=response.getString("surname");
                         String email1 =response.getString("email");
                         String passwordhashed=response.getString("password");
-                        if(!BCrypt.checkpw(password,passwordhashed)){
+                        if(!BCrypt.checkpw(userToFind.getPassword(),passwordhashed)){
                             callback.onError(new VolleyError());
                         }else {
                             String age=response.getString("age");
@@ -104,20 +103,16 @@ public class ClientDAO {
                                 throw new RuntimeException(e);
                             }
                             Integer licencep=Integer.parseInt(response.getString("licencepoints"));
-                            ClientDTO user=new ClientDTO(null,password,name,surname,dateBirth, email1,licencep);
+                            ClientDTO user=new ClientDTO(null, userToFind.getPassword(), name,surname,dateBirth, email1,licencep);
                             callback.onUserReceived(user);
                         }
                     } catch (JSONException e) {
                         ClientDTO user=new ClientDTO(null,null,null,null,null,null,null);
-
                         callback.onUserReceived(user);
                     }
-
-
                 },
                 error -> {
                     callback.onError(error);
-                    Log.d("ADebugTag", "Value: " +error.toString());
 
                 }
         );
@@ -127,9 +122,8 @@ public class ClientDAO {
 
     public void checkEmailClient(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String email=userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkClientEmail(email, new UserCallback() {
+        checkClientEmail(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 userToFind.setEmail(user.getEmail());
@@ -170,8 +164,8 @@ public class ClientDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void checkClientEmail(final String email,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginClient.php?email="+email;
+    private void checkClientEmail(final ClientDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -257,7 +251,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
-        String URL = "http://192.168.1.19/api/ucodgt/user/addClient.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/user/addClient.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(client.getAge());
         StringRequest request = new StringRequest(
@@ -299,9 +293,8 @@ public class ClientDAO {
 
     public void getUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        getUserToFind(dni, new UserCallback() {
+        getUserToFind(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 userToFind.setEmail(user.getEmail());
@@ -342,8 +335,8 @@ public class ClientDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void getUserToFind(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getClient.php";
+    private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -379,7 +372,7 @@ public class ClientDAO {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
-                params.put("dni", dni);
+                params.put("dni", userToFind.getDni());
                 return params;
             }
         };
@@ -391,7 +384,7 @@ public class ClientDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        deleteUserFromBd(dni, new UserCallback() {
+        deleteUserFromBd(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 userToFind.setEmail(user.getEmail());
@@ -432,8 +425,8 @@ public class ClientDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void deleteUserFromBd(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/deleteClient.php";
+    private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -469,7 +462,7 @@ public class ClientDAO {
             @Override
             protected Map<String, String> getParams()  {
                 Map<String, String> params = new HashMap<>();
-                params.put("dni", dni);
+                params.put("dni", userToFind.getDni());
                 return params;
             }
         };
@@ -509,7 +502,7 @@ public class ClientDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getAllClients.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getAllClients.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -522,22 +515,23 @@ public class ClientDAO {
                         try {
                             JSONArray listofclients=response.getJSONArray("clients");
                             List<ClientDTO> clientsToSend=new ArrayList<ClientDTO>();
-                            ClientDTO client=new ClientDTO();
-                            for(int i=0;i<response.length();i++){
-                                JSONObject workerJson=listofclients.getJSONObject(i);
-                                client.setEmail(workerJson.getString("email"));
-                                client.setName(workerJson.getString("name"));
-                                client.setSurname(workerJson.getString("surname"));
-                                client.setDni(workerJson.getString("dni_client"));
+                            for(int i=0;i<listofclients.length();i++){
+                                ClientDTO client=new ClientDTO();
+                                JSONObject clientJson=listofclients.getJSONObject(i);
+
+                                client.setEmail(clientJson.getString("email"));
+                                client.setName(clientJson.getString("name"));
+                                client.setSurname(clientJson.getString("surname"));
+                                client.setDni(clientJson.getString("dni_client"));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dateBirth;
                                 try {
-                                    dateBirth = format.parse(workerJson.getString("age"));
+                                    dateBirth = format.parse(clientJson.getString("age"));
                                 } catch (ParseException e) {
                                     throw new RuntimeException(e);
                                 }
                                 client.setAge(dateBirth);
-                                client.setLicencepoints(workerJson.getInt("licencepoints"));
+                                client.setLicencepoints(clientJson.getInt("licencepoints"));
                                 clientsToSend.add(client);
                             }
                             callback.onClientsReceived(clientsToSend);

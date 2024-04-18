@@ -9,7 +9,7 @@
         android:required="true" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
 
         android:allowBackup="true"
@@ -38,13 +38,29 @@
         <activity android:name="mvc.controller.admin.CheckUserToDelete"/>
         <activity android:name="mvc.controller.admin.CheckUsersToList"/>
         <activity android:name="mvc.controller.vehicle.CheckImage" />
+        <activity android:name="mvc.controller.vehicle.CheckVehicleToDelete" />
         <activity android:name="mvc.view.admin.DeleteUserActivity"/>
         <activity android:name="mvc.view.admin.ShowUser"/>
         <activity android:name="mvc.view.admin.AdminActivity"/>
         <activity android:name="mvc.view.admin.AddUserActivity"/>
         <activity android:name="mvc.view.admin.FindUserActivity"/>
         <activity android:name="mvc.view.admin.ShowUsers" />
-        <activity android:name="mvc.view.vehicle.GetVehiclePlate" />
+        <activity android:name="mvc.view.admin.vehicle.GetVehiclePlate" />
+        <activity android:name="mvc.view.admin.vehicle.DeleteVehicleActivity" />
+        <activity android:name="mvc.view.admin.vehicle.AddVehicleActivity" />
+        <activity android:name="mvc.controller.vehicle.CheckVehicleToAdd" />
+        <activity android:name="mvc.controller.vehicle.CheckVehiclesToList" />
+        <activity android:name="mvc.view.admin.vehicle.ShowVehicles" />
+        <activity android:name="mvc.view.admin.vehicle.ShowVehicle" />
+        <activity android:name="mvc.view.admin.vehicle.IntroduceManual" />
+        <activity android:name="mvc.controller.vehicle.CheckVehicleToFind" />
+        <activity android:name="mvc.view.admin.penalty.FindPenaltyActivity" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltiesToList" />
+        <activity android:name="mvc.view.admin.penalty.ShowPenalties" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltyToFind" />
+        <activity android:name="mvc.view.admin.penalty.ShowPenalty" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltyToDelete" />
+        <activity android:name="mvc.view.admin.penalty.IntroducePenaltyForSearch" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

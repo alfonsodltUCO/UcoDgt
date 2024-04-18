@@ -31,7 +31,7 @@ public class AdminDAO {
         String email=userToFind.getEmail();
         String password= userToFind.getPassword();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkAdmin(email,password, new UserCallback() {
+        checkAdmin(userToFind, new UserCallback() {
             @Override
             public void onAdminReceived(AdminDTO user) {
 
@@ -71,8 +71,8 @@ public class AdminDAO {
             }
         });
     }
-    private void checkAdmin(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+email;
+    private void checkAdmin(final AdminDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -87,7 +87,7 @@ public class AdminDAO {
                         String surname=response.getString("surname");
                         String email1 =response.getString("email");
                         String passwordhashed=response.getString("password");
-                        if(!BCrypt.checkpw(password,passwordhashed)){
+                        if(!BCrypt.checkpw(userToFind.getPassword(),passwordhashed)){
                             callback.onError(new VolleyError());
                         }else {
                             String age=response.getString("age");
@@ -98,7 +98,7 @@ public class AdminDAO {
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }
-                            AdminDTO user=new AdminDTO(null,password,name,surname,dateBirth, email1);
+                            AdminDTO user=new AdminDTO(null,userToFind.getPassword(),name,surname,dateBirth, email1);
                             callback.onAdminReceived(user);
                         }
 
@@ -107,12 +107,9 @@ public class AdminDAO {
 
                         callback.onAdminReceived(user);
                     }
-
-
                 },
                 error -> {
                     callback.onError(error);
-                    Log.d("ADebugTag", "Value: " +error.toString());
 
                 }
         );
@@ -123,7 +120,7 @@ public class AdminDAO {
     public void checkEmailAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
         String email= userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkAdminEmail(email, new UserCallback() {
+        checkAdminEmail(userToFind, new UserCallback() {
             @Override
             public void onAdminReceived(AdminDTO user) {
 
@@ -163,8 +160,8 @@ public class AdminDAO {
             }
         });
     }
-    private void checkAdminEmail(final String email,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginAdmin.php?email="+email;
+    private void checkAdminEmail(final AdminDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

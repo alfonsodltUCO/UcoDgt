@@ -1,16 +1,15 @@
-package mvc.view.vehicle;
+package mvc.view.admin.vehicle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -23,9 +22,9 @@ import mvc.controller.vehicle.CheckImage;
 
 public class GetVehiclePlate extends AppCompatActivity {
 
-    private ImageView imageView;
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
+    Button manual;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     private static final int REQUEST_IMAGE_PICK = 102;
 
@@ -33,11 +32,14 @@ public class GetVehiclePlate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_vehicle);
-
-        imageView = findViewById(R.id.imageView);
+        manual=findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
-
+        manual.setOnClickListener(v -> {
+                Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
+                startActivity(intent);
+                finish();
+        });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
@@ -46,7 +48,6 @@ public class GetVehiclePlate extends AppCompatActivity {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        imageView.setImageBitmap(imageBitmap);
                         // Aquí puedes lanzar la actividad CheckImage con el bitmap
                         launchCheckImageActivity(imageBitmap);
                     }
@@ -59,7 +60,6 @@ public class GetVehiclePlate extends AppCompatActivity {
             if (result != null) {
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
-                    imageView.setImageBitmap(selectedImage);
                     // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
                     launchCheckImageActivity(selectedImage);
                 } catch (Exception e) {
@@ -96,7 +96,7 @@ public class GetVehiclePlate extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_IMAGE_CAPTURE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -104,4 +104,5 @@ public class GetVehiclePlate extends AppCompatActivity {
             }
         }
     }
+
 }

@@ -99,5 +99,4 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             textType = itemView.findViewById(R.id.text_type);
         }
     }
-
 }

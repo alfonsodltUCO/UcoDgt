@@ -34,10 +34,9 @@ public class WorkerDAO {
 
 
     public void checkLogInWorker(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail();
-        String password= userToFind.getPassword();
+      ;
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkWorker(email,password, new UserCallback() {
+        checkWorker(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
 
@@ -79,8 +78,8 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void checkWorker(final String email,final String password,final UserCallback callback){
-        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginWorker.php?email="+email;
+    private void checkWorker(final  WorkerDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -95,7 +94,7 @@ public class WorkerDAO {
                         String surname=response.getString("surname");
                         String email1 =response.getString("email");
                         String passwordhashed=response.getString("password");
-                        if(!BCrypt.checkpw(password,passwordhashed)){
+                        if(!BCrypt.checkpw(userToFind.getPassword(),passwordhashed)){
                             callback.onError(new VolleyError());
                         }else {
                             String age=response.getString("age");
@@ -107,7 +106,7 @@ public class WorkerDAO {
                                 throw new RuntimeException(e);
                             }
                             String number=response.getString("numberOfWorker");
-                            WorkerDTO user=new WorkerDTO(null,password,name,surname,dateBirth, email1,Integer.parseInt(number));
+                            WorkerDTO user=new WorkerDTO(null,userToFind.getPassword(),name,surname,dateBirth, email1,Integer.parseInt(number));
                             callback.onWorkerReceived(user);
                         }
                     } catch (JSONException e) {
@@ -120,8 +119,6 @@ public class WorkerDAO {
                 },
                 error -> {
                     callback.onError(error);
-                    Log.d("ADebugTag", "Value: " +error.toString());
-
                 }
         );
 
@@ -129,9 +126,8 @@ public class WorkerDAO {
     }
 
     public void checkWorkerEmail(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        checkEmailWorker(email, new UserCallback() {
+        checkEmailWorker(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {}
 
@@ -164,8 +160,8 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void checkEmailWorker(final String email,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/checkLoginWorker.php?email="+email;
+    private void checkEmailWorker(final WorkerDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -250,7 +246,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final WorkerDTO worker, final UserCallback callback) {
-        String URL = "http://192.168.1.19/api/ucodgt/user/addWorker.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/user/addWorker.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(worker.getAge());
         StringRequest request = new StringRequest(
@@ -295,7 +291,7 @@ public class WorkerDAO {
 
         String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        getUserToFind(dni, new UserCallback() {
+        getUserToFind(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
             }
@@ -335,8 +331,8 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void getUserToFind(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getWorker.php";
+        private void getUserToFind(final WorkerDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -373,7 +369,7 @@ public class WorkerDAO {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("dni", dni);
+                params.put("dni", userToFind.getDni());
                 return params;
             }
         };
@@ -382,9 +378,8 @@ public class WorkerDAO {
 
     public void deleteUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
 
-        String dni=userToFind.getDni();
         requestQueue= Volley.newRequestQueue(applicationContext);
-        deleteUserFromBd(dni, new UserCallback() {
+        deleteUserFromBd(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
             }
@@ -423,8 +418,8 @@ public class WorkerDAO {
         });
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void deleteUserFromBd(final String dni,final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/deleteWorker.php";
+    private void deleteUserFromBd(final WorkerDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/deleteWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -460,7 +455,7 @@ public class WorkerDAO {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("dni", dni);
+                params.put("dni", userToFind.getDni());
                 return params;
             }
         };
@@ -501,7 +496,7 @@ public class WorkerDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://192.168.1.19/api/ucodgt/user/getAllWorkers.php";
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getAllWorkers.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -515,7 +510,7 @@ public class WorkerDAO {
                             JSONArray listofworkers=response.getJSONArray("workers");
                             List<WorkerDTO> workersToSend=new ArrayList<WorkerDTO>();
                             WorkerDTO worker=new WorkerDTO();
-                            for(int i=0;i<response.length();i++){
+                            for(int i=0;i<listofworkers.length();i++){
                                 JSONObject workerJson=listofworkers.getJSONObject(i);
                                 worker.setEmail(workerJson.getString("email"));
                                 worker.setName(workerJson.getString("name"));

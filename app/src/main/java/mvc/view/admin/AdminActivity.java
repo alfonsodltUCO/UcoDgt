@@ -3,6 +3,7 @@ package mvc.view.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 import mvc.controller.admin.CheckUsersToList;
-import mvc.view.vehicle.GetVehiclePlate;
+import mvc.controller.penalty.CheckPenaltiesToList;
+import mvc.controller.penalty.CheckPenaltyToFind;
+import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.view.admin.penalty.IntroducePenaltyForSearch;
+import mvc.view.admin.vehicle.AddVehicleActivity;
+import mvc.view.admin.vehicle.DeleteVehicleActivity;
+import mvc.view.admin.vehicle.GetVehiclePlate;
 import mvc.view.MainActivity;
 
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener{
@@ -50,6 +57,21 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
         } else if (R.id.item8AdminFindVehicle==item.getItemId()) {
             Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(intentFindVehicle);
+        }else if(R.id.item6AdminDeleteVehicle== item.getItemId()){
+            Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
+            startActivity(intentDeleteVehicle);
+        }else if(R.id.item5AdminAddVehicle== item.getItemId()) {
+            Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
+            startActivity(intentAddVehicle);
+        }else if(R.id.item7AdminListVehicles== item.getItemId()) {
+            Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
+            startActivity(intentFindVehicles);
+        } else if (R.id.item9AdminListPenalties==item.getItemId()) {
+            Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
+            startActivity(intentListPenalties);
+        } else if (R.id.item12FindPenalty==item.getItemId()) {
+            Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
+            startActivity(intentFind);
         }
         return false;
     }

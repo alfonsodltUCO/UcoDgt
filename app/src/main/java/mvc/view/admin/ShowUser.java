@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat;
 
 import mvc.controller.admin.CheckUserToDelete;
 import mvc.controller.admin.CheckUserToFind;
+import mvc.controller.penalty.CheckPenaltiesToList;
+import mvc.controller.penalty.CheckPenaltyToFind;
+import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 
@@ -26,7 +29,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     String strDate;
     String type;
     String dniNoText;
-    Button goMenu,deleteUser;
+    Button goMenu,deleteUser,listPenalties,listVehicles;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,9 +45,13 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         dni=findViewById(R.id.textViewFoundDni);
         goMenu=findViewById(R.id.goMainMenu);
         deleteUser=findViewById(R.id.deleteUser);
+        listPenalties=findViewById(R.id.listPenalties);
+        listVehicles=findViewById(R.id.listVehicles);
         numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
         goMenu.setOnClickListener(this);
         deleteUser.setOnClickListener(this);
+        listVehicles.setOnClickListener(this);
+        listPenalties.setOnClickListener(this);
 
         if(type.equals("worker")){
 
@@ -80,6 +87,14 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             checkUserToDelete.putExtra("dni",dniNoText);
             checkUserToDelete.putExtra("type",type);
             startActivity(checkUserToDelete);
+        } else if (v.getId()==R.id.listPenalties) {
+            Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
+            goList.putExtra("dni",dniNoText);
+            startActivity(goList);
+        }else if(v.getId()==R.id.listVehicles){
+            Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
+            goListVeh.putExtra("dni",dniNoText);
+            startActivity(goListVeh);
         }
     }
 }
