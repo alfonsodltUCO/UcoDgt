@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:textSize="30sp"
             android:text="Introduce the Id"
             android:textAlignment="center"
@@ -54,6 +54,24 @@
             >
 
         </Button>
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/searchForDates"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Find By Dates"
+            />
+
 
     </LinearLayout>
     <FrameLayout

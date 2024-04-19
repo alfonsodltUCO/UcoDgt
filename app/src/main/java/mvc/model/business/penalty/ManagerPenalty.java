@@ -78,7 +78,8 @@ public class ManagerPenalty {
 
             }
         });
-    } public void getPenalties(Context applicationContext, PenaltyCallback callback){
+    }
+    public void getPenalties(Context applicationContext, PenaltyCallback callback){
         PenaltyDAO penaltyD=new PenaltyDAO();
         penaltyD.getPenalties(applicationContext, new PenaltyCallback() {
 
@@ -95,6 +96,47 @@ public class ManagerPenalty {
             @Override
             public void onPenaltyReceived(PenaltyDTO penalty) {
 
+            }
+        });
+    }
+
+    public void getPenalties(String date1, String date2,Context applicationContext, PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.getPenalties(date1,date2,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                callback.onPenaltiesReceived(penalties);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+
+            }
+        });
+    }
+
+    public void deletePenalty(PenaltyDTO penaltyToSend,Context applicationContext,PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.deletePenalty(penaltyToSend,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
             }
         });
     }

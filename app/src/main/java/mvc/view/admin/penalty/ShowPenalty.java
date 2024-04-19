@@ -61,7 +61,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             finish();
         }else if(v.getId()==R.id.deletePenalty){
             Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
-            goDelete.putExtra("id",idtodelete);
+            goDelete.putExtra("id",idtodelete.toString());
             startActivity(goDelete);
             finish();
         }

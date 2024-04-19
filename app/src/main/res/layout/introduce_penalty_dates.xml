@@ -9,53 +9,40 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="center">
+
         <EditText
-            android:id="@+id/editTextDniToFind"
+            android:id="@+id/etDateEnd"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
             android:inputType="text"
             android:textSize="30sp"
-            android:text="Introduce the DNI"
+            android:text="end of date"
             android:textAlignment="center"
             android:backgroundTint="@android:color/transparent">
         </EditText>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-        <RadioGroup
-            android:id="@+id/radioGroupTypeUserToFind"
+        <EditText
+            android:id="@+id/etDateStart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <RadioButton
-                android:id="@+id/radioButtonClient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/client"
-                android:textSize="30sp"/>
-
-            <RadioButton
-                android:id="@+id/radioButtonWorker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="@string/worker" />
-
-        </RadioGroup>
-
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="30sp"
+            android:text="start of date"
+            android:textAlignment="center"
+            android:backgroundTint="@android:color/transparent">
+        </EditText>
     </LinearLayout>
+
+
+
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -64,12 +51,12 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
-            android:id="@+id/findUser"
+            android:id="@+id/findPenalty"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Find User"
+            android:text="Find Penalty"
             />
         <Button
             android:id="@+id/goMainMenu"
@@ -83,6 +70,7 @@
         </Button>
 
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"

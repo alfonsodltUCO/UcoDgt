@@ -37,6 +37,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
+        String date1=getIntent().getStringExtra("date1");
+        String date2=getIntent().getStringExtra("date2");
         String lic=getIntent().getStringExtra("licencePlate");
         String dni=getIntent().getStringExtra("dni");
         if(!TextUtils.isEmpty(lic)){//por vehiculo
@@ -97,35 +99,66 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                 }
             });
         }else{
-            ManagerPenalty mngP=new ManagerPenalty();
+            if((!TextUtils.isEmpty(date1)) && (!TextUtils.isEmpty(date2))){
+                ManagerPenalty mngP=new ManagerPenalty();
 
-            mngP.getPenalties(CheckPenaltiesToList.this, new PenaltyCallback() {
+                mngP.getPenalties(date1,date2,CheckPenaltiesToList.this, new PenaltyCallback() {
 
-                @Override
-                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
-                    Log.d("d","llego3");
+                    @Override
+                    public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
-                    Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
-                    goShow.putExtra("penalties", (Serializable) penalties);
-                    startActivity(goShow);
-                    hideLoading();
-                    finish();
-                }
+                        Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                        goShow.putExtra("penalties", (Serializable) penalties);
+                        startActivity(goShow);
+                        hideLoading();
+                        finish();
+                    }
 
-                @Override
-                public void onError(VolleyError error) {
-                    Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
-                    Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
-                    startActivity(goMain);
-                    hideLoading();
-                    finish();
-                }
+                    @Override
+                    public void onError(VolleyError error) {
+                        Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                        Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                        startActivity(goMain);
+                        hideLoading();
+                        finish();
+                    }
 
-                @Override
-                public void onPenaltyReceived(PenaltyDTO penalty) {
+                    @Override
+                    public void onPenaltyReceived(PenaltyDTO penalty) {
 
-                }
-            });
+                    }
+                });
+            }else{
+                ManagerPenalty mngP=new ManagerPenalty();
+
+                mngP.getPenalties(CheckPenaltiesToList.this, new PenaltyCallback() {
+
+                    @Override
+                    public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
+                        Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                        goShow.putExtra("penalties", (Serializable) penalties);
+                        startActivity(goShow);
+                        hideLoading();
+                        finish();
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {
+                        Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                        Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                        startActivity(goMain);
+                        hideLoading();
+                        finish();
+                    }
+
+                    @Override
+                    public void onPenaltyReceived(PenaltyDTO penalty) {
+
+                    }
+                });
+            }
+
         }
 
 
