@@ -1,5 +1,7 @@
 package mvc.controller.penalty;
 
+import static mvc.controller.commonFunctions.ForCheckPenalty.checkDatesPenalties;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -102,32 +104,41 @@ public class CheckPenaltiesToList extends AppCompatActivity {
             if((!TextUtils.isEmpty(date1)) && (!TextUtils.isEmpty(date2))){
                 ManagerPenalty mngP=new ManagerPenalty();
 
-                mngP.getPenalties(date1,date2,CheckPenaltiesToList.this, new PenaltyCallback() {
+                if(!checkDatesPenalties(date1,date2)){
+                    Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                    Toast.makeText(CheckPenaltiesToList.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
+                    startActivity(goMain);
+                    hideLoading();
+                    finish();
+                }else{
+                    mngP.getPenalties(date1,date2,CheckPenaltiesToList.this, new PenaltyCallback() {
 
-                    @Override
-                    public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                        @Override
+                        public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
-                        Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
-                        goShow.putExtra("penalties", (Serializable) penalties);
-                        startActivity(goShow);
-                        hideLoading();
-                        finish();
-                    }
+                            Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
+                            goShow.putExtra("penalties", (Serializable) penalties);
+                            startActivity(goShow);
+                            hideLoading();
+                            finish();
+                        }
 
-                    @Override
-                    public void onError(VolleyError error) {
-                        Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
-                        Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
-                        startActivity(goMain);
-                        hideLoading();
-                        finish();
-                    }
+                        @Override
+                        public void onError(VolleyError error) {
+                            Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
+                            Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty for vehicle", Toast.LENGTH_LONG).show();
+                            startActivity(goMain);
+                            hideLoading();
+                            finish();
+                        }
 
-                    @Override
-                    public void onPenaltyReceived(PenaltyDTO penalty) {
+                        @Override
+                        public void onPenaltyReceived(PenaltyDTO penalty) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
             }else{
                 ManagerPenalty mngP=new ManagerPenalty();
 
