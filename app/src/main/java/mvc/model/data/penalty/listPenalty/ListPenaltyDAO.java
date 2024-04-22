@@ -38,7 +38,7 @@ public class ListPenaltyDAO {
         });
     }
     private void checkList(final PenaltyDTO penalty,final ListPenaltyCallback callback){
-        String URL="http://192.168.1.19:81/api/ucodgt/listPenalty/getListPenalty.php?type="+penalty.getReason();
+        String URL="http://192.168.1.19:81/api/ucodgt/listPenalty/getListPenalty.php?reason="+penalty.getReason();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
