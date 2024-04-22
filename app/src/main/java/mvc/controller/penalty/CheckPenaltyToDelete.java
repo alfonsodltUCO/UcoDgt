@@ -1,7 +1,9 @@
 package mvc.controller.penalty;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import java.util.List;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.data.PenaltyCallback;
+import mvc.view.admin.AdminActivity;
 
 public class CheckPenaltyToDelete extends AppCompatActivity {
     private ProgressBar progressBar;
@@ -26,6 +29,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         ManagerPenalty mngP=new ManagerPenalty();
+        assert id != null;
         PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,null,null,null,null,false,null,null);
         mngP.deletePenalty(penalty,CheckPenaltyToDelete.this, new PenaltyCallback() {
             @Override
@@ -35,12 +39,19 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
 
             @Override
             public void onError(VolleyError error) {
-                //no existe
-            }
+                Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
+                Toast.makeText(CheckPenaltyToDelete.this, "Not found the penalty", Toast.LENGTH_LONG).show();
+                startActivity(goMain);
+                hideLoading();
+                finish();            }
 
             @Override
             public void onPenaltyReceived(PenaltyDTO penalty) {
-                //existe y correcto
+                Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
+                Toast.makeText(CheckPenaltyToDelete.this, "Deleted done", Toast.LENGTH_LONG).show();
+                startActivity(goMain);
+                hideLoading();
+                finish();
             }
         });
     }

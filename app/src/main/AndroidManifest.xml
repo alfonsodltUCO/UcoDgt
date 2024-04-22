@@ -62,6 +62,9 @@
         <activity android:name="mvc.controller.penalty.CheckPenaltyToDelete" />
         <activity android:name="mvc.view.admin.penalty.IntroducePenaltyForSearch" />
         <activity android:name="mvc.view.admin.penalty.SearchByDatesPenalties" />
+        <activity android:name="mvc.view.admin.penalty.AddPenaltyActivity" />
+        <activity android:name="mvc.view.admin.penalty.IntroduceDescriptionForPenalty" />
+        <activity android:name="mvc.controller.penalty.CheckPenaltyToAdd" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

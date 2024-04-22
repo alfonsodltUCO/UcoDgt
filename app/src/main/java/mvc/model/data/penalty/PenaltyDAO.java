@@ -450,7 +450,7 @@ public class PenaltyDAO {
     // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
 
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyCallback callback) {
-        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&?end="+date2;
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&end="+date2;
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,

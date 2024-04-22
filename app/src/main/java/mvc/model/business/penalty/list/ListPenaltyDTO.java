@@ -1,8 +1,10 @@
 package mvc.model.business.penalty.list;
 
+import androidx.annotation.NonNull;
+
 import mvc.model.business.penalty.typeof;
 
-public class ListPenaltiesDTO {
+public class ListPenaltyDTO {
     private typeof reason;
 
     private Float maxQ,minQ;
@@ -11,11 +13,11 @@ public class ListPenaltiesDTO {
 
     private severityType type;
 
-    public ListPenaltiesDTO(){
+    public ListPenaltyDTO(){
 
     }
 
-    public ListPenaltiesDTO(typeof reason, Float maxQ, Float minQ, Integer law, Integer maxP, Integer minP, severityType type) {
+    public ListPenaltyDTO(typeof reason, Float maxQ, Float minQ, Integer law, Integer maxP, Integer minP, severityType type) {
         this.reason = reason;
         this.maxQ = maxQ;
         this.minQ = minQ;
@@ -81,6 +83,7 @@ public class ListPenaltiesDTO {
         this.reason = reason;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "ListPenaltiesDTO{" +

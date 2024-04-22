@@ -21,10 +21,11 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     String idtodelete;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,deletePenalty;
+    PenaltyDTO penalty;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PenaltyDTO penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
+        penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
         setContentView(R.layout.show_penalty);
         goMain=findViewById(R.id.goMainMenu);
         deletePenalty=findViewById(R.id.deletePenalty);
@@ -61,7 +62,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             finish();
         }else if(v.getId()==R.id.deletePenalty){
             Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
-            goDelete.putExtra("id",idtodelete.toString());
+            goDelete.putExtra("id", penalty.getId().toString());
             startActivity(goDelete);
             finish();
         }
