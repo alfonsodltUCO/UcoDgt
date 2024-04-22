@@ -29,7 +29,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
 
         etDate=findViewById(R.id.etDate);
         etDniClient=findViewById(R.id.etCDni);
-        etDniWorker=findViewById(R.id.tvDniW);
+        etDniWorker=findViewById(R.id.etWDni);
         etState=findViewById(R.id.etState);
         etReason=findViewById(R.id.etReason);
         etPlace=findViewById(R.id.etPlace);
