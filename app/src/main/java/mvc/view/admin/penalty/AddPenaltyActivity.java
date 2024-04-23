@@ -18,7 +18,7 @@ import mvc.view.admin.AdminActivity;
 
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {
     Button goAddDescrp,goMain;
-    EditText etDate,etDniClient,etDniWorker,etState,etReason,etPlace,etInformedAtTheMoment,etLocality,etLPlate,etQuantity,etPoints;
+    EditText etDate,etDniClient,etDniWorker,etReason,etPlace,etInformedAtTheMoment,etLocality,etLPlate,etQuantity,etPoints;
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         etDate=findViewById(R.id.etDate);
         etDniClient=findViewById(R.id.etCDni);
         etDniWorker=findViewById(R.id.etWDni);
-        etState=findViewById(R.id.etState);
         etReason=findViewById(R.id.etReason);
         etPlace=findViewById(R.id.etPlace);
         etInformedAtTheMoment=findViewById(R.id.etInformedAtTheMoment);
@@ -48,7 +47,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             goNext.putExtra("date",etDate.getText().toString());
             goNext.putExtra("dniC",etDniClient.getText().toString());
             goNext.putExtra("dniW",etDniWorker.getText().toString());
-            goNext.putExtra("state",etState.getText().toString());
+            goNext.putExtra("state","processed");
             goNext.putExtra("reason",etReason.getText().toString());
             goNext.putExtra("place",etPlace.getText().toString());
             goNext.putExtra("informed",etInformedAtTheMoment.getText().toString());

@@ -21,7 +21,7 @@ import mvc.view.admin.AdminActivity;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
-    Button goMain,deleteVehicle,addPenalty,listPenalties;
+    Button goMain,deleteVehicle,listPenalties;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +48,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         deleteVehicle.setOnClickListener(this);
         licplate=vehicle.getLicencePlate();
         listPenalties=findViewById(R.id.listPenalties);
-        addPenalty=findViewById(R.id.addPenalty);
         listPenalties.setOnClickListener(this);
-        addPenalty.setOnClickListener(this);
     }
 
 
@@ -70,8 +68,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goList.putExtra("licencePlate",licplate);
             startActivity(goList);
             finish();
-        } else if (v.getId()==R.id.addPenalty) {
-
         }
     }
 

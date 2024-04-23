@@ -28,7 +28,6 @@ public class ForCheckListPenalty {
                 } else if (penalty.getPoints()>listPenalty.getMaxP() || penalty.getPoints()<listPenalty.getMinP()) {
                     success[0] = false;
                 }
-
                 success[0] = true;
             }
         });

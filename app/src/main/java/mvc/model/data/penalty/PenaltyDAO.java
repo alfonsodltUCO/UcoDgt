@@ -2,6 +2,7 @@ package mvc.model.data.penalty;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -500,6 +501,76 @@ public class PenaltyDAO {
         );
 
         requestQueue.add(JsonObjectRequest);
+    }
+
+    public void addPenalty(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        addToDb(penaltyToFind,applicationContext, new PenaltyCallback() {
+
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
+    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+    private void addToDb(final PenaltyDTO penalty,final Context applicationContext, final PenaltyCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/addClient.php";
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate= formatter.format(penalty.getDate());
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onPenaltyReceived(penalty);
+                    }else{
+                        callback.onPenaltyReceived(new PenaltyDTO());
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                String val;
+                if(penalty.isInformedAtTheMoment()){
+                    val="1";
+                }else{
+                    val="0";
+                }
+                Map<String, String> params = new HashMap<>();
+                params.put("date", strDate);
+                params.put("description", penalty.getDescription());
+                params.put("reason", penalty.getReason().toString());
+                params.put("state", penalty.getState().toString());
+                params.put("dniC", penalty.getDniClient());
+                params.put("dniW", penalty.getDniWorker());
+                params.put("place", penalty.getPlace());
+                params.put("informed", val);
+                params.put("locality", penalty.getLocality());
+                params.put("licenceplate", penalty.getLicenceplate());
+                params.put("quantity", penalty.getQuantity().toString());
+                params.put("points", penalty.getPoints().toString());
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
 

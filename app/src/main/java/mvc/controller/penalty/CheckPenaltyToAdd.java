@@ -19,11 +19,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import mvc.controller.admin.CheckUserToAdd;
 import mvc.model.business.penalty.ManagerPenalty;
@@ -31,7 +33,9 @@ import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.penalty.list.ManagerListPenalty;
 import mvc.model.business.penalty.stateof;
 import mvc.model.business.penalty.typeof;
+import mvc.model.data.PenaltyCallback;
 import mvc.view.admin.AddUserActivity;
+import mvc.view.admin.AdminActivity;
 import mvc.view.admin.penalty.AddPenaltyActivity;
 
 public class CheckPenaltyToAdd extends AppCompatActivity {
@@ -164,7 +168,45 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                 hideLoading();
                                                 finish();
                                             }else{
+                                                ManagerPenalty mngP=new ManagerPenalty();
+                                                mngP.addPenalty(penalty,CheckPenaltyToAdd.this, new PenaltyCallback() {
+                                                    @Override
+                                                    public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
+                                                    }
+
+                                                    @Override
+                                                    public void onError(VolleyError error) {
+                                                        if(error.networkResponse.statusCode==401){
+                                                            Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                            startActivity(intentAdmin);
+                                                            Toast.makeText(CheckPenaltyToAdd.this,"User doesnt have this vehicle", Toast.LENGTH_LONG).show();
+                                                            hideLoading();
+                                                            finish();
+                                                        }else if(error.networkResponse.statusCode==499){
+                                                            Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                            startActivity(intentAdmin);
+                                                            Toast.makeText(CheckPenaltyToAdd.this,"Client/Worker doesnt exist\nOr vehicle doesnt exist", Toast.LENGTH_LONG).show();
+                                                            hideLoading();
+                                                            finish();
+                                                        }else{
+                                                            Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                            startActivity(intentAdmin);
+                                                            Toast.makeText(CheckPenaltyToAdd.this,"An error has ocurred, check users and vehicle exist", Toast.LENGTH_LONG).show();
+                                                            hideLoading();
+                                                            finish();
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onPenaltyReceived(PenaltyDTO penalty) {
+                                                        Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
+                                                        startActivity(intentAdmin);
+                                                        Toast.makeText(CheckPenaltyToAdd.this,"Penalty added", Toast.LENGTH_LONG).show();
+                                                        hideLoading();
+                                                        finish();
+                                                    }
+                                                });
                                             }
 
                                         }
