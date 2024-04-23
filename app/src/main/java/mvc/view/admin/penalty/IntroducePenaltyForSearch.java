@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.penalty.CheckPenaltyToFind;
+import mvc.controller.admin.penalty.CheckPenaltiesToList;
+import mvc.controller.admin.penalty.CheckPenaltyToFind;
 import mvc.view.admin.AdminActivity;
 
 public class IntroducePenaltyForSearch extends AppCompatActivity implements View.OnClickListener {

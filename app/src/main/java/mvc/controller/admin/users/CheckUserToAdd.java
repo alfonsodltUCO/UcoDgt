@@ -1,4 +1,4 @@
-package mvc.controller.admin;
+package mvc.controller.admin.users;
 
 import static mvc.controller.commonFunctions.ForCheckUser.*;
 

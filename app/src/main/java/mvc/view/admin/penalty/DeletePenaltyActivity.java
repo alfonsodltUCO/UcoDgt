@@ -11,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.penalty.CheckPenaltyToDelete;
-import mvc.controller.penalty.CheckPenaltyToFind;
+import mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import mvc.view.admin.AdminActivity;
 
 public class DeletePenaltyActivity extends AppCompatActivity implements View.OnClickListener {

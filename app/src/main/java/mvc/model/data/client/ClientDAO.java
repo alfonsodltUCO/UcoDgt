@@ -90,6 +90,7 @@ public class ClientDAO {
                         String name=response.getString("name");
                         String surname=response.getString("surname");
                         String email1 =response.getString("email");
+                        String dni=response.getString("dni_client");
                         String passwordhashed=response.getString("password");
                         if(!BCrypt.checkpw(userToFind.getPassword(),passwordhashed)){
                             callback.onError(new VolleyError());
@@ -103,7 +104,7 @@ public class ClientDAO {
                                 throw new RuntimeException(e);
                             }
                             Integer licencep=Integer.parseInt(response.getString("licencepoints"));
-                            ClientDTO user=new ClientDTO(null, userToFind.getPassword(), name,surname,dateBirth, email1,licencep);
+                            ClientDTO user=new ClientDTO(dni, userToFind.getPassword(), name,surname,dateBirth, email1,licencep);
                             callback.onUserReceived(user);
                         }
                     } catch (JSONException e) {

@@ -1,4 +1,4 @@
-package mvc.controller.vehicle;
+package mvc.controller.admin.vehicle;
 
 
 import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
@@ -112,12 +112,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
                                                     @Override
                                                     public void onError(VolleyError error) {
-                                                        if(error.networkResponse.statusCode==500){
+                                                        if(error.networkResponse.statusCode==400){
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                                             startActivity(intentAdmin);
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
                                                             finish();
-                                                        } else if (error.networkResponse.statusCode==501) {
+                                                        } else if (error.networkResponse.statusCode==404) {
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                                             startActivity(intentAdmin);
                                                             Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();

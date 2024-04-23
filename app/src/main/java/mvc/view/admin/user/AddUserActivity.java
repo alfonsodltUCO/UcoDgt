@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUserToAdd;
+import mvc.controller.admin.users.CheckUserToAdd;
 import mvc.view.admin.AdminActivity;
 
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {

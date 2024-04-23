@@ -97,7 +97,6 @@ public class PenaltyDAO {
                                 penalty.setLicenceplate(penaltyJson.getString("licenceplate"));
                                 penalty.setQuantity(Float.valueOf(penaltyJson.getString("quantity")));
                                 penalty.setPoints(Integer.valueOf(penaltyJson.getString("points")));
-                                Log.d("a",penalty.toString());
                                 penaltiesToSend.add(penalty);
                             }
                             callback.onPenaltiesReceived(penaltiesToSend);

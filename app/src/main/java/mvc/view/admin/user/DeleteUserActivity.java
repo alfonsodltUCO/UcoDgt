@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUserToDelete;
+import mvc.controller.admin.users.CheckUserToDelete;
 import mvc.view.admin.AdminActivity;
 
 public class DeleteUserActivity extends AppCompatActivity implements View.OnClickListener{

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.vehicle.CheckVehicleToDelete;
+import mvc.controller.admin.vehicle.CheckVehicleToDelete;
 import mvc.view.admin.AdminActivity;
 
 public class DeleteVehicleActivity extends AppCompatActivity implements View.OnClickListener{

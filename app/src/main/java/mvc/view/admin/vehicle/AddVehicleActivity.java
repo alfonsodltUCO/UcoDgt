@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.vehicle.CheckVehicleToAdd;
+import mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import mvc.view.admin.AdminActivity;
 
 public class AddVehicleActivity extends AppCompatActivity implements View.OnClickListener{

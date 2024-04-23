@@ -1,4 +1,4 @@
-package mvc.view.admin.penalty;
+package mvc.view.client.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,16 +14,19 @@ import com.example.ucodgt.R;
 import mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.view.admin.AdminActivity;
+import mvc.view.client.ClientActivity;
 
 public class ShowPenalty extends AppCompatActivity implements View.OnClickListener{
     String idtodelete;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,deletePenalty;
     PenaltyDTO penalty;
+    String dni;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
+        dni=getIntent().getStringExtra("dni");
         setContentView(R.layout.show_penalty);
         goMain=findViewById(R.id.goMainMenu);
         deletePenalty=findViewById(R.id.deletePenalty);
@@ -53,9 +56,10 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) {//cambiar delete por pay
         if(v.getId()==R.id.goMainMenu){
-            Intent goMain=new Intent(ShowPenalty.this, AdminActivity.class);
+            Intent goMain=new Intent(ShowPenalty.this, ClientActivity.class);
+            goMain.putExtra("dni",dni);
             startActivity(goMain);
             finish();
         }else if(v.getId()==R.id.deletePenalty){

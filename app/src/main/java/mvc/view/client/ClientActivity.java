@@ -13,34 +13,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUsersToList;
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.controller.client.CheckVehiclesToListForClient;
 import mvc.view.MainActivity;
-import mvc.view.admin.AdminActivity;
-import mvc.view.admin.penalty.AddPenaltyActivity;
-import mvc.view.admin.penalty.IntroducePenaltyForSearch;
-import mvc.view.admin.user.AddUserActivity;
-import mvc.view.admin.user.DeleteUserActivity;
-import mvc.view.admin.user.FindUserActivity;
-import mvc.view.admin.vehicle.AddVehicleActivity;
-import mvc.view.admin.vehicle.DeleteVehicleActivity;
-import mvc.view.admin.vehicle.GetVehiclePlate;
 
 /**
- * This is used to handle all the client options
+ * Class used to handle all the client options
+ * @author Alfonso de la Torre
+ * The dni will be passed due do be able to manage the client
+ * Also to not ask for each operation against his options
  */
+
 public class ClientActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button closeSession;
     String dni;
 
+    /**
+     * Method used to handle the view creation
+     */
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        dni=getIntent().getStringExtra("dni");
     }
 
+    /**
+     * Method used to create the menu of the client
+     */
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.clientmenu,menu);
         setContentView(R.layout.clientmain);
@@ -50,9 +49,17 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * Method used to handle the client menu creation
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        dni=getIntent().getStringExtra("dni");
         if(item.getItemId()==R.id.item1ClientListVehicles){
+            Intent intent=new Intent(ClientActivity.this, CheckVehiclesToListForClient.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
+            finish();
 
         }else if(item.getItemId()==R.id.item2ClientListPenalties){
 
@@ -66,6 +73,9 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         return false;
     }
 
+    /**
+     * Method used to handle the event of button clicked
+     */
     public void onClick(View v) {
 
         if(v.getId()==R.id.closeSession){

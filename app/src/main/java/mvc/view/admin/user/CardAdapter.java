@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
-import mvc.controller.admin.CheckUserToFind;
+import mvc.controller.admin.users.CheckUserToFind;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import com.example.ucodgt.R;

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.CheckUserToFind;
+import mvc.controller.admin.users.CheckUserToFind;
 import mvc.view.admin.AdminActivity;
 
 public class FindUserActivity extends AppCompatActivity implements View.OnClickListener {

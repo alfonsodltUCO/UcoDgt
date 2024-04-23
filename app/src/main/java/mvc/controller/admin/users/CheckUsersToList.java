@@ -1,4 +1,4 @@
-package mvc.controller.admin;
+package mvc.controller.admin.users;
 
 import android.content.Intent;
 import android.os.Bundle;

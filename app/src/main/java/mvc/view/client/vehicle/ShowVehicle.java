@@ -1,4 +1,4 @@
-package mvc.view.admin.vehicle;
+package mvc.view.client.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,20 +13,22 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
-import mvc.controller.admin.penalty.CheckPenaltiesToList;
-import mvc.controller.admin.vehicle.CheckVehicleToDelete;
+import mvc.controller.client.CheckPenaltiesToListForClient;
 import mvc.model.business.vehicle.VehicleDTO;
-import mvc.view.admin.AdminActivity;
+import mvc.view.client.ClientActivity;
 
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
+    String dni;
     Button goMain,deleteVehicle,listPenalties;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         VehicleDTO vehicle= (VehicleDTO) getIntent().getSerializableExtra("vehicle");
-        setContentView(R.layout.show_vehicle);
+        dni=getIntent().getStringExtra("dni");
+        setContentView(R.layout.show_vehicle_for_client);
+        deleteVehicle.setVisibility(View.GONE);
         lplate=findViewById(R.id.textViewFoundLicencePlate);
         color=findViewById(R.id.textViewFoundColor);
         type=findViewById(R.id.textViewCarType);
@@ -43,7 +45,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         strDate= formatter.format(vehicle.getValidItvTo());
         itv2.setText("Itv valid to= "+strDate);
         goMain=findViewById(R.id.goMainMenu);
-        deleteVehicle=findViewById(R.id.deleteVehicle);
         goMain.setOnClickListener(this);
         deleteVehicle.setOnClickListener(this);
         licplate=vehicle.getLicencePlate();
@@ -55,17 +56,14 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.goMainMenu){
-            Intent goMain=new Intent(ShowVehicle.this, AdminActivity.class);
+            Intent goMain=new Intent(ShowVehicle.this, ClientActivity.class);
+            goMain.putExtra("dni",dni);
             startActivity(goMain);
             finish();
-        }else if(v.getId()==R.id.deleteVehicle){
-            Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
-            goDelete.putExtra("licencePlate",licplate);
-            startActivity(goDelete);
-            finish();
         } else if (v.getId()==R.id.listPenalties) {
-            Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
+            Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToListForClient.class);
             goList.putExtra("licencePlate",licplate);
+            goList.putExtra("dni",dni);
             startActivity(goList);
             finish();
         }

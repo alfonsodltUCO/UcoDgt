@@ -1,4 +1,4 @@
-package mvc.controller.vehicle;
+package mvc.controller.admin.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;

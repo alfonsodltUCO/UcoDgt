@@ -1,11 +1,10 @@
-package mvc.controller.penalty;
+package mvc.controller.admin.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkDatesPenalties;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,17 +17,13 @@ import com.example.ucodgt.R;
 import java.io.Serializable;
 import java.util.List;
 
-import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.user.client.ClientDTO;
-import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.PenaltyCallback;
-import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.penalty.ShowPenalties;
-import mvc.view.admin.vehicle.ShowVehicles;
 
 public class CheckPenaltiesToList extends AppCompatActivity {
     ProgressBar progressBar;

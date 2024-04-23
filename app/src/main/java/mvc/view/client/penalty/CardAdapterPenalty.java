@@ -1,4 +1,4 @@
-package mvc.view.admin.penalty;
+package mvc.view.client.penalty;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,21 +14,23 @@ import com.example.ucodgt.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.controller.admin.penalty.CheckPenaltyToFind;
+import mvc.controller.client.CheckPenaltyToFindForClient;
 import mvc.model.business.penalty.PenaltyDTO;
 
 public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.CardViewHolder> {
 
     private List<PenaltyDTO> penaltyList;
     private Context context;
+    String dni;
 
-    public CardAdapterPenalty(Context context, List<PenaltyDTO> penaltyList) {
+    public CardAdapterPenalty(String dni,Context context, List<PenaltyDTO> penaltyList) {
         this.context = context;
         if (penaltyList == null) {
             this.penaltyList = new ArrayList<>();
         } else {
             this.penaltyList = penaltyList;
         }
+        this.dni=dni;
     }
 
     @NonNull
@@ -44,8 +46,9 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         holder.textPlate.setText(penalty.getLicenceplate());
         holder.textId.setText(penalty.getId().toString().trim());
         holder.itemView.setOnClickListener(v -> {
-            Intent goShowPenalty = new Intent(context, CheckPenaltyToFind.class);
+            Intent goShowPenalty = new Intent(context, CheckPenaltyToFindForClient.class);
             goShowPenalty.putExtra("id", penalty.getId().toString());
+            goShowPenalty.putExtra("dni",dni);
             context.startActivity(goShowPenalty);
         });
     }

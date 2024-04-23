@@ -18,7 +18,7 @@ import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
-import mvc.controller.vehicle.CheckImage;
+import mvc.controller.admin.vehicle.CheckImage;
 
 public class GetVehiclePlate extends AppCompatActivity {
 

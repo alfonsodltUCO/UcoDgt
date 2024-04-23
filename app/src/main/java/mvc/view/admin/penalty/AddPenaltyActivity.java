@@ -11,9 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.model.business.penalty.PenaltyDTO;
-import mvc.model.data.PenaltyCallback;
 import mvc.view.admin.AdminActivity;
 
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {

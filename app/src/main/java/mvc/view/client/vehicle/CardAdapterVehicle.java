@@ -1,4 +1,4 @@
-package mvc.view.admin.vehicle;
+package mvc.view.client.vehicle;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,20 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mvc.controller.admin.vehicle.CheckVehicleToFind;
+import mvc.controller.client.CheckVehicleToFindForClient;
 import mvc.model.business.vehicle.VehicleDTO;
 
 public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.CardViewHolder> {
 
     private List<VehicleDTO> vehicleList;
     private Context context;
+    private String dni;
 
-    public CardAdapterVehicle(Context context, List<VehicleDTO> vehicleList) {
+    public CardAdapterVehicle(String dniC,Context context, List<VehicleDTO> vehicleList) {
         this.context = context;
         if (vehicleList == null) {
             this.vehicleList = new ArrayList<>();
         } else {
             this.vehicleList = vehicleList;
         }
+        this.dni=dniC;
     }
 
     @NonNull
@@ -44,8 +47,9 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
         holder.textPlate.setText(vehicle.getLicencePlate());
         holder.textType.setText(vehicle.getCarType().toString());
         holder.itemView.setOnClickListener(v -> {
-            Intent goShowVehicle = new Intent(context, CheckVehicleToFind.class);
+            Intent goShowVehicle = new Intent(context, CheckVehicleToFindForClient.class);
             goShowVehicle.putExtra("licenceplate", vehicle.getLicencePlate());
+            goShowVehicle.putExtra("dni",dni);
             context.startActivity(goShowVehicle);
         });
     }

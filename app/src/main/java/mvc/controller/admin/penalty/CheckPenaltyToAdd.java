@@ -1,4 +1,4 @@
-package mvc.controller.penalty;
+package mvc.controller.admin.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckListPenalty.checkPenalty;
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkDate;

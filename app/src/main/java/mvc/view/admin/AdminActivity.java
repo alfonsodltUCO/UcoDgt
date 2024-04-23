@@ -12,9 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
-import mvc.controller.admin.CheckUsersToList;
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.controller.admin.users.CheckUsersToList;
+import mvc.controller.admin.penalty.CheckPenaltiesToList;
+import mvc.controller.admin.vehicle.CheckVehiclesToList;
 import mvc.view.admin.penalty.AddPenaltyActivity;
 import mvc.view.admin.penalty.DeletePenaltyActivity;
 import mvc.view.admin.penalty.IntroducePenaltyForSearch;

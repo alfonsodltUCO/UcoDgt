@@ -1,4 +1,4 @@
-package mvc.view.admin.penalty;
+package mvc.view.client.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package mvc.controller.penalty;
+package mvc.controller.admin.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;

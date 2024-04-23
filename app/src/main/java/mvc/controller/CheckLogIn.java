@@ -49,7 +49,7 @@ public class CheckLogIn extends AppCompatActivity {
                         throw new RuntimeException(e);
                     }
                     Intent intentClient=new Intent(CheckLogIn.this, ClientActivity.class);
-                    intentClient.putExtra("dni",user.getDni());
+                    intentClient.putExtra("dni",user.getDni().toString());
                     startActivity(intentClient);
                     hideLoading();
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();

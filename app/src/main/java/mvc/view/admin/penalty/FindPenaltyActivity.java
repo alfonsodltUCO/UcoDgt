@@ -11,7 +11,6 @@ import android.widget.Button;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -20,8 +19,7 @@ import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
-import mvc.controller.vehicle.CheckImage;
-import mvc.view.admin.vehicle.GetVehiclePlate;
+import mvc.controller.admin.vehicle.CheckImage;
 import mvc.view.admin.vehicle.IntroduceManual;
 
 public class FindPenaltyActivity extends AppCompatActivity {

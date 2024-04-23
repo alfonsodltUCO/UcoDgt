@@ -13,9 +13,9 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
-import mvc.controller.admin.CheckUserToDelete;
-import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.vehicle.CheckVehiclesToList;
+import mvc.controller.admin.users.CheckUserToDelete;
+import mvc.controller.admin.penalty.CheckPenaltiesToList;
+import mvc.controller.admin.vehicle.CheckVehiclesToList;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.view.admin.AdminActivity;

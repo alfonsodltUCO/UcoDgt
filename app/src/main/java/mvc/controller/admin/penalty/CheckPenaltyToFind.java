@@ -1,7 +1,6 @@
-package mvc.controller.penalty;
+package mvc.controller.admin.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkNumeric;
-import static mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,18 +16,12 @@ import com.example.ucodgt.R;
 
 import java.util.List;
 
-import mvc.controller.vehicle.CheckVehicleToFind;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
-import mvc.model.business.vehicle.ManagerVehicle;
-import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.PenaltyCallback;
-import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.penalty.IntroducePenaltyForSearch;
 import mvc.view.admin.penalty.ShowPenalty;
-import mvc.view.admin.vehicle.IntroduceManual;
-import mvc.view.admin.vehicle.ShowVehicle;
 
 public class CheckPenaltyToFind extends AppCompatActivity {
     private ProgressBar progressBar;
