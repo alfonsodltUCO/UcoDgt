@@ -21,7 +21,7 @@ import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.admin.AdminActivity;
-import mvc.view.admin.ShowUsers;
+import mvc.view.admin.user.ShowUsers;
 
 public class CheckUsersToList extends AppCompatActivity {
 

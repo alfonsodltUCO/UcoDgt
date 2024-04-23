@@ -4,10 +4,7 @@ import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -16,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -27,8 +23,8 @@ import mvc.model.business.user.client.ManagerClient;
 import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
-import mvc.view.admin.FindUserActivity;
-import mvc.view.admin.ShowUser;
+import mvc.view.admin.user.FindUserActivity;
+import mvc.view.admin.user.ShowUser;
 
 public class CheckUserToFind  extends AppCompatActivity {
     private ProgressBar progressBar;

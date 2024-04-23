@@ -11,7 +11,7 @@ import mvc.model.data.ListPenaltyCallback;
 
 public class ForCheckListPenalty {
 
-    public static boolean checkPenalty(PenaltyDTO penalty,Context context, PenaltyDTO callback) {
+    public static boolean checkPenalty(PenaltyDTO penalty,Context context) {
         final boolean[] success = {false}; // Variable de estado
 
         ManagerListPenalty mngLP = new ManagerListPenalty();

@@ -27,7 +27,7 @@ import mvc.model.business.user.client.ManagerClient;
 import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
-import mvc.view.admin.AddUserActivity;
+import mvc.view.admin.user.AddUserActivity;
 import mvc.view.admin.AdminActivity;
 
 public class CheckUserToAdd extends AppCompatActivity {

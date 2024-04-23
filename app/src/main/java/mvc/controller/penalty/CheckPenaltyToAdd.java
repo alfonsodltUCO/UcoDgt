@@ -12,7 +12,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -27,14 +26,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import mvc.controller.admin.CheckUserToAdd;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
-import mvc.model.business.penalty.list.ManagerListPenalty;
 import mvc.model.business.penalty.stateof;
 import mvc.model.business.penalty.typeof;
 import mvc.model.data.PenaltyCallback;
-import mvc.view.admin.AddUserActivity;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.penalty.AddPenaltyActivity;
 
@@ -161,7 +157,7 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                             finish();
                                         }else{
                                             PenaltyDTO penalty=new PenaltyDTO(null,Integer.parseInt(points),dateOfPenalty,Float.parseFloat(quantity), typeof.valueOf(reason), stateof.valueOf(state),dniC,dniW,description,place,val,locality,licenceplate);
-                                            if(!checkPenalty(penalty,CheckPenaltyToAdd.this,penalty)){
+                                            if(!checkPenalty(penalty,CheckPenaltyToAdd.this)){
                                                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                                                 startActivity(intentAdmin);
                                                 Toast.makeText(CheckPenaltyToAdd.this,"Points and quantity must be between the range of penalty reason", Toast.LENGTH_LONG).show();

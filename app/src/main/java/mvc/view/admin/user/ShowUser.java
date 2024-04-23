@@ -1,11 +1,9 @@
-package mvc.view.admin;
+package mvc.view.admin.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,12 +14,11 @@ import com.example.ucodgt.R;
 import java.text.SimpleDateFormat;
 
 import mvc.controller.admin.CheckUserToDelete;
-import mvc.controller.admin.CheckUserToFind;
 import mvc.controller.penalty.CheckPenaltiesToList;
-import mvc.controller.penalty.CheckPenaltyToFind;
 import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
+import mvc.view.admin.AdminActivity;
 
 
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {

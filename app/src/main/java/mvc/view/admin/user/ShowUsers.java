@@ -1,17 +1,13 @@
-package mvc.view.admin;
+package mvc.view.admin.user;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ucodgt.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mvc.model.business.user.client.ClientDTO;

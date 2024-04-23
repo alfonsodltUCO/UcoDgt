@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
+import mvc.controller.penalty.CheckPenaltiesToList;
 import mvc.controller.penalty.CheckPenaltyToFind;
 import mvc.view.admin.AdminActivity;
 
@@ -44,12 +45,19 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.findPenalty){
-            Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
-            intentFind.putExtra("id",etId.getText().toString());
-            intentFind.putExtra("state",selectedOption);
+            if(selectedOption!=null){
+                Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltiesToList.class);
+                intentFind.putExtra("state",selectedOption);
+                startActivity(intentFind);
+                finish();
 
-            startActivity(intentFind);
-            finish();
+            }else{
+                Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
+
+                intentFind.putExtra("id",etId.getText().toString());
+                startActivity(intentFind);
+                finish();
+            }
         } else if (v.getId()==R.id.goMainMenu) {
             Intent intentGoMain = new Intent(IntroducePenaltyForSearch.this, AdminActivity.class);
             startActivity(intentGoMain);

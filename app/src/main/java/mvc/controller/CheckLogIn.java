@@ -21,6 +21,7 @@ import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.MainActivity;
 import mvc.view.admin.AdminActivity;
+import mvc.view.client.ClientActivity;
 
 public class CheckLogIn extends AppCompatActivity {
 
@@ -47,8 +48,11 @@ public class CheckLogIn extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    Toast.makeText(CheckLogIn.this, "Success Client", Toast.LENGTH_SHORT).show();
+                    Intent intentClient=new Intent(CheckLogIn.this, ClientActivity.class);
+                    intentClient.putExtra("dni",user.getDni());
+                    startActivity(intentClient);
                     hideLoading();
+                    Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
                     finish();
                 });
             }
@@ -138,7 +142,6 @@ public class CheckLogIn extends AppCompatActivity {
                                     throw new RuntimeException(e);
                                 }
                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
-                                intentAdmin.putExtra("type","admin");
                                 startActivity(intentAdmin);
                                 hideLoading();
                                 Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();

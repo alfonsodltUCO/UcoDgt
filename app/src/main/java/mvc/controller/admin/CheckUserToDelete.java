@@ -5,7 +5,6 @@ import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -26,7 +25,7 @@ import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.admin.AdminActivity;
-import mvc.view.admin.DeleteUserActivity;
+import mvc.view.admin.user.DeleteUserActivity;
 
 public class CheckUserToDelete extends AppCompatActivity {
     private ProgressBar progressBar;

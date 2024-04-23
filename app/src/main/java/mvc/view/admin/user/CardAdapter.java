@@ -1,11 +1,9 @@
-package mvc.view.admin;
+package mvc.view.admin.user;
 import static androidx.core.content.ContextCompat.startActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

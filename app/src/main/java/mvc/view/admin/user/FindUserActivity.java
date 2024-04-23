@@ -1,4 +1,4 @@
-package mvc.view.admin;
+package mvc.view.admin.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ucodgt.R;
 
 import mvc.controller.admin.CheckUserToFind;
+import mvc.view.admin.AdminActivity;
 
 public class FindUserActivity extends AppCompatActivity implements View.OnClickListener {
     RadioGroup radiogrouptypeuser;
