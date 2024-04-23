@@ -178,16 +178,22 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
                                                             @Override
                                                             public void onError(VolleyError error) {
-                                                                if(error.networkResponse.statusCode==401){
+                                                                if(error.networkResponse.statusCode==404){
                                                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                                                                     startActivity(intentAdmin);
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"User doesnt have this vehicle", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
                                                                     finish();
-                                                                }else if(error.networkResponse.statusCode==499){
+                                                                }else if(error.networkResponse.statusCode==400){
                                                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                                                                     startActivity(intentAdmin);
-                                                                    Toast.makeText(CheckPenaltyToAdd.this,"Client/Worker doesnt exist\nOr vehicle doesnt exist", Toast.LENGTH_LONG).show();
+                                                                    Toast.makeText(CheckPenaltyToAdd.this,"Worker doesnt exist\nOr vehicle doesnt exist", Toast.LENGTH_LONG).show();
+                                                                    hideLoading();
+                                                                    finish();
+                                                                }else if(error.networkResponse.statusCode==422) {
+                                                                    Intent intentAdmin = new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                                    startActivity(intentAdmin);
+                                                                    Toast.makeText(CheckPenaltyToAdd.this, "Client doesnt exists", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
                                                                     finish();
                                                                 }else{
