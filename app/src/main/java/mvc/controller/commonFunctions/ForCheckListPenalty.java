@@ -1,8 +1,11 @@
 package mvc.controller.commonFunctions;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.VolleyError;
+
+import java.util.Objects;
 
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.penalty.list.ListPenaltyDTO;
@@ -11,28 +14,21 @@ import mvc.model.data.ListPenaltyCallback;
 
 public class ForCheckListPenalty {
 
-    public static boolean checkPenalty(PenaltyDTO penalty,Context context) {
-        final boolean[] success = {false}; // Variable de estado
-
+    public static void checkPenalty(PenaltyDTO penalty,Context context,ListPenaltyCallback callback) {
         ManagerListPenalty mngLP = new ManagerListPenalty();
         mngLP.checkList(penalty,context, new ListPenaltyCallback() {
             @Override
             public void onError(VolleyError error) {
-                success[0] = false; // Error, establecer success como false
+                callback.onError(error);
             }
 
             @Override
             public void onListReceived(ListPenaltyDTO listPenalty) {
-                if(penalty.getQuantity()>listPenalty.getMaxQ() || penalty.getQuantity()<listPenalty.getMinQ()){
-                    success[0] = false;
-                } else if (penalty.getPoints()>listPenalty.getMaxP() || penalty.getPoints()<listPenalty.getMinP()) {
-                    success[0] = false;
-                }
-                success[0] = true;
+
+                callback.onListReceived(listPenalty);
+
             }
         });
-
-        return success[0];
     }
 
 }

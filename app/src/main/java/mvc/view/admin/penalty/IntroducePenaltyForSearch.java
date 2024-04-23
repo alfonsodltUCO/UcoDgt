@@ -33,6 +33,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
         searchByDates=findViewById(R.id.searchForDates);
         searchByDates.setOnClickListener(this);
         goMain.setOnClickListener(this);
+        rgroup=findViewById(R.id.rgState);
         goSearch.setOnClickListener(this);
         rgroup.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
@@ -53,7 +54,6 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
 
             }else{
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
-
                 intentFind.putExtra("id",etId.getText().toString());
                 startActivity(intentFind);
                 finish();

@@ -16,6 +16,7 @@ import mvc.controller.admin.CheckUsersToList;
 import mvc.controller.penalty.CheckPenaltiesToList;
 import mvc.controller.vehicle.CheckVehiclesToList;
 import mvc.view.admin.penalty.AddPenaltyActivity;
+import mvc.view.admin.penalty.DeletePenaltyActivity;
 import mvc.view.admin.penalty.IntroducePenaltyForSearch;
 import mvc.view.admin.user.AddUserActivity;
 import mvc.view.admin.user.DeleteUserActivity;
@@ -94,7 +95,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             finish();
 
         } else if(R.id.item11AdminDeletePenalty==item.getItemId()){
-            Intent goDelete=new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
+            Intent goDelete=new Intent(AdminActivity.this, DeletePenaltyActivity.class);
             startActivity(goDelete);
             finish();
 

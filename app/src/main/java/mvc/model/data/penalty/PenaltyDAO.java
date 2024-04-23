@@ -599,7 +599,7 @@ public class PenaltyDAO {
     }
     // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final PenaltyDTO penalty,final Context applicationContext, final PenaltyCallback callback) {
-        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/addClient.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/addPenalty.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(penalty.getDate());
         StringRequest request = new StringRequest(

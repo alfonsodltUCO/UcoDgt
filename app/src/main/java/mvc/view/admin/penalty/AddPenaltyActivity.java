@@ -42,7 +42,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         goMain.setOnClickListener(this);
     }
     public void onClick(View v) {
-        if(v.getId()==R.id.findPenalty){
+        if(v.getId()==R.id.goNext){
             Intent goNext = new Intent(AddPenaltyActivity.this, IntroduceDescriptionForPenalty.class);
             goNext.putExtra("date",etDate.getText().toString());
             goNext.putExtra("dniC",etDniClient.getText().toString());

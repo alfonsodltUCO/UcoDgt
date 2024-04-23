@@ -35,15 +35,21 @@ public class ForCheckPenalty {
                 cal.setTime(now);
                 cal.add(Calendar.HOUR, -25);
                 Date older = cal.getTime();
-
+                cal.setTime(now);
+                cal.add(Calendar.HOUR, 0);
+                Date newer=cal.getTime();
                 assert penalty != null;
                 if (penalty.before(older)) {
                     return false;
                 } else {
-                    return true;
+                    if(newer.before(penalty)){
+                       return false;
+                    }else{
+                        return true;
+                    }
                 }
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                return false;
             }
         } else {
             return false;
@@ -84,7 +90,7 @@ public class ForCheckPenalty {
     }
 
     public static boolean checkStateOf(String state){
-        for (typeof tp : typeof.values()) {
+        for (stateof tp : stateof.values()) {
             if (tp.name().equalsIgnoreCase(state)) {
                 return true;
             }
@@ -94,7 +100,7 @@ public class ForCheckPenalty {
     public static boolean checkPoints(String points) {
         try {
             int num = Integer.parseInt(points);
-            return num > 0;
+            return num >=0;
         } catch (NumberFormatException e) {
             return false;
         }
@@ -103,14 +109,14 @@ public class ForCheckPenalty {
     public static boolean checkQuantity(String quantity) {
         try {
             float num = Float.parseFloat(quantity);
-            return num > 0;
+            return num >= 0;
         } catch (NumberFormatException e) {
             return false;
         }
     }
 
     public static boolean checkReasonOf(String reason){
-        for (stateof tp : stateof.values()) {
+        for (typeof tp : typeof.values()) {
             if (tp.name().equalsIgnoreCase(reason)) {
                 return true;
             }

@@ -36,6 +36,7 @@ import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.UserCallback;
 import mvc.model.data.VehicleCallback;
+import mvc.view.admin.AdminActivity;
 import mvc.view.admin.vehicle.AddVehicleActivity;
 
 public class CheckVehicleToAdd extends AppCompatActivity {
@@ -104,7 +105,9 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
                                                         Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
-
+                                                        Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
+                                                        startActivity(intentAdmin);
+                                                        finish();
                                                     }
 
                                                     @Override
