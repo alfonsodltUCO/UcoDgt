@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,9 @@ import mvc.view.admin.AdminActivity;
 public class IntroducePenaltyForSearch extends AppCompatActivity implements View.OnClickListener {
     EditText etId;
     Button goSearch,goMain,searchByDates;
+    RadioGroup rgroup;
+    String selectedOption;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,12 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
         searchByDates.setOnClickListener(this);
         goMain.setOnClickListener(this);
         goSearch.setOnClickListener(this);
+        rgroup.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            if (radioButton != null) {
+                selectedOption = radioButton.getText().toString().trim();
+            }
+        });
     }
 
     @Override
@@ -35,6 +46,8 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
         if(v.getId()==R.id.findPenalty){
             Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
             intentFind.putExtra("id",etId.getText().toString());
+            intentFind.putExtra("state",selectedOption);
+
             startActivity(intentFind);
             finish();
         } else if (v.getId()==R.id.goMainMenu) {
