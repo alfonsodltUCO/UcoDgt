@@ -17,12 +17,20 @@ import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.data.PenaltyCallback;
 import mvc.view.admin.AdminActivity;
-
+/**
+ * An activity to check penalty to delete.
+ * @author Alfonso de la torre
+ */
 public class CheckPenaltyToDelete extends AppCompatActivity {
     private ProgressBar progressBar;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         String id=getIntent().getStringExtra("id");
         setContentView(R.layout.loading);
@@ -31,6 +39,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
         ManagerPenalty mngP=new ManagerPenalty();
         assert id != null;
         PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,null,null,null,null,false,null,null);
+
         mngP.deletePenalty(penalty,CheckPenaltyToDelete.this, new PenaltyCallback() {
             @Override
             public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
@@ -39,6 +48,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
 
             @Override
             public void onError(VolleyError error) {
+
                 Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
                 Toast.makeText(CheckPenaltyToDelete.this, "Not found the penalty", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
@@ -47,6 +57,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
 
             @Override
             public void onPenaltyReceived(PenaltyDTO penalty) {
+
                 Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
                 Toast.makeText(CheckPenaltyToDelete.this, "Deleted done", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
@@ -55,10 +66,16 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
             }
         });
     }
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

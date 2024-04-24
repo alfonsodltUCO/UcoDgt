@@ -32,15 +32,26 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
 
     ProgressBar progressBar;
     List<VehicleDTO> vehiclelist;
-
+    /**
+     * Called when the activity is starting. Responsible for initializing the activity.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously
+     *                           being shut down, this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise, it is null.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         String dni=getIntent().getStringExtra("dni");
-        if(!TextUtils.isEmpty(dni)){//por dni
+
+        if(!TextUtils.isEmpty(dni)){
+            // Retrieve client's vehicles from ManagerVehicle
+
             ManagerVehicle mngV=new ManagerVehicle();
             ClientDTO client=new ClientDTO(dni,null,null,null,null,null,null);
             mngV.getVehicles(client, CheckVehiclesToListForClient.this, new VehicleCallback() {
@@ -51,6 +62,7 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
 
                 @Override
                 public void onError(VolleyError error) {
+
                     Intent emptyLists = new Intent(CheckVehiclesToListForClient.this, ClientActivity.class);
                     startActivity(emptyLists);
                     emptyLists.putExtra("dni",dni);
@@ -61,6 +73,8 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
 
                 @Override
                 public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+                    // If vehicles received, display them in ShowVehicles activity
                     vehiclelist=vehicles;
                     Intent notEmptyLists = new Intent(CheckVehiclesToListForClient.this, ShowVehicles.class);
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
@@ -73,10 +87,16 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
             });
         }
     }
+    /**
+     * Shows the loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hides the loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

@@ -38,13 +38,21 @@ import mvc.model.data.UserCallback;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.vehicle.AddVehicleActivity;
-
+/**
+ * An activity to check the vehicle details before adding it.
+ * @author Alfonso de la torre
+ */
 public class CheckVehicleToAdd extends AppCompatActivity {
     String licenceplate,color,type,itvfrom,itvto,dni,insurance;
 
     private ProgressBar progressBar;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
@@ -60,43 +68,65 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
 
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(color) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(itvfrom) && !TextUtils.isEmpty(itvto) && !TextUtils.isEmpty(insurance)){
-            if(!checkDni(dni)){//no valid
+
+            if(!checkDni(dni)){
+
                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
                 finish();
-            }else{//valid dni
+                hideLoading();
+
+            }else{
+
                 if(!checkPlate(licenceplate)){
+
                     Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                     startActivity(intentAdmin);
                     Toast.makeText(CheckVehicleToAdd.this,"No valid licence plate", Toast.LENGTH_LONG).show();
                     finish();
+                    hideLoading();
+
                 }else{
+
                     if(!checkDates(itvfrom,itvto)){
+
                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                         startActivity(intentAdmin);
                         Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second\n And the format is yyyy-mm-dd", Toast.LENGTH_LONG).show();
                         finish();
+                        hideLoading();
+
                     }else{
+
                         if(!checkColor(color)){
+
                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                             startActivity(intentAdmin);
                             Toast.makeText(CheckVehicleToAdd.this,"please enter a valid color", Toast.LENGTH_LONG).show();
                             finish();
+                            hideLoading();
+
                         }else{
+
                             if(!checkType(type)){
+
                                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                 startActivity(intentAdmin);
                                 Toast.makeText(CheckVehicleToAdd.this,"please enter a valid type", Toast.LENGTH_LONG).show();
+                                hideLoading();
                                 finish();
                             }else{
+
                                 ManagerClient mngcl=new ManagerClient();
                                 ClientDTO cl=new ClientDTO(dni,null,null,null,null,null,null);
                                 mngcl.getUser(cl,CheckVehicleToAdd.this,new UserCallback(){
 
                                     @Override
-                                    public void onUserReceived(ClientDTO user) {//existe cliente
+                                    public void onUserReceived(ClientDTO user) {
+
                                         runOnUiThread(()->{
+
                                             ManagerVehicle mngV=new ManagerVehicle();
                                             @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                             try {
@@ -104,24 +134,34 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                 mngV.addVehicle(vh,cl, CheckVehicleToAdd.this, new VehicleCallback() {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
+
                                                         Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
                                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
                                                         startActivity(intentAdmin);
+                                                        hideLoading();
                                                         finish();
+
                                                     }
 
                                                     @Override
                                                     public void onError(VolleyError error) {
+
                                                         if(error.networkResponse.statusCode==400){
+
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                                             startActivity(intentAdmin);
+                                                            hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
                                                             finish();
+
                                                         } else if (error.networkResponse.statusCode==404) {
+
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                                             startActivity(intentAdmin);
+                                                            hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
                                                             finish();
+
                                                         }
                                                     }
 
@@ -137,9 +177,11 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                     }
                                     @Override
                                     public void onError(VolleyError error) {
+
                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                         startActivity(intentAdmin);
                                         Toast.makeText(CheckVehicleToAdd.this,"Client doesnt exist", Toast.LENGTH_LONG).show();
+                                        hideLoading();
                                         finish();
                                     }
                                     @Override
@@ -165,16 +207,23 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                 }
             }
         }else{
+
             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();
         }
     }
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

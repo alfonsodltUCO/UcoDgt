@@ -21,26 +21,39 @@ import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.vehicle.DeleteVehicleActivity;
-
+/**
+ * An activity to check the validity of the vehicle before deleting it.
+ * @author Alfonspo de la torre
+ */
 public class CheckVehicleToDelete extends AppCompatActivity {
     private ProgressBar progressBar;
     String licencePlate;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar = findViewById(R.id.progressbar);
         Intent intent=getIntent();
         showLoading();
         licencePlate=intent.getStringExtra("licencePlate");
+
         if(!TextUtils.isEmpty(licencePlate)) {
+
             if(!checkPlate(licencePlate)){
+
                 Intent intentAdmin=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToDelete.this,"No valid plate", Toast.LENGTH_LONG).show();
                 finish();
+
             }else{
+
                 showLoading();
                 ManagerVehicle mngV=new ManagerVehicle();
                 VehicleDTO vehicle=new VehicleDTO(licencePlate,null,null,null,null,0);
@@ -48,6 +61,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
 
                     @Override
                     public void onVehicleReceived(VehicleDTO vehicle) {
+
                         Toast.makeText(CheckVehicleToDelete.this,"Vehicle deleted", Toast.LENGTH_LONG).show();
                         Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
@@ -57,7 +71,9 @@ public class CheckVehicleToDelete extends AppCompatActivity {
 
                     @Override
                     public void onError(VolleyError error) {
+
                         if(error.networkResponse.statusCode==404) {
+
                             Toast.makeText(CheckVehicleToDelete.this,"Not found", Toast.LENGTH_LONG).show();
                             Intent intentGoBack=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                             startActivity(intentGoBack);
@@ -73,16 +89,23 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                 });
             }
         }else{
+
             Intent intentAdmin=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();
         }
     }
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

@@ -20,21 +20,31 @@ import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.vehicle.ShowVehicle;
-
+/**
+ * An activity to check the image of a vehicle and display its information.
+ * @author Alfonso de la torre
+ */
 public class CheckImage extends AppCompatActivity{
     ProgressBar progressBar;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0,getIntent().getByteArrayExtra("image").length);
         ManagerVehicle mngV=new ManagerVehicle();
+
         mngV.checkVehicle(image,CheckImage.this, new VehicleCallback() {
             @Override
             public void onVehicleReceived(VehicleDTO vehicle) {
+
                 runOnUiThread(()->{
                     hideLoading();
                     Intent goShow=new Intent(CheckImage.this, ShowVehicle.class);
@@ -46,19 +56,23 @@ public class CheckImage extends AppCompatActivity{
 
             @Override
             public void onError(VolleyError error) {
+
                 runOnUiThread(()->{
+
                     if(error.networkResponse.statusCode==404){
                         Intent goAdd=new Intent(CheckImage.this, AdminActivity.class);
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);
                         hideLoading();
                         finish();
+
                     }else{
                         Intent goMain=new Intent(CheckImage.this, AdminActivity.class);
                         Toast.makeText(CheckImage.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         hideLoading();
                         finish();
+
                     }
                 });
             }
@@ -72,10 +86,16 @@ public class CheckImage extends AppCompatActivity{
     }
 
 
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

@@ -24,7 +24,8 @@ import mvc.view.admin.AdminActivity;
 import mvc.view.client.ClientActivity;
 
 /**
- * A class created to handle the login of the different types of user
+ * A class created to handle the login of the different types of user.
+ * This class extends AppCompatActivity.
  * @author Alfonso de la Torre
  */
 public class CheckLogIn extends AppCompatActivity {
@@ -32,48 +33,61 @@ public class CheckLogIn extends AppCompatActivity {
     private ProgressBar progressBar;
 
     /**
-     * A method created to handle the creation of the activity
-     * @author Alfonso de la Torre
+     * Called when the activity is starting. This method creates the activity.
+     * It initializes the UI elements and retrieves data from the intent,
+     * then performs a login check for the user.
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if there was one.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
+
         progressBar = findViewById(R.id.progressbar);
         Intent intent=getIntent();
+
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
+
         ManagerClient mngusr=new ManagerClient();
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
+
         mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 
             /**
-             * Receive the client from Data Base
-             * @param user Client of DB
+             * Called when the client is successfully retrieved from the database.
+             * Shows a loading indicator, waits for 1.5 seconds, then launches the ClientActivity.
+             * @param user The client object retrieved from the database.
              */
             @Override
             public void onUserReceived(ClientDTO user) {
+
                 runOnUiThread(() -> {
+
                     showLoading();
+
                     try {
                         Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+
                     Intent intentClient=new Intent(CheckLogIn.this, ClientActivity.class);
                     intentClient.putExtra("dni",user.getDni().toString());
                     startActivity(intentClient);
-                    hideLoading();
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
+                    hideLoading();
                     finish();
                 });
             }
 
             /**
-             * Handle the error to continue the course of activity
-             * @param error Used to keep going the activity searching login of other users
+             * Called when an error occurs during the login check for the client.
+             * If the client login fails, it checks for admin login.
+             * If admin login also fails, it checks for worker login.
+             * @param error The error object describing the error that occurred.
              */
-
             @Override
             public void onError(VolleyError error) {
                 runOnUiThread(() -> {
@@ -82,41 +96,36 @@ public class CheckLogIn extends AppCompatActivity {
                     AdminDTO admin = new AdminDTO(null,password,null,null,null,email);
                     mngadm.checkLogInAdmin(admin, CheckLogIn.this, new UserCallback() {
 
-
                         @Override
                         public void onUserReceived(ClientDTO user) {
 
                         }
 
-                        /**
-                         * A method created to handle the progressbar
-                         * @param error  Used to keep going the activity searching login of other users
-                         */
-
                         @Override
                         public void onError(VolleyError error) {
+
                             runOnUiThread(() -> {
+
                                 ManagerWorker mngwrk=new ManagerWorker();
                                 WorkerDTO worker = new WorkerDTO(null,password,null,null,null,email,null);
                                 mngwrk.checkLogInWorker(worker, CheckLogIn.this, new UserCallback() {
+
                                     @Override
                                     public void onUserReceived(ClientDTO user) {
 
                                     }
 
-                                    /**
-                                     * A method created to handle the progressbar
-                                     * @param error  Used to stop the search of users, no valid credentials
-                                     */
-
                                     @Override
                                     public void onError(VolleyError error) {
+
                                         showLoading();
+
                                         try {
                                             Thread.sleep(1000);
                                         } catch (InterruptedException e) {
                                             throw new RuntimeException(e);
                                         }
+
                                         Toast.makeText(CheckLogIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                                         Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
                                         startActivity(intentGoMain);
@@ -124,19 +133,18 @@ public class CheckLogIn extends AppCompatActivity {
                                         finish();
                                     }
 
-                                    /**
-                                     * Receive the worker from Data Base
-                                     * @param user Worker of DB
-                                     */
                                     @Override
                                     public void onWorkerReceived(WorkerDTO user) {
+
                                         runOnUiThread(() -> {
+
                                             showLoading();
                                             try {
                                                 Thread.sleep(1500);
                                             } catch (InterruptedException e) {
                                                 throw new RuntimeException(e);
                                             }
+
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
                                             hideLoading();
                                             finish();
@@ -165,19 +173,18 @@ public class CheckLogIn extends AppCompatActivity {
 
                         }
 
-                        /**
-                         * Receive the admin from Data Base
-                         * @param user Admin of DB
-                         */
                         @Override
                         public void onAdminReceived(AdminDTO user) {
+
                             runOnUiThread(() -> {
+
                                 showLoading();
                                 try {
                                     Thread.sleep(1500);
                                 } catch (InterruptedException e) {
                                     throw new RuntimeException(e);
                                 }
+
                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
                                 startActivity(intentAdmin);
                                 hideLoading();
@@ -223,15 +230,13 @@ public class CheckLogIn extends AppCompatActivity {
 
     }
     /**
-     * A method created to handle the progressbar
-     * @author Alfonso de la Torre
+     * Shows the progress bar indicator.
      */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
     /**
-     * A method created to handle the progressbar
-     * @author Alfonso de la Torre
+     * Hides the progress bar indicator.
      */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);

@@ -10,13 +10,29 @@ import java.util.regex.Pattern;
 import mvc.model.business.penalty.stateof;
 import mvc.model.business.penalty.typeof;
 
+/**
+ * This class provides common functions for checking penalty-related information.
+ * @author Alfonso de la torre
+ */
 public class ForCheckPenalty {
 
+    /**
+     * Checks if the provided string represents a numeric value.
+     *
+     * @param num The string to check.
+     * @return True if the string represents a numeric value, false otherwise.
+     */
     public static boolean checkNumeric(String num){
         Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
 
         return pattern.matcher(num).matches();
     }
+    /**
+     * Checks if the provided string represents a valid date in the format "yyyy-MM-dd".
+     *
+     * @param date The string representing the date.
+     * @return True if the string represents a valid date, false otherwise.
+     */
     public static boolean checkDate(String date){
         String patternofdate = "^\\d{4}-\\d{2}-\\d{2}$";
 
@@ -57,6 +73,13 @@ public class ForCheckPenalty {
 
 
     }
+    /**
+     * Checks if the provided start and end dates are valid.
+     *
+     * @param from The start date.
+     * @param to   The end date.
+     * @return True if the start date is before the end date, false otherwise.
+     */
     public static boolean checkDatesPenalties(String from,String to){
         String patternofdate = "^\\d{4}-\\d{2}-\\d{2}$";
 
@@ -88,7 +111,12 @@ public class ForCheckPenalty {
             return false;
         }
     }
-
+    /**
+     * Checks if the provided state string corresponds to a valid state of penalty.
+     *
+     * @param state The state string to check.
+     * @return True if the state is valid, false otherwise.
+     */
     public static boolean checkStateOf(String state){
         for (stateof tp : stateof.values()) {
             if (tp.name().equalsIgnoreCase(state)) {
@@ -97,6 +125,12 @@ public class ForCheckPenalty {
         }
         return false;
     }
+    /**
+     * Checks if the provided string represents a non-negative integer.
+     *
+     * @param points The string to check.
+     * @return True if the string represents a non-negative integer, false otherwise.
+     */
     public static boolean checkPoints(String points) {
         try {
             int num = Integer.parseInt(points);
@@ -105,7 +139,12 @@ public class ForCheckPenalty {
             return false;
         }
     }
-
+    /**
+     * Checks if the provided string represents a non-negative float number.
+     *
+     * @param quantity The string to check.
+     * @return True if the string represents a non-negative float number, false otherwise.
+     */
     public static boolean checkQuantity(String quantity) {
         try {
             float num = Float.parseFloat(quantity);
@@ -114,7 +153,12 @@ public class ForCheckPenalty {
             return false;
         }
     }
-
+    /**
+     * Checks if the provided reason string corresponds to a valid reason of penalty.
+     *
+     * @param reason The reason string to check.
+     * @return True if the reason is valid, false otherwise.
+     */
     public static boolean checkReasonOf(String reason){
         for (typeof tp : typeof.values()) {
             if (tp.name().equalsIgnoreCase(reason)) {
@@ -123,6 +167,14 @@ public class ForCheckPenalty {
         }
         return false;
     }
+    /**
+     * Checks if the provided CVV, card number, and expiration date form a valid card data.
+     *
+     * @param cvv       The CVV (Card Verification Value).
+     * @param number    The card number.
+     * @param caducity  The expiration date of the card.
+     * @return True if the card data is valid, false otherwise.
+     */
     public static boolean checkCardData(String cvv, String number, String caducity) {
         if (!number.matches("\\d{16}")) {
             return false;

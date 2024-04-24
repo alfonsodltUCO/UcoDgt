@@ -22,10 +22,18 @@ import mvc.model.data.PenaltyCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.penalty.IntroducePenaltyForSearch;
 import mvc.view.admin.penalty.ShowPenalty;
-
+/**
+ * An activity to check penalty to find.
+ * @author Alfonso de la torre
+ */
 public class CheckPenaltyToFind extends AppCompatActivity {
     private ProgressBar progressBar;
     String id;
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +41,18 @@ public class CheckPenaltyToFind extends AppCompatActivity {
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         id=getIntent().getStringExtra("id").toString();
+
         if(!TextUtils.isEmpty(id)){
+
             if(!checkNumeric(id)){
+
                 Intent intentGoBackAgain=new Intent(CheckPenaltyToFind.this, IntroducePenaltyForSearch.class);
                 startActivity(intentGoBackAgain);
                 Toast.makeText(CheckPenaltyToFind.this,"Must be a number", Toast.LENGTH_LONG).show();
                 finish();
+
             }else{
+
                 ManagerPenalty mngP=new ManagerPenalty();
                 PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,null,null,null,null,false,null,null);
                 mngP.getPenalty(penalty, CheckPenaltyToFind.this, new PenaltyCallback() {
@@ -81,11 +94,17 @@ public class CheckPenaltyToFind extends AppCompatActivity {
         }
 
     }
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
-            progressBar.setVisibility(ProgressBar.INVISIBLE);
-        }
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
+    }
 }

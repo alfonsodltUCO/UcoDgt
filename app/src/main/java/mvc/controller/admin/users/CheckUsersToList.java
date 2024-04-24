@@ -22,26 +22,39 @@ import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.admin.AdminActivity;
 import mvc.view.admin.user.ShowUsers;
-
+/**
+ * An activity to check users and display them.
+ * @author Alfonso de la torre
+ */
 public class CheckUsersToList extends AppCompatActivity {
 
     ProgressBar progressBar;
     List<WorkerDTO> listWorkers;
     List<ClientDTO> listClients;
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         ManagerWorker mngwrk=new ManagerWorker();
         showLoading();
+
         mngwrk.getUsers(CheckUsersToList.this,new UserCallback() {
             @Override
             public void onWorkersReceived(List<WorkerDTO> workers){
                 listWorkers=workers;
+
                 runOnUiThread(() -> {
+
                     ManagerClient mngCl=new ManagerClient();
                     mngCl.getUsers(CheckUsersToList.this, new UserCallback() {
+
                         @Override
                         public void onUserReceived(ClientDTO user) {
 
@@ -69,15 +82,20 @@ public class CheckUsersToList extends AppCompatActivity {
 
                         @Override
                         public void onClientsReceived(List<ClientDTO> clients) {
+
                             listClients=clients;
                             runOnUiThread(()->{
+
                                 if(listClients.isEmpty() && listWorkers.isEmpty()){
+
                                     Intent emptyLists = new Intent(CheckUsersToList.this, AdminActivity.class);
                                     startActivity(emptyLists);
                                     Toast.makeText(CheckUsersToList.this,"Not found any user",Toast.LENGTH_LONG).show();
                                     hideLoading();
                                     finish();
+
                                 }else{
+
                                     Intent notEmptyLists = new Intent(CheckUsersToList.this, ShowUsers.class);
                                     notEmptyLists.putExtra("workers", (Serializable) listWorkers);
                                     notEmptyLists.putExtra("clients",(Serializable) listClients);
@@ -85,6 +103,7 @@ public class CheckUsersToList extends AppCompatActivity {
                                     startActivity(notEmptyLists);
                                     hideLoading();
                                     finish();
+
                                 }
                             });
                         }
@@ -119,10 +138,16 @@ public class CheckUsersToList extends AppCompatActivity {
 
         });
     }
+    /**
+     * Show loading progress bar.
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
+    /**
+     * Hide loading progress bar.
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
