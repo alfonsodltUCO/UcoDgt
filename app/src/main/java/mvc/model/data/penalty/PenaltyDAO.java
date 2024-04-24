@@ -883,4 +883,84 @@ public class PenaltyDAO {
         requestQueue.add(stringRequest);
     }
 
+    public void getLastPenalty(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getLastPenalty(penalty,new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
+
+    private void getLastPenalty(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if (response != null && !response.isEmpty()) {
+
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray listOfPenalties = jsonResponse.getJSONArray("penalties");
+                            List<PenaltyDTO> penaltiesToSend = new ArrayList<>();
+                            for (int i = 0; i < listOfPenalties.length(); i++) {
+                                JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
+                                PenaltyDTO penalty = new PenaltyDTO();
+                                penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date dt1;
+                                try {
+                                    dt1 = format.parse(penaltyJson.getString("date"));
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                penalty.setDate(dt1);
+                                penalty.setDniClient(penaltyJson.getString("dni_client"));
+                                penalty.setDniWorker(penaltyJson.getString("dni_worker"));
+                                penalty.setState(stateof.valueOf(penaltyJson.getString("state")));
+                                penalty.setReason(typeof.valueOf(penaltyJson.getString("reason")));
+                                penalty.setDescription(penaltyJson.getString("description"));
+                                penalty.setPlace(penaltyJson.getString("place"));
+                                penalty.setInformedAtTheMoment(Boolean.parseBoolean(penaltyJson.getString("informedAtTheMoment")));
+                                penalty.setLocality(penaltyJson.getString("locality"));
+                                penalty.setLicenceplate(penaltyJson.getString("licenceplate"));
+                                penalty.setQuantity(Float.valueOf(penaltyJson.getString("quantity")));
+                                penalty.setPoints(Integer.valueOf(penaltyJson.getString("points")));
+                                penaltiesToSend.add(penalty);
+                                callback.onPenaltyReceived(penalty);
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", penaltyToSend.getDniClient());
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+
 }

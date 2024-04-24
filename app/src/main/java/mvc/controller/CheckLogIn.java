@@ -12,6 +12,7 @@ import com.example.ucodgt.R;
 
 import java.util.List;
 
+import mvc.controller.client.user.CheckClientPoints;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.admin.ManagerAdmin;
 import mvc.model.business.user.client.ManagerClient;
@@ -73,8 +74,8 @@ public class CheckLogIn extends AppCompatActivity {
                         throw new RuntimeException(e);
                     }
 
-                    Intent intentClient=new Intent(CheckLogIn.this, ClientActivity.class);
-                    intentClient.putExtra("dni",user.getDni().toString());
+                    Intent intentClient=new Intent(CheckLogIn.this, CheckClientPoints.class);
+                    intentClient.putExtra("dni",user.getDni());
                     startActivity(intentClient);
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
                     hideLoading();

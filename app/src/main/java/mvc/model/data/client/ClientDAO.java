@@ -338,7 +338,6 @@ public class ClientDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(

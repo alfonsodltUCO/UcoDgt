@@ -244,4 +244,23 @@ public class ManagerPenalty {
         });
     }
 
+    public void getLastPenalty(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.getLastPenalty(penalty,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
 }

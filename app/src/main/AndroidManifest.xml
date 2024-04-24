@@ -81,6 +81,7 @@
         <activity android:name="mvc.view.client.penalty.IntroducePenaltyToFind" />
         <activity android:name="mvc.view.client.user.ShowUser" />
         <activity android:name="mvc.controller.client.user.CheckUserToFindForClient" />
+        <activity android:name="mvc.controller.client.user.CheckClientPoints" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
