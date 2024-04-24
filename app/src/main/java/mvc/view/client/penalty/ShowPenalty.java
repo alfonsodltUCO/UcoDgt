@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
+import java.text.SimpleDateFormat;
+
 import mvc.view.client.penalty.IntroduceDataForPay;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.view.client.ClientActivity;
@@ -61,7 +63,10 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         points=findViewById(R.id.tvPoints);
         id.setText("id= "+penalty.getId().toString());
 
-        date.setText("date= "+penalty.getDate().toString());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate= formatter.format(penalty.getDate());
+        date.setText("date= "+strDate);
+
         dniw.setText("number of Worker= "+workerNum);
         dnic.setText("dni Client= "+penalty.getDniClient());
 
@@ -98,7 +103,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goPay=new Intent(ShowPenalty.this, IntroduceDataForPay.class);
             goPay.putExtra("id", penalty.getId().toString());
             goPay.putExtra("dni",dni);
-            goPay.putExtra("quantity",penalty.getQuantity());
+            goPay.putExtra("quantity",penalty.getQuantity().toString());
             startActivity(goPay);
             finish();
 

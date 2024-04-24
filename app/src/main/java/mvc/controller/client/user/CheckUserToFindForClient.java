@@ -54,56 +54,54 @@ public class CheckUserToFindForClient extends AppCompatActivity {
             Executor executor = Executors.newSingleThreadExecutor();
             executor.execute(() -> {
 
-                if(userToFind.equals("client")){
+                showLoading();
+                ManagerClient mngcl=new ManagerClient();
+                ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
 
-                    showLoading();
-                    ManagerClient mngcl=new ManagerClient();
-                    ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
+                mngcl.getUser(clientToFind, CheckUserToFindForClient.this, new UserCallback() {
+                    @Override
+                    public void onUserReceived(ClientDTO user) {// User found, show details in ShowUser activity
+                        Toast.makeText(CheckUserToFindForClient.this,"Client Found", Toast.LENGTH_LONG).show();
+                        Intent intentSeeUser=new Intent(CheckUserToFindForClient.this, ShowUser.class);
+                        intentSeeUser.putExtra("client", user);
+                        intentSeeUser.putExtra("dni",dni);
+                        startActivity(intentSeeUser);
+                        hideLoading();
+                        finish();
 
-                    mngcl.getUser(clientToFind, CheckUserToFindForClient.this, new UserCallback() {
-                        @Override
-                        public void onUserReceived(ClientDTO user) {// User found, show details in ShowUser activity
-                            Toast.makeText(CheckUserToFindForClient.this,"Client Found", Toast.LENGTH_LONG).show();
-                            Intent intentSeeUser=new Intent(CheckUserToFindForClient.this, ShowUser.class);
-                            intentSeeUser.putExtra("client", user);
-                            intentSeeUser.putExtra("dni",dni);
-                            startActivity(intentSeeUser);
-                            hideLoading();
-                            finish();
+                    }
 
-                        }
+                    @Override
+                    public void onError(VolleyError error) {
 
-                        @Override
-                        public void onError(VolleyError error) {
+                        Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
+                        Intent intentGoBack=new Intent(CheckUserToFindForClient.this, ClientActivity.class);
+                        intentGoBack.putExtra("dni",dni);
+                        startActivity(intentGoBack);
+                        hideLoading();
+                        finish();
+                    }
 
-                            Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
-                            Intent intentGoBack=new Intent(CheckUserToFindForClient.this, ClientActivity.class);
-                            intentGoBack.putExtra("dni",dni);
-                            startActivity(intentGoBack);
-                            hideLoading();
-                            finish();
-                        }
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {
+                    }
 
-                        @Override
-                        public void onWorkerReceived(WorkerDTO user) {
-                        }
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
 
-                        @Override
-                        public void onAdminReceived(AdminDTO user) {
+                    }
 
-                        }
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
 
-                        @Override
-                        public void onWorkersReceived(List<WorkerDTO> workers) {
+                    }
 
-                        }
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
 
-                        @Override
-                        public void onClientsReceived(List<ClientDTO> clients) {
+                    }
+                });
 
-                        }
-                    });
-                }
             });
 
         }else{// If dni is empty, return to ClientActivity

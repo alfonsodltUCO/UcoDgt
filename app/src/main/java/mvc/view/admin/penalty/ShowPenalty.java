@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.view.admin.AdminActivity;
@@ -51,9 +54,10 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         idtodelete=id.getText().toString();
         quant=findViewById(R.id.tvQuantity);
         points=findViewById(R.id.tvPoints);
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate= formatter.format(penalty.getDate());
+        date.setText("date= "+strDate);
         id.setText("id= "+penalty.getId().toString());
-        date.setText("date= "+penalty.getDate().toString());
         dniw.setText("dni Worker= "+penalty.getDniWorker());
         dnic.setText("dni Client= "+penalty.getDniClient());
         description.setText(penalty.getDescription());

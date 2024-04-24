@@ -187,7 +187,12 @@ public class PenaltyDAO {
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("id", penaltyToFInd.getId().toString());
-                params.put("dni",penaltyToFInd.getDniClient());
+                if(penaltyToFInd.getDniClient()==null){
+                    params.put("dni","");
+                }else{
+                    params.put("dni",penaltyToFInd.getDniClient());
+
+                }
                 return params;
             }
         };

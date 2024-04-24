@@ -7,9 +7,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -41,6 +43,7 @@ import mvc.model.data.VehicleCallback;
 
 public class VehicleDAO {
     RequestQueue requestQueue;
+    int TIMEOUT_MS = 20000; // 20 segundos
 
 
     public void checkVehicle(Bitmap image, Context applicationContext, VehicleCallback callback){
@@ -68,6 +71,7 @@ public class VehicleDAO {
         String URL = "http://192.168.1.19:8080/checkImage";
 
         JsonObjectRequest request = new JsonObjectRequest(
+
                 Request.Method.POST,
                 URL,
                 null,
@@ -141,6 +145,13 @@ public class VehicleDAO {
             public String getBodyContentType() {
                 return "application/json";
             }
+            public RetryPolicy getRetryPolicy() {
+                return new DefaultRetryPolicy(
+                        TIMEOUT_MS,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                );
+            }
         };
 
         // Agrega la solicitud a la cola de solicitudes de Volley
@@ -206,6 +217,14 @@ public class VehicleDAO {
             @Override
             public String getBodyContentType() {
                 return "application/json";
+            }
+
+            public RetryPolicy getRetryPolicy() {
+                return new DefaultRetryPolicy(
+                        TIMEOUT_MS,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                );
             }
         };
 

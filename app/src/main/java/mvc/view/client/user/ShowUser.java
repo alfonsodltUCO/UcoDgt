@@ -88,6 +88,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             // Navigate to main menu
 
             Intent goMain=new Intent(ShowUser.this, ClientActivity.class);
+            goMain.putExtra("dni",dniRec);
             startActivity(goMain);
             finish();
 

@@ -20,7 +20,7 @@ import mvc.view.client.ClientActivity;
  * Activity class to introduce a penalty to find by ID or state.
  * @author Alfonso de la torre
  */
-public class IntroducePenaltyToFInd extends AppCompatActivity implements View.OnClickListener {
+public class IntroducePenaltyToFind extends AppCompatActivity implements View.OnClickListener {
 
     EditText etId;
     Button goSearch,goMain,searchByDates;
@@ -40,7 +40,6 @@ public class IntroducePenaltyToFInd extends AppCompatActivity implements View.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.introduce_penalty_tofind_for_client);
-        dni=getIntent().getStringExtra("dni");
         etId=findViewById(R.id.editTextId);
         goSearch=findViewById(R.id.findPenalty);
 
@@ -67,13 +66,13 @@ public class IntroducePenaltyToFInd extends AppCompatActivity implements View.On
      */
     @Override
     public void onClick(View v) {
-
+        dni=getIntent().getStringExtra("dni");
         if(v.getId()==R.id.findPenalty){
 
             if(selectedOption!=null){
                 // Search for penalties by state
 
-                Intent intentFind = new Intent(IntroducePenaltyToFInd.this, CheckPenaltiesToListForClient.class);
+                Intent intentFind = new Intent(IntroducePenaltyToFind.this, CheckPenaltiesToListForClient.class);
                 intentFind.putExtra("state",selectedOption);
                 intentFind.putExtra("dni",dni);
                 startActivity(intentFind);
@@ -82,7 +81,7 @@ public class IntroducePenaltyToFInd extends AppCompatActivity implements View.On
             }else{
                 // Search for penalty by ID
 
-                Intent intentFind = new Intent(IntroducePenaltyToFInd.this, CheckPenaltyToFindForClient.class);
+                Intent intentFind = new Intent(IntroducePenaltyToFind.this, CheckPenaltyToFindForClient.class);
                 intentFind.putExtra("id",etId.getText().toString());
                 intentFind.putExtra("dni",dni);
                 startActivity(intentFind);
@@ -92,7 +91,7 @@ public class IntroducePenaltyToFInd extends AppCompatActivity implements View.On
         } else if (v.getId()==R.id.goMainMenu) {
             // Navigate back to main menu
 
-            Intent intentGoMain = new Intent(IntroducePenaltyToFInd.this, ClientActivity.class);
+            Intent intentGoMain = new Intent(IntroducePenaltyToFind.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dni);
             startActivity(intentGoMain);
             finish();
@@ -100,7 +99,7 @@ public class IntroducePenaltyToFInd extends AppCompatActivity implements View.On
         }else if(v.getId()==R.id.searchForDates){
             // Navigate to search by dates activity
 
-            Intent searchForDates=new Intent(IntroducePenaltyToFInd.this, SearchByDatesPenalties.class);
+            Intent searchForDates=new Intent(IntroducePenaltyToFind.this, SearchByDatesPenalties.class);
             searchForDates.putExtra("dni",dni);
             startActivity(searchForDates);
             finish();

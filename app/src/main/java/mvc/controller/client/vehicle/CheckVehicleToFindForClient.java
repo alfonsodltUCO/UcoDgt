@@ -46,42 +46,36 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(licenceplate)){
 
-                Intent intentAdmin=new Intent(CheckVehicleToFindForClient.this, ClientActivity.class);
-                startActivity(intentAdmin);
-                Toast.makeText(CheckVehicleToFindForClient.this,"Try again please", Toast.LENGTH_LONG).show();
+            ManagerVehicle mngV=new ManagerVehicle();
+            VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null,0);
+            mngV.getVehicle(vehicle, CheckVehicleToFindForClient.this, new VehicleCallback() {
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+
+                Intent goShow=new Intent(CheckVehicleToFindForClient.this, ShowVehicle.class);
+                goShow.putExtra("vehicle",vehicle);
+                goShow.putExtra("dni",dni);
+                startActivity(goShow);
                 finish();
+                hideLoading();
+            }
 
-                ManagerVehicle mngV=new ManagerVehicle();
-                VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null,0);
-                mngV.getVehicle(vehicle, CheckVehicleToFindForClient.this, new VehicleCallback() {
-                @Override
-                public void onVehicleReceived(VehicleDTO vehicle) {
+            @Override
+            public void onError(VolleyError error) {
 
-                    Intent goShow=new Intent(CheckVehicleToFindForClient.this, ShowVehicle.class);
-                    goShow.putExtra("vehicle",vehicle);
-                    goShow.putExtra("dni",dni);
-                    startActivity(goShow);
-                    finish();
-                    hideLoading();
-                }
+                Intent goMain=new Intent(CheckVehicleToFindForClient.this, ClientActivity.class);
+                Toast.makeText(CheckVehicleToFindForClient.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
+                goMain.putExtra("dni",dni);
+                startActivity(goMain);
+                finish();
+                hideLoading();
+            }
 
-                @Override
-                public void onError(VolleyError error) {
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
 
-                    Intent goMain=new Intent(CheckVehicleToFindForClient.this, ClientActivity.class);
-                    Toast.makeText(CheckVehicleToFindForClient.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
-                    goMain.putExtra("dni",dni);
-                    startActivity(goMain);
-                    finish();
-                    hideLoading();
-                }
-
-                @Override
-                public void onVehiclesReceived(List<VehicleDTO> vehicles) {
-
-                }
+            }
             });
-
         }
     }
     /**

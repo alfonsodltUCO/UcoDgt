@@ -19,9 +19,8 @@ import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
-import mvc.view.admin.vehicle.ShowVehicles;
 import mvc.view.client.ClientActivity;
-
+import mvc.view.client.vehicle.ShowVehicles;
 
 /**
  * Method used to handle the view the list of client's vehicles

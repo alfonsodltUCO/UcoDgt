@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
+import mvc.controller.client.user.CheckUserToFindForClient;
 import mvc.controller.client.vehicle.CheckVehiclesToListForClient;
 import mvc.view.MainActivity;
-import mvc.view.client.penalty.IntroducePenaltyToFInd;
+import mvc.view.client.penalty.IntroducePenaltyToFind;
 
 /**
  * Class used to handle all the client options
@@ -63,17 +64,17 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             finish();
 
         }else if(item.getItemId()==R.id.item2ClientListPenalties){
-            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
         }else if(item.getItemId()==R.id.item3ClientPayPenalty){
-            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
         }else if(item.getItemId()==R.id.item4ClientCheckMyPoints){//user info
-            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();

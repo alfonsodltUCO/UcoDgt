@@ -78,8 +78,9 @@
         <activity android:name="mvc.view.client.vehicle.ShowVehicles" />
         <activity android:name="mvc.controller.client.penalty.CheckPenaltyToPay" />
         <activity android:name="mvc.view.client.penalty.IntroduceDataForPay" />
-        <activity android:name="mvc.view.client.penalty.IntroducePenaltyToFInd" />
-        <activity android:name="mvc.view.client.penalty.IntroducePenaltyForSearch" />
+        <activity android:name="mvc.view.client.penalty.IntroducePenaltyToFind" />
+        <activity android:name="mvc.view.client.user.ShowUser" />
+        <activity android:name="mvc.controller.client.user.CheckUserToFindForClient" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

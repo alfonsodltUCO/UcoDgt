@@ -12,13 +12,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ucodgt.R;
 
 import mvc.view.admin.AdminActivity;
-
+/**
+ * Activity for adding a new penalty.
+ * @author Alfonso de la torre
+ */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {
     Button goAddDescrp,goMain;
     EditText etDate,etDniClient,etDniWorker,etReason,etPlace,etInformedAtTheMoment,etLocality,etLPlate,etQuantity,etPoints;
-
+    /**
+     * Initializes the activity with UI components and sets up click listeners.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, or null if there was no saved state.
+     */
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+
         super.onPostCreate(savedInstanceState);
         setContentView(R.layout.add_penalty);
         goAddDescrp=findViewById(R.id.goNext);
@@ -38,8 +46,15 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         goAddDescrp.setOnClickListener(this);
         goMain.setOnClickListener(this);
     }
+    /**
+     * Handles click events for the buttons in the activity.
+     *
+     * @param v The view that was clicked.
+     */
     public void onClick(View v) {
+
         if(v.getId()==R.id.goNext){
+
             Intent goNext = new Intent(AddPenaltyActivity.this, IntroduceDescriptionForPenalty.class);
             goNext.putExtra("date",etDate.getText().toString());
             goNext.putExtra("dniC",etDniClient.getText().toString());
@@ -54,10 +69,13 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             goNext.putExtra("points",etPoints.getText().toString());
             startActivity(goNext);
             finish();
+
         } else if (v.getId()==R.id.goMainMenu) {
+
             Intent intentGoMain = new Intent(AddPenaltyActivity.this, AdminActivity.class);
             startActivity(intentGoMain);
             finish();
+
         }
     }
 }

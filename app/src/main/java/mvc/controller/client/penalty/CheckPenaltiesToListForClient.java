@@ -156,8 +156,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
-                            startActivity(goMain);
                             goMain.putExtra("dni",dni);
+                            startActivity(goMain);
                             hideLoading();
                             finish();
                         }
@@ -179,6 +179,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
 
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
+                            goShow.putExtra("dni",dni);
                             startActivity(goShow);
                             hideLoading();
                             finish();
@@ -189,6 +190,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                            goMain.putExtra("dni",dni);
                             startActivity(goMain);
                             hideLoading();
                             finish();

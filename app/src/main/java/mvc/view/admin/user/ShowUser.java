@@ -73,7 +73,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             name.setText("name= "+worker.getName());
             surname.setText("surname= "+worker.getSurname());
             email.setText("email= "+worker.getEmail());
-
+            obtaining.setText("");
             numberofworker_licencepoints.setText("worker number= "+worker.getNumberOfWorker().toString());
             dni.setText("dni= "+worker.getDni());
             dniNoText=worker.getDni();

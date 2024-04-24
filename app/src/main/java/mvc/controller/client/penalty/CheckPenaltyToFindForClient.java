@@ -1,6 +1,8 @@
 package mvc.controller.client.penalty;
 
 
+import static mvc.controller.commonFunctions.ForCheckPenalty.checkNumeric;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -49,81 +51,93 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         dni=getIntent().getStringExtra("dni");
-        id=getIntent().getStringExtra("id").toString();
+        id=getIntent().getStringExtra("id");
 
         if(!TextUtils.isEmpty(id)){
 
-            ManagerPenalty mngP=new ManagerPenalty();
-            PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,dni,null,null,null,false,null,null);
-            mngP.getPenalty(penalty, CheckPenaltyToFindForClient.this, new PenaltyCallback() {
+            if(!checkNumeric(id)){
+
+                Intent goMain=new Intent(CheckPenaltyToFindForClient.this, CheckPenaltiesToListForClient.class);
+                goMain.putExtra("dni",dni);
+                startActivity(goMain);
+                finish();
+                hideLoading();
+
+            }else{
+
+                ManagerPenalty mngP=new ManagerPenalty();
+                PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,dni,null,null,null,false,null,null);
+                mngP.getPenalty(penalty, CheckPenaltyToFindForClient.this, new PenaltyCallback() {
 
 
-                @Override
-                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                    @Override
+                    public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
-                }
+                    }
 
-                @Override
-                public void onError(VolleyError error) {
+                    @Override
+                    public void onError(VolleyError error) {
 
-                    Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);
-                    Toast.makeText(CheckPenaltyToFindForClient.this,"Not found the penalty", Toast.LENGTH_LONG).show();
-                    goMain.putExtra("dni",dni);
-                    startActivity(goMain);
-                    finish();
-                    hideLoading();
-                }
+                        Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);
+                        Toast.makeText(CheckPenaltyToFindForClient.this,"Not found the penalty", Toast.LENGTH_LONG).show();
+                        goMain.putExtra("dni",dni);
+                        startActivity(goMain);
+                        finish();
+                        hideLoading();
+                    }
 
-                @Override
-                public void onPenaltyReceived(PenaltyDTO penalty) {
+                    @Override
+                    public void onPenaltyReceived(PenaltyDTO penalty) {
 
-                    ManagerWorker mngW=new ManagerWorker();
+                        ManagerWorker mngW=new ManagerWorker();
 
-                    WorkerDTO worker=new WorkerDTO();
-                    worker.setDni(penalty.getDniWorker());
+                        WorkerDTO worker=new WorkerDTO();
+                        worker.setDni(penalty.getDniWorker());
 
-                    mngW.getUser(worker, CheckPenaltyToFindForClient.this, new UserCallback() {
-                        @Override
-                        public void onUserReceived(ClientDTO user) {
+                        mngW.getUser(worker, CheckPenaltyToFindForClient.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onError(VolleyError error) {
+                            @Override
+                            public void onError(VolleyError error) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onWorkerReceived(WorkerDTO user) {
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
 
-                            Intent goShow=new Intent(CheckPenaltyToFindForClient.this, ShowPenalty.class);
-                            goShow.putExtra("penalty",penalty);
-                            goShow.putExtra("dni",dni);
-                            goShow.putExtra("worker",user.getNumberOfWorker().toString());
-                            startActivity(goShow);
-                            finish();
-                            hideLoading();
-                        }
+                                Intent goShow=new Intent(CheckPenaltyToFindForClient.this, ShowPenalty.class);
+                                goShow.putExtra("penalty",penalty);
+                                goShow.putExtra("dni",dni);
+                                goShow.putExtra("worker",user.getNumberOfWorker().toString());
+                                startActivity(goShow);
+                                finish();
+                                hideLoading();
+                            }
 
-                        @Override
-                        public void onAdminReceived(AdminDTO user) {
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onWorkersReceived(List<WorkerDTO> workers) {
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onClientsReceived(List<ClientDTO> clients) {
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
 
-                        }
-                    });
-                }
+                            }
+                        });
+                    }
 
 
-            });
+                });
+            }
+
         }else{
 
             Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);

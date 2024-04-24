@@ -250,7 +250,6 @@ public class ClientDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/user/addClient.php";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -277,6 +276,8 @@ public class ClientDAO {
         ) {
             @Override
             protected Map<String, String> getParams() {
+                SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+                String strDate2= formatter2.format(client.getDateLicenceObtaining());
                 Map<String, String> params = new HashMap<>();
                 params.put("name", client.getName());
                 params.put("surname", client.getSurname());
@@ -285,7 +286,7 @@ public class ClientDAO {
                 params.put("licencePoints", String.valueOf(client.getLicencepoints()));
                 params.put("password", client.getPassword());
                 params.put("email", client.getEmail());
-                params.put("dateLicenceObtaining",client.getDateLicenceObtaining().toString());
+                params.put("dateObtaining",strDate2);
                 return params;
             }
         };

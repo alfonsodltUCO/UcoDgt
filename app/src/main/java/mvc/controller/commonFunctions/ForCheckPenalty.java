@@ -180,14 +180,27 @@ public class ForCheckPenalty {
             return false;
         }
 
-        if (!caducity.matches("(0[1-9]|1[0-2])/[0-9]{2}")) {
+        if (!caducity.matches("(0[1-9]|1[0-2])/\\d{2}")) {
             return false;
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        String[] parts = caducity.split("/");
+        int expMonth = Integer.parseInt(parts[0]);
+        int expYear = Integer.parseInt(parts[1]);
+
+        if (expYear < calendar.get(Calendar.YEAR) % 100) {
+            return false; // El año ya ha pasado
+        }
+        if (expYear == calendar.get(Calendar.YEAR) % 100 && expMonth < calendar.get(Calendar.MONTH) + 1) {
+            return false; // El mes ya ha pasado este año
         }
 
         if (!cvv.matches("\\d{3}")) {
             return false;
         }
-
         return true;
     }
 }
