@@ -1,6 +1,9 @@
 package mvc.controller.client.user;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import mvc.controller.CheckLogIn;
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.user.admin.AdminDTO;
@@ -19,26 +23,31 @@ import mvc.model.business.user.client.ManagerClient;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.PenaltyCallback;
 import mvc.model.data.UserCallback;
+import mvc.view.client.ClientActivity;
 
 public class CheckClientPoints extends AppCompatActivity {
     String dni;
-    Date fechaExpedicion; // Fecha de expedición del carnet del usuario
-    Date fechaUltimaInfraccion; // Fecha de la última infracción del usuario con pérdida de puntos
-    int puntosActuales; // Puntos actuales del usuario
+    Date fechaExpedicion;
+    Date fechaUltimaInfraccion;
+    int actualPoints;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Log.d("d","1");
         dni = getIntent().getStringExtra("dni");
         ManagerClient mngC=new ManagerClient();
         ManagerPenalty mngP=new ManagerPenalty();
         ClientDTO cl=new ClientDTO();
         cl.setDni(dni);
+
         mngC.getUser(cl,CheckClientPoints.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
                 //recibo user
+                Log.d("d","2");
+
                 PenaltyDTO pnlt=new PenaltyDTO();
                 pnlt.setDniClient(dni);
                 mngP.getLastPenalty(pnlt,CheckClientPoints.this, new PenaltyCallback() {
@@ -49,12 +58,97 @@ public class CheckClientPoints extends AppCompatActivity {
 
                     @Override
                     public void onError(VolleyError error) {
-                        //no perdida de puntos
+
+                        actualPoints=calculatePoints(user.getDateLicenceObtaining(),null,user.getLicencepoints());
+                        user.setLicencepoints(actualPoints);
+                        mngC.updatePoints(user,CheckClientPoints.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
+                                Log.d("d","3");
+
+                                Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                intentClient.putExtra("dni",user.getDni());
+                                startActivity(intentClient);
+                                finish();
+                            }
+
+                            @Override
+                            public void onError(VolleyError error) {
+                                Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                intentClient.putExtra("dni",user.getDni());
+                                startActivity(intentClient);
+                                finish();
+                            }
+
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
+
+                            }
+
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
+
+                            }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
+                        });
+
                     }
 
                     @Override
                     public void onPenaltyReceived(PenaltyDTO penalty) {
-                        puntosActuales = calcularPuntos(user.getDateLicenceObtaining(), penalty.getDate());
+                        Log.d("d","4");
+
+                        actualPoints = calculatePoints(user.getDateLicenceObtaining(), penalty.getDate(),user.getLicencepoints());
+                        user.setLicencepoints(actualPoints);
+                        mngC.updatePoints(user,CheckClientPoints.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
+                                Log.d("d","5");
+
+                                Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                intentClient.putExtra("dni",user.getDni());
+                                startActivity(intentClient);
+                                finish();
+                            }
+
+                            @Override
+                            public void onError(VolleyError error) {
+                                Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                intentClient.putExtra("dni",user.getDni());
+                                startActivity(intentClient);
+                                finish();
+                            }
+
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
+
+                            }
+
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
+
+                            }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
+                        });
+
                     }
                 });
             }
@@ -86,41 +180,70 @@ public class CheckClientPoints extends AppCompatActivity {
         });
 
     }
+    private int calculatePoints(Date fechaExpedicion, Date fechaUltimaInfraccion, int puntosActuales) {
+        int points = puntosActuales;
 
-    private int calcularPuntos(Date fechaExpedicion, Date fechaUltimaInfraccion) {
-        // Puntos iniciales
-        int puntos = 8;
+        Date currentDate = new Date();
+        long yearsExperience = calculateYears(fechaExpedicion, currentDate);
 
-        // Obtener la fecha actual
-        Date fechaActual = new Date();
 
-        // Calcular el tiempo transcurrido desde la expedición del carnet en años
-        long anosExperiencia = calcularAnosTranscurridos(fechaExpedicion, fechaActual);
 
-        // Si el conductor tiene al menos 2 años de experiencia sin infracciones
-        // aumentamos los puntos a 12
-        if (anosExperiencia >= 2 && fechaUltimaInfraccion == null) {
-            puntos = 12;
+
+        // Verificar si el conductor tiene 8 puntos iniciales y ha pasado al menos 3 años desde la expedición del permiso
+        // Además, verificar si no ha cometido infracciones en los últimos 2 años
+        if (puntosActuales == 8 && yearsExperience >= 3 && fechaUltimaInfraccion == null) {
+            long yearsWithoutInfringement = calculateYears(fechaExpedicion, currentDate);
+            if (yearsWithoutInfringement >= 2) { // Se cambió a 2 años para cumplir con el requisito
+                points = 12;
+            }
+        }else{
+            if(fechaUltimaInfraccion!=null) {
+
+                long yearsWithoutInfringement = calculateYears(fechaUltimaInfraccion, currentDate);
+
+                if (yearsExperience >= 3 && yearsWithoutInfringement >= 3) {
+
+                    points += 2;
+
+                    if (yearsWithoutInfringement >= 6) {
+
+                        points += 1;
+
+                    }
+                }
+            }
         }
 
-        // Si el conductor tiene al menos 5 años de experiencia sin infracciones
-        // aumentamos los puntos a 14
-        if (anosExperiencia >= 5 && fechaUltimaInfraccion == null) {
-            puntos = 14;
+        long yearsWithoutInfringement = calculateYears(fechaExpedicion, currentDate);
+
+        if (fechaUltimaInfraccion == null && yearsExperience >= 3 && yearsWithoutInfringement >= 3) {
+
+            points += 2;
+
+            if (yearsWithoutInfringement >= 6) {
+
+                points += 1;
+
+            }
+
         }
 
-        // Si el conductor tiene al menos 8 años de experiencia sin infracciones
-        // aumentamos los puntos a 15
-        if (anosExperiencia >= 8 && fechaUltimaInfraccion == null) {
-            puntos = 15;
+
+        if (points > 15) {
+
+            points = 15;
         }
 
-        return puntos;
+        return points;
     }
 
-    private long calcularAnosTranscurridos(Date fechaInicio, Date fechaFin) {
-        long diferenciaEnMilisegundos = fechaFin.getTime() - fechaInicio.getTime();
-        long anos = TimeUnit.DAYS.convert(diferenciaEnMilisegundos, TimeUnit.MILLISECONDS) / 365;
-        return anos;
+
+
+    private long calculateYears(Date startDate, Date endDate) {
+
+        long differenceInMillis = endDate.getTime() - startDate.getTime();
+        long years = TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS) / 365;
+        return years;
     }
+
 }

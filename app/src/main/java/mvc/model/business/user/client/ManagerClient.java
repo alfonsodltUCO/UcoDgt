@@ -230,4 +230,40 @@ public class ManagerClient {
             }
         });
     }
+
+    public void updatePoints(ClientDTO client, Context applicationContext, UserCallback callback){
+        ClientDAO clientD=new ClientDAO();
+        clientD.updatePoints(client, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                callback.onUserReceived(user);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
 }

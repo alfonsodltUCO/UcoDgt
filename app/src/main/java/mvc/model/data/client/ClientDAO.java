@@ -560,5 +560,80 @@ public class ClientDAO {
         requestQueue.add(JsonObjectRequest);
     }
 
+    public void updatePoints(ClientDTO userToFind, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        updatePointsBd(userToFind,applicationContext, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+    private void updatePointsBd(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/user/updatePoints.php";
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate= formatter.format(client.getAge());
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onUserReceived(client);
+                    }else{
+                        callback.onUserReceived(new ClientDTO(null,null,null,null,null,null,null));
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", client.getDni());
+                params.put("licencePoints", String.valueOf(client.getLicencepoints()));
+
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+
 
 }

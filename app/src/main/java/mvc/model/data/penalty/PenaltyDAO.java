@@ -904,7 +904,7 @@ public class PenaltyDAO {
     }
 
     private void getLastPenalty(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
-        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getLastPenalty.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
