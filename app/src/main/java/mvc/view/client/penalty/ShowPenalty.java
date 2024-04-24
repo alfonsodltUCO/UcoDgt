@@ -1,5 +1,6 @@
 package mvc.view.client.penalty;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +21,15 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,payPenalty;
     PenaltyDTO penalty;
-    String dni;
+    String dni,workerNum;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
         dni=getIntent().getStringExtra("dni");
-        setContentView(R.layout.show_penalty);
+        workerNum=getIntent().getStringExtra("worker");
+        setContentView(R.layout.show_penalty_for_client);
         goMain=findViewById(R.id.goMainMenu);
         payPenalty=findViewById(R.id.payPenalty);
         id=findViewById(R.id.tvId);
@@ -42,14 +45,14 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         points=findViewById(R.id.tvPoints);
         id.setText("id= "+penalty.getId().toString());
         date.setText("date= "+penalty.getDate().toString());
-        dniw.setText("dni Worker= "+penalty.getDniWorker());
+        dniw.setText("number of Worker= "+workerNum);
         dnic.setText("dni Client= "+penalty.getDniClient());
         description.setText(penalty.getDescription());
         state.setText("state= "+penalty.getState().toString());
         reason.setText("reason= "+penalty.getReason().toString());
         points.setText("points= "+penalty.getPoints().toString());
         quant.setText("quantity= "+ penalty.getQuantity().toString());
-        licenceP.setText("plate= "+penalty.getLicenceplate().toString());
+        licenceP.setText("plate= "+ penalty.getLicenceplate());
         goMain.setOnClickListener(this);
         payPenalty.setOnClickListener(this);
     }

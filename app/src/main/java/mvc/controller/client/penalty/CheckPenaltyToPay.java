@@ -1,4 +1,4 @@
-package mvc.controller.client;
+package mvc.controller.client.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkCardData;
 

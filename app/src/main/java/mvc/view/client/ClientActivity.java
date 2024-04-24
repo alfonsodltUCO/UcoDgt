@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.client.CheckVehiclesToListForClient;
+import mvc.controller.client.vehicle.CheckVehiclesToListForClient;
 import mvc.view.MainActivity;
 import mvc.view.client.penalty.IntroducePenaltyToFInd;
 
@@ -68,9 +68,15 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
             finish();
         }else if(item.getItemId()==R.id.item3ClientPayPenalty){
-
+            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
+            finish();
         }else if(item.getItemId()==R.id.item4ClientCheckMyPoints){//user info
-
+            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
+            finish();
         }
         return false;
     }

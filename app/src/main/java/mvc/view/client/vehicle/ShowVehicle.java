@@ -13,7 +13,7 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
-import mvc.controller.client.CheckPenaltiesToListForClient;
+import mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.view.client.ClientActivity;
 

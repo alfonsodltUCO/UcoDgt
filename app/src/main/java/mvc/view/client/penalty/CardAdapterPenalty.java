@@ -14,7 +14,7 @@ import com.example.ucodgt.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.controller.client.CheckPenaltyToFindForClient;
+import mvc.controller.client.penalty.CheckPenaltyToFindForClient;
 import mvc.model.business.penalty.PenaltyDTO;
 
 public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.CardViewHolder> {

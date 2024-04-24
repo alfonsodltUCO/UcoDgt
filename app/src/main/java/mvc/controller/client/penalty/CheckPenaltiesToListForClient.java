@@ -1,4 +1,4 @@
-package mvc.controller.client;
+package mvc.controller.client.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkDatesPenalties;
 
@@ -74,34 +74,6 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                 }
             });
 
-        } else if (!TextUtils.isEmpty(dni)) {//por usuario
-            ClientDTO client=new ClientDTO(dni,null,null,null,null,null,null);
-            ManagerPenalty mngP=new ManagerPenalty();
-            mngP.getPenalties(client, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
-
-                @Override
-                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
-                    Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
-                    goShow.putExtra("penalties", (Serializable) penalties);
-                    startActivity(goShow);
-                    hideLoading();
-                    finish();
-                }
-
-                @Override
-                public void onError(VolleyError error) {
-                    Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
-                    Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
-                    startActivity(goMain);
-                    hideLoading();
-                    finish();
-                }
-
-                @Override
-                public void onPenaltyReceived(PenaltyDTO penalty) {
-
-                }
-            });
         }else{
             if((!TextUtils.isEmpty(date1)) && (!TextUtils.isEmpty(date2))){
                 ManagerPenalty mngP=new ManagerPenalty();
@@ -176,13 +148,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         }
                     });
                 }else{
+                    ClientDTO client=new ClientDTO(dni,null,null,null,null,null,null);
                     ManagerPenalty mngP=new ManagerPenalty();
-
-                    mngP.getPenalties(CheckPenaltiesToListForClient.this, new PenaltyCallback() {
+                    mngP.getPenalties(client, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
 
                         @Override
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
-
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
                             startActivity(goShow);

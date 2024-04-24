@@ -1,4 +1,4 @@
-package mvc.controller.client;
+package mvc.controller.client.penalty;
 
 
 import android.content.Intent;
@@ -17,7 +17,12 @@ import java.util.List;
 
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
+import mvc.model.business.user.admin.AdminDTO;
+import mvc.model.business.user.client.ClientDTO;
+import mvc.model.business.user.worker.ManagerWorker;
+import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.PenaltyCallback;
+import mvc.model.data.UserCallback;
 import mvc.view.client.penalty.ShowPenalty;
 import mvc.view.client.ClientActivity;
 
@@ -56,12 +61,49 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
 
                 @Override
                 public void onPenaltyReceived(PenaltyDTO penalty) {
-                    Intent goShow=new Intent(CheckPenaltyToFindForClient.this, ShowPenalty.class);
-                    goShow.putExtra("penalty",penalty);
-                    goShow.putExtra("dni",dni);
-                    startActivity(goShow);
-                    finish();
-                    hideLoading();
+                    //obtener id del worker
+                    ManagerWorker mngW=new ManagerWorker();
+
+                    WorkerDTO worker=new WorkerDTO();
+                    worker.setDni(penalty.getDniWorker());
+
+                    mngW.getUser(worker, CheckPenaltyToFindForClient.this, new UserCallback() {
+                        @Override
+                        public void onUserReceived(ClientDTO user) {
+
+                        }
+
+                        @Override
+                        public void onError(VolleyError error) {
+
+                        }
+
+                        @Override
+                        public void onWorkerReceived(WorkerDTO user) {
+                            Intent goShow=new Intent(CheckPenaltyToFindForClient.this, ShowPenalty.class);
+                            goShow.putExtra("penalty",penalty);
+                            goShow.putExtra("dni",dni);
+                            goShow.putExtra("worker",user.getNumberOfWorker().toString());
+                            startActivity(goShow);
+                            finish();
+                            hideLoading();
+                        }
+
+                        @Override
+                        public void onAdminReceived(AdminDTO user) {
+
+                        }
+
+                        @Override
+                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                        }
+
+                        @Override
+                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                        }
+                    });
                 }
 
 

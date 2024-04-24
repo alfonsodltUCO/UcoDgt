@@ -23,10 +23,18 @@ import mvc.view.MainActivity;
 import mvc.view.admin.AdminActivity;
 import mvc.view.client.ClientActivity;
 
+/**
+ * A class created to handle the login of the different types of user
+ * @author Alfonso de la Torre
+ */
 public class CheckLogIn extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
+    /**
+     * A method created to handle the creation of the activity
+     * @author Alfonso de la Torre
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +47,12 @@ public class CheckLogIn extends AppCompatActivity {
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
         mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 
+            /**
+             * Receive the client from Data Base
+             * @param user Client of DB
+             */
             @Override
-            public void onUserReceived(ClientDTO user) {//client
+            public void onUserReceived(ClientDTO user) {
                 runOnUiThread(() -> {
                     showLoading();
                     try {
@@ -57,6 +69,11 @@ public class CheckLogIn extends AppCompatActivity {
                 });
             }
 
+            /**
+             * Handle the error to continue the course of activity
+             * @param error Used to keep going the activity searching login of other users
+             */
+
             @Override
             public void onError(VolleyError error) {
                 runOnUiThread(() -> {
@@ -64,13 +81,20 @@ public class CheckLogIn extends AppCompatActivity {
                     ManagerAdmin mngadm=new ManagerAdmin();
                     AdminDTO admin = new AdminDTO(null,password,null,null,null,email);
                     mngadm.checkLogInAdmin(admin, CheckLogIn.this, new UserCallback() {
+
+
                         @Override
                         public void onUserReceived(ClientDTO user) {
 
                         }
 
+                        /**
+                         * A method created to handle the progressbar
+                         * @param error  Used to keep going the activity searching login of other users
+                         */
+
                         @Override
-                        public void onError(VolleyError error1) {
+                        public void onError(VolleyError error) {
                             runOnUiThread(() -> {
                                 ManagerWorker mngwrk=new ManagerWorker();
                                 WorkerDTO worker = new WorkerDTO(null,password,null,null,null,email,null);
@@ -80,8 +104,13 @@ public class CheckLogIn extends AppCompatActivity {
 
                                     }
 
+                                    /**
+                                     * A method created to handle the progressbar
+                                     * @param error  Used to stop the search of users, no valid credentials
+                                     */
+
                                     @Override
-                                    public void onError(VolleyError error11) {
+                                    public void onError(VolleyError error) {
                                         showLoading();
                                         try {
                                             Thread.sleep(1000);
@@ -95,6 +124,10 @@ public class CheckLogIn extends AppCompatActivity {
                                         finish();
                                     }
 
+                                    /**
+                                     * Receive the worker from Data Base
+                                     * @param user Worker of DB
+                                     */
                                     @Override
                                     public void onWorkerReceived(WorkerDTO user) {
                                         runOnUiThread(() -> {
@@ -132,6 +165,10 @@ public class CheckLogIn extends AppCompatActivity {
 
                         }
 
+                        /**
+                         * Receive the admin from Data Base
+                         * @param user Admin of DB
+                         */
                         @Override
                         public void onAdminReceived(AdminDTO user) {
                             runOnUiThread(() -> {
@@ -185,10 +222,17 @@ public class CheckLogIn extends AppCompatActivity {
 
 
     }
+    /**
+     * A method created to handle the progressbar
+     * @author Alfonso de la Torre
+     */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
-
+    /**
+     * A method created to handle the progressbar
+     * @author Alfonso de la Torre
+     */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }

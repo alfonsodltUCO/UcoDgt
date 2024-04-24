@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.client.CheckPenaltiesToListForClient;
+import mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import mvc.view.client.ClientActivity;
 
 

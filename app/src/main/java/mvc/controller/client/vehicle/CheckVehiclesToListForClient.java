@@ -1,4 +1,4 @@
-package mvc.controller.client;
+package mvc.controller.client.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +15,10 @@ import com.example.ucodgt.R;
 import java.io.Serializable;
 import java.util.List;
 
-import mvc.controller.admin.vehicle.CheckVehiclesToList;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.VehicleCallback;
-import mvc.view.admin.AdminActivity;
 import mvc.view.admin.vehicle.ShowVehicles;
 import mvc.view.client.ClientActivity;
 

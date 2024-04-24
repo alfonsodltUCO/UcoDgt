@@ -14,8 +14,7 @@ import com.example.ucodgt.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.controller.admin.vehicle.CheckVehicleToFind;
-import mvc.controller.client.CheckVehicleToFindForClient;
+import mvc.controller.client.vehicle.CheckVehicleToFindForClient;
 import mvc.model.business.vehicle.VehicleDTO;
 
 public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.CardViewHolder> {

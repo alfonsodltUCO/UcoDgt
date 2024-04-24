@@ -81,21 +81,29 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     }
     public void onClick(View v){
         if(v.getId()==R.id.goMainMenu){
-            Intent checkUserToAdd=new Intent(ShowUser.this, AdminActivity.class);
-            startActivity(checkUserToAdd);
+            Intent showUser=new Intent(ShowUser.this, AdminActivity.class);
+            startActivity(showUser);
+            finish();
+
         }else if(v.getId()==R.id.deleteUser){
             Intent checkUserToDelete=new Intent(ShowUser.this, CheckUserToDelete.class);
             checkUserToDelete.putExtra("dni",dniNoText);
             checkUserToDelete.putExtra("type",type);
             startActivity(checkUserToDelete);
+            finish();
+
         } else if (v.getId()==R.id.listPenalties) {
             Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
             goList.putExtra("dni",dniNoText);
             startActivity(goList);
+            finish();
+
         }else if(v.getId()==R.id.listVehicles){
             Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
             goListVeh.putExtra("dni",dniNoText);
             startActivity(goListVeh);
+            finish();
+
         }
     }
 }

@@ -1,6 +1,4 @@
-package mvc.controller.client;
-
-import static mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
+package mvc.controller.client.vehicle;
 
 import android.content.Intent;
 import android.os.Bundle;

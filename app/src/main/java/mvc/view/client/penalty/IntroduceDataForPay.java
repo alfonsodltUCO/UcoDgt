@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.client.CheckPenaltyToPay;
+import mvc.controller.client.penalty.CheckPenaltyToPay;
 import mvc.view.client.ClientActivity;
 
 public class IntroduceDataForPay extends AppCompatActivity implements View.OnClickListener {
