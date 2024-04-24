@@ -11,6 +11,7 @@ public class ClientDTO implements Serializable {
 
     private String name;
 
+    private Date dateLicenceObtaining;
     private String surname;
 
     private Date age;
@@ -30,6 +31,15 @@ public class ClientDTO implements Serializable {
         this.age=age;
         this.email=email;
         this.licencepoints=licencepoints;
+        this.dateLicenceObtaining=new Date();
+    }
+
+    public Date getDateLicenceObtaining() {
+        return dateLicenceObtaining;
+    }
+
+    public void setDateLicenceObtaining(Date dateLicenceObtaining) {
+        this.dateLicenceObtaining = dateLicenceObtaining;
     }
 
     public Integer getLicencepoints() {

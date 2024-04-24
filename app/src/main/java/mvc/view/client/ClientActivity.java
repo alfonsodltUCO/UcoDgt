@@ -15,6 +15,7 @@ import com.example.ucodgt.R;
 
 import mvc.controller.client.CheckVehiclesToListForClient;
 import mvc.view.MainActivity;
+import mvc.view.client.penalty.IntroducePenaltyToFInd;
 
 /**
  * Class used to handle all the client options
@@ -62,12 +63,13 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             finish();
 
         }else if(item.getItemId()==R.id.item2ClientListPenalties){
-
+            Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFInd.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
+            finish();
         }else if(item.getItemId()==R.id.item3ClientPayPenalty){
 
         }else if(item.getItemId()==R.id.item4ClientCheckMyPoints){//user info
-
-        }else if(item.getItemId()==R.id.item5ClientAskForPoints){
 
         }
         return false;

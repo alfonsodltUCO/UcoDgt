@@ -121,6 +121,27 @@ public class ManagerPenalty {
         });
     }
 
+    public void getPenalties(String date1, String date2,PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.getPenalties(date1,date2,penalty,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                callback.onPenaltiesReceived(penalties);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+
+            }
+        });
+    }
+
     public void getPenalties(String state,Context applicationContext, PenaltyCallback callback){
         PenaltyDAO penaltyD=new PenaltyDAO();
         penaltyD.getPenalties(state,applicationContext, new PenaltyCallback() {
@@ -182,5 +203,45 @@ public class ManagerPenalty {
         });
     }
 
+    public void doPayment(PenaltyDTO penaltyToSend,Context applicationContext,PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.doPayment(penaltyToSend,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
+
+    public void getPenalties(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.getPenalties(penalty,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                callback.onPenaltiesReceived(penalties);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+
+            }
+        });
+    }
 
 }

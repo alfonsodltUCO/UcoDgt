@@ -12,8 +12,5 @@
         android:title="Pay penalty" />
     <item
         android:id="@+id/item4ClientCheckMyPoints"
-        android:title="Check my points" />
-    <item
-        android:id="@+id/item5ClientAskForPoints"
-        android:title="Ask for points" />
+        android:title="Get my info" />
 </menu>

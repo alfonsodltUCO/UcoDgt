@@ -123,4 +123,19 @@ public class ForCheckPenalty {
         }
         return false;
     }
+    public static boolean checkCardData(String cvv, String number, String caducity) {
+        if (!number.matches("\\d{16}")) {
+            return false;
+        }
+
+        if (!caducity.matches("(0[1-9]|1[0-2])/[0-9]{2}")) {
+            return false;
+        }
+
+        if (!cvv.matches("\\d{3}")) {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -141,7 +141,6 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getPenaltyToFind(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/penalty/getPenalty.php";
         StringRequest request = new StringRequest(
@@ -188,6 +187,7 @@ public class PenaltyDAO {
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("id", penaltyToFInd.getId().toString());
+                params.put("dni",penaltyToFInd.getDniClient());
                 return params;
             }
         };
@@ -215,8 +215,7 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabl
-    // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+
 
     private void getPenaltiesFromBd(final ClientDTO cl,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenaltiesFromUser.php";
@@ -444,8 +443,7 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabl
-    // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+
 
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&end="+date2;
@@ -644,5 +642,240 @@ public class PenaltyDAO {
         requestQueue.add(request);
     }
 
+    public void doPayment(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        doPaymentToBd(penaltyToFind, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
+    private void doPaymentToBd(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/penalty/doPayment.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        PenaltyDTO penalty = new PenaltyDTO();
+                        penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
+
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dt1;
+                        try {
+                            dt1 = format.parse(jsonResponse.getString("date"));
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        penalty.setDate(dt1);
+
+                        penalty.setDniClient(jsonResponse.getString("dni_client"));
+                        penalty.setDniWorker(jsonResponse.getString("dni_worker"));
+                        penalty.setState(stateof.valueOf(jsonResponse.getString("state")));
+                        penalty.setReason(typeof.valueOf(jsonResponse.getString("reason")));
+                        penalty.setDescription(jsonResponse.getString("description"));
+                        penalty.setPlace(jsonResponse.getString("place"));
+                        penalty.setInformedAtTheMoment(Boolean.parseBoolean(jsonResponse.getString("informedAtTheMoment")));
+                        penalty.setLocality(jsonResponse.getString("locality"));
+                        penalty.setLicenceplate(jsonResponse.getString("licenceplate"));
+                        penalty.setQuantity(Float.valueOf(jsonResponse.getString("quantity")));
+                        penalty.setPoints(Integer.valueOf(jsonResponse.getString("points")));
+                        callback.onPenaltyReceived(penalty);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("id", penaltyToFInd.getId().toString());
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+    public void getPenalties(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getPenaltiesFromBd(penalty,new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                callback.onPenaltiesReceived(penalties);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+
+            }
+        });
+    }
+
+    private void getPenaltiesFromBd(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByStateOfUser.php";
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if (response != null && !response.isEmpty()) {
+
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray listOfPenalties = jsonResponse.getJSONArray("penalties");
+                            List<PenaltyDTO> penaltiesToSend = new ArrayList<>();
+                            for (int i = 0; i < listOfPenalties.length(); i++) {
+                                JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
+                                PenaltyDTO penalty = new PenaltyDTO();
+                                penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date dt1;
+                                try {
+                                    dt1 = format.parse(penaltyJson.getString("date"));
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                penalty.setDate(dt1);
+                                penalty.setDniClient(penaltyJson.getString("dni_client"));
+                                penalty.setDniWorker(penaltyJson.getString("dni_worker"));
+                                penalty.setState(stateof.valueOf(penaltyJson.getString("state")));
+                                penalty.setReason(typeof.valueOf(penaltyJson.getString("reason")));
+                                penalty.setDescription(penaltyJson.getString("description"));
+                                penalty.setPlace(penaltyJson.getString("place"));
+                                penalty.setInformedAtTheMoment(Boolean.parseBoolean(penaltyJson.getString("informedAtTheMoment")));
+                                penalty.setLocality(penaltyJson.getString("locality"));
+                                penalty.setLicenceplate(penaltyJson.getString("licenceplate"));
+                                penalty.setQuantity(Float.valueOf(penaltyJson.getString("quantity")));
+                                penalty.setPoints(Integer.valueOf(penaltyJson.getString("points")));
+                                penaltiesToSend.add(penalty);
+                            }
+                            callback.onPenaltiesReceived(penaltiesToSend);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", penaltyToSend.getDniClient());
+                params.put("state",penaltyToSend.getState().toString());
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+    public void getPenalties(String date1,String date2,PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getPenaltiesFromBd(date1,date2,penalty,new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                callback.onPenaltiesReceived(penalties);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+
+            }
+        });
+    }
+
+    private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if (response != null && !response.isEmpty()) {
+
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            JSONArray listOfPenalties = jsonResponse.getJSONArray("penalties");
+                            List<PenaltyDTO> penaltiesToSend = new ArrayList<>();
+                            for (int i = 0; i < listOfPenalties.length(); i++) {
+                                JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
+                                PenaltyDTO penalty = new PenaltyDTO();
+                                penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date dt1;
+                                try {
+                                    dt1 = format.parse(penaltyJson.getString("date"));
+                                } catch (ParseException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                penalty.setDate(dt1);
+                                penalty.setDniClient(penaltyJson.getString("dni_client"));
+                                penalty.setDniWorker(penaltyJson.getString("dni_worker"));
+                                penalty.setState(stateof.valueOf(penaltyJson.getString("state")));
+                                penalty.setReason(typeof.valueOf(penaltyJson.getString("reason")));
+                                penalty.setDescription(penaltyJson.getString("description"));
+                                penalty.setPlace(penaltyJson.getString("place"));
+                                penalty.setInformedAtTheMoment(Boolean.parseBoolean(penaltyJson.getString("informedAtTheMoment")));
+                                penalty.setLocality(penaltyJson.getString("locality"));
+                                penalty.setLicenceplate(penaltyJson.getString("licenceplate"));
+                                penalty.setQuantity(Float.valueOf(penaltyJson.getString("quantity")));
+                                penalty.setPoints(Integer.valueOf(penaltyJson.getString("points")));
+                                penaltiesToSend.add(penalty);
+                            }
+                            callback.onPenaltiesReceived(penaltiesToSend);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                error -> {
+                    callback.onError(error);
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", penaltyToSend.getDniClient());
+                params.put("date1",date1);
+                params.put("date2",date2);
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
 
 }

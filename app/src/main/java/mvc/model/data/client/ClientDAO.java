@@ -285,6 +285,7 @@ public class ClientDAO {
                 params.put("licencePoints", String.valueOf(client.getLicencepoints()));
                 params.put("password", client.getPassword());
                 params.put("email", client.getEmail());
+                params.put("dateLicenceObtaining",client.getDateLicenceObtaining().toString());
                 return params;
             }
         };
@@ -305,6 +306,7 @@ public class ClientDAO {
                 userToFind.setPassword(user.getPassword());
                 userToFind.setLicencepoints(user.getLicencepoints());
                 userToFind.setDni(user.getDni());
+                userToFind.setDateLicenceObtaining(user.getDateLicenceObtaining());
                 callback.onUserReceived(userToFind);
 
             }
@@ -351,15 +353,19 @@ public class ClientDAO {
                         String age = jsonResponse.getString("age");
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dateBirth;
+                        Date obtaining;
+                        String obtFromJson = jsonResponse.getString("dateLicenceObtaining");
+
                         try {
                             dateBirth = format.parse(age);
+                            obtaining=format.parse(obtFromJson);
+                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                            ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
+                            user.setDateLicenceObtaining(obtaining);
+                            callback.onUserReceived(user);
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-                        Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
-                        ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
-                        callback.onUserReceived(user);
-
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }

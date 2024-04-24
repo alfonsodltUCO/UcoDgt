@@ -35,7 +35,7 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
         if(!TextUtils.isEmpty(id)){
 
             ManagerPenalty mngP=new ManagerPenalty();
-            PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,null,null,null,null,false,null,null);
+            PenaltyDTO penalty=new PenaltyDTO(Integer.parseInt(id),null,null,null,null,null,dni,null,null,null,false,null,null);
             mngP.getPenalty(penalty, CheckPenaltyToFindForClient.this, new PenaltyCallback() {
 
 

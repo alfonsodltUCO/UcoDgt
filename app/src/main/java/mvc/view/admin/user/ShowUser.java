@@ -22,8 +22,8 @@ import mvc.view.admin.AdminActivity;
 
 
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {
-    TextView name,surname,email,numberofworker_licencepoints,birth,dni;
-    String strDate;
+    TextView name,surname,email,numberofworker_licencepoints,birth,dni,obtaining;
+    String strDate,strDate2;
     String type;
     String dniNoText;
     Button goMenu,deleteUser,listPenalties,listVehicles;
@@ -35,6 +35,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         Intent intentFound=getIntent();
         type=intentFound.getStringExtra("type");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        obtaining=findViewById(R.id.textViewDateObtaining);
         name=findViewById(R.id.textViewFoundName);
         birth=findViewById(R.id.textViewFoundDateBirth);
         surname=findViewById(R.id.textViewFoundSurname);
@@ -65,6 +66,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         }else{
 
             ClientDTO client = (ClientDTO) getIntent().getSerializableExtra("client");
+
             name.setText("name= "+client.getName());
             surname.setText("surname= "+client.getSurname());
             email.setText("email= "+client.getEmail());
@@ -72,7 +74,9 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             dni.setText("dni= "+client.getDni());
             dniNoText=client.getDni();
             strDate= formatter.format(client.getAge());
+            strDate2= formatter.format(client.getDateLicenceObtaining());
             birth.setText("birth= "+strDate);
+            obtaining.setText("Date obtainig licence= "+strDate2);
         }
     }
     public void onClick(View v){

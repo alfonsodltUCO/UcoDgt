@@ -19,6 +19,7 @@ import java.util.List;
 
 import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
+import mvc.model.business.penalty.stateof;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.PenaltyCallback;
@@ -112,7 +113,9 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     hideLoading();
                     finish();
                 }else{
-                    mngP.getPenalties(date1,date2, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
+
+                    PenaltyDTO penalty=new PenaltyDTO(null,null,null,null,null,null,dni,null,null,null,false,null,null);
+                    mngP.getPenalties(date1,date2,penalty, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
 
                         @Override
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
@@ -143,14 +146,15 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
             }else{
                 if(!TextUtils.isEmpty(state)) {
                     ManagerPenalty mngP=new ManagerPenalty();
-
-                    mngP.getPenalties(state, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
+                    PenaltyDTO penalty=new PenaltyDTO(null,null,null,null,null, stateof.valueOf(state),dni,null,null,null,false,null,null);
+                    mngP.getPenalties(penalty, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
 
                         @Override
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
+                            goShow.putExtra("dni",dni);
                             startActivity(goShow);
                             hideLoading();
                             finish();
@@ -161,6 +165,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             startActivity(goMain);
+                            goMain.putExtra("dni",dni);
                             hideLoading();
                             finish();
                         }

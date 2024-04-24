@@ -11,15 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.admin.penalty.CheckPenaltyToDelete;
+import mvc.view.client.penalty.IntroduceDataForPay;
 import mvc.model.business.penalty.PenaltyDTO;
-import mvc.view.admin.AdminActivity;
 import mvc.view.client.ClientActivity;
 
 public class ShowPenalty extends AppCompatActivity implements View.OnClickListener{
     String idtodelete;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
-    Button goMain,deletePenalty;
+    Button goMain,payPenalty;
     PenaltyDTO penalty;
     String dni;
     @Override
@@ -29,7 +28,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         dni=getIntent().getStringExtra("dni");
         setContentView(R.layout.show_penalty);
         goMain=findViewById(R.id.goMainMenu);
-        deletePenalty=findViewById(R.id.deletePenalty);
+        payPenalty=findViewById(R.id.payPenalty);
         id=findViewById(R.id.tvId);
         date=findViewById(R.id.tvDate);
         dnic=findViewById(R.id.tvDniC);
@@ -52,7 +51,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         quant.setText("quantity= "+ penalty.getQuantity().toString());
         licenceP.setText("plate= "+penalty.getLicenceplate().toString());
         goMain.setOnClickListener(this);
-        deletePenalty.setOnClickListener(this);
+        payPenalty.setOnClickListener(this);
     }
 
     @Override
@@ -62,10 +61,12 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             goMain.putExtra("dni",dni);
             startActivity(goMain);
             finish();
-        }else if(v.getId()==R.id.deletePenalty){
-            Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
-            goDelete.putExtra("id", penalty.getId().toString());
-            startActivity(goDelete);
+        }else if(v.getId()==R.id.payPenalty){
+            Intent goPay=new Intent(ShowPenalty.this, IntroduceDataForPay.class);
+            goPay.putExtra("id", penalty.getId().toString());
+            goPay.putExtra("dni",dni);
+            goPay.putExtra("quantity",penalty.getQuantity());
+            startActivity(goPay);
             finish();
         }
     }
