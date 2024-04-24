@@ -187,16 +187,16 @@ public class CheckClientPoints extends AppCompatActivity {
         long yearsExperience = calculateYears(fechaExpedicion, currentDate);
 
 
-
-
-        // Verificar si el conductor tiene 8 puntos iniciales y ha pasado al menos 3 años desde la expedición del permiso
-        // Además, verificar si no ha cometido infracciones en los últimos 2 años
         if (puntosActuales == 8 && yearsExperience >= 3 && fechaUltimaInfraccion == null) {
+
             long yearsWithoutInfringement = calculateYears(fechaExpedicion, currentDate);
-            if (yearsWithoutInfringement >= 2) { // Se cambió a 2 años para cumplir con el requisito
+
+            if (yearsWithoutInfringement >= 2) {
                 points = 12;
             }
+
         }else{
+
             if(fechaUltimaInfraccion!=null) {
 
                 long yearsWithoutInfringement = calculateYears(fechaUltimaInfraccion, currentDate);

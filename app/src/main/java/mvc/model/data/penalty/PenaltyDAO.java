@@ -914,34 +914,31 @@ public class PenaltyDAO {
 
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            JSONArray listOfPenalties = jsonResponse.getJSONArray("penalties");
-                            List<PenaltyDTO> penaltiesToSend = new ArrayList<>();
-                            for (int i = 0; i < listOfPenalties.length(); i++) {
-                                JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
-                                PenaltyDTO penalty = new PenaltyDTO();
-                                penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                                Date dt1;
-                                try {
-                                    dt1 = format.parse(penaltyJson.getString("date"));
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                penalty.setDate(dt1);
-                                penalty.setDniClient(penaltyJson.getString("dni_client"));
-                                penalty.setDniWorker(penaltyJson.getString("dni_worker"));
-                                penalty.setState(stateof.valueOf(penaltyJson.getString("state")));
-                                penalty.setReason(typeof.valueOf(penaltyJson.getString("reason")));
-                                penalty.setDescription(penaltyJson.getString("description"));
-                                penalty.setPlace(penaltyJson.getString("place"));
-                                penalty.setInformedAtTheMoment(Boolean.parseBoolean(penaltyJson.getString("informedAtTheMoment")));
-                                penalty.setLocality(penaltyJson.getString("locality"));
-                                penalty.setLicenceplate(penaltyJson.getString("licenceplate"));
-                                penalty.setQuantity(Float.valueOf(penaltyJson.getString("quantity")));
-                                penalty.setPoints(Integer.valueOf(penaltyJson.getString("points")));
-                                penaltiesToSend.add(penalty);
-                                callback.onPenaltyReceived(penalty);
+                            PenaltyDTO penalty = new PenaltyDTO();
+                            penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
+
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            Date dt1;
+                            try {
+                                dt1 = format.parse(jsonResponse.getString("date"));
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
                             }
+                            penalty.setDate(dt1);
+
+                            penalty.setDniClient(jsonResponse.getString("dni_client"));
+                            penalty.setDniWorker(jsonResponse.getString("dni_worker"));
+                            penalty.setState(stateof.valueOf(jsonResponse.getString("state")));
+                            penalty.setReason(typeof.valueOf(jsonResponse.getString("reason")));
+                            penalty.setDescription(jsonResponse.getString("description"));
+                            penalty.setPlace(jsonResponse.getString("place"));
+                            penalty.setInformedAtTheMoment(Boolean.parseBoolean(jsonResponse.getString("informedAtTheMoment")));
+                            penalty.setLocality(jsonResponse.getString("locality"));
+                            penalty.setLicenceplate(jsonResponse.getString("licenceplate"));
+                            penalty.setQuantity(Float.valueOf(jsonResponse.getString("quantity")));
+                            penalty.setPoints(Integer.valueOf(jsonResponse.getString("points")));
+                            callback.onPenaltyReceived(penalty);
+
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
