@@ -21,7 +21,10 @@ import java.io.ByteArrayOutputStream;
 
 import mvc.controller.admin.vehicle.CheckImage;
 import mvc.view.admin.vehicle.IntroduceManual;
-
+/**
+ * Activity to find a penalty using either the device's camera or gallery.
+ * @author Alfonso de la torre
+ */
 public class FindPenaltyActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
@@ -31,25 +34,35 @@ public class FindPenaltyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_vehicle);
         manual=findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
+        // Navigate to IntroduceManual activity when manual button is clicked
+
         manual.setOnClickListener(v -> {
+
             Intent intent = new Intent(FindPenaltyActivity.this, IntroduceManual.class);
             startActivity(intent);
             finish();
         });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+
             if (result.getResultCode() == RESULT_OK) {
+
                 Intent data = result.getData();
+
                 if (data != null) {
+
                     Bundle extras = data.getExtras();
+
                     if (extras != null) {
+
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        // Aquí puedes lanzar la actividad CheckImage con el bitmap
+                        // Launch CheckImage activity with the captured bitmap
                         launchCheckImageActivity(imageBitmap);
                     }
                 }
@@ -58,10 +71,12 @@ public class FindPenaltyActivity extends AppCompatActivity {
 
         // Initialize ActivityResultLauncher for gallery
         galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), result -> {
+
             if (result != null) {
+
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
-                    // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
+                    // Launch CheckImage activity with the selected bitmap
                     launchCheckImageActivity(selectedImage);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -69,38 +84,59 @@ public class FindPenaltyActivity extends AppCompatActivity {
             }
         });
 
+        // Open camera when take photo button is clicked
         takePhotoButton.setOnClickListener(v -> openCamera());
 
+        // Open gallery when pick photo button is clicked
         pickPhotoButton.setOnClickListener(v -> openGallery());
     }
-
+    /**
+     * Opens the device's camera to take a photo.
+     * If the camera permission is not granted, requests it.
+     */
     private void openCamera() {
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
         } else {
+
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             cameraLauncher.launch(takePictureIntent);
         }
     }
 
+    /**
+     * Opens the device's gallery to pick a photo.
+     */
     private void openGallery() {
         galleryLauncher.launch("image/*");
     }
-
+    /**
+     * Launches the CheckImage activity with the provided bitmap.
+     *
+     * @param bitmap The bitmap image to be passed to the CheckImage activity.
+     */
     private void launchCheckImageActivity(Bitmap bitmap) {
+
         Intent intentCheckVehiclePlate = new Intent(FindPenaltyActivity.this, CheckImage.class);
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         startActivity(intentCheckVehiclePlate);
         finish();
+
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         if (requestCode == REQUEST_IMAGE_CAPTURE) {
+
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
                 openCamera();
             }
         }

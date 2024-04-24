@@ -13,26 +13,27 @@ import com.example.ucodgt.R;
 
 import mvc.controller.admin.penalty.CheckPenaltyToAdd;
 import mvc.view.admin.AdminActivity;
-
+/**
+ * Activity to allow administrators to introduce a description for a new penalty.
+ * @author Alfonso de la torre
+ */
 public class IntroduceDescriptionForPenalty extends AppCompatActivity implements View.OnClickListener{
     Button goCheckAdd,goMain;
     EditText etDescrp;
-    String date;
-    String dniC;
-    String dniW;
-    String state;
-    String reason;
-    String informed;
-    String locality;
-    String place;
-    String quantity;
-    String points;
-    String licenceplate;
+    String date, dniC,dniW,state, reason,informed,locality,place, quantity,points,licenceplate;
+
+    /**
+     * Initializes the activity with UI components and retrieves data from the intent.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, or null if there was no saved state.
+     */
     @Override
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_penalty_description);
         etDescrp=findViewById(R.id.etDescription);
+
         date=getIntent().getStringExtra("date");
         dniC=getIntent().getStringExtra("dniC");
         dniW=getIntent().getStringExtra("dniW");
@@ -51,14 +52,24 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
         goCheckAdd.setOnClickListener(this);
         goMain.setOnClickListener(this);
     }
-
+    /**
+     * Handles click events for UI components.
+     *
+     * @param v The View that was clicked.
+     */
     @Override
     public void onClick(View v) {
+
         if(v.getId()==R.id.goMainMenu){
+            // Navigate back to the main menu
+
             Intent intentGoMain = new Intent(IntroduceDescriptionForPenalty.this, AdminActivity.class);
             startActivity(intentGoMain);
             finish();
+
         }else if(v.getId()==R.id.checkPenaltyToAdd){
+            // Proceed to check and add the penalty with the provided description
+
             Intent goNext = new Intent(IntroduceDescriptionForPenalty.this, CheckPenaltyToAdd.class);
             goNext.putExtra("date",date);
             goNext.putExtra("dniC",dniC);
@@ -74,6 +85,7 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
             goNext.putExtra("description",etDescrp.getText().toString());
             startActivity(goNext);
             finish();
+
         }
     }
 }
