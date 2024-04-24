@@ -19,7 +19,10 @@ import com.example.ucodgt.R;
 import java.io.ByteArrayOutputStream;
 
 import mvc.controller.admin.vehicle.CheckImage;
-
+/**
+ * Activity class to capture or select an image of a vehicle plate.
+ * @author Alfonso de la torre
+ */
 public class GetVehiclePlate extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> cameraLauncher;
@@ -27,7 +30,14 @@ public class GetVehiclePlate extends AppCompatActivity {
     Button manual;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     private static final int REQUEST_IMAGE_PICK = 102;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously
+     *                           being shut down then this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +58,8 @@ public class GetVehiclePlate extends AppCompatActivity {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        // Aquí puedes lanzar la actividad CheckImage con el bitmap
+                        // Launch CheckImage activity with the captured image bitmap
+                        assert imageBitmap != null;
                         launchCheckImageActivity(imageBitmap);
                     }
                 }
@@ -60,7 +71,7 @@ public class GetVehiclePlate extends AppCompatActivity {
             if (result != null) {
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
-                    // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
+                    // Launch CheckImage activity with the selected image bitmap
                     launchCheckImageActivity(selectedImage);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -95,6 +106,13 @@ public class GetVehiclePlate extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Callback for the result from requesting permissions.
+     *
+     * @param requestCode  The request code passed in requestPermissions.
+     * @param permissions  The requested permissions.
+     * @param grantResults The grant results for the corresponding permissions.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

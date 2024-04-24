@@ -52,13 +52,11 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
         setContentView(R.layout.loading);
         progressBar = findViewById(R.id.progressbar);
         showLoading();
-
         date=getIntent().getStringExtra("date");
         dniC=getIntent().getStringExtra("dniC");
         dniW=getIntent().getStringExtra("dniW");
@@ -74,25 +72,17 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date dateOfPenalty;
-
         try {
-
             dateOfPenalty = format.parse(date);
-
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
 
         if(informed.equals("yes") || informed.equals("Yes") || informed.equals("YES")){
-
             val=true;
-
         }else if(informed.equals("no") || informed.equals("No") || informed.equals("NO")){
-
             val=false;
-
         }else{
-
             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
             startActivity(intentAdmin);
             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for informed at the moment\nMust be Yes/No", Toast.LENGTH_LONG).show();
@@ -101,49 +91,35 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
         }
 
         if(!TextUtils.isEmpty(points) && !TextUtils.isEmpty(description) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(quantity) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(dniC) && !TextUtils.isEmpty(dniW) && !TextUtils.isEmpty(state) && !TextUtils.isEmpty(reason) && !TextUtils.isEmpty(place) && !TextUtils.isEmpty(informed) && !TextUtils.isEmpty(locality)){
-
             if(!checkDate(date)){
-
                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                 startActivity(intentAdmin);
                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid date\nMust be today", Toast.LENGTH_LONG).show();
                 hideLoading();
                 finish();
-
             }else{
-
                 if(!checkDni(dniC)){
-
                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                     startActivity(intentAdmin);
                     Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of client", Toast.LENGTH_LONG).show();
                     hideLoading();
                     finish();
-
                 }else{
-
                     if(!checkDni(dniW)){
-
                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                         startActivity(intentAdmin);
                         Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of worker", Toast.LENGTH_LONG).show();
                         hideLoading();
                         finish();
-
                     }else{
-
                         if(!checkStateOf(state)){
-
                             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                             startActivity(intentAdmin);
                             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for state", Toast.LENGTH_LONG).show();
                             hideLoading();
                             finish();
-
                         }else{
-
                             if(!checkReasonOf(reason)){
-
                                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
                                 startActivity(intentAdmin);
                                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid format for reason", Toast.LENGTH_LONG).show();
@@ -151,7 +127,6 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                 finish();
 
                             }else{
-
                                 if(!checkPlate(licenceplate)){
 
                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
@@ -282,7 +257,7 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
     }
 
-}
+
     /**
      * Show loading progress bar.
      */
