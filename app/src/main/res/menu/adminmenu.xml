@@ -10,11 +10,12 @@
     <item
         android:id="@+id/item3AdminListUsers"
         android:title="List users" />
-    <!--Por dni-->
+    <item
+        android:id="@+id/item13AdminUpdateUserPoints"
+        android:title="Update points of user" />
     <item
         android:id="@+id/item4AdminFindUser"
         android:title="Find user" />
-    <!--Por dni-->
     <item
         android:id="@+id/item5AdminAddVehicle"
         android:title="Add vehicle" />
@@ -33,11 +34,9 @@
     <item
         android:id="@+id/item10AdminAddPenalty"
         android:title="Add penalty" />
-    <!--Este llevará a otra página-->
     <item
         android:id="@+id/item11AdminDeletePenalty"
         android:title="Delete penalty" />
-    <!--Este llevará a otra página-->
     <item
         android:id="@+id/item12FindPenalty"
         android:title="Find penalty" />

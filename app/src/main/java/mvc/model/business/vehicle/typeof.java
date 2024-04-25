@@ -1,5 +1,9 @@
 package mvc.model.business.vehicle;
 
+/**
+ * Enumeration representing different types of vehicles.
+ * @author Alfonso de la torre
+ */
 public enum typeof {
     fiat,
     ferrari,
@@ -11,6 +15,5 @@ public enum typeof {
     bmw,
     volkswagen,
     mercedes,
-    volvo;
-
+    volvo
 }

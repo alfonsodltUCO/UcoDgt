@@ -1,5 +1,6 @@
 package mvc.controller.commonFunctions;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.VolleyError;
@@ -20,12 +21,30 @@ import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 
+/**
+ * This class provides various utility methods for checking user-related information, such as DNI, name, surname, email, date of birth, and password.
+ * @author Alfonso de la torre
+ */
+
 public class ForCheckUser {
+    /**
+     * Checks if the provided DNI (National Identity Document) is valid.
+     *
+     * @param dni The DNI to check.
+     * @return True if the DNI is valid, false otherwise.
+     */
     public static boolean checkDni(String dni){//used in CheckUserToadd
         Pattern pattern = Pattern.compile("[0-9]{8}[A-Z]");
         Matcher mat = pattern.matcher(dni);
         return mat.matches();
     }
+    /**
+     * Checks if the provided name and surname are valid.
+     *
+     * @param name    The name to check.
+     * @param surname The surname to check.
+     * @return True if both name and surname are valid, false otherwise.
+     */
     public static boolean checkNameAndSUrname(String name,String surname){
         if(name.length()<3){
             return false;
@@ -37,12 +56,14 @@ public class ForCheckUser {
             return false;
         }
         matcher=pattern.matcher(surname);
-        if(!matcher.matches()){
-            return false;
-        }
-        return true;
+        return matcher.matches();
     }
-
+    /**
+     * Checks if the provided license points are valid.
+     *
+     * @param licencePoints The license points to check.
+     * @return True if the license points are valid, false otherwise.
+     */
     public static boolean checkLicencePoints(String licencePoints){
         if (licencePoints.length()>2){
             return false;
@@ -53,13 +74,17 @@ public class ForCheckUser {
                 return false;
             }
         }
-        Integer number=Integer.parseInt(licencePoints);
-        if(number!=8){
-            return false;
-        }
-        return true;
+        int number=Integer.parseInt(licencePoints);
+        return number == 8;
     }
 
+    /**
+     * Checks if the provided email address for an admin user does not already exist in the database.
+     *
+     * @param email    The email address to check.
+     * @param context  The context of the application.
+     * @param callback The callback interface for handling the result of the email existence check.
+     */
     public static void checkAdminEmailNotExists(String email, Context context, UserCallback callback){
         ManagerAdmin mngAd = new ManagerAdmin();
 
@@ -96,6 +121,13 @@ public class ForCheckUser {
             }
         });
     }
+    /**
+     * Checks if the provided email address for a client user does not already exist in the database.
+     *
+     * @param email    The email address to check.
+     * @param context  The context of the application.
+     * @param callback The callback interface for handling the result of the email existence check.
+     */
     public static void checkClientEmailNotExists(String email, Context context, UserCallback callback){
         ManagerClient mngCl = new ManagerClient();
 
@@ -124,7 +156,13 @@ public class ForCheckUser {
             }
         });
     }
-
+    /**
+     * Checks if the provided email address for a worker user does not already exist in the database.
+     *
+     * @param email    The email address to check.
+     * @param context  The context of the application.
+     * @param callback The callback interface for handling the result of the email existence check.
+     */
     public static void checkWorkerEmailNotExists(String email, Context context, UserCallback callback){
         ManagerWorker mngWk = new ManagerWorker();
 
@@ -154,6 +192,12 @@ public class ForCheckUser {
         });
     }
 
+    /**
+     * Checks if the provided email address is valid.
+     *
+     * @param email The email address to check.
+     * @return True if the email address is valid, false otherwise.
+     */
     public static boolean checkValidEmail(String email){
         String emailPattern = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@" +
                 "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
@@ -166,7 +210,12 @@ public class ForCheckUser {
             return false;
         }
     }
-
+    /**
+     * Checks if the provided date of birth indicates that the user is at least 18 years old.
+     *
+     * @param age The date of birth to check.
+     * @return True if the user is at least 18 years old, false otherwise.
+     */
     public static boolean checkDateOfBirth(String age){
         String patternofdate = "^\\d{4}-\\d{2}-\\d{2}$";
 
@@ -175,7 +224,7 @@ public class ForCheckUser {
         Matcher matcher = pattern.matcher(age);
 
         if (matcher.matches()) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date birth;
             try {
                 birth = sdf.parse(age);
@@ -201,6 +250,12 @@ public class ForCheckUser {
 
     }
 
+    /**
+     * Checks if the provided password meets certain complexity criteria.
+     *
+     * @param password The password to check.
+     * @return True if the password meets the complexity criteria, false otherwise.
+     */
     public static boolean checkPassword(String password){
 
         if (password.length() > 8) {
@@ -231,8 +286,7 @@ public class ForCheckUser {
                     special = true;
                 }
             }
-
-            if (number == true && upper == true && letterorsymbol == true && special == true) {
+            if (number && upper && letterorsymbol && special) {
                 return true;
             } else {
                 return false;

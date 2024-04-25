@@ -18,16 +18,30 @@ import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
-import mvc.controller.vehicle.CheckImage;
+import mvc.controller.admin.vehicle.CheckImage;
+import mvc.view.admin.AdminActivity;
 
+/**
+ * Activity class to capture or select an image of a vehicle plate.
+ * @author Alfonso de la torre
+ */
 public class GetVehiclePlate extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> cameraLauncher;
     private ActivityResultLauncher<String> galleryLauncher;
     Button manual;
+
+    Button goMain;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     private static final int REQUEST_IMAGE_PICK = 102;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously
+     *                           being shut down then this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +49,13 @@ public class GetVehiclePlate extends AppCompatActivity {
         manual=findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
         Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
+        goMain=findViewById(R.id.goMainMenu);
+
+        goMain.setOnClickListener(v->{
+            Intent intent = new Intent(GetVehiclePlate.this, AdminActivity.class);
+            startActivity(intent);
+            finish();
+        });
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
                 startActivity(intent);
@@ -48,7 +69,8 @@ public class GetVehiclePlate extends AppCompatActivity {
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        // Aquí puedes lanzar la actividad CheckImage con el bitmap
+                        // Launch CheckImage activity with the captured image bitmap
+                        assert imageBitmap != null;
                         launchCheckImageActivity(imageBitmap);
                     }
                 }
@@ -60,7 +82,7 @@ public class GetVehiclePlate extends AppCompatActivity {
             if (result != null) {
                 try {
                     Bitmap selectedImage = MediaStore.Images.Media.getBitmap(getContentResolver(), result);
-                    // Aquí puedes lanzar la actividad CheckImage con el bitmap seleccionado
+                    // Launch CheckImage activity with the selected image bitmap
                     launchCheckImageActivity(selectedImage);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -73,6 +95,9 @@ public class GetVehiclePlate extends AppCompatActivity {
         pickPhotoButton.setOnClickListener(v -> openGallery());
     }
 
+    /**
+     * Opens the camera to capture an image if the necessary permission is granted.
+     */
     private void openCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
@@ -82,10 +107,27 @@ public class GetVehiclePlate extends AppCompatActivity {
         }
     }
 
+    /**
+     * Opens the gallery to select an image if the necessary permission is granted.
+     */
     private void openGallery() {
-        galleryLauncher.launch("image/*");
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_IMAGE_PICK);
+            }
+        } else {
+            galleryLauncher.launch("image/*");
+        }
     }
 
+    /**
+     * Launches the activity to check the captured or selected image.
+     *
+     * @param bitmap The bitmap image to be checked.
+     */
     private void launchCheckImageActivity(Bitmap bitmap) {
         Intent intentCheckVehiclePlate = new Intent(GetVehiclePlate.this, CheckImage.class);
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
@@ -95,6 +137,13 @@ public class GetVehiclePlate extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Callback for the result from requesting permissions.
+     *
+     * @param requestCode  The request code passed in requestPermissions.
+     * @param permissions  The requested permissions.
+     * @param grantResults The grant results for the corresponding permissions.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

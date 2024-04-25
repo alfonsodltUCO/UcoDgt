@@ -11,24 +11,38 @@ import com.example.ucodgt.R;
 import java.util.List;
 
 import mvc.model.business.penalty.PenaltyDTO;
-import mvc.model.business.vehicle.VehicleDTO;
-import mvc.view.admin.vehicle.CardAdapterVehicle;
-
+ /**
+ * Activity to display a list of penalties using a RecyclerView.
+ * @author Alfonso de la torre
+ */
 public class ShowPenalties extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CardAdapterPenalty adapter;
     private List<PenaltyDTO> penaltyList;
-
+    /**
+     * Initializes the activity with a list of penalties and sets up the RecyclerView.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, or null if there was no saved state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.show_penalties);
+        // Retrieve the list of penalties from the intent
+
         List<PenaltyDTO> penalties = (List<PenaltyDTO>) getIntent().getSerializableExtra("penalties");
+
         recyclerView = findViewById(R.id.recycler_view_penalties);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // If the list of penalties is not empty, assign it to the local variable
+
         if (!penalties.isEmpty()) {
+
             penaltyList = penalties;
         }
+        // Create and set up the adapter with the list of penalties
 
         adapter = new CardAdapterPenalty(this,penaltyList);
         recyclerView.setAdapter(adapter);

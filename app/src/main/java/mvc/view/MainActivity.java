@@ -8,19 +8,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.example.ucodgt.R;
 import mvc.controller.CheckLogIn;
-
+/**
+ * The main activity class for user login.
+ * @author Alfonso de la torre
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button loginButton;
     EditText editTextEmail,editTextPassword;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         setTheme(R.style.Theme_UcoDgt);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -31,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
         int id=v.getId();
@@ -38,7 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             goCheckLogIn();
         }
     }
-
+    /**
+     * Redirects to the check login activity.
+     */
     private void goCheckLogIn(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();

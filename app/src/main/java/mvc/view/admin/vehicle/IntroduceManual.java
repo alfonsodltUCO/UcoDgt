@@ -11,15 +11,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.vehicle.CheckVehicleToFind;
+import mvc.controller.admin.vehicle.CheckVehicleToFind;
 import mvc.view.admin.AdminActivity;
-
+/**
+ * Activity class to introduce a manual search for a vehicle by licence plate.
+ * @author Alfonso de la torre
+ */
 public class IntroduceManual extends AppCompatActivity implements View.OnClickListener {
     EditText et;
     Button buttonMain,buttonGoFind;
-
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously
+     *                           being shut down then this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise it is null.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_vehicle);
         et=findViewById(R.id.editTextPlateToSearch);
@@ -29,17 +40,27 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
         buttonMain.setOnClickListener(this);
 
     }
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
     public void onClick(View v) {
 
         if(v.getId()==R.id.goFind){
+
             Intent goIntent=new Intent(IntroduceManual.this, CheckVehicleToFind.class);
             goIntent.putExtra("licenceplate",et.getText().toString().trim());
             startActivity(goIntent);
             finish();
+
         }else if(v.getId()==R.id.goMainMenu){
+
             Intent goMenu=new Intent(IntroduceManual.this, AdminActivity.class);
             startActivity(goMenu);
             finish();
+
         }
     }
 }

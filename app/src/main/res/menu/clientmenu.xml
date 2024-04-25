@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item1ClientListVehicles"
+        android:title="List my vehicles" />
+    <item
+        android:id="@+id/item2ClientListPenalties"
+        android:title="List my penalties" />
+    <item
+        android:id="@+id/item3ClientPayPenalty"
+        android:title="Pay penalty" />
+    <item
+        android:id="@+id/item4ClientCheckMyPoints"
+        android:title="Get my info" />
+</menu>

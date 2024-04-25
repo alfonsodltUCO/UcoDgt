@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:textSize="30sp"
             android:text="Introduce the DNI"
             android:textAlignment="center"
