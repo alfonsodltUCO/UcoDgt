@@ -1,6 +1,4 @@
-package mvc.controller.worker;
-
-import static mvc.controller.commonFunctions.ForCheckPenalty.checkDatesPenalties;
+package mvc.controller.worker.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;

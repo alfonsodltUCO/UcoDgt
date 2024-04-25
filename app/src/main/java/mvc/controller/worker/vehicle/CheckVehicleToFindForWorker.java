@@ -1,4 +1,4 @@
-package mvc.controller.worker;
+package mvc.controller.worker.vehicle;
 
 import static mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
 

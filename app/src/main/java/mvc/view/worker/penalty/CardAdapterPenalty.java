@@ -14,7 +14,7 @@ import com.example.ucodgt.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.controller.worker.CheckPenaltyToFindForWorker;
+import mvc.controller.worker.penalty.CheckPenaltyToFindForWorker;
 import mvc.model.business.penalty.PenaltyDTO;
 
 /**

@@ -1,4 +1,4 @@
-package mvc.controller.worker;
+package mvc.controller.worker.vehicle;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

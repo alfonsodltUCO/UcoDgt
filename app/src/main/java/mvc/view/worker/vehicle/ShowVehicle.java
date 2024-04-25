@@ -14,8 +14,8 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
-import mvc.controller.worker.CheckPenaltiesToListForWorker;
-import mvc.controller.worker.CheckUserToSee;
+import mvc.controller.worker.penalty.CheckPenaltiesToListForWorker;
+import mvc.controller.worker.user.CheckUserToSee;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.view.worker.WorkerActivity;
 import mvc.view.worker.penalty.AddPenaltyActivity;

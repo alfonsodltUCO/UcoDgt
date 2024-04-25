@@ -18,8 +18,7 @@ import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
-import mvc.controller.worker.CheckImageForWorker;
-import mvc.view.admin.AdminActivity;
+import mvc.controller.worker.vehicle.CheckImageForWorker;
 import mvc.view.worker.WorkerActivity;
 
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +14,8 @@ import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
-import mvc.controller.worker.CheckPenaltiesToListForWorker;
+import mvc.controller.worker.penalty.CheckPenaltiesToListForWorker;
 import mvc.model.business.user.client.ClientDTO;
-import mvc.model.business.user.worker.WorkerDTO;
 import mvc.view.worker.WorkerActivity;
 
 /**

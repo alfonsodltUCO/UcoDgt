@@ -1,4 +1,4 @@
-package mvc.controller.worker;
+package mvc.controller.worker.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkNumeric;
 

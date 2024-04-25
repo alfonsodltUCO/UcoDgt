@@ -1,7 +1,6 @@
-package mvc.controller.worker;
+package mvc.controller.worker.penalty;
 
 import static mvc.controller.commonFunctions.ForCheckListPenalty.checkPenalty;
-import static mvc.controller.commonFunctions.ForCheckPenalty.checkDate;
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkPoints;
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkQuantity;
 import static mvc.controller.commonFunctions.ForCheckPenalty.checkReasonOf;

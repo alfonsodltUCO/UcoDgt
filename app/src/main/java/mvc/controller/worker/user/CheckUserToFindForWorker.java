@@ -1,4 +1,4 @@
-package mvc.controller.worker;
+package mvc.controller.worker.user;
 
 import static mvc.controller.commonFunctions.ForCheckUser.checkDni;
 

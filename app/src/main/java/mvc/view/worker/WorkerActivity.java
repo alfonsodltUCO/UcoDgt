@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
 
-import mvc.controller.worker.CheckWorkerInfo;
+import mvc.controller.worker.user.CheckWorkerInfo;
 import mvc.view.worker.penalty.AddPenaltyActivity;
 import mvc.view.MainActivity;
 import mvc.view.worker.user.FindUserActivity;

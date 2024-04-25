@@ -1,8 +1,10 @@
-package mvc.controller.worker;
+package mvc.controller.worker.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,21 +13,20 @@ import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
 import java.util.List;
-import mvc.model.business.penalty.PenaltyDTO;
+
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
-import mvc.model.business.user.client.ManagerClient;
+import mvc.model.business.user.worker.ManagerWorker;
 import mvc.model.business.user.worker.WorkerDTO;
-import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.UserCallback;
-import mvc.view.worker.user.ShowUser;
+import mvc.view.worker.WorkerActivity;
+import mvc.view.worker.user.ShowWorker;
 
-public class CheckUserToSee extends AppCompatActivity {
-
-
-    ProgressBar progressBar;
+public class CheckWorkerInfo extends AppCompatActivity {
 
     String numberWorker;
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,31 +37,36 @@ public class CheckUserToSee extends AppCompatActivity {
 
         numberWorker=getIntent().getStringExtra("numberWorker");
 
-        String lplate=getIntent().getStringExtra("licencePlate");
+        ManagerWorker mngW=new ManagerWorker();
+        WorkerDTO wrk=new WorkerDTO(null,null,null,null,null,null,Integer.parseInt(numberWorker));
 
-        ManagerClient mngC=new ManagerClient();
-        VehicleDTO vh=new VehicleDTO();
-        vh.setLicencePlate(lplate);
 
-        mngC.getOwner(vh,CheckUserToSee.this, new UserCallback() {
+        mngW.getUserByNumber(wrk, CheckWorkerInfo.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                Intent goShow=new Intent(CheckUserToSee.this, ShowUser.class);
-                goShow.putExtra("numberWorker",numberWorker);
-                goShow.putExtra("client",user);
-                startActivity(goShow);
-                finish();
-                hideLoading();
+
             }
 
             @Override
             public void onError(VolleyError error) {
-
+                Log.e("e",error.getMessage().toString());
+                Intent intent=new Intent(CheckWorkerInfo.this, WorkerActivity.class);
+                intent.putExtra("numberWorker",numberWorker);
+                Toast.makeText(CheckWorkerInfo.this,"An error has occured try again please", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+                hideLoading();
+                finish();
             }
 
             @Override
             public void onWorkerReceived(WorkerDTO user) {
 
+                Intent intent=new Intent(CheckWorkerInfo.this, ShowWorker.class);
+                intent.putExtra("numberWorker",numberWorker);
+                intent.putExtra("worker",user);
+                startActivity(intent);
+                hideLoading();
+                finish();
             }
 
             @Override
@@ -80,18 +86,18 @@ public class CheckUserToSee extends AppCompatActivity {
         });
     }
 
+
     /**
-     * Shows the loading progress bar.
+     * Show loading progress bar.
      */
     private void showLoading() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
     /**
-     * Hides the loading progress bar.
+     * Hide loading progress bar.
      */
     private void hideLoading() {
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
-
 }
