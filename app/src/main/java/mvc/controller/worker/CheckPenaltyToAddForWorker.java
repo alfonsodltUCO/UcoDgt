@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -170,7 +171,7 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
 
                                         @Override
                                         public void onError(VolleyError error) {
-
+                                            Log.e("e",error.getMessage());
                                         }
 
                                         @Override

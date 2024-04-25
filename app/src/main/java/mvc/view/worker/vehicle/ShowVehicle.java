@@ -72,7 +72,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         addPenalty=findViewById(R.id.addPenalty);
         goMain.setOnClickListener(this);
         seeUser.setOnClickListener(this);
-
+        addPenalty.setOnClickListener(this);
         licplate=vehicle.getLicencePlate();
         listPenalties=findViewById(R.id.listPenalties);
         listPenalties.setOnClickListener(this);
