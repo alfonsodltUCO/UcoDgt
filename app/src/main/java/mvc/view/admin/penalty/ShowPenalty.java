@@ -54,7 +54,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         idtodelete=id.getText().toString();
         quant=findViewById(R.id.tvQuantity);
         points=findViewById(R.id.tvPoints);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(penalty.getDate());
         date.setText("date= "+strDate);
         id.setText("id= "+penalty.getId().toString());

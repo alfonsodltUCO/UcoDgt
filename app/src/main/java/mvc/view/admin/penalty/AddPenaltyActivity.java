@@ -13,7 +13,7 @@ import com.example.ucodgt.R;
 
 import mvc.view.admin.AdminActivity;
 /**
- * Activity for adding a new penalty.
+ * Activity for adding a new penalty by admin.
  * @author Alfonso de la torre
  */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {

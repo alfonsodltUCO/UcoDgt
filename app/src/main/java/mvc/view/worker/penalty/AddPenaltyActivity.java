@@ -29,10 +29,12 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
      *
      * @param savedInstanceState A Bundle containing the activity's previously saved state, or null if there was no saved state.
      */
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
 
-        super.onPostCreate(savedInstanceState);
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.add_penalty_for_worker);
         goAddDescrp=findViewById(R.id.goNext);
         goMain=findViewById(R.id.goMainMenu);
@@ -54,6 +56,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         goAddDescrp.setOnClickListener(this);
         goMain.setOnClickListener(this);
     }
+
     /**
      * Handles click events for the buttons in the activity.
      *

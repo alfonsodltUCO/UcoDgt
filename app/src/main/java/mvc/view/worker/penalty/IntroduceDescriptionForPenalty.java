@@ -16,7 +16,7 @@ import mvc.view.worker.WorkerActivity;
 
 
 /**
- * Activity to allow administrators to introduce a description for a new penalty.
+ * Activity to allow workers to introduce a description for a new penalty.
  * @author Alfonso de la torre
  */
 public class IntroduceDescriptionForPenalty extends AppCompatActivity implements View.OnClickListener {

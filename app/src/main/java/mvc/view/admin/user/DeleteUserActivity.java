@@ -63,10 +63,10 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
         if(v.getId()==R.id.deleteUser){
             // Handle delete user action
 
-            Intent checkUserToAdd=new Intent(DeleteUserActivity.this, CheckUserToDelete.class);
-            checkUserToAdd.putExtra("userToDelete",selectedOption);
-            checkUserToAdd.putExtra("dni",dniToDelete.getText().toString().trim());
-            startActivity(checkUserToAdd);
+            Intent delete=new Intent(DeleteUserActivity.this, CheckUserToDelete.class);
+            delete.putExtra("userToDelete",selectedOption);
+            delete.putExtra("dni",dniToDelete.getText().toString().trim());
+            startActivity(delete);
 
         }else if(v.getId()==R.id.goMainMenu){
             // Handle go to main menu action

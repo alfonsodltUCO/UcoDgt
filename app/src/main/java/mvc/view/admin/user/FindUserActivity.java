@@ -64,10 +64,10 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
         if(v.getId()==R.id.findUser){
             // Start the CheckUserToFind activity to find the user
 
-            Intent checkUserToAdd=new Intent(FindUserActivity.this, CheckUserToFind.class);
-            checkUserToAdd.putExtra("userToFind",selectedOption);
-            checkUserToAdd.putExtra("dni",dniToSearch.getText().toString().trim());
-            startActivity(checkUserToAdd);
+            Intent goFind=new Intent(FindUserActivity.this, CheckUserToFind.class);
+            goFind.putExtra("userToFind",selectedOption);
+            goFind.putExtra("dni",dniToSearch.getText().toString().trim());
+            startActivity(goFind);
             finish();
 
         }else if(v.getId()==R.id.goMainMenu){

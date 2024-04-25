@@ -20,8 +20,8 @@ import mvc.model.business.user.worker.WorkerDTO;
 import mvc.view.worker.WorkerActivity;
 
 /**
- * Activity for displaying worker details and providing options to perform actions related to the worker.
- * @author Alfonso d la torre
+ * Activity for see the info of the worker.
+ * @author Alfonso de la torre
  */
 public class ShowWorker extends AppCompatActivity implements View.OnClickListener {
     TextView name,surname,numberofworker,birth,dni,email;

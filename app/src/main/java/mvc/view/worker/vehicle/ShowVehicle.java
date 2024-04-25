@@ -21,7 +21,7 @@ import mvc.view.worker.WorkerActivity;
 import mvc.view.worker.penalty.AddPenaltyActivity;
 
 /**
- * Activity class to display details of a vehicle for administrators.
+ * Activity class to display details of a vehicle for workers.
  * @author Alfonso de la torre
  */
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
@@ -61,7 +61,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         type.setText("Type= "+vehicle.getCarType().toString());
         idIns.setText("Id insurance= "+vehicle.getIdInsurance());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(vehicle.getValidItvFrom());
         itv1.setText("Itv valid from= "+strDate);
         strDate= formatter.format(vehicle.getValidItvTo());

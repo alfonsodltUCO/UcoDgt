@@ -20,6 +20,10 @@ import mvc.view.MainActivity;
 import mvc.view.worker.user.FindUserActivity;
 import mvc.view.worker.vehicle.GetVehiclePlate;
 
+/**
+ * This class represents the activity for managing worker options.
+ * @author Alfonso de la torre
+ */
 public class WorkerActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button closeSession;

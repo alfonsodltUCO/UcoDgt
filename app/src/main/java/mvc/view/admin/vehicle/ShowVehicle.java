@@ -54,7 +54,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         type.setText("Type= "+vehicle.getCarType().toString());
         idIns.setText("Id insurance= "+vehicle.getIdInsurance());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(vehicle.getValidItvFrom());
         itv1.setText("Itv valid from= "+strDate);
         strDate= formatter.format(vehicle.getValidItvTo());
