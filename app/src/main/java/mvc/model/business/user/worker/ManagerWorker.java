@@ -278,4 +278,38 @@ public class ManagerWorker {
             }
         });
     }
+
+    public void getUserByNumber(WorkerDTO worker,Context applicationContext,UserCallback callback){
+        WorkerDAO workD=new WorkerDAO();
+        workD.getUserByNumber(worker,applicationContext,new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
 }

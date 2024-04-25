@@ -54,7 +54,6 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loading);
-        setContentView(R.layout.loading);
         progressBar = findViewById(R.id.progressbar);
         showLoading();
         date=getIntent().getStringExtra("date");

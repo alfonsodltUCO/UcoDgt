@@ -84,6 +84,9 @@
         <activity android:name="mvc.controller.client.user.CheckClientPoints" />
         <activity android:name="mvc.view.admin.penalty.IntroducePoints" />
         <activity android:name="mvc.controller.admin.users.CheckPointsToUpdate" />
+        <activity android:name="mvc.view.worker.WorkerActivity" />
+        <activity android:name="mvc.view.worker.penalty.IntroduceDescriptionForPenalty" />
+        <activity android:name="mvc.controller.worker.CheckPenaltyToAddForWorker" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

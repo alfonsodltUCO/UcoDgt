@@ -22,6 +22,7 @@ import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.MainActivity;
 import mvc.view.admin.AdminActivity;
+import mvc.view.worker.WorkerActivity;
 
 /**
  * A class created to handle the login of the different types of user.
@@ -145,6 +146,9 @@ public class CheckLogIn extends AppCompatActivity {
                                                 throw new RuntimeException(e);
                                             }
 
+                                            Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
+                                            intentWorker.putExtra("numberWorker",user.getNumberOfWorker());
+                                            startActivity(intentWorker);
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
                                             hideLoading();
                                             finish();
