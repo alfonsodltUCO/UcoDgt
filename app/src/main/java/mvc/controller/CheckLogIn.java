@@ -147,7 +147,7 @@ public class CheckLogIn extends AppCompatActivity {
                                             }
 
                                             Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
-                                            intentWorker.putExtra("numberWorker",user.getNumberOfWorker());
+                                            intentWorker.putExtra("numberWorker",user.getNumberOfWorker().toString());
                                             startActivity(intentWorker);
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
                                             hideLoading();

@@ -35,5 +35,11 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:text="Introduce manual" />
+    <Button
+        android:id="@+id/goMainMenu"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Main" />
 
 </LinearLayout>

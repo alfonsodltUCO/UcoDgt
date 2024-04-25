@@ -1,4 +1,4 @@
-package mvc.view.admin.vehicle;
+package mvc.view.worker.vehicle;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,8 +18,10 @@ import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
-import mvc.controller.admin.vehicle.CheckImage;
+import mvc.controller.worker.CheckImageForWorker;
 import mvc.view.admin.AdminActivity;
+import mvc.view.worker.WorkerActivity;
+
 
 /**
  * Activity class to capture or select an image of a vehicle plate.
@@ -28,9 +30,10 @@ import mvc.view.admin.AdminActivity;
 public class GetVehiclePlate extends AppCompatActivity {
 
     private ActivityResultLauncher<Intent> cameraLauncher;
+
+    String numberWorker;
     private ActivityResultLauncher<String> galleryLauncher;
     Button manual;
-
     Button goMain;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
     private static final int REQUEST_IMAGE_PICK = 102;
@@ -45,6 +48,8 @@ public class GetVehiclePlate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        numberWorker=getIntent().getStringExtra("numberWorker");
+
         setContentView(R.layout.get_vehicle);
         manual=findViewById(R.id.manualWay);
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
@@ -52,12 +57,15 @@ public class GetVehiclePlate extends AppCompatActivity {
         goMain=findViewById(R.id.goMainMenu);
 
         goMain.setOnClickListener(v->{
-            Intent intent = new Intent(GetVehiclePlate.this, AdminActivity.class);
+            Intent intent = new Intent(GetVehiclePlate.this, WorkerActivity.class);
+            intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             finish();
         });
+
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
+                intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
                 finish();
         });
@@ -129,10 +137,11 @@ public class GetVehiclePlate extends AppCompatActivity {
      * @param bitmap The bitmap image to be checked.
      */
     private void launchCheckImageActivity(Bitmap bitmap) {
-        Intent intentCheckVehiclePlate = new Intent(GetVehiclePlate.this, CheckImage.class);
+        Intent intentCheckVehiclePlate = new Intent(GetVehiclePlate.this, CheckImageForWorker.class);
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
+        intentCheckVehiclePlate.putExtra("numberWorker",numberWorker);
         startActivity(intentCheckVehiclePlate);
         finish();
     }

@@ -279,6 +279,12 @@ public class ManagerWorker {
         });
     }
 
+    /**
+     * Retrieves a worker by number of worker.
+     *
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the retrieval operation.
+     */
     public void getUserByNumber(WorkerDTO worker,Context applicationContext,UserCallback callback){
         WorkerDAO workD=new WorkerDAO();
         workD.getUserByNumber(worker,applicationContext,new UserCallback() {

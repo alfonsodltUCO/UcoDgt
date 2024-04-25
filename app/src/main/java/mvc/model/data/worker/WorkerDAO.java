@@ -51,9 +51,6 @@ public class WorkerDAO {
         checkWorker(userToFind, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-
-
-
             }
 
             @Override
@@ -607,6 +604,106 @@ public class WorkerDAO {
                     }
                 },
                 error -> callback.onWorkersReceived(new ArrayList<WorkerDTO>())
+        );
+
+        requestQueue.add(JsonObjectRequest);
+    }
+
+
+    /**
+     * Get a worker by number of worker.
+     *
+     * @param userToFind          The worker object containing number value.
+     * @param applicationContext The application context.
+     * @param callback            The callback to handle the result of the login check.
+     */
+    public void getUserByNumber(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getUserByNumber(userToFind, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setDni(user.getDni());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                callback.onWorkerReceived(userToFind);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Helper method to get a worker by his/her number.
+     *
+     * @param userToFind The worker object containing the number to search for.
+     * @param callback   The callback to handle the result of the login check.
+     */
+    private void getUserByNumber(final  WorkerDTO userToFind,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/user/getWorkerByNumber.php?number="+userToFind.getNumberOfWorker();
+
+        JsonObjectRequest JsonObjectRequest;
+        JsonObjectRequest = new JsonObjectRequest(
+
+                Request.Method.GET,
+                URL,
+                null,
+                response -> {
+
+                    try {
+                        String name=response.getString("name");
+                        String surname=response.getString("surname");
+                        String email1 =response.getString("email");
+                        String passwordhashed=response.getString("password");
+
+                        String age=response.getString("age");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
+                        try {
+                            dateBirth = format.parse(age);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        String number=response.getString("numberOfWorker");
+                        String dni=response.getString("dni_worker");
+                        WorkerDTO user=new WorkerDTO(dni,userToFind.getPassword(),name,surname,dateBirth, email1,Integer.parseInt(number));
+                        callback.onWorkerReceived(user);
+
+                    } catch (JSONException e) {
+                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
+
+                        callback.onWorkerReceived(user);
+                    }
+
+
+                },
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);

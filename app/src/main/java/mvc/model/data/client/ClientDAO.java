@@ -24,6 +24,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
+import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.UserCallback;
 
 
@@ -707,6 +708,106 @@ public class ClientDAO {
                 params.put("dni", client.getDni());
                 params.put("licencePoints", String.valueOf(client.getLicencepoints()));
                 params.put("dateLastUpdate",formatter.format(new Date()));
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+
+    /**
+     * Retrieves a client user from the database by a vehicle.
+     *
+     * @param vehicle The Vehicle object that represent the owner we are trying to obtain.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the retrieval operation.
+     */
+
+    public void getOwner(VehicleDTO vehicle, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        getOwner(vehicle, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+                callback.onUserReceived(user);
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Retrieves a vehicle from DB by a given vehicle.
+     *
+     * @param vehicle The Vehicle object that represent the owner we are trying to obtain info.
+     * @param callback The callback to handle the result of the retrieval operation.
+     */
+    private void getOwner(final VehicleDTO vehicle,final UserCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/vehicle/getClient.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String name = jsonResponse.getString("name");
+                        String surname = jsonResponse.getString("surname");
+                        String email = jsonResponse.getString("email");
+                        String dni1 = jsonResponse.getString("dni_client");
+                        String age = jsonResponse.getString("age");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateBirth;
+                        Date obtaining;
+                        Date last;
+                        String obtFromJson = jsonResponse.getString("dateLicenceObtaining");
+
+                        try {
+                            dateBirth = format.parse(age);
+                            obtaining=format.parse(obtFromJson);
+                            last=format.parse(jsonResponse.getString("dateLastUpdate"));
+                            Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
+                            ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
+                            user.setDateLicenceObtaining(obtaining);
+                            user.setDateLastUpdate(last);
+                            callback.onUserReceived(user);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("plate", vehicle.getLicencePlate());
                 return params;
             }
         };

@@ -2,6 +2,7 @@ package mvc.view.worker.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         goAddDescrp=findViewById(R.id.goNext);
         goMain=findViewById(R.id.goMainMenu);
         numberWorker=getIntent().getStringExtra("numberWorker");
-
+        String plate=getIntent().getStringExtra("licencePlate");
 
         etDniClient=findViewById(R.id.etCDni);
         etReason=findViewById(R.id.etReason);
@@ -47,6 +48,9 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         etQuantity=findViewById(R.id.etQuantity);
         etPoints=findViewById(R.id.etPoints);
 
+        if(!TextUtils.isEmpty(plate)){
+            etLPlate.setText(plate);
+        }
         goAddDescrp.setOnClickListener(this);
         goMain.setOnClickListener(this);
     }

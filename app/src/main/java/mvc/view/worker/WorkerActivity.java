@@ -13,8 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ucodgt.R;
+
+import mvc.controller.worker.CheckWorkerInfo;
 import mvc.view.worker.penalty.AddPenaltyActivity;
 import mvc.view.MainActivity;
+import mvc.view.worker.user.FindUserActivity;
+import mvc.view.worker.vehicle.GetVehiclePlate;
 
 public class WorkerActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -51,19 +55,32 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
         numberWorker=getIntent().getStringExtra("numberWorker");
         if(item.getItemId()==R.id.item1WorkerAddPenalty){
 
-
-        }else if(item.getItemId()==R.id.item2WorkerCheckVehicle){
-
             Intent intent=new Intent(WorkerActivity.this,AddPenaltyActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             finish();
 
+        }else if(item.getItemId()==R.id.item2WorkerCheckVehicle){
+
+            Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
+            intent.putExtra("numberWorker",numberWorker);
+            startActivity(intent);
+            finish();
+
+
         }else if(item.getItemId()==R.id.item3WorkerCheckUser){
 
-        }else if(item.getItemId()==R.id.item4WorkerCancelPenalty){
+            Intent intent=new Intent(WorkerActivity.this, FindUserActivity.class);
+            intent.putExtra("numberWorker",numberWorker);
+            startActivity(intent);
+            finish();
 
         }else if(item.getItemId()==R.id.item5WorkerGetMyInfo){
+
+            Intent intent=new Intent(WorkerActivity.this, CheckWorkerInfo.class);
+            intent.putExtra("numberWorker",numberWorker);
+            startActivity(intent);
+            finish();
 
         }
         return false;
