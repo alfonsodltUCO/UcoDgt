@@ -2,8 +2,6 @@ package mvc.controller.client.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import mvc.controller.CheckLogIn;
-import mvc.model.business.penalty.ManagerPenalty;
+ import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
@@ -220,7 +217,7 @@ public class CheckClientPoints extends AppCompatActivity {
                         }
                     }
                 }else{//Not novel
-                    if(yearsExperience>3 && (yearsLastUpdate-2)>=3){
+                    if(yearsLastUpdate-2>=3){
                         points+=2;
                         if(yearsExperience>=6 && (yearsLastUpdate-3)>=0){
                             points+=1;
@@ -249,8 +246,7 @@ public class CheckClientPoints extends AppCompatActivity {
     private long calculateYears(Date startDate, Date endDate) {
 
         long differenceInMillis = endDate.getTime() - startDate.getTime();
-        long years = TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS) / 365;
-        return years;
+        return TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS) / 365;
     }
 
 }

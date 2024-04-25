@@ -40,7 +40,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
-        id=getIntent().getStringExtra("id").toString();
+        id=getIntent().getStringExtra("id");
 
         if(!TextUtils.isEmpty(id)){
 

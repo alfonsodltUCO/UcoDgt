@@ -1,5 +1,7 @@
 package mvc.model.business.user.admin;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 
@@ -178,6 +180,7 @@ public class AdminDTO {
      *
      * @return a string representation of the administrator user.
      */
+    @NonNull
     @Override
     public String toString() {
         return "UserDTO{" +

@@ -9,9 +9,7 @@ import java.util.List;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.PenaltyCallback;
-import mvc.model.data.VehicleCallback;
-import mvc.model.data.penalty.PenaltyDAO;
-import mvc.model.data.vehicle.VehicleDAO;
+ import mvc.model.data.penalty.PenaltyDAO;
 
 /**
  * This class is responsible for managing penalty-related operations.

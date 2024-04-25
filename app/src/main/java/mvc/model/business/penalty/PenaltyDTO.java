@@ -1,5 +1,7 @@
 package mvc.model.business.penalty;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -217,6 +219,7 @@ public class PenaltyDTO implements Serializable {
      *
      * @return A string representation of the PenaltyDTO object, including its attributes.
      */
+    @NonNull
     @Override
     public String toString() {
         return "PenaltyDTO{" +

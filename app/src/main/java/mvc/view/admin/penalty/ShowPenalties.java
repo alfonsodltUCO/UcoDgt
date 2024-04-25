@@ -11,9 +11,7 @@ import com.example.ucodgt.R;
 import java.util.List;
 
 import mvc.model.business.penalty.PenaltyDTO;
-import mvc.model.business.vehicle.VehicleDTO;
-import mvc.view.admin.vehicle.CardAdapterVehicle;
-/**
+ /**
  * Activity to display a list of penalties using a RecyclerView.
  * @author Alfonso de la torre
  */

@@ -29,8 +29,7 @@ import mvc.view.client.user.ShowUser;
  */
 public class CheckUserToFindForClient extends AppCompatActivity {
     private ProgressBar progressBar;
-    String userToFind;
-    String dni;
+     String dni;
     /**
      * Called when the activity is starting. Responsible for initializing the activity.
      *

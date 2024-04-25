@@ -1,5 +1,6 @@
 package mvc.view.client.vehicle;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
      *                           recently supplied in onSaveInstanceState(Bundle).
      * @see AppCompatActivity
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -51,11 +53,12 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         itv1=findViewById(R.id.textViewFoundValidItvFrom);
         itv2=findViewById(R.id.textViewFoundValidItvTo);
 
+        assert vehicle != null;
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());
         color.setText("Color= "+vehicle.getColor().toString());
         type.setText("Type= "+vehicle.getCarType().toString());
         idIns.setText("Id insurance= "+vehicle.getIdInsurance());
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(vehicle.getValidItvFrom());
         itv1.setText("Itv valid from= "+strDate);
 

@@ -92,18 +92,16 @@ public class CheckUserToDelete extends AppCompatActivity {
                                     Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
-                                    hideLoading();
-                                    finish();
 
                                 }else {
 
                                     Toast.makeText(CheckUserToDelete.this,"An error has ocurred", Toast.LENGTH_LONG).show();
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
-                                    hideLoading();
-                                    finish();
 
                                 }
+                                hideLoading();
+                                finish();
                             }
 
                             @Override

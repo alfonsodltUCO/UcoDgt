@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
 import java.util.List;
+import java.util.Objects;
 
 import mvc.model.business.vehicle.ManagerVehicle;
 import mvc.model.business.vehicle.VehicleDTO;
@@ -38,7 +39,7 @@ public class CheckImage extends AppCompatActivity{
         setContentView(R.layout.loading);
         progressBar=findViewById(R.id.progressbar);
         showLoading();
-        Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0,getIntent().getByteArrayExtra("image").length);
+        Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0, Objects.requireNonNull(getIntent().getByteArrayExtra("image")).length);
         ManagerVehicle mngV=new ManagerVehicle();
 
         mngV.checkVehicle(image,CheckImage.this, new VehicleCallback() {

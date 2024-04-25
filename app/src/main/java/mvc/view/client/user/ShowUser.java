@@ -1,5 +1,6 @@
 package mvc.view.client.user;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,13 +39,14 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      *                           recently supplied in onSaveInstanceState(Bundle).
      * @see AppCompatActivity
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_user_for_client);
         dniRec=getIntent().getStringExtra("dni");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         obtaining=findViewById(R.id.textViewDateObtaining);
         name=findViewById(R.id.textViewFoundName);
@@ -64,6 +66,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listPenalties.setOnClickListener(this);
         ClientDTO client = (ClientDTO) getIntent().getSerializableExtra("client");
 
+        assert client != null;
         name.setText("name= "+client.getName());
         surname.setText("surname= "+client.getSurname());
         email.setText("email= "+client.getEmail());

@@ -1,5 +1,6 @@
 package mvc.view.admin.user;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      *                           recently supplied in onSaveInstanceState(Bundle).
      *                           Note: Otherwise it is null.
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -47,7 +49,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         // Retrieve the user type from the intent
         Intent intentFound=getIntent();
         type=intentFound.getStringExtra("type");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         obtaining=findViewById(R.id.textViewDateObtaining);
         name=findViewById(R.id.textViewFoundName);
@@ -70,6 +72,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         if(type.equals("worker")){
 
             WorkerDTO worker = (WorkerDTO) getIntent().getSerializableExtra("worker");
+            assert worker != null;
             name.setText("name= "+worker.getName());
             surname.setText("surname= "+worker.getSurname());
             email.setText("email= "+worker.getEmail());
@@ -84,6 +87,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
             ClientDTO client = (ClientDTO) getIntent().getSerializableExtra("client");
 
+            assert client != null;
             name.setText("name= "+client.getName());
             surname.setText("surname= "+client.getSurname());
             email.setText("email= "+client.getEmail());

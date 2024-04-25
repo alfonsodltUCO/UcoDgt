@@ -1,7 +1,6 @@
 package mvc.model.business.user.client;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.VolleyError;
 

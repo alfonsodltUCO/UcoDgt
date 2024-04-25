@@ -22,7 +22,6 @@ import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.MainActivity;
 import mvc.view.admin.AdminActivity;
-import mvc.view.client.ClientActivity;
 
 /**
  * A class created to handle the login of the different types of user.

@@ -1,5 +1,7 @@
 package mvc.model.business.user.client;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -245,6 +247,7 @@ public class ClientDTO implements Serializable {
      *
      * @return A string representation of the client user.
      */
+    @NonNull
     @Override
     public String toString() {
         return "ClientDTO{" +

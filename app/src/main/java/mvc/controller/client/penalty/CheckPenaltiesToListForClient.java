@@ -32,8 +32,7 @@ import mvc.view.client.penalty.ShowPenalties;
  */
 public class CheckPenaltiesToListForClient extends AppCompatActivity {
     ProgressBar progressBar;
-    List<PenaltyDTO> penalties;
-    String dni;
+     String dni;
     /**
      * Called when the activity is starting.
      *

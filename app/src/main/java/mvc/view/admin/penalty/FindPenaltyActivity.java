@@ -110,8 +110,13 @@ public class FindPenaltyActivity extends AppCompatActivity {
      * Opens the device's gallery to pick a photo.
      */
     private void openGallery() {
-        galleryLauncher.launch("image/*");
+         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_IMAGE_PICK);
+        } else {
+             galleryLauncher.launch("image/*");
+        }
     }
+
     /**
      * Launches the CheckImage activity with the provided bitmap.
      *
@@ -130,14 +135,10 @@ public class FindPenaltyActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_IMAGE_CAPTURE) {
-
+        if (requestCode == REQUEST_IMAGE_PICK) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                openCamera();
+                openGallery();
             }
         }
     }

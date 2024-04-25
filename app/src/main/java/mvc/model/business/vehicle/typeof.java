@@ -15,5 +15,5 @@ public enum typeof {
     bmw,
     volkswagen,
     mercedes,
-    volvo;
+    volvo
 }

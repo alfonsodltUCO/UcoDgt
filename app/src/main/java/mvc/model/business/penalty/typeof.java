@@ -13,6 +13,6 @@ public enum typeof {
     alcohol,
     drugs,
     no_itv,
-    no_insurance;
+    no_insurance
 
 }

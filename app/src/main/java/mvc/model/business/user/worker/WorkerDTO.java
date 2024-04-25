@@ -1,5 +1,7 @@
 package mvc.model.business.user.worker;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -196,6 +198,7 @@ public class WorkerDTO implements Serializable {
      * @return A string representation of the worker user.
      */
 
+    @NonNull
     @Override
     public String toString() {
         return "UserDTO{" +

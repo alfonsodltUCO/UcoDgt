@@ -15,5 +15,5 @@ public enum typeofColor {
     pink,
     carbon,
     brown,
-    grey;
+    grey
 }

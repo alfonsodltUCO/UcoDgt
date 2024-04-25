@@ -1,4 +1,6 @@
 package mvc.model.business.vehicle;
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -165,6 +167,7 @@ public class VehicleDTO implements Serializable {
      *
      * @return A string representation of the VehicleDTO object.
      */
+    @NonNull
     @Override
     public String toString() {
         return "VehicleDTO{" +
