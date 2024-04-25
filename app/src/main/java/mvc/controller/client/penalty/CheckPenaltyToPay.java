@@ -112,7 +112,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                             cal2.add(Calendar.MONTH, -1);
 
                             if(!cal.before(cal2)){
-                                //Discount
+                                Toast.makeText(CheckPenaltyToPay.this, "The discount will be applied: "+(penalty.getQuantity()/2), Toast.LENGTH_LONG).show();
                                 penalty.setQuantity(penalty.getQuantity()/2);
                             }
 

@@ -84,6 +84,9 @@ public class GetVehiclePlate extends AppCompatActivity {
         pickPhotoButton.setOnClickListener(v -> openGallery());
     }
 
+    /**
+     * Opens the camera to capture an image if the necessary permission is granted.
+     */
     private void openCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
@@ -93,10 +96,27 @@ public class GetVehiclePlate extends AppCompatActivity {
         }
     }
 
+    /**
+     * Opens the gallery to select an image if the necessary permission is granted.
+     */
     private void openGallery() {
-        galleryLauncher.launch("image/*");
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_IMAGE_PICK);
+            }
+        } else {
+            galleryLauncher.launch("image/*");
+        }
     }
 
+    /**
+     * Launches the activity to check the captured or selected image.
+     *
+     * @param bitmap The bitmap image to be checked.
+     */
     private void launchCheckImageActivity(Bitmap bitmap) {
         Intent intentCheckVehiclePlate = new Intent(GetVehiclePlate.this, CheckImage.class);
         ByteArrayOutputStream bs = new ByteArrayOutputStream();

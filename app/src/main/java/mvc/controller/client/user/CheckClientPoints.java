@@ -219,7 +219,7 @@ public class CheckClientPoints extends AppCompatActivity {
                 }else{//Not novel
                     if(yearsLastUpdate-2>=3){
                         points+=2;
-                        if(yearsExperience>=6 && (yearsLastUpdate-3)>=0){
+                        if(yearsExperience>=6 && (yearsLastUpdate-3)>=3){
                             points+=1;
                         }
                     }

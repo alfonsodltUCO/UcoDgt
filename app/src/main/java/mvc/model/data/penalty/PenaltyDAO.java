@@ -804,6 +804,7 @@ public class PenaltyDAO {
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("id", penaltyToFInd.getId().toString());
+                params.put("quantity",penaltyToFInd.getQuantity().toString());
                 return params;
             }
         };

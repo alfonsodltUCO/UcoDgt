@@ -82,6 +82,8 @@
         <activity android:name="mvc.view.client.user.ShowUser" />
         <activity android:name="mvc.controller.client.user.CheckUserToFindForClient" />
         <activity android:name="mvc.controller.client.user.CheckClientPoints" />
+        <activity android:name="mvc.view.admin.penalty.IntroducePoints" />
+        <activity android:name="mvc.controller.admin.users.CheckPointsToUpdate" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

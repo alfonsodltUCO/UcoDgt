@@ -139,6 +139,11 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             Intent goAdd=new Intent(AdminActivity.this, AddPenaltyActivity.class);
             startActivity(goAdd);
             finish();
+        } else if (R.id.item13AdminUpdateUserPoints==item.getItemId()) {
+
+            Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
+            startActivity(goUpdate);
+            finish();
         }
         return false;
     }

@@ -68,12 +68,14 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             checkUserToAdd.putExtra("userToFind",selectedOption);
             checkUserToAdd.putExtra("dni",dniToSearch.getText().toString().trim());
             startActivity(checkUserToAdd);
+            finish();
 
         }else if(v.getId()==R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
             Intent goMenu=new Intent(FindUserActivity.this, AdminActivity.class);
             startActivity(goMenu);
+            finish();
         }
     }
 }

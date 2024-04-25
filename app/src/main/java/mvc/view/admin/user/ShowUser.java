@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import mvc.controller.admin.vehicle.CheckVehiclesToList;
 import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.view.admin.AdminActivity;
+import mvc.view.admin.penalty.IntroducePoints;
 
 /**
  * Activity for displaying user details and providing options to perform actions related to the user.
@@ -30,7 +32,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     String strDate,strDate2;
     String type;
     String dniNoText;
-    Button goMenu,deleteUser,listPenalties,listVehicles;
+    Button goMenu,deleteUser,listPenalties,listVehicles,updatePoints;
     /**
      * Called when the activity is starting.
      *
@@ -39,7 +41,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      *                           recently supplied in onSaveInstanceState(Bundle).
      *                           Note: Otherwise it is null.
      */
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "MissingInflatedId"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -62,7 +64,9 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listPenalties=findViewById(R.id.listPenalties);
         listVehicles=findViewById(R.id.listVehicles);
         numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
+        updatePoints=findViewById(R.id.updatePoints);
 
+        updatePoints.setOnClickListener(this);
         goMenu.setOnClickListener(this);
         deleteUser.setOnClickListener(this);
         listVehicles.setOnClickListener(this);
@@ -125,18 +129,54 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
         } else if (v.getId()==R.id.listPenalties) {
 
-            Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
-            goList.putExtra("dni",dniNoText);
-            startActivity(goList);
-            finish();
+            if(type.equals("worker")){
+
+                Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
+                startActivity(goBack);
+                Toast.makeText(ShowUser.this,"Cannot list penalties of a worker",Toast.LENGTH_LONG).show();
+                finish();
+            }else{
+
+                Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
+                goList.putExtra("dni",dniNoText);
+                startActivity(goList);
+                finish();
+            }
+
+
 
         }else if(v.getId()==R.id.listVehicles){
 
-            Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
-            goListVeh.putExtra("dni",dniNoText);
-            startActivity(goListVeh);
-            finish();
+            if(type.equals("worker")){
 
+                Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
+                startActivity(goBack);
+                Toast.makeText(ShowUser.this,"Cannot list vehicles of a worker",Toast.LENGTH_LONG).show();
+                finish();
+            }else{
+
+                Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
+                goListVeh.putExtra("dni",dniNoText);
+                startActivity(goListVeh);
+                finish();
+            }
+
+
+        }else if(v.getId()==R.id.updatePoints){
+
+            if(type.equals("worker")){
+
+                Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
+                startActivity(goBack);
+                Toast.makeText(ShowUser.this,"Cannot update points from a worker",Toast.LENGTH_LONG).show();
+                finish();
+            }else{
+
+                Intent goUpdate=new Intent(ShowUser.this, IntroducePoints.class);
+                goUpdate.putExtra("dni",dniNoText);
+                startActivity(goUpdate);
+                finish();
+            }
         }
     }
 }

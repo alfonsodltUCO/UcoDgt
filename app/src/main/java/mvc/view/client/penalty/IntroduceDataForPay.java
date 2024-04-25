@@ -1,5 +1,6 @@
 package mvc.view.client.penalty;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,7 @@ public class IntroduceDataForPay extends AppCompatActivity implements View.OnCli
      *                           recently supplied in onSaveInstanceState(Bundle).
      * @see AppCompatActivity
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -41,7 +43,7 @@ public class IntroduceDataForPay extends AppCompatActivity implements View.OnCli
 
         quantity=getIntent().getStringExtra("quantity");
         quant=findViewById(R.id.tvQuantityToPut);
-        quant.setText(quantity);
+        quant.setText(quantity+" With discount= "+ Float.parseFloat(quantity)/2);
         goFinish=findViewById(R.id.goPay);
         goMain=findViewById(R.id.goMainMenu);
 

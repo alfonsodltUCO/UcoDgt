@@ -143,6 +143,18 @@
             >
 
         </Button>
+
+        <Button
+            android:id="@+id/updatePoints"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Update points"
+            >
+
+        </Button>
     </LinearLayout>
 
 

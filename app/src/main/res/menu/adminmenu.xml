@@ -11,6 +11,9 @@
         android:id="@+id/item3AdminListUsers"
         android:title="List users" />
     <item
+        android:id="@+id/item13AdminUpdateUserPoints"
+        android:title="Update points of user" />
+    <item
         android:id="@+id/item4AdminFindUser"
         android:title="Find user" />
     <item
