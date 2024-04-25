@@ -17,11 +17,21 @@ import mvc.model.business.penalty.list.ListPenaltyDTO;
 
 import mvc.model.data.ListPenaltyCallback;
 
+/**
+ * Data Access Object (DAO) class for handling operations related to penalty lists.
+ * @author Alfonso de la torre
+ */
 public class ListPenaltyDAO {
 
     RequestQueue requestQueue;
 
-
+    /**
+     * Checks the list of penalties based on the provided PenaltyDTO object.
+     *
+     * @param penalty The PenaltyDTO object containing the reason for the penalty to check.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the check operation.
+     */
     public void checkList(PenaltyDTO penalty, Context applicationContext, ListPenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         checkList(penalty, new ListPenaltyCallback() {
@@ -37,6 +47,13 @@ public class ListPenaltyDAO {
             }
         });
     }
+
+    /**
+     * Private method to perform the actual check of the penalty list.
+     *
+     * @param penalty The PenaltyDTO object containing the reason for the penalty to check.
+     * @param callback The callback to handle the result of the check operation.
+     */
     private void checkList(final PenaltyDTO penalty,final ListPenaltyCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/penalty/listPenalty/getListPenalty.php?reason="+penalty.getReason();
 
@@ -63,10 +80,7 @@ public class ListPenaltyDAO {
                         callback.onListReceived(new ListPenaltyDTO());
                     }
                 },
-                error -> {
-                    callback.onError(error);
-
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);

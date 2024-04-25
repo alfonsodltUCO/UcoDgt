@@ -1,8 +1,8 @@
 package mvc.model.data.penalty;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,18 +26,25 @@ import java.util.Map;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.business.penalty.stateof;
 import mvc.model.business.penalty.typeof;
-import mvc.model.business.user.admin.AdminDTO;
 import mvc.model.business.user.client.ClientDTO;
-import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.business.vehicle.VehicleDTO;
-import mvc.model.business.vehicle.typeofColor;
 import mvc.model.data.PenaltyCallback;
-import mvc.model.data.UserCallback;
-import mvc.model.data.VehicleCallback;
 
+/**
+ * Provides methods to interact with penalty data.
+ * @author Alfonso de la torre
+ */
 public class PenaltyDAO {
 
     RequestQueue requestQueue;
+
+    /**
+     * Retrieves penalties associated with a vehicle.
+     *
+     * @param vh                 The VehicleDTO object representing the vehicle.
+     * @param applicationContext The application context.
+     * @param callback           The callback to handle the response.
+     */
     public void getPenalties(VehicleDTO vh,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(vh,new PenaltyCallback() {
@@ -58,9 +65,13 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabl
-    // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
 
+    /**
+     * Retrieves penalties associated with a specific vehicle from the database.
+     *
+     * @param vh The VehicleDTO object representing the vehicle.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     private void getPenaltiesFromBd(final VehicleDTO vh, final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenaltiesFromCar.php";
 
@@ -78,7 +89,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -105,20 +116,26 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("licenceplate", vh.getLicencePlate()); // Agregar la matrícula del vehículo como parámetro POST
+                params.put("licenceplate", vh.getLicencePlate());
                 return params;
             }
         };
 
         requestQueue.add(stringRequest);
     }
+
+    /**
+     * Retrieves a specific penalty from the database.
+     *
+     * @param penaltyToFind The PenaltyDTO object representing the penalty to find.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalty received or errors encountered.
+     */
 
     public void getPenalty(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
 
@@ -141,6 +158,13 @@ public class PenaltyDAO {
             }
         });
     }
+
+    /**
+     * Retrieves penalty information from the database.
+     *
+     * @param penaltyToFInd The PenaltyDTO object representing the penalty to find.
+     * @param callback The callback to handle the received penalty or errors encountered.
+     */
     private void getPenaltyToFind(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/penalty/getPenalty.php";
         StringRequest request = new StringRequest(
@@ -152,7 +176,7 @@ public class PenaltyDAO {
                         PenaltyDTO penalty = new PenaltyDTO();
                         penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
 
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dt1;
                         try {
                             dt1 = format.parse(jsonResponse.getString("date"));
@@ -178,10 +202,7 @@ public class PenaltyDAO {
                         throw new RuntimeException(e);
                     }
                 },
-                error -> {
-                    callback.onError(error);
-
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams(){
@@ -199,7 +220,13 @@ public class PenaltyDAO {
 
         requestQueue.add(request);
     }
-
+    /**
+     * Retrieves penalties associated with a specific client from the database.
+     *
+     * @param client The ClientDTO object representing the client whose penalties are to be retrieved.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the received penalties or errors encountered.
+     */
     public void getPenalties(ClientDTO client,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(client,new PenaltyCallback() {
@@ -221,7 +248,12 @@ public class PenaltyDAO {
         });
     }
 
-
+    /**
+     * Retrieves penalties associated with a specific client from the database.
+     *
+     * @param cl The ClientDTO object representing the client whose penalties are to be retrieved.
+     * @param callback The callback to handle the received penalties or errors encountered.
+     */
     private void getPenaltiesFromBd(final ClientDTO cl,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenaltiesFromUser.php";
 
@@ -239,7 +271,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -266,14 +298,12 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("dni", cl.getDni().toString());
+                params.put("dni", cl.getDni());
                 return params;
             }
         };
@@ -281,6 +311,12 @@ public class PenaltyDAO {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     * Retrieves all penalties from the database.
+     *
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the received penalties or errors encountered.
+     */
     public void getPenalties(Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(new PenaltyCallback() {
@@ -301,9 +337,12 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabl
-    // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
 
+    /**
+     * Retrieves all penalties from the database.
+     *
+     * @param callback The callback to handle the received penalties or errors encountered.
+     */
     private void getPenaltiesFromBd(final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getAllPenalties.php";
         JsonObjectRequest JsonObjectRequest;
@@ -321,7 +360,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -348,13 +387,19 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);
     }
+
+    /**
+     * Deletes a penalty from the database.
+     *
+     * @param penaltyToFind The PenaltyDTO object representing the penalty to delete.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the result of deleting the penalty or errors encountered.
+     */
 
     public void deletePenalty(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
 
@@ -377,7 +422,13 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
+
+    /**
+     * Deletes a penalty from the database.
+     *
+     * @param penaltyToDelete The PenaltyDTO object representing the penalty to delete.
+     * @param callback The callback to handle the result of deleting the penalty or errors encountered.
+     */
     private void deletePenaltyFromBd(final PenaltyDTO penaltyToDelete,final PenaltyCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/penalty/deletePenalty.php";
         StringRequest request = new StringRequest(
@@ -389,7 +440,7 @@ public class PenaltyDAO {
                         PenaltyDTO penalty = new PenaltyDTO();
                         penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
 
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dt1;
                         try {
                             dt1 = format.parse(jsonResponse.getString("date"));
@@ -415,9 +466,7 @@ public class PenaltyDAO {
                         throw new RuntimeException(e);
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams()  {
@@ -428,6 +477,15 @@ public class PenaltyDAO {
         };
         requestQueue.add(request);
     }
+
+    /**
+     * Retrieves penalties within a specific date range from the database.
+     *
+     * @param date1 The start date of the date range.
+     * @param date2 The end date of the date range.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     public void getPenalties(String date1,String date2,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(date1,date2,new PenaltyCallback() {
@@ -449,16 +507,21 @@ public class PenaltyDAO {
         });
     }
 
-
+    /**
+     * Retrieves penalties within a specific date range from the database.
+     *
+     * @param date1 The start date of the date range.
+     * @param date2 The end date of the date range.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&end="+date2;
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
+        JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
                 null,
                 response -> {
-                    if (response.length()>0) {
+                    if (response.length() > 0) {
 
                         try {
                             JSONArray listOfPenalties = response.getJSONArray("penalties");
@@ -467,7 +530,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -494,14 +557,19 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);
     }
 
+    /**
+     * Retrieves penalties associated with a specific state from the database.
+     *
+     * @param state The state of the penalties to retrieve.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     public void getPenalties(String state,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(state,new PenaltyCallback() {
@@ -522,18 +590,21 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabl
-    // a, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
 
+    /**
+     * Retrieves penalties associated with a specific state from the database.
+     *
+     * @param state The state of the penalties to retrieve.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     private void getPenaltiesFromBd(final String state,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByState.php?state="+state;
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
+        JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
                 null,
                 response -> {
-                    if (response.length()>0) {
+                    if (response.length() > 0) {
 
                         try {
                             JSONArray listOfPenalties = response.getJSONArray("penalties");
@@ -542,7 +613,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -569,18 +640,23 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);
     }
 
+    /**
+     * Adds a new penalty to the database.
+     *
+     * @param penaltyToFind The PenaltyDTO object representing the penalty to be added.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the result of adding the penalty or errors encountered.
+     */
     public void addPenalty(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
 
         requestQueue= Volley.newRequestQueue(applicationContext);
-        addToDb(penaltyToFind,applicationContext, new PenaltyCallback() {
+        addToDb(penaltyToFind, new PenaltyCallback() {
 
 
             @Override
@@ -599,10 +675,16 @@ public class PenaltyDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
-    private void addToDb(final PenaltyDTO penalty,final Context applicationContext, final PenaltyCallback callback) {
+
+    /**
+     * Adds a new penalty to the database.
+     *
+     * @param penalty The PenaltyDTO object representing the penalty to be added.
+     * @param callback The callback to handle the result of adding the penalty or errors encountered.
+     */
+    private void addToDb(final PenaltyDTO penalty, final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/addPenalty.php";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(penalty.getDate());
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -614,10 +696,7 @@ public class PenaltyDAO {
                         callback.onPenaltyReceived(new PenaltyDTO());
                     }
                 },
-                error -> {
-                    callback.onError(error);
-
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {
@@ -647,6 +726,13 @@ public class PenaltyDAO {
         requestQueue.add(request);
     }
 
+    /**
+     * Initiates a payment for a specific penalty.
+     *
+     * @param penaltyToFind The PenaltyDTO object representing the penalty for which payment is to be initiated.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the payment initiation result or errors encountered.
+     */
     public void doPayment(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
 
         requestQueue= Volley.newRequestQueue(applicationContext);
@@ -668,6 +754,13 @@ public class PenaltyDAO {
             }
         });
     }
+
+    /**
+     * Initiates a payment for a specific penalty in the database.
+     *
+     * @param penaltyToFInd The PenaltyDTO object representing the penalty for payment initiation.
+     * @param callback The callback to handle the payment initiation result or errors encountered.
+     */
     private void doPaymentToBd(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/penalty/doPayment.php";
         StringRequest request = new StringRequest(
@@ -679,7 +772,7 @@ public class PenaltyDAO {
                         PenaltyDTO penalty = new PenaltyDTO();
                         penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
 
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dt1;
                         try {
                             dt1 = format.parse(jsonResponse.getString("date"));
@@ -705,10 +798,7 @@ public class PenaltyDAO {
                         throw new RuntimeException(e);
                     }
                 },
-                error -> {
-                    callback.onError(error);
-
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams(){
@@ -720,6 +810,14 @@ public class PenaltyDAO {
 
         requestQueue.add(request);
     }
+
+    /**
+     * Retrieves penalties associated with a specific user from the database.
+     *
+     * @param penalty The PenaltyDTO object representing the user's penalty.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     public void getPenalties(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
         getPenaltiesFromBd(penalty,new PenaltyCallback() {
@@ -741,6 +839,12 @@ public class PenaltyDAO {
         });
     }
 
+    /**
+     * Retrieves penalties associated with a specific user and state from the database.
+     *
+     * @param penaltyToSend The PenaltyDTO object representing the user's penalty.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     private void getPenaltiesFromBd(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByStateOfUser.php";
 
@@ -758,7 +862,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -785,9 +889,7 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {
@@ -800,6 +902,16 @@ public class PenaltyDAO {
 
         requestQueue.add(stringRequest);
     }
+
+    /**
+     * Retrieves penalties associated with a specific date range and user from the database.
+     *
+     * @param date1 The start date of the date range.
+     * @param date2 The end date of the date range.
+     * @param penalty The PenaltyDTO object representing the user's penalty.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
 
     public void getPenalties(String date1,String date2,PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
@@ -822,6 +934,14 @@ public class PenaltyDAO {
         });
     }
 
+    /**
+     * Retrieves penalties associated with a specific date range and user from the database.
+     *
+     * @param date1 The start date of the date range.
+     * @param date2 The end date of the date range.
+     * @param penaltyToSend The PenaltyDTO object representing the penalty to send.
+     * @param callback The callback to handle the penalties received or errors encountered.
+     */
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
 
@@ -839,7 +959,7 @@ public class PenaltyDAO {
                                 JSONObject penaltyJson = listOfPenalties.getJSONObject(i);
                                 PenaltyDTO penalty = new PenaltyDTO();
                                 penalty.setId(Integer.valueOf(penaltyJson.getString("id")));
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dt1;
                                 try {
                                     dt1 = format.parse(penaltyJson.getString("date"));
@@ -866,9 +986,7 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {
@@ -882,6 +1000,14 @@ public class PenaltyDAO {
 
         requestQueue.add(stringRequest);
     }
+
+    /**
+     * Retrieves the last penalty associated with a specific user from the database.
+     *
+     * @param penalty The PenaltyDTO object representing the penalty.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the last penalty received or errors encountered.
+     */
 
     public void getLastPenalty(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
         requestQueue= Volley.newRequestQueue(applicationContext);
@@ -903,6 +1029,12 @@ public class PenaltyDAO {
         });
     }
 
+    /**
+     * Retrieves the last penalty associated with a specific user from the database.
+     *
+     * @param penaltyToSend The PenaltyDTO object representing the penalty to send.
+     * @param callback The callback to handle the last penalty received or errors encountered.
+     */
     private void getLastPenalty(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
         String URL = "http://192.168.1.19:81/api/ucodgt/penalty/getLastPenalty.php";
 
@@ -917,7 +1049,7 @@ public class PenaltyDAO {
                             PenaltyDTO penalty = new PenaltyDTO();
                             penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
 
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                             Date dt1;
                             try {
                                 dt1 = format.parse(jsonResponse.getString("date"));
@@ -944,9 +1076,7 @@ public class PenaltyDAO {
                         }
                     }
                 },
-                error -> {
-                    callback.onError(error);
-                }
+                callback::onError
         ) {
             @Override
             protected Map<String, String> getParams() {

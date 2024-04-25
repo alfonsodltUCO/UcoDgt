@@ -1,5 +1,9 @@
 package mvc.model.business.vehicle;
 
+/**
+ * Enumeration representing different types of colors for vehicles.
+ * @author Alfonso de la torre
+ */
 public enum typeofColor {
     red,
     blue,

@@ -1,7 +1,7 @@
 package mvc.model.data.admin;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,14 +22,24 @@ import mvc.model.business.user.client.ClientDTO;
 import mvc.model.business.user.worker.WorkerDTO;
 import mvc.model.data.UserCallback;
 
+/**
+ * Data Access Object (DAO) class for admin users. Handles operations related to admin user data retrieval and verification.
+ * @author Alfonso de la torre
+ */
 public class AdminDAO {
 
     RequestQueue requestQueue;
 
-
+    /**
+     * Checks the login credentials of an admin user.
+     *
+     * @param userToFind The AdminDTO object containing the login credentials to be checked.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the login check.
+     */
     public void checkLogInAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
-        String email=userToFind.getEmail();
-        String password= userToFind.getPassword();
+
+
         requestQueue= Volley.newRequestQueue(applicationContext);
         checkAdmin(userToFind, new UserCallback() {
             @Override
@@ -71,11 +81,17 @@ public class AdminDAO {
             }
         });
     }
+
+    /**
+     * Sends a request to the server to check if the provided user credentials belong to an admin user.
+     *
+     * @param userToFind The AdminDTO object containing the user credentials to be checked.
+     * @param callback The callback to handle the result of the user check.
+     */
     private void checkAdmin(final AdminDTO userToFind,final UserCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
+        JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
                 Request.Method.GET,
                 URL,
@@ -83,42 +99,48 @@ public class AdminDAO {
                 response -> {
 
                     try {
-                        String name=response.getString("name");
-                        String surname=response.getString("surname");
-                        String email1 =response.getString("email");
-                        String passwordhashed=response.getString("password");
-                        if(!BCrypt.checkpw(userToFind.getPassword(),passwordhashed)){
+                        String name = response.getString("name");
+                        String surname = response.getString("surname");
+                        String email1 = response.getString("email");
+                        String passwordhashed = response.getString("password");
+
+                        if (!BCrypt.checkpw(userToFind.getPassword(), passwordhashed)) {
                             callback.onError(new VolleyError());
-                        }else {
-                            String age=response.getString("age");
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        } else {
+                            String age = response.getString("age");
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                             Date dateBirth;
                             try {
                                 dateBirth = format.parse(age);
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }
-                            AdminDTO user=new AdminDTO(null,userToFind.getPassword(),name,surname,dateBirth, email1);
+                            AdminDTO user = new AdminDTO(null, userToFind.getPassword(), name, surname, dateBirth, email1);
                             callback.onAdminReceived(user);
                         }
 
                     } catch (JSONException e) {
-                        AdminDTO user=new AdminDTO(null,null,null,null,null,null);
+                        AdminDTO user = new AdminDTO(null, null, null, null, null, null);
 
                         callback.onAdminReceived(user);
                     }
                 },
-                error -> {
-                    callback.onError(error);
-
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);
     }
 
+    /**
+     * Checks if the provided email belongs to an admin user.
+     *
+     * @param userToFind The AdminDTO object containing the email to be checked.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the email check.
+     */
+
     public void checkEmailAdmin(AdminDTO userToFind, Context applicationContext, UserCallback callback){
-        String email= userToFind.getEmail();
+
         requestQueue= Volley.newRequestQueue(applicationContext);
         checkAdminEmail(userToFind, new UserCallback() {
             @Override
@@ -160,11 +182,17 @@ public class AdminDAO {
             }
         });
     }
+
+    /**
+     * Sends a request to the server to check if the provided email belongs to an admin user.
+     *
+     * @param userToFind The AdminDTO object containing the email to be checked.
+     * @param callback The callback to handle the result of the email check.
+     */
     private void checkAdminEmail(final AdminDTO userToFind,final UserCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
-        JsonObjectRequest JsonObjectRequest;
-        JsonObjectRequest = new JsonObjectRequest(
+        JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
                 Request.Method.GET,
                 URL,
@@ -172,27 +200,25 @@ public class AdminDAO {
                 response -> {
 
                     try {
-                        String name=response.getString("name");
-                        String surname=response.getString("surname");
-                        String email1 =response.getString("email");
-                        String age=response.getString("age");
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        String name = response.getString("name");
+                        String surname = response.getString("surname");
+                        String email1 = response.getString("email");
+                        String age = response.getString("age");
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dateBirth;
                         try {
                             dateBirth = format.parse(age);
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-                        AdminDTO user=new AdminDTO(null,null,name,surname,dateBirth, email1);
+                        AdminDTO user = new AdminDTO(null, null, name, surname, dateBirth, email1);
                         callback.onAdminReceived(user);
                     } catch (JSONException e) {
-                        AdminDTO user=new AdminDTO(null,null,null,null,null,null);
+                        AdminDTO user = new AdminDTO(null, null, null, null, null, null);
                         callback.onAdminReceived(user);
                     }
                 },
-                error ->{
-                    callback.onError(error);
-                }
+                callback::onError
         );
 
         requestQueue.add(JsonObjectRequest);
