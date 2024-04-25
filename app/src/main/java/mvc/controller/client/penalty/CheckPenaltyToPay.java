@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 import com.example.ucodgt.R;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import mvc.model.business.penalty.ManagerPenalty;
@@ -101,6 +103,19 @@ public class CheckPenaltyToPay extends AppCompatActivity {
 
 
                         }else{
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTime(penalty.getDate());
+
+                            Calendar cal2 = Calendar.getInstance();
+                            cal2.setTime(new Date());
+
+                            cal2.add(Calendar.MONTH, -1);
+
+                            if(!cal.before(cal2)){
+                                //Discount
+                                penalty.setQuantity(penalty.getQuantity()/2);
+                            }
+
                             mngP.doPayment(penalty,CheckPenaltyToPay.this, new PenaltyCallback() {
                                 @Override
                                 public void onPenaltiesReceived(List<PenaltyDTO> penalties) {

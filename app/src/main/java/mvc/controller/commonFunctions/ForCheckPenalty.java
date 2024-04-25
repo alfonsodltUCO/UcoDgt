@@ -192,10 +192,10 @@ public class ForCheckPenalty {
         int expYear = Integer.parseInt(parts[1]);
 
         if (expYear < calendar.get(Calendar.YEAR) % 100) {
-            return false; // El año ya ha pasado
+            return false;
         }
         if (expYear == calendar.get(Calendar.YEAR) % 100 && expMonth < calendar.get(Calendar.MONTH) + 1) {
-            return false; // El mes ya ha pasado este año
+            return false;
         }
 
         if (!cvv.matches("\\d{3}")) {

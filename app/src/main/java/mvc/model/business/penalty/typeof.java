@@ -1,5 +1,10 @@
 package mvc.model.business.penalty;
 
+
+/**
+ * Enumerates the different types of penalties.
+ * @author Alfonso de la torre
+ */
 public enum typeof {
     no_seatbelt,
     velocity,

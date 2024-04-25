@@ -25,17 +25,19 @@ import mvc.model.data.PenaltyCallback;
 import mvc.model.data.UserCallback;
 import mvc.view.client.ClientActivity;
 
+/**
+ * This class is responsible for checking the points of a client based on their driving history and updating the points accordingly.
+ * @author Alfonso de la torre
+ */
 public class CheckClientPoints extends AppCompatActivity {
     String dni;
-    Date fechaExpedicion;
-    Date fechaUltimaInfraccion;
+
     int actualPoints;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Log.d("d","1");
         dni = getIntent().getStringExtra("dni");
         ManagerClient mngC=new ManagerClient();
         ManagerPenalty mngP=new ManagerPenalty();
@@ -45,8 +47,6 @@ public class CheckClientPoints extends AppCompatActivity {
         mngC.getUser(cl,CheckClientPoints.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-                //recibo user
-                Log.d("d","2");
 
                 PenaltyDTO pnlt=new PenaltyDTO();
                 pnlt.setDniClient(dni);
@@ -59,12 +59,11 @@ public class CheckClientPoints extends AppCompatActivity {
                     @Override
                     public void onError(VolleyError error) {
 
-                        actualPoints=calculatePoints(user.getDateLicenceObtaining(),null,user.getLicencepoints());
+                        actualPoints=calculatePoints(user.getDateLicenceObtaining(),null,user.getLicencepoints(),user.getDateLastUpdate());
                         user.setLicencepoints(actualPoints);
                         mngC.updatePoints(user,CheckClientPoints.this, new UserCallback() {
                             @Override
                             public void onUserReceived(ClientDTO user) {
-                                Log.d("d","3");
 
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
                                 intentClient.putExtra("dni",user.getDni());
@@ -105,14 +104,13 @@ public class CheckClientPoints extends AppCompatActivity {
 
                     @Override
                     public void onPenaltyReceived(PenaltyDTO penalty) {
-                        Log.d("d","4");
 
-                        actualPoints = calculatePoints(user.getDateLicenceObtaining(), penalty.getDate(),user.getLicencepoints());
+                        actualPoints = calculatePoints(user.getDateLicenceObtaining(), penalty.getDate(),user.getLicencepoints(),user.getDateLastUpdate());
                         user.setLicencepoints(actualPoints);
+
                         mngC.updatePoints(user,CheckClientPoints.this, new UserCallback() {
                             @Override
                             public void onUserReceived(ClientDTO user) {
-                                Log.d("d","5");
 
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
                                 intentClient.putExtra("dni",user.getDni());
@@ -180,54 +178,57 @@ public class CheckClientPoints extends AppCompatActivity {
         });
 
     }
-    private int calculatePoints(Date fechaExpedicion, Date fechaUltimaInfraccion, int puntosActuales) {
-        int points = puntosActuales;
+
+    /**
+     * Calculates the points of the client based on their driving history and updates the points accordingly.
+     *
+     * @param obtaining The date when the client obtained their driving license.
+     * @param lastPenalty   The date of the client's last infraction, if any.
+     * @param actualpoints  The current points of the client.
+     * @param lastUpdate    The date of the last update to the client's points.
+     * @return  The updated points of the client.
+     */
+    private int calculatePoints(Date obtaining, Date lastPenalty, int actualpoints,Date lastUpdate) {
+        int points = actualpoints;
 
         Date currentDate = new Date();
-        long yearsExperience = calculateYears(fechaExpedicion, currentDate);
+        long yearsExperience = calculateYears(obtaining, currentDate);
+        long yearsLastUpdate=calculateYears(lastUpdate,new Date());
 
+        if(yearsLastUpdate>=2){//Each 2 years check points
+            if(lastPenalty!=null){//Receive a penalty
+                long yearsWithoutPenalties=calculateYears(lastPenalty,new Date());
 
-        if (puntosActuales == 8 && yearsExperience >= 3 && fechaUltimaInfraccion == null) {
+                if(yearsExperience<=3){//Novel
+                   if(yearsWithoutPenalties>=2){
+                       points+=2;
+                   }
+                }else{//Not novel
+                    if(yearsWithoutPenalties>=3){
+                        points+=2;
+                        if(yearsExperience>=6 && ((yearsWithoutPenalties-yearsLastUpdate)>=3)){
+                            points+=1;
+                        }
+                    }
+                }
+            }else{//Never receive a penalty
 
-            long yearsWithoutInfringement = calculateYears(fechaExpedicion, currentDate);
-
-            if (yearsWithoutInfringement >= 2) {
-                points = 12;
-            }
-
-        }else{
-
-            if(fechaUltimaInfraccion!=null) {
-
-                long yearsWithoutInfringement = calculateYears(fechaUltimaInfraccion, currentDate);
-
-                if (yearsExperience >= 3 && yearsWithoutInfringement >= 3) {
-
-                    points += 2;
-
-                    if (yearsWithoutInfringement >= 6) {
-
-                        points += 1;
-
+                if(yearsExperience<=3){//Novel
+                    if(points==8){
+                        if(yearsExperience>=2){
+                            points=12;
+                        }
+                    }
+                }else{//Not novel
+                    if(yearsExperience>3 && (yearsLastUpdate-2)>=3){
+                        points+=2;
+                        if(yearsExperience>=6 && (yearsLastUpdate-3)>=0){
+                            points+=1;
+                        }
                     }
                 }
             }
         }
-
-        long yearsWithoutInfringement = calculateYears(fechaExpedicion, currentDate);
-
-        if (fechaUltimaInfraccion == null && yearsExperience >= 3 && yearsWithoutInfringement >= 3) {
-
-            points += 2;
-
-            if (yearsWithoutInfringement >= 6) {
-
-                points += 1;
-
-            }
-
-        }
-
 
         if (points > 15) {
 
@@ -238,7 +239,13 @@ public class CheckClientPoints extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Calculates the number of years between two dates.
+     *
+     * @param startDate The start date.
+     * @param endDate   The end date.
+     * @return          The number of years between the start and end dates.
+     */
     private long calculateYears(Date startDate, Date endDate) {
 
         long differenceInMillis = endDate.getTime() - startDate.getTime();

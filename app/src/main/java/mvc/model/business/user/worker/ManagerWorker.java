@@ -12,10 +12,30 @@ import mvc.model.business.user.client.ClientDTO;
 import mvc.model.data.UserCallback;
 import mvc.model.data.worker.WorkerDAO;
 
+
+/**
+ * Manages operations related to worker users in the system.
+ * This class provides methods to perform operations such as checking worker login credentials,
+ * adding, deleting, and retrieving worker users, and checking for the existence of worker emails.
+ *
+ * @author Alfonso de la Torre
+ */
 public class ManagerWorker {
+
+    /**
+     * Default constructor for ManagerWorker.
+     */
     public ManagerWorker(){
 
     }
+
+    /**
+     * Checks the login credentials of a worker user.
+     *
+     * @param worker The WorkerDTO object representing the worker user.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the login check operation.
+     */
     public void checkLogInWorker(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO userD=new WorkerDAO();
         WorkerDTO userToCheck=new WorkerDTO(null,worker.getPassword(),null,null,null, worker.getEmail(), null);
@@ -30,7 +50,6 @@ public class ManagerWorker {
             @Override
             public void onError(VolleyError error) {
                 callback.onError(error);
-                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
             @Override
@@ -55,6 +74,14 @@ public class ManagerWorker {
         });
     }
 
+
+    /**
+     * Checks if a worker email already exists in the system.
+     *
+     * @param worker The WorkerDTO object representing the worker user.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the email check operation.
+     */
     public void checkEmailNotExists(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO workerD=new WorkerDAO();
         WorkerDTO userToCheck=new WorkerDTO(null,null,null,null,null, worker.getEmail(), null);
@@ -65,8 +92,6 @@ public class ManagerWorker {
             @Override
             public void onError(VolleyError error) {
                 callback.onError(error);
-
-                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
             @Override
@@ -86,6 +111,14 @@ public class ManagerWorker {
             }
         });
     }
+
+    /**
+     * Adds a new worker user to the system.
+     *
+     * @param worker The WorkerDTO object representing the new worker user.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the add operation.
+     */
 
     public void addUser(WorkerDTO worker, Context applicationContext, UserCallback callback) {
         WorkerDAO workerD=new WorkerDAO();
@@ -122,6 +155,14 @@ public class ManagerWorker {
             }
         });
     }
+
+    /**
+     * Retrieves a worker user from the system.
+     *
+     * @param worker The WorkerDTO object representing the worker user to retrieve.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the retrieval operation.
+     */
     public void getUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO workerD=new WorkerDAO();
         workerD.getUser(worker, applicationContext, new UserCallback(){
@@ -158,6 +199,13 @@ public class ManagerWorker {
         });
     }
 
+    /**
+     * Deletes a worker user from the system.
+     *
+     * @param worker The WorkerDTO object representing the worker user to delete.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the deletion operation.
+     */
     public void deleteUser(WorkerDTO worker, Context applicationContext, UserCallback callback){
         WorkerDAO workerD=new WorkerDAO();
         workerD.deleteUser(worker, applicationContext, new UserCallback(){
@@ -192,6 +240,12 @@ public class ManagerWorker {
         });
     }
 
+    /**
+     * Retrieves all worker users from the system.
+     *
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the retrieval operation.
+     */
     public void getUsers(Context  applicationContext,UserCallback callback){
         WorkerDAO workD=new WorkerDAO();
         workD.getUsers(applicationContext,new UserCallback() {

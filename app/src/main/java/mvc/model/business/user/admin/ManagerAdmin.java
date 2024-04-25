@@ -13,10 +13,29 @@ import mvc.model.data.UserCallback;
 import mvc.model.data.admin.AdminDAO;
 
 
+/**
+ * Manages operations related to administrator users in the system.
+ * This class provides methods to handle administrator user logins and email existence checks.
+ * It communicates with the data layer through an instance of AdminDAO.
+ * @author Alfonso de la torre
+ *
+ */
 public class ManagerAdmin {
+
+    /**
+     * Default constructor for ManagerAdmin.
+     */
     public ManagerAdmin(){
 
     }
+
+    /**
+     * Checks the login credentials of an administrator user.
+     *
+     * @param admin The AdminDTO object containing login credentials (email and password) to be checked.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the login check operation.
+     */
     public void checkLogInAdmin(AdminDTO admin, Context applicationContext, UserCallback callback){
         AdminDAO userD=new AdminDAO();
         AdminDTO userToCheck=new AdminDTO(null,admin.getPassword(),null,null,null,admin.getEmail());
@@ -28,7 +47,6 @@ public class ManagerAdmin {
             @Override
             public void onError(VolleyError error) {
                 callback.onError(error);
-                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
             @Override
@@ -54,6 +72,13 @@ public class ManagerAdmin {
         });
     }
 
+    /**
+     * Checks if the given email address already exists in the system for an administrator user.
+     *
+     * @param admin The AdminDTO object containing the email address to be checked.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the email existence check operation.
+     */
     public void checkEmailNotExists(AdminDTO admin, Context applicationContext, UserCallback callback){
         AdminDAO userD=new AdminDAO();
         AdminDTO userToCheck=new AdminDTO(null,null,null,null,null, admin.getEmail());
@@ -65,8 +90,6 @@ public class ManagerAdmin {
             @Override
             public void onError(VolleyError error) {
                 callback.onError(error);
-
-                Log.e("Error", "Error en el inicio de sesión: " + error.toString());
             }
 
             @Override

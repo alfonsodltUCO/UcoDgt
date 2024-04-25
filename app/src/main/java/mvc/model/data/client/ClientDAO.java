@@ -265,9 +265,7 @@ public class ClientDAO {
                     }
                 },
                 error -> {
-                    // Manejar el error de la solicitud
                     if(error.networkResponse.statusCode==500){
-                        Log.e("Error", "Error en la solicitud", error);
                         Toast.makeText(applicationContext,"The DNI exists", Toast.LENGTH_LONG).show();
                         callback.onError(error);
                     }
@@ -278,6 +276,7 @@ public class ClientDAO {
             protected Map<String, String> getParams() {
                 SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
                 String strDate2= formatter2.format(client.getDateLicenceObtaining());
+                String strDate3= formatter2.format(client.getDateLastUpdate());
                 Map<String, String> params = new HashMap<>();
                 params.put("name", client.getName());
                 params.put("surname", client.getSurname());
@@ -287,6 +286,7 @@ public class ClientDAO {
                 params.put("password", client.getPassword());
                 params.put("email", client.getEmail());
                 params.put("dateObtaining",strDate2);
+                params.put("dateLastUpdate",strDate3);
                 return params;
             }
         };
@@ -308,6 +308,7 @@ public class ClientDAO {
                 userToFind.setLicencepoints(user.getLicencepoints());
                 userToFind.setDni(user.getDni());
                 userToFind.setDateLicenceObtaining(user.getDateLicenceObtaining());
+                userToFind.setDateLastUpdate(user.getDateLastUpdate());
                 callback.onUserReceived(userToFind);
 
             }
@@ -354,14 +355,17 @@ public class ClientDAO {
                         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dateBirth;
                         Date obtaining;
+                        Date last;
                         String obtFromJson = jsonResponse.getString("dateLicenceObtaining");
 
                         try {
                             dateBirth = format.parse(age);
                             obtaining=format.parse(obtFromJson);
+                            last=format.parse(jsonResponse.getString("dateLastUpdate"));
                             Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
                             ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
                             user.setDateLicenceObtaining(obtaining);
+                            user.setDateLastUpdate(last);
                             callback.onUserReceived(user);
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
@@ -372,8 +376,6 @@ public class ClientDAO {
                 },
                 error -> {
                     callback.onError(error);
-                    Log.d("ADebugTag", "Value: " +error.toString());
-
                 }
         ) {
             @Override
@@ -431,7 +433,6 @@ public class ClientDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
@@ -507,7 +508,6 @@ public class ClientDAO {
             }
         });
     }
-    // tienes que hacer 2 mas, uno por cada tabla, si no devuelve vacío entocnes en typeof pones el tipo que es de usuario
     private void getUsersFromBd(final UserCallback callback){
         String URL="http://192.168.1.19:81/api/ucodgt/user/getAllClients.php";
 
@@ -627,7 +627,7 @@ public class ClientDAO {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", client.getDni());
                 params.put("licencePoints", String.valueOf(client.getLicencepoints()));
-
+                params.put("dateLastUpdate",formatter.format(new Date()));
                 return params;
             }
         };
