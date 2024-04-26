@@ -51,7 +51,7 @@ public class CheckUserToDelete extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(userToDelete)){
 
-            if(!checkDni(dni)){
+            if(!checkDni(dni)){//Check dni format
 
                 Intent intentAdmin=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                 startActivity(intentAdmin);
@@ -63,7 +63,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                 Executor executor = Executors.newSingleThreadExecutor();
                 executor.execute(() -> {
 
-                    if(userToDelete.equals("client")){
+                    if(userToDelete.equals("client")){//Delete a Client
 
                         showLoading();
                         ManagerClient mngcl=new ManagerClient();
@@ -123,7 +123,8 @@ public class CheckUserToDelete extends AppCompatActivity {
 
                             }
                         });
-                    }else{
+
+                    }else{//Delete a Worker
 
                         showLoading();
                         ManagerWorker mngwk=new ManagerWorker();
@@ -179,7 +180,7 @@ public class CheckUserToDelete extends AppCompatActivity {
 
         }else if(!TextUtils.isEmpty(type)){
 
-            if(type.equals("client")){
+            if(type.equals("client")){//Delete a Client
 
                 showLoading();
                 ManagerClient mngcl=new ManagerClient();
@@ -222,8 +223,9 @@ public class CheckUserToDelete extends AppCompatActivity {
                     public void onClientsReceived(List<ClientDTO> clients) {
 
                     }
-                });
-            }else{
+                })
+                ;
+            }else{//Delete a Worker
 
                 showLoading();
                 ManagerWorker mngwk=new ManagerWorker();

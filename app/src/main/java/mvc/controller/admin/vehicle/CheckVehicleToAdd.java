@@ -69,7 +69,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(color) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(itvfrom) && !TextUtils.isEmpty(itvto) && !TextUtils.isEmpty(insurance)){
 
-            if(!checkDni(dni)){
+            if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                 startActivity(intentAdmin);
@@ -79,7 +79,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
             }else{
 
-                if(!checkPlate(licenceplate)){
+                if(!checkPlate(licenceplate)){//Check plate format
 
                     Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                     startActivity(intentAdmin);
@@ -89,7 +89,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
                 }else{
 
-                    if(!checkDates(itvfrom,itvto)){
+                    if(!checkDates(itvfrom,itvto)){//Check dates is set correctly
 
                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                         startActivity(intentAdmin);
@@ -99,7 +99,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
                     }else{
 
-                        if(!checkColor(color)){
+                        if(!checkColor(color)){//Check valid color for vehicle
 
                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                             startActivity(intentAdmin);
@@ -109,7 +109,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
 
                         }else{
 
-                            if(!checkType(type)){
+                            if(!checkType(type)){//Check valid type for vehicle
 
                                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                 startActivity(intentAdmin);
@@ -154,7 +154,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
                                                             finish();
 
-                                                        } else if (error.networkResponse.statusCode==404) {
+                                                        } else if (error.networkResponse.statusCode==404) {//The id introduces doesn't exist
 
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
                                                             startActivity(intentAdmin);

@@ -1,5 +1,6 @@
 package mvc.controller.commonFunctions;
 
+import java.security.PublicKey;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -122,5 +123,18 @@ public class ForCheckVehicle {
             }
         }
         return false;
+    }
+
+    /**
+     * Checks if the current date is between the specified start and end dates.
+     *
+     * @param start The start date.
+     * @param end   The end date.
+     * @return {@code true} if the current date is between {@code start} and {@code end}, {@code false} otherwise.
+     */
+    public static boolean isBetween(Date start, Date end) {
+        Date now = new Date();
+
+        return now.after(start) && now.before(end);
     }
 }

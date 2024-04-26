@@ -146,6 +146,7 @@ public class ForCheckPenalty {
      * @return True if the string represents a non-negative float number, false otherwise.
      */
     public static boolean checkQuantity(String quantity) {
+
         try {
             float num = Float.parseFloat(quantity);
             return num >= 0;

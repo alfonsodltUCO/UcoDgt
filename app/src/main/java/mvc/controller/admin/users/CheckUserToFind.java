@@ -50,7 +50,8 @@ public class CheckUserToFind  extends AppCompatActivity {
         dni=intent.getStringExtra("dni");
 
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(userToFind)){
-            if(!checkDni(dni)){
+
+            if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckUserToFind.this, FindUserActivity.class);
                 startActivity(intentAdmin);
@@ -63,7 +64,7 @@ public class CheckUserToFind  extends AppCompatActivity {
 
                 executor.execute(() -> {
 
-                    if(userToFind.equals("client")){
+                    if(userToFind.equals("client")){//User is Client
                         showLoading();
                         ManagerClient mngcl=new ManagerClient();
                         ClientDTO clientToFind=new ClientDTO(dni,null,null,null,null,null,null);
@@ -113,7 +114,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                             }
                         });
 
-                    }else{
+                    }else{//User is Worker
 
                         showLoading();
                         ManagerWorker mngwk=new ManagerWorker();

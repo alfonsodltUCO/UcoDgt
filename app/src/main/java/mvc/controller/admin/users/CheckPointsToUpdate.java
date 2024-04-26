@@ -50,7 +50,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
         dni=getIntent().getStringExtra("dni");
         points=getIntent().getStringExtra("points");
 
-        if(!checkNumeric(points)){
+        if(!checkNumeric(points)){//Check points are numeric
 
             Intent goMain=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
             Toast.makeText(CheckPointsToUpdate.this,"Points incorrect try again please", Toast.LENGTH_LONG).show();
@@ -59,7 +59,8 @@ public class CheckPointsToUpdate extends AppCompatActivity {
             hideLoading();
 
         }else{
-            if(Integer.parseInt(points)>15 || Integer.parseInt(points)<=0){
+
+            if(Integer.parseInt(points)>15 || Integer.parseInt(points)<=0){//cHECK POINTS IS BETWEEN THE Max and Min
 
                 Intent goMain=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
                 Toast.makeText(CheckPointsToUpdate.this,"Points must be between [1,15]", Toast.LENGTH_LONG).show();
@@ -71,6 +72,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
 
                 ManagerClient mngC=new ManagerClient();
                 ClientDTO cl=new ClientDTO(dni,null,null,null,null,null,Integer.parseInt(points));
+
                 mngC.updatePoints(cl, CheckPointsToUpdate.this, new UserCallback() {
                     @Override
                     public void onUserReceived(ClientDTO user) {

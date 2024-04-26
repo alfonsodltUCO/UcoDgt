@@ -30,8 +30,8 @@ import mvc.view.admin.penalty.ShowPenalties;
  */
 public class CheckPenaltiesToList extends AppCompatActivity {
     ProgressBar progressBar;
-    List<PenaltyDTO> penalties;
-    /**
+
+     /**
      * Called when the activity is starting.
      *
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied.
@@ -120,7 +120,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                 ManagerPenalty mngP=new ManagerPenalty();
 
-                if(!checkDatesPenalties(date1,date2)){
+                if(!checkDatesPenalties(date1,date2)){//Check if the range given is valid
 
                     Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                     Toast.makeText(CheckPenaltiesToList.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
