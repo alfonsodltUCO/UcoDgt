@@ -103,6 +103,7 @@
         <activity android:name="mvc.view.worker.penalty.ShowPenalty" />
         <activity android:name="mvc.view.worker.penalty.ShowPenalties" />
         <activity android:name="mvc.view.worker.penalty.AddPenaltyActivity" />
+        <activity android:name="mvc.controller.worker.penalty.CheckPenaltyToCancel" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

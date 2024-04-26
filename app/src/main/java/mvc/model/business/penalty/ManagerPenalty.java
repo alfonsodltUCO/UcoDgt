@@ -375,4 +375,32 @@ public class ManagerPenalty {
             }
         });
     }
+
+    /**
+     * Retrieves the penalty cancelled.
+     *
+     * @param penalty            The penalty DTO to retrieve the cancel penalty for.
+     * @param applicationContext The context of the application.
+     * @param callback           The callback to handle the result of the operation.
+     */
+
+    public void cancelPenalty(PenaltyDTO penalty,Context applicationContext, PenaltyCallback callback){
+        PenaltyDAO penaltyD=new PenaltyDAO();
+        penaltyD.cancelPenalty(penalty,applicationContext, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
 }

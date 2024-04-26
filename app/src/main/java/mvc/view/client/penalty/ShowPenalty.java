@@ -22,7 +22,7 @@ import mvc.view.client.ClientActivity;
  * @author Alfonso de la torre
  */
 public class ShowPenalty extends AppCompatActivity implements View.OnClickListener{
-    String idtodelete;
+    String idtoshow;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,payPenalty;
     PenaltyDTO penalty;
@@ -57,7 +57,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
         reason=findViewById(R.id.tvReason);
         licenceP=findViewById(R.id.tvLicenceP);
-        idtodelete=id.getText().toString();
+        idtoshow=id.getText().toString();
 
         quant=findViewById(R.id.tvQuantity);
         points=findViewById(R.id.tvPoints);

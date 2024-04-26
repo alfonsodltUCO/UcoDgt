@@ -2,6 +2,7 @@ package mvc.model.data.penalty;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.print.PageRange;
 
 
 import com.android.volley.Request;
@@ -1088,6 +1089,95 @@ public class PenaltyDAO {
         };
 
         requestQueue.add(stringRequest);
+    }
+
+    /**
+     * Retrieves the penalty for cancel.
+     *
+     * @param penaltyToFind The PenaltyDTO object representing the penalty to cancel.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the penalty received or errors encountered.
+     */
+
+    public void cancelPenalty(PenaltyDTO penaltyToFind, Context applicationContext, PenaltyCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        cancelPenalty(penaltyToFind, new PenaltyCallback() {
+
+            @Override
+            public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onPenaltyReceived(PenaltyDTO penalty) {
+                callback.onPenaltyReceived(penalty);
+            }
+        });
+    }
+
+    /**
+     * Set a penalty cancelled in the DB.
+     *
+     * @param penaltyToFInd The PenaltyDTO object representing the penalty to cancel.
+     * @param callback The callback to handle the received penalty or errors encountered.
+     */
+    private void cancelPenalty(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
+        String URL="http://192.168.1.19:81/api/ucodgt/penalty/cancelPenalty.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        PenaltyDTO penalty = new PenaltyDTO();
+                        penalty.setId(Integer.valueOf(jsonResponse.getString("id")));
+
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dt1;
+                        try {
+                            dt1 = format.parse(jsonResponse.getString("date"));
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        penalty.setDate(dt1);
+
+                        penalty.setDniClient(jsonResponse.getString("dni_client"));
+                        penalty.setDniWorker(jsonResponse.getString("dni_worker"));
+                        penalty.setState(stateof.valueOf(jsonResponse.getString("state")));
+                        penalty.setReason(typeof.valueOf(jsonResponse.getString("reason")));
+                        penalty.setDescription(jsonResponse.getString("description"));
+                        penalty.setPlace(jsonResponse.getString("place"));
+                        penalty.setInformedAtTheMoment(Boolean.parseBoolean(jsonResponse.getString("informedAtTheMoment")));
+                        penalty.setLocality(jsonResponse.getString("locality"));
+                        penalty.setLicenceplate(jsonResponse.getString("licenceplate"));
+                        penalty.setQuantity(Float.valueOf(jsonResponse.getString("quantity")));
+                        penalty.setPoints(Integer.valueOf(jsonResponse.getString("points")));
+                        callback.onPenaltyReceived(penalty);
+
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("id", penaltyToFInd.getId().toString());
+                params.put("quantity",penaltyToFInd.getQuantity().toString());
+                params.put("points",penaltyToFInd.getPoints().toString());
+                params.put("dni",penaltyToFInd.getDniClient());
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
 
