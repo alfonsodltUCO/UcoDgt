@@ -20,6 +20,12 @@ import mvc.model.business.vehicle.VehicleDTO;
 import mvc.model.data.UserCallback;
 import mvc.view.worker.user.ShowUser;
 
+
+/**
+ * This activity is responsible for checking a user associated with a specific vehicle
+ * and navigating to the ShowUser activity to display the user's information.
+ * @author Alfonso de la torre
+ */
 public class CheckUserToSee extends AppCompatActivity {
 
 
@@ -27,6 +33,16 @@ public class CheckUserToSee extends AppCompatActivity {
 
     String numberWorker;
 
+
+    /**
+     * Called when the activity is starting. Responsible for initializing the activity,
+     * retrieving the user associated with a vehicle, and navigating to the ShowUser activity
+     * to display the user's information.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise, it is null.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +59,7 @@ public class CheckUserToSee extends AppCompatActivity {
         vh.setLicencePlate(lplate);
 
         mngC.getOwner(vh,CheckUserToSee.this, new UserCallback() {
+
             @Override
             public void onUserReceived(ClientDTO user) {
                 Intent goShow=new Intent(CheckUserToSee.this, ShowUser.class);

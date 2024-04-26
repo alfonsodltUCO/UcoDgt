@@ -147,7 +147,7 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
 
                             }else {
 
-                                if(!checkQuantity(quantity)){
+                                if(!checkQuantity(quantity)){//Check quantity is valid format
 
 
                                     Intent intent=new Intent(CheckPenaltyToAddForWorker.this, AddPenaltyActivity.class);
@@ -170,7 +170,6 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
 
                                         @Override
                                         public void onError(VolleyError error) {
-                                            Log.e("e",error.getMessage());
                                         }
 
                                         @Override

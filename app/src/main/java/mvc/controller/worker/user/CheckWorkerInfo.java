@@ -22,12 +22,24 @@ import mvc.model.data.UserCallback;
 import mvc.view.worker.WorkerActivity;
 import mvc.view.worker.user.ShowWorker;
 
+/**
+ * This activity checks the information of a worker and navigates to the ShowWorker activity to display the details.
+ * @author Alfonso de la torre
+ */
 public class CheckWorkerInfo extends AppCompatActivity {
 
     String numberWorker;
     private ProgressBar progressBar;
 
-
+    /**
+     * Called when the activity is starting. Responsible for initializing the activity,
+     * retrieving the information of the worker, and navigating to the ShowWorker activity
+     * to display the worker's details.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise, it is null.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +61,7 @@ public class CheckWorkerInfo extends AppCompatActivity {
 
             @Override
             public void onError(VolleyError error) {
-                Log.e("e",error.getMessage().toString());
+
                 Intent intent=new Intent(CheckWorkerInfo.this, WorkerActivity.class);
                 intent.putExtra("numberWorker",numberWorker);
                 Toast.makeText(CheckWorkerInfo.this,"An error has occured try again please", Toast.LENGTH_LONG).show();
