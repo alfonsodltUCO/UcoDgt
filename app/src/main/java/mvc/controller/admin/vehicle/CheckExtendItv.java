@@ -46,7 +46,7 @@ public class CheckExtendItv extends AppCompatActivity {
                 start=vehicle.getValidItvFrom();
                 end=vehicle.getValidItvTo();
 
-                
+
             }
 
             @Override
