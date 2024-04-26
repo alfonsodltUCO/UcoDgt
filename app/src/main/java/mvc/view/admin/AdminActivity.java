@@ -122,7 +122,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intentListPenalties);
             finish();
 
-        } else if (R.id.item12FindPenalty==item.getItemId()) {
+        } else if (R.id.item12AdminFindPenalty==item.getItemId()) {
 
             Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
             startActivity(intentFind);
@@ -143,6 +143,16 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
 
             Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(goUpdate);
+            finish();
+        } else if (R.id.item14AdminExtendItv==item.getItemId()) {
+
+            Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
+            startActivity(goExtend);
+            finish();
+        } else if (R.id.item15AdminExtendInsurance==item.getItemId()) {
+
+            Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
+            startActivity(goExtend);
             finish();
         }
         return false;

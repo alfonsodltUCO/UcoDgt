@@ -133,6 +133,31 @@
 
             </Button>
 
+            <Button
+                android:id="@+id/extendItv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="Extend itv"
+                >
+
+            </Button>
+            <Button
+                android:id="@+id/extendInsurance"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:text="Extend insurance"
+                >
+
+            </Button>
+
         </LinearLayout>
 
     </LinearLayout>

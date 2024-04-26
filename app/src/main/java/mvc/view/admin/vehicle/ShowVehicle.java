@@ -25,7 +25,7 @@ import mvc.view.admin.AdminActivity;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
-    Button goMain,deleteVehicle,listPenalties;
+    Button goMain,deleteVehicle,listPenalties,extendItv,extendInsurance;
     /**
      * Called when the activity is starting.
      *
@@ -43,6 +43,8 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.show_vehicle);
         lplate=findViewById(R.id.textViewFoundLicencePlate);
         color=findViewById(R.id.textViewFoundColor);
+        extendInsurance=findViewById(R.id.extendInsurance);
+        extendItv=findViewById(R.id.extendItv);
 
         type=findViewById(R.id.textViewCarType);
         idIns=findViewById(R.id.textViewFoundIdInsurance);
@@ -68,6 +70,8 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         licplate=vehicle.getLicencePlate();
         listPenalties=findViewById(R.id.listPenalties);
         listPenalties.setOnClickListener(this);
+        extendItv.setOnClickListener(this);
+        extendInsurance.setOnClickListener(this);
     }
 
     /**
@@ -96,6 +100,20 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
             goList.putExtra("licencePlate",licplate);
             startActivity(goList);
+            finish();
+
+        } else if (v.getId()==R.id.extendInsurance) {
+
+            Intent goExtend=new Intent(ShowVehicle.this, .class);
+            goExtend.putExtra("licencePlate",licplate);
+            startActivity(goExtend);
+            finish();
+
+        } else if (v.getId()==R.id.extendItv) {
+
+            Intent goExtend=new Intent(ShowVehicle.this, .class);
+            goExtend.putExtra("licencePlate",licplate);
+            startActivity(goExtend);
             finish();
 
         }

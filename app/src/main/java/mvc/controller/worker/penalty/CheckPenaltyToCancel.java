@@ -17,8 +17,13 @@ import mvc.model.business.penalty.ManagerPenalty;
 import mvc.model.business.penalty.PenaltyDTO;
 import mvc.model.data.PenaltyCallback;
 import mvc.view.worker.WorkerActivity;
-import mvc.view.worker.penalty.AddPenaltyActivity;
 
+
+/**
+ * This activity is responsible for canceling a penalty associated with a client giving back points and money.
+ * It communicates with the backend to cancel the penalty and then redirects the user back to the WorkerActivity.
+ * @author Alfonso de la torre
+ */
 public class CheckPenaltyToCancel extends AppCompatActivity {
 
     String id,numberWorker,points,dniClient;
@@ -39,7 +44,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
         dniClient=getIntent().getStringExtra("dni");
 
         ManagerPenalty mngP=new ManagerPenalty();
-        PenaltyDTO penaltyToSend=new PenaltyDTO(Integer.parseInt(id),Integer.parseInt(points),null,Float.parseFloat(quantity),null,null,dniClient,null,null,null,false,null,null);
+        PenaltyDTO penaltyToSend=new PenaltyDTO(Integer.parseInt(id),Integer.parseInt(points),null,Float.parseFloat("0"),null,null,dniClient,null,null,null,false,null,null);
 
         mngP.cancelPenalty(penaltyToSend,CheckPenaltyToCancel.this, new PenaltyCallback() {
             @Override
