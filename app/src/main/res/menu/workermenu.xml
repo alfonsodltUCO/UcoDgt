@@ -10,6 +10,10 @@
     <item
         android:id="@+id/item3WorkerCheckUser"
         android:title="Check user" />
+
+    <item
+        android:id="@+id/item4WorkerCancelPenalty"
+        android:title="Cancel Penalty" />
     <item
         android:id="@+id/item5WorkerGetMyInfo"
         android:title="Get my info" />

@@ -40,6 +40,12 @@
     <item
         android:id="@+id/item12FindPenalty"
         android:title="Find penalty" />
+    <item
+        android:id="@+id/item13ExtendItv"
+        android:title="Extend itv" />
+    <item
+        android:id="@+id/item14ExtendInsurance"
+        android:title="Extend insurance" />
 
 
 

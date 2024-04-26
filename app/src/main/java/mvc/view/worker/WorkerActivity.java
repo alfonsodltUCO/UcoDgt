@@ -86,6 +86,12 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
             finish();
 
+        } else if (item.getItemId()==R.id.item4WorkerCancelPenalty) {
+
+            Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
+            intent.putExtra("numberWorker",numberWorker);
+            startActivity(intent);
+            finish();
         }
         return false;
     }
