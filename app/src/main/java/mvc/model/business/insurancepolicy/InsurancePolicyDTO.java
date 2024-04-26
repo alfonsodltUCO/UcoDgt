@@ -16,10 +16,6 @@ public class InsurancePolicyDTO {
 
     private Float quantity;
 
-    private Date endDate;
-
-    private Date startDate;
-
     private typeof company;
 
     /**
@@ -35,17 +31,13 @@ public class InsurancePolicyDTO {
      *
      * @param id        The ID of the insurance policy.
      * @param quantity  The quantity of the insurance policy.
-     * @param endDate   The end date of the insurance policy.
-     * @param startDate The start date of the insurance policy.
      * @param company   The company providing the insurance policy.
      */
 
-    public InsurancePolicyDTO(Integer id, Float quantity, Date endDate, Date startDate,typeof company){
+    public InsurancePolicyDTO(Integer id, Float quantity,typeof company){
         this.company=company;
-        this.endDate=endDate;
         this.id=id;
         this.quantity=quantity;
-        this.startDate=startDate;
     }
 
     /**
@@ -68,25 +60,6 @@ public class InsurancePolicyDTO {
         return quantity;
     }
 
-    /**
-     * Gets the end date of the insurance policy.
-     *
-     * @return The end date of the insurance policy.
-     */
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    /**
-     * Gets the start date of the insurance policy.
-     *
-     * @return The start date of the insurance policy.
-     */
-
-    public Date getStartDate() {
-        return startDate;
-    }
 
     /**
      * Gets the company providing the insurance policy.
@@ -131,26 +104,6 @@ public class InsurancePolicyDTO {
         this.company = company;
     }
 
-    /**
-     * Sets the end date of the insurance policy.
-     *
-     * @param endDate The end date of the insurance policy.
-     */
-
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    /**
-     * Sets the start date of the insurance policy.
-     *
-     * @param startDate The start date of the insurance policy.
-     */
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
 
     /**
      * Returns a string representation of the InsurancePolicyDTO object.
@@ -164,8 +117,6 @@ public class InsurancePolicyDTO {
         return "InsurancePolicyDTO{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", endDate=" + endDate +
-                ", startDate=" + startDate +
                 ", company=" + company +
                 '}';
     }

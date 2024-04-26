@@ -15,6 +15,7 @@ import com.example.ucodgt.R;
 import java.text.SimpleDateFormat;
 
 import mvc.controller.admin.penalty.CheckPenaltiesToList;
+import mvc.controller.admin.vehicle.CheckExtendItv;
 import mvc.controller.admin.vehicle.CheckVehicleToDelete;
 import mvc.model.business.vehicle.VehicleDTO;
 import mvc.view.admin.AdminActivity;
@@ -25,7 +26,7 @@ import mvc.view.admin.AdminActivity;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
-    Button goMain,deleteVehicle,listPenalties,extendItv,extendInsurance;
+    Button goMain,deleteVehicle,listPenalties,extendItv;
     /**
      * Called when the activity is starting.
      *
@@ -43,7 +44,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.show_vehicle);
         lplate=findViewById(R.id.textViewFoundLicencePlate);
         color=findViewById(R.id.textViewFoundColor);
-        extendInsurance=findViewById(R.id.extendInsurance);
         extendItv=findViewById(R.id.extendItv);
 
         type=findViewById(R.id.textViewCarType);
@@ -71,7 +71,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         listPenalties=findViewById(R.id.listPenalties);
         listPenalties.setOnClickListener(this);
         extendItv.setOnClickListener(this);
-        extendInsurance.setOnClickListener(this);
     }
 
     /**
@@ -102,16 +101,9 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             startActivity(goList);
             finish();
 
-        } else if (v.getId()==R.id.extendInsurance) {
-
-            Intent goExtend=new Intent(ShowVehicle.this, .class);
-            goExtend.putExtra("licencePlate",licplate);
-            startActivity(goExtend);
-            finish();
-
         } else if (v.getId()==R.id.extendItv) {
 
-            Intent goExtend=new Intent(ShowVehicle.this, .class);
+            Intent goExtend=new Intent(ShowVehicle.this, CheckExtendItv.class);
             goExtend.putExtra("licencePlate",licplate);
             startActivity(goExtend);
             finish();

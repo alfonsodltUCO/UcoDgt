@@ -149,11 +149,6 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(goExtend);
             finish();
-        } else if (R.id.item15AdminExtendInsurance==item.getItemId()) {
-
-            Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
-            startActivity(goExtend);
-            finish();
         }
         return false;
     }
