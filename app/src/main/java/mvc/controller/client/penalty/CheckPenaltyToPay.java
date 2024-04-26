@@ -55,7 +55,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(number) && !TextUtils.isEmpty(cvv) && !TextUtils.isEmpty(caducity)){// Check if card data is valid
 
-            if(!checkCardData(cvv,number,caducity)){
+            if(!checkCardData(cvv,number,caducity)){//Simulate a paymnet, check data is valid (format)
 
                 Intent goMain=new Intent(CheckPenaltyToPay.this, ClientActivity.class);
                 Toast.makeText(CheckPenaltyToPay.this, "Introduce correctly the data please", Toast.LENGTH_LONG).show();

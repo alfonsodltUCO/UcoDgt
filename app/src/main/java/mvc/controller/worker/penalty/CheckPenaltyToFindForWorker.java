@@ -45,7 +45,7 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(id)){
 
-            if(!checkNumeric(id)){
+            if(!checkNumeric(id)){//Check identifier is valid
 
                 Intent intentGoBackAgain=new Intent(CheckPenaltyToFindForWorker.this, WorkerActivity.class);
                 intentGoBackAgain.putExtra("numberWorker",numberWorker);

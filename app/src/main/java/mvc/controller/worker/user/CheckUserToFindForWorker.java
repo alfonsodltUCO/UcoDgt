@@ -56,7 +56,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(dni)){// Check if dni is not empty
 
-            if(!checkDni(dni)){
+            if(!checkDni(dni)){//Check dni is valid format
 
                 Intent intentWorker=new Intent(CheckUserToFindForWorker.this, WorkerActivity.class);
                 intentWorker.putExtra("numberWorker",numberWorker);

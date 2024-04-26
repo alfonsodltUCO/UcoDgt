@@ -49,7 +49,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
         String lic=getIntent().getStringExtra("licencePlate");
         String dni=getIntent().getStringExtra("dni");
 
-        if(!TextUtils.isEmpty(lic)){
+        if(!TextUtils.isEmpty(lic)){//List penalties by licence plate
 
             VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
             ManagerPenalty mngP=new ManagerPenalty();
@@ -84,7 +84,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                 }
             });
 
-        } else if (!TextUtils.isEmpty(dni)) {
+        } else if (!TextUtils.isEmpty(dni)) {//List penalties by DNI
 
             ClientDTO client=new ClientDTO(dni,null,null,null,null,null,null);
             ManagerPenalty mngP=new ManagerPenalty();

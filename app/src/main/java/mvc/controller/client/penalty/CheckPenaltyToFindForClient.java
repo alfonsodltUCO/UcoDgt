@@ -55,7 +55,7 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(id)){
 
-            if(!checkNumeric(id)){
+            if(!checkNumeric(id)){//Check identifier is numeric
 
                 Intent goMain=new Intent(CheckPenaltyToFindForClient.this, CheckPenaltiesToListForClient.class);
                 goMain.putExtra("dni",dni);
