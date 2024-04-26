@@ -45,7 +45,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(licencePlate)) {
 
-            if(!checkPlate(licencePlate)){
+            if(!checkPlate(licencePlate)){//Check plate format
 
                 Intent intentAdmin=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                 startActivity(intentAdmin);

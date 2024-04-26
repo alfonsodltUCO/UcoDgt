@@ -187,6 +187,35 @@ public class ManagerVehicle {
         });
     }
 
+    /**
+     * Retrieves the vehicle which itv dates have been modified.
+     *
+     * @param vehicle             The VehicleDTO representing the vehicle to change the itv dates.
+     * @param applicationContext The context of the application.
+     * @param callback            The callback for handling the result of the operation.
+     */
+    public void updateItv(VehicleDTO vehicle, Context applicationContext, VehicleCallback callback){
+        VehicleDAO vehicleD=new VehicleDAO();
+        vehicleD.updateItv(vehicle,applicationContext, new VehicleCallback() {
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+                callback.onVehicleReceived(vehicle);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+            }
+        });
+
+    }
+
+
 
 
 }

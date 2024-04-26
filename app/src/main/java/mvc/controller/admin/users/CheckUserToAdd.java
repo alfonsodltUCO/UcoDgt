@@ -49,6 +49,7 @@ public class CheckUserToAdd extends AppCompatActivity {
         progressBar=findViewById(R.id.progressbar);
         showLoading();
         Intent intentReceived=getIntent();
+
         name=intentReceived.getStringExtra("name");
         surname=intentReceived.getStringExtra("surname");
         email=intentReceived.getStringExtra("email");
@@ -60,7 +61,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(typeofuserAdded) && !TextUtils.isEmpty(name) && !TextUtils.isEmpty(surname) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(age) && !TextUtils.isEmpty(licencepoints)){
 
-            if(!checkDni(dni)){
+            if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                 startActivity(intentAdmin);
@@ -69,7 +70,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
             }else{
 
-               if(!checkNameAndSUrname(name,surname)){
+               if(!checkNameAndSUrname(name,surname)){//Check format of name and surname
 
                    Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                    startActivity(intentAdmin);
@@ -78,7 +79,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                }else{
 
-                   if(!checkLicencePoints(licencepoints)){
+                   if(!checkLicencePoints(licencepoints)){//Check licence points
 
                        Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
                        startActivity(intentAdmin);
@@ -87,7 +88,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                    }else{
 
-                        checkAdminEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){
+                        checkAdminEmailNotExists(email,CheckUserToAdd.this,new UserCallback(){//Check if user exists
 
                             @Override
                             public void onUserReceived(ClientDTO user) {}
@@ -120,7 +121,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                         public void onError(VolleyError error11) {
                                             runOnUiThread(() -> {
 
-                                                if(!checkValidEmail(email)){
+                                                if(!checkValidEmail(email)){//Chem email format
 
                                                     Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
                                                     startActivity(intentAdmin);
@@ -129,7 +130,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                 }else{
 
-                                                    if(!checkDateOfBirth(age)){
+                                                    if(!checkDateOfBirth(age)){//Check date format and if is older than 18
 
                                                         Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
                                                         startActivity(intentAdmin);
@@ -147,7 +148,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                         }else{
 
-                                                            if(typeofuserAdded.equals("client")){
+                                                            if(typeofuserAdded.equals("client")){//User to add is Client
 
                                                                 ManagerClient mngcl = new ManagerClient();
                                                                 @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -227,7 +228,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                     throw new RuntimeException(e);
                                                                 }
 
-                                                            }else{
+                                                            }else{//User to add is Worker
 
                                                                 ManagerWorker mngwk = new ManagerWorker();
                                                                 @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

@@ -44,7 +44,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(id)){
 
-            if(!checkNumeric(id)){
+            if(!checkNumeric(id)){//Check the identifier is numeric
 
                 Intent intentGoBackAgain=new Intent(CheckPenaltyToFind.this, IntroducePenaltyForSearch.class);
                 startActivity(intentGoBackAgain);

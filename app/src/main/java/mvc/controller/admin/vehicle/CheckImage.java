@@ -60,14 +60,15 @@ public class CheckImage extends AppCompatActivity{
 
                 runOnUiThread(()->{
 
-                    if(error.networkResponse.statusCode==404){
+                    if(error.networkResponse.statusCode==404){//The system doesn't have the plate recognized
                         Intent goAdd=new Intent(CheckImage.this, AdminActivity.class);
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);
                         hideLoading();
                         finish();
 
-                    }else{
+                    }else{//The API have not recognized any plate
+
                         Intent goMain=new Intent(CheckImage.this, AdminActivity.class);
                         Toast.makeText(CheckImage.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         startActivity(goMain);

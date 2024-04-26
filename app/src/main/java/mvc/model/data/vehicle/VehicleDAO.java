@@ -686,4 +686,67 @@ public class VehicleDAO {
         requestQueue.add(stringRequest);
     }
 
+    /**
+     * Update the vehicle with given dates for new itv dates.
+     *
+     * @param vehicleToAdd The VehicleDTO object representing the vehicle to update.
+     * @param applicationContext The application context.
+     * @param callback The callback to handle the result of adding the vehicle or errors encountered.
+     */
+    public void updateItv(VehicleDTO vehicleToAdd, Context applicationContext, VehicleCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        updateItv(vehicleToAdd,new VehicleCallback() {
+
+            @Override
+            public void onVehicleReceived(VehicleDTO vehicle) {
+                callback.onVehicleReceived(vehicleToAdd);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+            }
+        });
+    }
+
+    /**
+     * Update the dates of itv by a given vehicle.
+     *
+     * @param vehicle The VehicleDTO object representing the vehicle to update.
+     * @param callback The callback to handle the result of adding the vehicle or errors encountered.
+     */
+    private void updateItv(final VehicleDTO vehicle, final VehicleCallback callback) {
+        String URL = "http://192.168.1.19:81/api/ucodgt/vehicle/updateItv.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onVehicleReceived(vehicle);
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String strDate1= formatter.format(vehicle.getValidItvFrom());
+                String strDate2= formatter.format(vehicle.getValidItvTo());
+                Map<String, String> params = new HashMap<>();
+                params.put("licencePlate", vehicle.getLicencePlate());
+                params.put("validItvFrom", strDate1);
+                params.put("validItvTo", strDate2);
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+
 }

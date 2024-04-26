@@ -45,7 +45,7 @@ public class CheckVehicleToFind extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(licenceplate)){
 
-            if(!checkPlate(licenceplate)){
+            if(!checkPlate(licenceplate)){//Check plate format
 
                 Intent intentAdmin=new Intent(CheckVehicleToFind.this, IntroduceManual.class);
                 startActivity(intentAdmin);
