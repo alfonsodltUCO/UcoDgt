@@ -104,6 +104,7 @@
         <activity android:name="mvc.view.worker.penalty.ShowPenalties" />
         <activity android:name="mvc.view.worker.penalty.AddPenaltyActivity" />
         <activity android:name="mvc.controller.worker.penalty.CheckPenaltyToCancel" />
+        <activity android:name="mvc.controller.admin.vehicle.CheckExtendItv" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

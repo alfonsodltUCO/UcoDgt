@@ -30,6 +30,15 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
+
+    /**
+     * Called when the activity is starting. Responsible for initializing the activity,
+     * retrieving necessary data from the intent, canceling the penalty, and handling the response.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     *                           Note: Otherwise, it is null.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
