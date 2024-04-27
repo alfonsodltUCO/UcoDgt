@@ -1,3 +1,5 @@
+import shadow.bundletool.com.android.tools.r8.internal.T
+
 plugins {
     id("com.android.application")
 }
