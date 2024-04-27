@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -44,22 +43,22 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_user_for_client);
+        setContentView(com.example.ucodgt.R.layout.show_user_for_client);
         dniRec=getIntent().getStringExtra("dni");
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        obtaining=findViewById(R.id.textViewDateObtaining);
-        name=findViewById(R.id.textViewFoundName);
-        birth=findViewById(R.id.textViewFoundDateBirth);
-        surname=findViewById(R.id.textViewFoundSurname);
+        obtaining=findViewById(com.example.ucodgt.R.id.textViewDateObtaining);
+        name=findViewById(com.example.ucodgt.R.id.textViewFoundName);
+        birth=findViewById(com.example.ucodgt.R.id.textViewFoundDateBirth);
+        surname=findViewById(com.example.ucodgt.R.id.textViewFoundSurname);
 
-        email=findViewById(R.id.textViewFoundEmail);
-        dni=findViewById(R.id.textViewFoundDni);
-        goMenu=findViewById(R.id.goMainMenu);
+        email=findViewById(com.example.ucodgt.R.id.textViewFoundEmail);
+        dni=findViewById(com.example.ucodgt.R.id.textViewFoundDni);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
-        listPenalties=findViewById(R.id.listPenalties);
-        listVehicles=findViewById(R.id.listVehicles);
-        licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
+        listPenalties=findViewById(com.example.ucodgt.R.id.listPenalties);
+        listVehicles=findViewById(com.example.ucodgt.R.id.listVehicles);
+        licencepoints=findViewById(com.example.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
         goMenu.setOnClickListener(this);
 
         listVehicles.setOnClickListener(this);
@@ -87,7 +86,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      */
     public void onClick(View v){
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate to main menu
 
             Intent goMain=new Intent(ShowUser.this, ClientActivity.class);
@@ -95,7 +94,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             startActivity(goMain);
             finish();
 
-        }else if (v.getId()==R.id.listPenalties) {
+        }else if (v.getId()==com.example.ucodgt.R.id.listPenalties) {
             // Navigate to list of penalties for the user/client
 
             Intent goList=new Intent(ShowUser.this, CheckPenaltiesToListForClient.class);
@@ -103,7 +102,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             startActivity(goList);
             finish();
 
-        }else if(v.getId()==R.id.listVehicles){
+        }else if(v.getId()==com.example.ucodgt.R.id.listVehicles){
             // Navigate to list of vehicles for the user/client
 
             Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToListForClient.class);

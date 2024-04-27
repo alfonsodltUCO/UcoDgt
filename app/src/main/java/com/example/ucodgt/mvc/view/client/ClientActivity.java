@@ -11,7 +11,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.client.user.CheckUserToFindForClient;
 import com.example.ucodgt.mvc.controller.client.vehicle.CheckVehiclesToListForClient;
@@ -43,9 +42,9 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
      * Method used to create the menu of the client
      */
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.clientmenu,menu);
-        setContentView(R.layout.clientmain);
-        closeSession=findViewById(R.id.closeSession);
+        getMenuInflater().inflate(com.example.ucodgt.R.menu.clientmenu,menu);
+        setContentView(com.example.ucodgt.R.layout.clientmain);
+        closeSession=findViewById(com.example.ucodgt.R.id.closeSession);
         closeSession.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
 
@@ -57,23 +56,23 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         dni=getIntent().getStringExtra("dni");
-        if(item.getItemId()==R.id.item1ClientListVehicles){
+        if(item.getItemId()==com.example.ucodgt.R.id.item1ClientListVehicles){
             Intent intent=new Intent(ClientActivity.this, CheckVehiclesToListForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
 
-        }else if(item.getItemId()==R.id.item2ClientListPenalties){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item2ClientListPenalties){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
-        }else if(item.getItemId()==R.id.item3ClientPayPenalty){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item3ClientPayPenalty){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
-        }else if(item.getItemId()==R.id.item4ClientCheckMyPoints){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item4ClientCheckMyPoints){
             Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
@@ -87,7 +86,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
      */
     public void onClick(View v) {
 
-        if(v.getId()==R.id.closeSession){
+        if(v.getId()==com.example.ucodgt.R.id.closeSession){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

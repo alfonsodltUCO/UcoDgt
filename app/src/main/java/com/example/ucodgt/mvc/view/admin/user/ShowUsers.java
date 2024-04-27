@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ucodgt.R;
-
 import java.util.List;
 
 import com.example.ucodgt.mvc.model.business.user.client.ClientDTO;
@@ -33,13 +31,13 @@ public class ShowUsers extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_users);
+        setContentView(com.example.ucodgt.R.layout.show_users);
         // Retrieve the list of clients and workers from the intent
 
         List<WorkerDTO> workers = (List<WorkerDTO>) getIntent().getSerializableExtra("workers");
         List<ClientDTO> clients = (List<ClientDTO>) getIntent().getSerializableExtra("clients");
 
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(com.example.ucodgt.R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Initialize clientList and workerList
 

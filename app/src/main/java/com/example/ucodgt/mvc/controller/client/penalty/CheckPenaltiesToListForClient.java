@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.example.ucodgt.R;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,9 +41,9 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
+        setContentView(com.example.ucodgt.R.layout.loading);
         dni=getIntent().getStringExtra("dni");
-        progressBar=findViewById(R.id.progressbar);
+        progressBar=findViewById(com.example.ucodgt.R.id.progressbar);
         showLoading();
         String state=getIntent().getStringExtra("state");
         String date1=getIntent().getStringExtra("date1");

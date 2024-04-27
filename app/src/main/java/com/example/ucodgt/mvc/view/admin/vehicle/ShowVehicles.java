@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ucodgt.R;
 
 import java.util.List;
 
@@ -31,11 +30,11 @@ public class ShowVehicles extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_vehicles);
+        setContentView(com.example.ucodgt.R.layout.show_vehicles);
         // Retrieve the list of vehicles from the intent
 
         List<VehicleDTO> vehicles = (List<VehicleDTO>) getIntent().getSerializableExtra("vehicles");
-        recyclerView = findViewById(R.id.recycler_view_vehicles);
+        recyclerView = findViewById(com.example.ucodgt.R.id.recycler_view_vehicles);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Check if the list of vehicles is not empty

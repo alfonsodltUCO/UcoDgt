@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ucodgt.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_penalties, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.example.ucodgt.R.layout.item_card_penalties, parent, false);
         return new CardViewHolder(view);
     }
 
@@ -103,8 +102,8 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            textPlate = itemView.findViewById(R.id.textPenaltyL);
-            textId = itemView.findViewById(R.id.textPenaltyId);
+            textPlate = itemView.findViewById(com.example.ucodgt.R.id.textPenaltyL);
+            textId = itemView.findViewById(com.example.ucodgt.R.id.textPenaltyId);
         }
     }
 }

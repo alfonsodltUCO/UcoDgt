@@ -12,7 +12,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.worker.user.CheckWorkerInfo;
 import com.example.ucodgt.mvc.view.worker.penalty.AddPenaltyActivity;
@@ -43,9 +42,9 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
      */
     @SuppressLint("MissingInflatedId")
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.workermenu,menu);
-        setContentView(R.layout.workermain);
-        closeSession=findViewById(R.id.closeSession);
+        getMenuInflater().inflate(com.example.ucodgt.R.menu.workermenu,menu);
+        setContentView(com.example.ucodgt.R.layout.workermain);
+        closeSession=findViewById(com.example.ucodgt.R.id.closeSession);
         closeSession.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
 
@@ -57,14 +56,14 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         numberWorker=getIntent().getStringExtra("numberWorker");
-        if(item.getItemId()==R.id.item1WorkerAddPenalty){
+        if(item.getItemId()==com.example.ucodgt.R.id.item1WorkerAddPenalty){
 
             Intent intent=new Intent(WorkerActivity.this,AddPenaltyActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             finish();
 
-        }else if(item.getItemId()==R.id.item2WorkerCheckVehicle){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item2WorkerCheckVehicle){
 
             Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
             intent.putExtra("numberWorker",numberWorker);
@@ -72,21 +71,21 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
             finish();
 
 
-        }else if(item.getItemId()==R.id.item3WorkerCheckUser){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item3WorkerCheckUser){
 
             Intent intent=new Intent(WorkerActivity.this, FindUserActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             finish();
 
-        }else if(item.getItemId()==R.id.item5WorkerGetMyInfo){
+        }else if(item.getItemId()==com.example.ucodgt.R.id.item5WorkerGetMyInfo){
 
             Intent intent=new Intent(WorkerActivity.this, CheckWorkerInfo.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             finish();
 
-        } else if (item.getItemId()==R.id.item4WorkerCancelPenalty) {
+        } else if (item.getItemId()==com.example.ucodgt.R.id.item4WorkerCancelPenalty) {
 
             Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
             intent.putExtra("numberWorker",numberWorker);
@@ -101,7 +100,7 @@ public class WorkerActivity extends AppCompatActivity implements View.OnClickLis
      */
     public void onClick(View v) {
 
-        if(v.getId()==R.id.closeSession){
+        if(v.getId()==com.example.ucodgt.R.id.closeSession){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

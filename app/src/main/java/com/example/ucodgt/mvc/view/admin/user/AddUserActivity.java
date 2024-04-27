@@ -11,8 +11,6 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import com.example.ucodgt.mvc.controller.admin.users.CheckUserToAdd;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -39,17 +37,17 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.add_user);
-        editTextAge=findViewById(R.id.editTextDateBirth);
-        editTextEmail=findViewById(R.id.editTextEmail);
-        editTextDni=findViewById(R.id.editTextDNI);
-        editTextName=findViewById(R.id.editTextName);
-        editTextSurname=findViewById(R.id.editTextSurname);
-        checkAddUser=findViewById(R.id.checkAdd);
-        goMenu=findViewById(R.id.goMainMenu);
-        radiogrouptypeuser=findViewById(R.id.radioGroupTypeUserToAdd);
-        editTextLicencePoints=findViewById(R.id.editTextLicencePoints);
-        editTextPassword=findViewById(R.id.editTextPassword);
+        setContentView(com.example.ucodgt.R.layout.add_user);
+        editTextAge=findViewById(com.example.ucodgt.R.id.editTextDateBirth);
+        editTextEmail=findViewById(com.example.ucodgt.R.id.editTextEmail);
+        editTextDni=findViewById(com.example.ucodgt.R.id.editTextDNI);
+        editTextName=findViewById(com.example.ucodgt.R.id.editTextName);
+        editTextSurname=findViewById(com.example.ucodgt.R.id.editTextSurname);
+        checkAddUser=findViewById(com.example.ucodgt.R.id.checkAdd);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        radiogrouptypeuser=findViewById(com.example.ucodgt.R.id.radioGroupTypeUserToAdd);
+        editTextLicencePoints=findViewById(com.example.ucodgt.R.id.editTextLicencePoints);
+        editTextPassword=findViewById(com.example.ucodgt.R.id.editTextPassword);
 
         radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
 
@@ -70,7 +68,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.checkAdd){
+        if(v.getId()==com.example.ucodgt.R.id.checkAdd){
             //Handle activity to check the addition
            Intent checkUserToAdd=new Intent(AddUserActivity.this, CheckUserToAdd.class);
            checkUserToAdd.putExtra("name",editTextName.getText().toString().trim());
@@ -85,7 +83,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
 
            startActivity(checkUserToAdd);
 
-       }else if(v.getId()==R.id.goMainMenu){
+       }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             //Handle the option to go back
             Intent goMenu=new Intent(AddUserActivity.this, AdminActivity.class);
             startActivity(goMenu);

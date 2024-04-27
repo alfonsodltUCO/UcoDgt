@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -41,15 +40,15 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
 
         super.onCreate(savedInstanceState);
         VehicleDTO vehicle= (VehicleDTO) getIntent().getSerializableExtra("vehicle");
-        setContentView(R.layout.show_vehicle);
-        lplate=findViewById(R.id.textViewFoundLicencePlate);
-        color=findViewById(R.id.textViewFoundColor);
-        extendItv=findViewById(R.id.extendItv);
+        setContentView(com.example.ucodgt.R.layout.show_vehicle);
+        lplate=findViewById(com.example.ucodgt.R.id.textViewFoundLicencePlate);
+        color=findViewById(com.example.ucodgt.R.id.textViewFoundColor);
+        extendItv=findViewById(com.example.ucodgt.R.id.extendItv);
 
-        type=findViewById(R.id.textViewCarType);
-        idIns=findViewById(R.id.textViewFoundIdInsurance);
-        itv1=findViewById(R.id.textViewFoundValidItvFrom);
-        itv2=findViewById(R.id.textViewFoundValidItvTo);
+        type=findViewById(com.example.ucodgt.R.id.textViewCarType);
+        idIns=findViewById(com.example.ucodgt.R.id.textViewFoundIdInsurance);
+        itv1=findViewById(com.example.ucodgt.R.id.textViewFoundValidItvFrom);
+        itv2=findViewById(com.example.ucodgt.R.id.textViewFoundValidItvTo);
 
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());
         color.setText("Color= "+vehicle.getColor().toString());
@@ -62,13 +61,13 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         strDate= formatter.format(vehicle.getValidItvTo());
 
         itv2.setText("Itv valid to= "+strDate);
-        goMain=findViewById(R.id.goMainMenu);
-        deleteVehicle=findViewById(R.id.deleteVehicle);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        deleteVehicle=findViewById(com.example.ucodgt.R.id.deleteVehicle);
         goMain.setOnClickListener(this);
         deleteVehicle.setOnClickListener(this);
 
         licplate=vehicle.getLicencePlate();
-        listPenalties=findViewById(R.id.listPenalties);
+        listPenalties=findViewById(com.example.ucodgt.R.id.listPenalties);
         listPenalties.setOnClickListener(this);
         extendItv.setOnClickListener(this);
     }
@@ -81,27 +80,27 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent goMain=new Intent(ShowVehicle.this, AdminActivity.class);
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.deleteVehicle){
+        }else if(v.getId()==com.example.ucodgt.R.id.deleteVehicle){
 
             Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
             goDelete.putExtra("licencePlate",licplate);
             startActivity(goDelete);
             finish();
 
-        } else if (v.getId()==R.id.listPenalties) {
+        } else if (v.getId()==com.example.ucodgt.R.id.listPenalties) {
 
             Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
             goList.putExtra("licencePlate",licplate);
             startActivity(goList);
             finish();
 
-        } else if (v.getId()==R.id.extendItv) {
+        } else if (v.getId()==com.example.ucodgt.R.id.extendItv) {
 
             Intent goExtend=new Intent(ShowVehicle.this, CheckExtendItv.class);
             goExtend.putExtra("licencePlate",licplate);

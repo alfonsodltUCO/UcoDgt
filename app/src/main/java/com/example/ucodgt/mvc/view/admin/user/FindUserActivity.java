@@ -11,8 +11,6 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import com.example.ucodgt.mvc.controller.admin.users.CheckUserToFind;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -36,11 +34,11 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.find_user);
-        search=findViewById(R.id.findUser);
-        radiogrouptypeuser = findViewById(R.id.radioGroupTypeUserToFind);
-        dniToSearch = findViewById(R.id.editTextDniToFind);
-        goMenu=findViewById(R.id.goMainMenu);
+        setContentView(com.example.ucodgt.R.layout.find_user);
+        search=findViewById(com.example.ucodgt.R.id.findUser);
+        radiogrouptypeuser = findViewById(com.example.ucodgt.R.id.radioGroupTypeUserToFind);
+        dniToSearch = findViewById(com.example.ucodgt.R.id.editTextDniToFind);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
 
@@ -61,7 +59,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.findUser){
+        if(v.getId()==com.example.ucodgt.R.id.findUser){
             // Start the CheckUserToFind activity to find the user
 
             Intent goFind=new Intent(FindUserActivity.this, CheckUserToFind.class);
@@ -70,7 +68,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             startActivity(goFind);
             finish();
 
-        }else if(v.getId()==R.id.goMainMenu){
+        }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
             Intent goMenu=new Intent(FindUserActivity.this, AdminActivity.class);

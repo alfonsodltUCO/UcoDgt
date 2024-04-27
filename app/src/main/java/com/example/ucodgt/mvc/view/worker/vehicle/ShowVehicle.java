@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -46,15 +45,15 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         VehicleDTO vehicle= (VehicleDTO) getIntent().getSerializableExtra("vehicle");
         numberWorker=getIntent().getStringExtra("numberWorker");
 
-        setContentView(R.layout.show_vehicle_for_worker);
-        lplate=findViewById(R.id.textViewFoundLicencePlate);
-        color=findViewById(R.id.textViewFoundColor);
+        setContentView(com.example.ucodgt.R.layout.show_vehicle_for_worker);
+        lplate=findViewById(com.example.ucodgt.R.id.textViewFoundLicencePlate);
+        color=findViewById(com.example.ucodgt.R.id.textViewFoundColor);
 
-        type=findViewById(R.id.textViewCarType);
-        idIns=findViewById(R.id.textViewFoundIdInsurance);
-        itv1=findViewById(R.id.textViewFoundValidItvFrom);
-        itv2=findViewById(R.id.textViewFoundValidItvTo);
-        addPenalty=findViewById(R.id.addPenalty);
+        type=findViewById(com.example.ucodgt.R.id.textViewCarType);
+        idIns=findViewById(com.example.ucodgt.R.id.textViewFoundIdInsurance);
+        itv1=findViewById(com.example.ucodgt.R.id.textViewFoundValidItvFrom);
+        itv2=findViewById(com.example.ucodgt.R.id.textViewFoundValidItvTo);
+        addPenalty=findViewById(com.example.ucodgt.R.id.addPenalty);
 
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());
         color.setText("Color= "+vehicle.getColor().toString());
@@ -67,14 +66,14 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         strDate= formatter.format(vehicle.getValidItvTo());
 
         itv2.setText("Itv valid to= "+strDate);
-        goMain=findViewById(R.id.goMainMenu);
-        seeUser=findViewById(R.id.seeUser);
-        addPenalty=findViewById(R.id.addPenalty);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        seeUser=findViewById(com.example.ucodgt.R.id.seeUser);
+        addPenalty=findViewById(com.example.ucodgt.R.id.addPenalty);
         goMain.setOnClickListener(this);
         seeUser.setOnClickListener(this);
         addPenalty.setOnClickListener(this);
         licplate=vehicle.getLicencePlate();
-        listPenalties=findViewById(R.id.listPenalties);
+        listPenalties=findViewById(com.example.ucodgt.R.id.listPenalties);
         listPenalties.setOnClickListener(this);
     }
 
@@ -86,14 +85,14 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent goMain=new Intent(ShowVehicle.this, WorkerActivity.class);
             goMain.putExtra("numberWorker",numberWorker);
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.seeUser){
+        }else if(v.getId()==com.example.ucodgt.R.id.seeUser){
 
             Intent goSee=new Intent(ShowVehicle.this, CheckUserToSee.class);
             goSee.putExtra("licencePlate",licplate);
@@ -101,7 +100,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             startActivity(goSee);
             finish();
 
-        } else if (v.getId()==R.id.listPenalties) {
+        } else if (v.getId()==com.example.ucodgt.R.id.listPenalties) {
 
             Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToListForWorker.class);
             goList.putExtra("licencePlate",licplate);
@@ -109,7 +108,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             startActivity(goList);
             finish();
 
-        } else if (v.getId()==R.id.addPenalty) {
+        } else if (v.getId()==com.example.ucodgt.R.id.addPenalty) {
 
             Intent goAdd=new Intent(ShowVehicle.this, AddPenaltyActivity.class);
             goAdd.putExtra("licencePlate",licplate);

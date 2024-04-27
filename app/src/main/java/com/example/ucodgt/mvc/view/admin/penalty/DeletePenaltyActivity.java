@@ -9,8 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import com.example.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -29,10 +27,10 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.delete_penalty);
-        goMain=findViewById(R.id.goMainMenu);
-        goDelete=findViewById(R.id.deletePenalty);
-        etId=findViewById(R.id.editTextId);
+        setContentView(com.example.ucodgt.R.layout.delete_penalty);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        goDelete=findViewById(com.example.ucodgt.R.id.deletePenalty);
+        etId=findViewById(com.example.ucodgt.R.id.editTextId);
 
         goMain.setOnClickListener(this);
         goDelete.setOnClickListener(this);
@@ -45,7 +43,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.deletePenalty){
+        if(v.getId()==com.example.ucodgt.R.id.deletePenalty){
             // Proceed to check and delete the penalty with the provided ID
 
             Intent goDelete = new Intent(DeletePenaltyActivity.this, CheckPenaltyToDelete.class);
@@ -53,7 +51,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
             startActivity(goDelete);
             finish();
 
-        } else if (v.getId()==R.id.goMainMenu) {
+        } else if (v.getId()==com.example.ucodgt.R.id.goMainMenu) {
             // Navigate back to the main menu
 
             Intent intentGoMain = new Intent(DeletePenaltyActivity.this, AdminActivity.class);

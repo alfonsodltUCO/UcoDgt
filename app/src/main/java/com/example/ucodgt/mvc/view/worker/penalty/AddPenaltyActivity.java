@@ -10,7 +10,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.view.worker.WorkerActivity;
 
@@ -35,20 +34,20 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.add_penalty_for_worker);
-        goAddDescrp=findViewById(R.id.goNext);
-        goMain=findViewById(R.id.goMainMenu);
+        setContentView(com.example.ucodgt.R.layout.add_penalty_for_worker);
+        goAddDescrp=findViewById(com.example.ucodgt.R.id.goNext);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
         numberWorker=getIntent().getStringExtra("numberWorker");
         String plate=getIntent().getStringExtra("licencePlate");
 
-        etDniClient=findViewById(R.id.etCDni);
-        etReason=findViewById(R.id.etReason);
-        etPlace=findViewById(R.id.etPlace);
-        etInformedAtTheMoment=findViewById(R.id.etInformedAtTheMoment);
-        etLocality=findViewById(R.id.etLocality);
-        etLPlate=findViewById(R.id.etLicencePlate);
-        etQuantity=findViewById(R.id.etQuantity);
-        etPoints=findViewById(R.id.etPoints);
+        etDniClient=findViewById(com.example.ucodgt.R.id.etCDni);
+        etReason=findViewById(com.example.ucodgt.R.id.etReason);
+        etPlace=findViewById(com.example.ucodgt.R.id.etPlace);
+        etInformedAtTheMoment=findViewById(com.example.ucodgt.R.id.etInformedAtTheMoment);
+        etLocality=findViewById(com.example.ucodgt.R.id.etLocality);
+        etLPlate=findViewById(com.example.ucodgt.R.id.etLicencePlate);
+        etQuantity=findViewById(com.example.ucodgt.R.id.etQuantity);
+        etPoints=findViewById(com.example.ucodgt.R.id.etPoints);
 
         if(!TextUtils.isEmpty(plate)){
             etLPlate.setText(plate);
@@ -64,7 +63,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
      */
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goNext){
+        if(v.getId()==com.example.ucodgt.R.id.goNext){
 
             Intent goNext = new Intent(AddPenaltyActivity.this, IntroduceDescriptionForPenalty.class);
             goNext.putExtra("dniC",etDniClient.getText().toString());
@@ -80,7 +79,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             startActivity(goNext);
             finish();
 
-        } else if (v.getId()==R.id.goMainMenu) {
+        } else if (v.getId()==com.example.ucodgt.R.id.goMainMenu) {
 
             Intent intentGoMain = new Intent(AddPenaltyActivity.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);

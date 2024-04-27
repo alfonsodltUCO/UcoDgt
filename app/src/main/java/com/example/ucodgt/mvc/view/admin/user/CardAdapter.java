@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import com.example.ucodgt.mvc.controller.admin.users.CheckUserToFind;
 import com.example.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.example.ucodgt.mvc.model.business.user.worker.WorkerDTO;
-import com.example.ucodgt.R;
-import java.util.List;
+ import java.util.List;
 
 /**
  * Adapter class for displaying users in a RecyclerView.
@@ -60,7 +59,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.example.ucodgt.R.layout.item_card, parent, false);
         return new CardViewHolder(view);
     }
     /**
@@ -132,8 +131,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            textDni = itemView.findViewById(R.id.text_dni);
-            textType = itemView.findViewById(R.id.text_type);
+            textDni = itemView.findViewById(com.example.ucodgt.R.id.text_dni);
+            textType = itemView.findViewById(com.example.ucodgt.R.id.text_type);
         }
     }
 }

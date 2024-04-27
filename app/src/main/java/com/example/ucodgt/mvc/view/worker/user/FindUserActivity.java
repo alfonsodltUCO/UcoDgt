@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
  import com.example.ucodgt.mvc.controller.worker.user.CheckUserToFindForWorker;
  import com.example.ucodgt.mvc.view.worker.WorkerActivity;
@@ -35,11 +34,11 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.find_user_for_worker);
-        search=findViewById(R.id.findUser);
+        setContentView(com.example.ucodgt.R.layout.find_user_for_worker);
+        search=findViewById(com.example.ucodgt.R.id.findUser);
         numberWorker=getIntent().getStringExtra("numberWorker");
-        dniToSearch = findViewById(R.id.editTextDniToFind);
-        goMenu=findViewById(R.id.goMainMenu);
+        dniToSearch = findViewById(com.example.ucodgt.R.id.editTextDniToFind);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         search.setOnClickListener(this);
         goMenu.setOnClickListener(this);
@@ -52,7 +51,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.findUser){
+        if(v.getId()==com.example.ucodgt.R.id.findUser){
             // Start the CheckUserToFind activity to find the user
 
             Intent goFind=new Intent(FindUserActivity.this, CheckUserToFindForWorker.class);
@@ -61,7 +60,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             startActivity(goFind);
             finish();
 
-        }else if(v.getId()==R.id.goMainMenu){
+        }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
             Intent goMenu=new Intent(FindUserActivity.this, WorkerActivity.class);

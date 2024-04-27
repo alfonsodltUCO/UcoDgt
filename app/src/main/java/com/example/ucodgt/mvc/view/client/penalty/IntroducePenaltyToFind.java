@@ -11,7 +11,6 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import com.example.ucodgt.mvc.controller.client.penalty.CheckPenaltyToFindForClient;
@@ -39,15 +38,15 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduce_penalty_tofind_for_client);
-        etId=findViewById(R.id.editTextId);
-        goSearch=findViewById(R.id.findPenalty);
+        setContentView(com.example.ucodgt.R.layout.introduce_penalty_tofind_for_client);
+        etId=findViewById(com.example.ucodgt.R.id.editTextId);
+        goSearch=findViewById(com.example.ucodgt.R.id.findPenalty);
 
-        goMain=findViewById(R.id.goMainMenu);
-        searchByDates=findViewById(R.id.searchForDates);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        searchByDates=findViewById(com.example.ucodgt.R.id.searchForDates);
         searchByDates.setOnClickListener(this);
         goMain.setOnClickListener(this);
-        rgroup=findViewById(R.id.rgState);
+        rgroup=findViewById(com.example.ucodgt.R.id.rgState);
         goSearch.setOnClickListener(this);
 
         rgroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -67,7 +66,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         dni=getIntent().getStringExtra("dni");
-        if(v.getId()==R.id.findPenalty){
+        if(v.getId()==com.example.ucodgt.R.id.findPenalty){
 
             if(selectedOption!=null){
                 // Search for penalties by state
@@ -88,7 +87,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
                 finish();
             }
 
-        } else if (v.getId()==R.id.goMainMenu) {
+        } else if (v.getId()==com.example.ucodgt.R.id.goMainMenu) {
             // Navigate back to main menu
 
             Intent intentGoMain = new Intent(IntroducePenaltyToFind.this, ClientActivity.class);
@@ -96,7 +95,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
             startActivity(intentGoMain);
             finish();
 
-        }else if(v.getId()==R.id.searchForDates){
+        }else if(v.getId()==com.example.ucodgt.R.id.searchForDates){
             // Navigate to search by dates activity
 
             Intent searchForDates=new Intent(IntroducePenaltyToFind.this, SearchByDatesPenalties.class);

@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.example.ucodgt.R;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -47,8 +46,8 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
-        progressBar = findViewById(R.id.progressbar);
+        setContentView(com.example.ucodgt.R.layout.loading);
+        progressBar = findViewById(com.example.ucodgt.R.id.progressbar);
         showLoading();
         Intent intent=getIntent();
         dni=intent.getStringExtra("dni");

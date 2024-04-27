@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import com.example.ucodgt.mvc.view.client.ClientActivity;
@@ -34,13 +33,13 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduce_penalty_dates);
+        setContentView(com.example.ucodgt.R.layout.introduce_penalty_dates);
         dni=getIntent().getStringExtra("dni");
-        etDate1=findViewById(R.id.etDateStart);
+        etDate1=findViewById(com.example.ucodgt.R.id.etDateStart);
 
-        etDate2=findViewById(R.id.etDateEnd);
-        goSearch=findViewById(R.id.findPenalty);
-        goMain=findViewById(R.id.goMainMenu);
+        etDate2=findViewById(com.example.ucodgt.R.id.etDateEnd);
+        goSearch=findViewById(com.example.ucodgt.R.id.findPenalty);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
         goMain.setOnClickListener(this);
         goSearch.setOnClickListener(this);
     }
@@ -52,7 +51,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.findPenalty){
+        if(v.getId()==com.example.ucodgt.R.id.findPenalty){
             // Search for penalties within specified dates
 
             Intent intentFind = new Intent(SearchByDatesPenalties.this, CheckPenaltiesToListForClient.class);
@@ -62,7 +61,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             startActivity(intentFind);
             finish();
 
-        } else if (v.getId()==R.id.goMainMenu) {
+        } else if (v.getId()==com.example.ucodgt.R.id.goMainMenu) {
             // Navigate back to main menu
 
             Intent intentGoMain = new Intent(SearchByDatesPenalties.this, ClientActivity.class);

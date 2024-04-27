@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToDelete;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
@@ -33,10 +32,10 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.delete_vehicle);
-        licencePlate=findViewById(R.id.editTextPlateToDelete);
-        deleteVehicle=findViewById(R.id.deleteVehicle);
-        goMain=findViewById(R.id.goMainMenu);
+        setContentView(com.example.ucodgt.R.layout.delete_vehicle);
+        licencePlate=findViewById(com.example.ucodgt.R.id.editTextPlateToDelete);
+        deleteVehicle=findViewById(com.example.ucodgt.R.id.deleteVehicle);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         deleteVehicle.setOnClickListener(this);
         goMain.setOnClickListener(this);
@@ -49,13 +48,13 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent goMain=new Intent(DeleteVehicleActivity.this, AdminActivity.class);
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.deleteVehicle){
+        }else if(v.getId()==com.example.ucodgt.R.id.deleteVehicle){
 
             Intent goDelete=new Intent(DeleteVehicleActivity.this, CheckVehicleToDelete.class);
             goDelete.putExtra("licencePlate",licencePlate.getText().toString().trim());
