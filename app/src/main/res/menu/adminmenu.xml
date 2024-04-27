@@ -43,9 +43,6 @@
     <item
         android:id="@+id/item14AdminExtendItv"
         android:title="Extend itv" />
-    <item
-        android:id="@+id/item15AdminExtendInsurance"
-        android:title="Extend insurance" />
 
 
 
