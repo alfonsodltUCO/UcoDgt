@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -41,19 +40,19 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_user_for_worker);
+        setContentView(com.example.ucodgt.R.layout.show_user_for_worker);
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        obtaining=findViewById(R.id.textViewDateObtaining);
-        name=findViewById(R.id.textViewFoundName);
-        birth=findViewById(R.id.textViewFoundDateBirth);
-        surname=findViewById(R.id.textViewFoundSurname);
-        email=findViewById(R.id.textViewFoundEmail);
-        dni=findViewById(R.id.textViewFoundDni);
-        goMenu=findViewById(R.id.goMainMenu);
-        listPenalties=findViewById(R.id.listPenalties);
-        numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
+        obtaining=findViewById(com.example.ucodgt.R.id.textViewDateObtaining);
+        name=findViewById(com.example.ucodgt.R.id.textViewFoundName);
+        birth=findViewById(com.example.ucodgt.R.id.textViewFoundDateBirth);
+        surname=findViewById(com.example.ucodgt.R.id.textViewFoundSurname);
+        email=findViewById(com.example.ucodgt.R.id.textViewFoundEmail);
+        dni=findViewById(com.example.ucodgt.R.id.textViewFoundDni);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        listPenalties=findViewById(com.example.ucodgt.R.id.listPenalties);
+        numberofworker_licencepoints=findViewById(com.example.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
 
         goMenu.setOnClickListener(this);
         listPenalties.setOnClickListener(this);
@@ -83,14 +82,14 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      */
     public void onClick(View v){
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent showUser=new Intent(ShowUser.this, WorkerActivity.class);
             showUser.putExtra("numberWorker",numberWorker);
             startActivity(showUser);
             finish();
 
-        } else if (v.getId()==R.id.listPenalties) {
+        } else if (v.getId()==com.example.ucodgt.R.id.listPenalties) {
 
             Intent goList=new Intent(ShowUser.this, CheckPenaltiesToListForWorker.class);
             goList.putExtra("numberWorker",numberWorker);

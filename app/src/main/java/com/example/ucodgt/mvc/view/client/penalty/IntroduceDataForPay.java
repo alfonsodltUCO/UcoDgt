@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.client.penalty.CheckPenaltyToPay;
 import com.example.ucodgt.mvc.view.client.ClientActivity;
@@ -37,19 +36,19 @@ public class IntroduceDataForPay extends AppCompatActivity implements View.OnCli
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pay_penalty);
+        setContentView(com.example.ucodgt.R.layout.pay_penalty);
         dni=getIntent().getStringExtra("dni");
         id=getIntent().getStringExtra("id");
 
         quantity=getIntent().getStringExtra("quantity");
-        quant=findViewById(R.id.tvQuantityToPut);
+        quant=findViewById(com.example.ucodgt.R.id.tvQuantityToPut);
         quant.setText(quantity+" With discount= "+ Float.parseFloat(quantity)/2);
-        goFinish=findViewById(R.id.goPay);
-        goMain=findViewById(R.id.goMainMenu);
+        goFinish=findViewById(com.example.ucodgt.R.id.goPay);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
-        etCaducity=findViewById(R.id.etCaducity);
-        etCvv=findViewById(R.id.etCvv);
-        etNumber=findViewById(R.id.etNumberCard);
+        etCaducity=findViewById(com.example.ucodgt.R.id.etCaducity);
+        etCvv=findViewById(com.example.ucodgt.R.id.etCvv);
+        etNumber=findViewById(com.example.ucodgt.R.id.etNumberCard);
         goMain.setOnClickListener(this);
         goFinish.setOnClickListener(this);
 
@@ -62,7 +61,7 @@ public class IntroduceDataForPay extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate back to main menu
 
             Intent goMain=new Intent(IntroduceDataForPay.this, ClientActivity.class);
@@ -70,7 +69,7 @@ public class IntroduceDataForPay extends AppCompatActivity implements View.OnCli
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.goPay){
+        }else if(v.getId()==com.example.ucodgt.R.id.goPay){
             // Proceed to pay the penalty
 
             Intent goPay=new Intent(IntroduceDataForPay.this, CheckPenaltyToPay.class);

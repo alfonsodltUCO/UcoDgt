@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.admin.users.CheckUserToDelete;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
@@ -36,11 +35,11 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.delete_user);
-        radioGroupTypeOfUser=findViewById(R.id.radioGroupTypeUserToDelete);
-        dniToDelete=findViewById(R.id.editTextDniToDelete);
-        deleteUser=findViewById(R.id.deleteUser);
-        goMenu=findViewById(R.id.goMainMenu);
+        setContentView(com.example.ucodgt.R.layout.delete_user);
+        radioGroupTypeOfUser=findViewById(com.example.ucodgt.R.id.radioGroupTypeUserToDelete);
+        dniToDelete=findViewById(com.example.ucodgt.R.id.editTextDniToDelete);
+        deleteUser=findViewById(com.example.ucodgt.R.id.deleteUser);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         radioGroupTypeOfUser.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
@@ -60,7 +59,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.deleteUser){
+        if(v.getId()==com.example.ucodgt.R.id.deleteUser){
             // Handle delete user action
 
             Intent delete=new Intent(DeleteUserActivity.this, CheckUserToDelete.class);
@@ -68,7 +67,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
             delete.putExtra("dni",dniToDelete.getText().toString().trim());
             startActivity(delete);
 
-        }else if(v.getId()==R.id.goMainMenu){
+        }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Handle go to main menu action
 
             Intent goMenu=new Intent(DeleteUserActivity.this, AdminActivity.class);

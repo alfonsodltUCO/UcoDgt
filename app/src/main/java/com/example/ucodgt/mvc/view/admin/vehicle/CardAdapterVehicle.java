@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ucodgt.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +51,7 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_vehicle, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(com.example.ucodgt.R.layout.item_card_vehicle, parent, false);
         return new CardViewHolder(view);
 
     }
@@ -100,8 +99,8 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            textPlate = itemView.findViewById(R.id.textLicenceP);
-            textType = itemView.findViewById(R.id.textCarT);
+            textPlate = itemView.findViewById(com.example.ucodgt.R.id.textLicenceP);
+            textType = itemView.findViewById(com.example.ucodgt.R.id.textCarT);
         }
     }
 }

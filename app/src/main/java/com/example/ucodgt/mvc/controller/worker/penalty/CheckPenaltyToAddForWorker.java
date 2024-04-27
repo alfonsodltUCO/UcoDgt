@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,8 +59,8 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
-        progressBar = findViewById(R.id.progressbar);
+        setContentView(com.example.ucodgt.R.layout.loading);
+        progressBar = findViewById(com.example.ucodgt.R.id.progressbar);
         showLoading();
 
         numberWorker=getIntent().getStringExtra("numberWorker");

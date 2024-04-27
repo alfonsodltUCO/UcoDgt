@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.worker.vehicle.CheckVehicleToFindForWorker;
 import com.example.ucodgt.mvc.view.worker.WorkerActivity;
@@ -36,10 +35,10 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.find_vehicle);
-        et=findViewById(R.id.editTextPlateToSearch);
-        buttonMain=findViewById(R.id.goMainMenu);
-        buttonGoFind=findViewById(R.id.goFind);
+        setContentView(com.example.ucodgt.R.layout.find_vehicle);
+        et=findViewById(com.example.ucodgt.R.id.editTextPlateToSearch);
+        buttonMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        buttonGoFind=findViewById(com.example.ucodgt.R.id.goFind);
 
         numberWorker=getIntent().getStringExtra("numberWorker");
 
@@ -55,7 +54,7 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
      */
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goFind){
+        if(v.getId()==com.example.ucodgt.R.id.goFind){
 
             Intent goIntent=new Intent(IntroduceManual.this, CheckVehicleToFindForWorker.class);
             goIntent.putExtra("licenceplate",et.getText().toString().trim());
@@ -63,7 +62,7 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
             startActivity(goIntent);
             finish();
 
-        }else if(v.getId()==R.id.goMainMenu){
+        }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent goMenu=new Intent(IntroduceManual.this, WorkerActivity.class);
             goMenu.putExtra("numberWorker",numberWorker);

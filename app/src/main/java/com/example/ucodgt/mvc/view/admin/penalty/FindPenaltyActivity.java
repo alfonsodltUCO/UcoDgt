@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
@@ -36,10 +35,10 @@ public class FindPenaltyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.get_vehicle);
-        manual=findViewById(R.id.manualWay);
-        Button takePhotoButton = findViewById(R.id.takePhotoButton);
-        Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
+        setContentView(com.example.ucodgt.R.layout.get_vehicle);
+        manual=findViewById(com.example.ucodgt.R.id.manualWay);
+        Button takePhotoButton = findViewById(com.example.ucodgt.R.id.takePhotoButton);
+        Button pickPhotoButton = findViewById(com.example.ucodgt.R.id.pickPhotoButton);
         // Navigate to IntroduceManual activity when manual button is clicked
 
         manual.setOnClickListener(v -> {

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.ucodgt.R;
 
 import java.io.ByteArrayOutputStream;
 
@@ -45,11 +44,11 @@ public class GetVehiclePlate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.get_vehicle);
-        manual=findViewById(R.id.manualWay);
-        Button takePhotoButton = findViewById(R.id.takePhotoButton);
-        Button pickPhotoButton = findViewById(R.id.pickPhotoButton);
-        goMain=findViewById(R.id.goMainMenu);
+        setContentView(com.example.ucodgt.R.layout.get_vehicle);
+        manual=findViewById(com.example.ucodgt.R.id.manualWay);
+        Button takePhotoButton = findViewById(com.example.ucodgt.R.id.takePhotoButton);
+        Button pickPhotoButton = findViewById(com.example.ucodgt.R.id.pickPhotoButton);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         goMain.setOnClickListener(v->{
             Intent intent = new Intent(GetVehiclePlate.this, AdminActivity.class);

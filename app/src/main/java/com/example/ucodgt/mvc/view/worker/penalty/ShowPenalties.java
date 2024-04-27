@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ucodgt.R;
 
 import java.util.List;
 
@@ -33,14 +32,14 @@ public class ShowPenalties extends AppCompatActivity {
 
        super.onCreate(savedInstanceState);
 
-       setContentView(R.layout.show_penalties);
+       setContentView(com.example.ucodgt.R.layout.show_penalties);
 
        numberWorker=getIntent().getStringExtra("numberWorker");
        // Retrieve the list of penalties from the intent
 
        List<PenaltyDTO> penalties = (List<PenaltyDTO>) getIntent().getSerializableExtra("penalties");
 
-       recyclerView = findViewById(R.id.recycler_view_penalties);
+       recyclerView = findViewById(com.example.ucodgt.R.id.recycler_view_penalties);
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
        // If the list of penalties is not empty, assign it to the local variable
 

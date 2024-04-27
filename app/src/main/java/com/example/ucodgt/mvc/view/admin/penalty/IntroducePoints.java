@@ -9,8 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import com.example.ucodgt.mvc.controller.admin.users.CheckPointsToUpdate;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
 
@@ -39,12 +37,12 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduce_points);
+        setContentView(com.example.ucodgt.R.layout.introduce_points);
 
-        goMain=findViewById(R.id.goMainMenu);
-        goUpdate=findViewById(R.id.goUpdate);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        goUpdate=findViewById(com.example.ucodgt.R.id.goUpdate);
 
-        etNumber=findViewById(R.id.etNumber);
+        etNumber=findViewById(com.example.ucodgt.R.id.etNumber);
 
         dni=getIntent().getStringExtra("dni");
 
@@ -60,14 +58,14 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate to the main admin activity
 
             Intent goMain=new Intent(IntroducePoints.this, AdminActivity.class);
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.goUpdate){
+        }else if(v.getId()==com.example.ucodgt.R.id.goUpdate){
             // Navigate to the CheckPointsToUpdate activity
 
             Intent goUpdate=new Intent(IntroducePoints.this, CheckPointsToUpdate.class);

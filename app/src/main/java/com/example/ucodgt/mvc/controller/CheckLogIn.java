@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.example.ucodgt.R;
 
 import java.util.List;
 
@@ -43,9 +42,9 @@ public class CheckLogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
+        setContentView(com.example.ucodgt.R.layout.loading);
 
-        progressBar = findViewById(R.id.progressbar);
+        progressBar = findViewById(com.example.ucodgt.R.id.progressbar);
         Intent intent=getIntent();
 
         String email=intent.getStringExtra("email");

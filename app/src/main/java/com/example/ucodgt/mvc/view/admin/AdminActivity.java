@@ -11,7 +11,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 import com.example.ucodgt.mvc.controller.admin.users.CheckUsersToList;
 import com.example.ucodgt.mvc.controller.admin.penalty.CheckPenaltiesToList;
 import com.example.ucodgt.mvc.controller.admin.vehicle.CheckVehiclesToList;
@@ -52,9 +51,9 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
      * if you return false it will not be shown.
      */
     public boolean onCreateOptionsMenu(Menu menu){
-       getMenuInflater().inflate(R.menu.adminmenu,menu);
-       setContentView(R.layout.adminmain);
-        closeSession=findViewById(R.id.closeSession);
+       getMenuInflater().inflate(com.example.ucodgt.R.menu.adminmenu,menu);
+       setContentView(com.example.ucodgt.R.layout.adminmain);
+        closeSession=findViewById(com.example.ucodgt.R.id.closeSession);
         closeSession.setOnClickListener(this);
         return super.onCreateOptionsMenu(menu);
 
@@ -69,82 +68,82 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(R.id.item1AdminAddUser == item.getItemId()){
+        if(com.example.ucodgt.R.id.item1AdminAddUser == item.getItemId()){
 
             Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
             startActivity(intentAddUser);
             finish();
-        }else if(R.id.item4AdminFindUser==item.getItemId()){
+        }else if(com.example.ucodgt.R.id.item4AdminFindUser==item.getItemId()){
 
             Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(intentFindUser);
             finish();
 
-        } else if (R.id.item2AdminDeleteUser==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item2AdminDeleteUser==item.getItemId()) {
 
             Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
             startActivity(intentDeleteUser);
             finish();
 
-        } else if (R.id.item3AdminListUsers==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item3AdminListUsers==item.getItemId()) {
 
             Intent intentListUsersr=new Intent(AdminActivity.this, CheckUsersToList.class);
             startActivity(intentListUsersr);
             finish();
 
-        } else if (R.id.item8AdminFindVehicle==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item8AdminFindVehicle==item.getItemId()) {
 
             Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(intentFindVehicle);
             finish();
 
-        }else if(R.id.item6AdminDeleteVehicle== item.getItemId()){
+        }else if(com.example.ucodgt.R.id.item6AdminDeleteVehicle== item.getItemId()){
 
             Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
             startActivity(intentDeleteVehicle);
             finish();
 
-        }else if(R.id.item5AdminAddVehicle== item.getItemId()) {
+        }else if(com.example.ucodgt.R.id.item5AdminAddVehicle== item.getItemId()) {
 
             Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
             startActivity(intentAddVehicle);
             finish();
 
-        }else if(R.id.item7AdminListVehicles== item.getItemId()) {
+        }else if(com.example.ucodgt.R.id.item7AdminListVehicles== item.getItemId()) {
 
             Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
             startActivity(intentFindVehicles);
             finish();
 
-        } else if (R.id.item9AdminListPenalties==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item9AdminListPenalties==item.getItemId()) {
 
             Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
             startActivity(intentListPenalties);
             finish();
 
-        } else if (R.id.item12AdminFindPenalty==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item12AdminFindPenalty==item.getItemId()) {
 
             Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
             startActivity(intentFind);
             finish();
 
-        } else if(R.id.item11AdminDeletePenalty==item.getItemId()){
+        } else if(com.example.ucodgt.R.id.item11AdminDeletePenalty==item.getItemId()){
 
             Intent goDelete=new Intent(AdminActivity.this, DeletePenaltyActivity.class);
             startActivity(goDelete);
             finish();
 
-        }else if(R.id.item10AdminAddPenalty== item.getItemId()){
+        }else if(com.example.ucodgt.R.id.item10AdminAddPenalty== item.getItemId()){
 
             Intent goAdd=new Intent(AdminActivity.this, AddPenaltyActivity.class);
             startActivity(goAdd);
             finish();
-        } else if (R.id.item13AdminUpdateUserPoints==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item13AdminUpdateUserPoints==item.getItemId()) {
 
             Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(goUpdate);
             finish();
-        } else if (R.id.item14AdminExtendItv==item.getItemId()) {
+        } else if (com.example.ucodgt.R.id.item14AdminExtendItv==item.getItemId()) {
 
             Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(goExtend);
@@ -159,7 +158,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
      */
     public void onClick(View v) {
 
-        if(v.getId()==R.id.closeSession){
+        if(v.getId()==com.example.ucodgt.R.id.closeSession){
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

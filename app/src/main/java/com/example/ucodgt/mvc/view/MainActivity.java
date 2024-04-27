@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.ucodgt.R;
 import com.example.ucodgt.mvc.controller.CheckLogIn;
 /**
  * The main activity class for user login.
@@ -30,12 +29,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             throw new RuntimeException(e);
         }
 
-        setTheme(R.style.Theme_UcoDgt);
+        setTheme(com.example.ucodgt.R.style.Theme_UcoDgt);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        loginButton=findViewById(R.id.checkLogIn);
-        editTextEmail=findViewById(R.id.editTextEmail);
-        editTextPassword=findViewById(R.id.editTextPassword);
+        setContentView(com.example.ucodgt.R.layout.activity_main);
+        loginButton=findViewById(com.example.ucodgt.R.id.checkLogIn);
+        editTextEmail=findViewById(com.example.ucodgt.R.id.editTextEmail);
+        editTextPassword=findViewById(com.example.ucodgt.R.id.editTextPassword);
         loginButton.setOnClickListener(this);
 
     }
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int id=v.getId();
-        if (id == R.id.checkLogIn) {
+        if (id == com.example.ucodgt.R.id.checkLogIn) {
             goCheckLogIn();
         }
     }

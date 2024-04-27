@@ -11,8 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import java.text.SimpleDateFormat;
 
 import com.example.ucodgt.mvc.controller.admin.users.CheckUserToDelete;
@@ -46,25 +44,25 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_user);
+        setContentView(com.example.ucodgt.R.layout.show_user);
 
         // Retrieve the user type from the intent
         Intent intentFound=getIntent();
         type=intentFound.getStringExtra("type");
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        obtaining=findViewById(R.id.textViewDateObtaining);
-        name=findViewById(R.id.textViewFoundName);
-        birth=findViewById(R.id.textViewFoundDateBirth);
-        surname=findViewById(R.id.textViewFoundSurname);
-        email=findViewById(R.id.textViewFoundEmail);
-        dni=findViewById(R.id.textViewFoundDni);
-        goMenu=findViewById(R.id.goMainMenu);
-        deleteUser=findViewById(R.id.deleteUser);
-        listPenalties=findViewById(R.id.listPenalties);
-        listVehicles=findViewById(R.id.listVehicles);
-        numberofworker_licencepoints=findViewById(R.id.textViewFoundLicencePoints_numberworker);
-        updatePoints=findViewById(R.id.updatePoints);
+        obtaining=findViewById(com.example.ucodgt.R.id.textViewDateObtaining);
+        name=findViewById(com.example.ucodgt.R.id.textViewFoundName);
+        birth=findViewById(com.example.ucodgt.R.id.textViewFoundDateBirth);
+        surname=findViewById(com.example.ucodgt.R.id.textViewFoundSurname);
+        email=findViewById(com.example.ucodgt.R.id.textViewFoundEmail);
+        dni=findViewById(com.example.ucodgt.R.id.textViewFoundDni);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        deleteUser=findViewById(com.example.ucodgt.R.id.deleteUser);
+        listPenalties=findViewById(com.example.ucodgt.R.id.listPenalties);
+        listVehicles=findViewById(com.example.ucodgt.R.id.listVehicles);
+        numberofworker_licencepoints=findViewById(com.example.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
+        updatePoints=findViewById(com.example.ucodgt.R.id.updatePoints);
 
         updatePoints.setOnClickListener(this);
         goMenu.setOnClickListener(this);
@@ -113,13 +111,13 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
      */
     public void onClick(View v){
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent showUser=new Intent(ShowUser.this, AdminActivity.class);
             startActivity(showUser);
             finish();
 
-        }else if(v.getId()==R.id.deleteUser){
+        }else if(v.getId()==com.example.ucodgt.R.id.deleteUser){
 
             Intent checkUserToDelete=new Intent(ShowUser.this, CheckUserToDelete.class);
             checkUserToDelete.putExtra("dni",dniNoText);
@@ -127,7 +125,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             startActivity(checkUserToDelete);
             finish();
 
-        } else if (v.getId()==R.id.listPenalties) {
+        } else if (v.getId()==com.example.ucodgt.R.id.listPenalties) {
 
             if(type.equals("worker")){
 
@@ -145,7 +143,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
 
 
-        }else if(v.getId()==R.id.listVehicles){
+        }else if(v.getId()==com.example.ucodgt.R.id.listVehicles){
 
             if(type.equals("worker")){
 
@@ -162,7 +160,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             }
 
 
-        }else if(v.getId()==R.id.updatePoints){
+        }else if(v.getId()==com.example.ucodgt.R.id.updatePoints){
 
             if(type.equals("worker")){
 

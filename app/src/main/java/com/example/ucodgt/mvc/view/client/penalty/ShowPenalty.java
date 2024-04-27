@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -42,24 +41,24 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
         dni=getIntent().getStringExtra("dni");
         workerNum=getIntent().getStringExtra("worker");
-        setContentView(R.layout.show_penalty_for_client);
+        setContentView(com.example.ucodgt.R.layout.show_penalty_for_client);
 
-        goMain=findViewById(R.id.goMainMenu);
-        payPenalty=findViewById(R.id.payPenalty);
-        id=findViewById(R.id.tvId);
-        date=findViewById(R.id.tvDate);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        payPenalty=findViewById(com.example.ucodgt.R.id.payPenalty);
+        id=findViewById(com.example.ucodgt.R.id.tvId);
+        date=findViewById(com.example.ucodgt.R.id.tvDate);
 
-        dnic=findViewById(R.id.tvDniC);
-        dniw=findViewById(R.id.tvDniW);
-        description=findViewById(R.id.tvDescription);
-        state=findViewById(R.id.tvState);
+        dnic=findViewById(com.example.ucodgt.R.id.tvDniC);
+        dniw=findViewById(com.example.ucodgt.R.id.tvDniW);
+        description=findViewById(com.example.ucodgt.R.id.tvDescription);
+        state=findViewById(com.example.ucodgt.R.id.tvState);
 
-        reason=findViewById(R.id.tvReason);
-        licenceP=findViewById(R.id.tvLicenceP);
+        reason=findViewById(com.example.ucodgt.R.id.tvReason);
+        licenceP=findViewById(com.example.ucodgt.R.id.tvLicenceP);
         idtoshow=id.getText().toString();
 
-        quant=findViewById(R.id.tvQuantity);
-        points=findViewById(R.id.tvPoints);
+        quant=findViewById(com.example.ucodgt.R.id.tvQuantity);
+        points=findViewById(com.example.ucodgt.R.id.tvPoints);
         id.setText("id= "+penalty.getId().toString());
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -88,7 +87,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate to main menu
 
             Intent goMain=new Intent(ShowPenalty.this, ClientActivity.class);
@@ -96,7 +95,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             startActivity(goMain);
             finish();
 
-        }else if(v.getId()==R.id.payPenalty){
+        }else if(v.getId()==com.example.ucodgt.R.id.payPenalty){
             // Navigate to payment screen for the penalty
 
             Intent goPay=new Intent(ShowPenalty.this, IntroduceDataForPay.class);

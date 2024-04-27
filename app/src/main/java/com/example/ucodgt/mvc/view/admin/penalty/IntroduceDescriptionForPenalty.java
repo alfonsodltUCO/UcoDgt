@@ -9,8 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
-
 import com.example.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToAdd;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -31,8 +29,8 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_penalty_description);
-        etDescrp=findViewById(R.id.etDescription);
+        setContentView(com.example.ucodgt.R.layout.add_penalty_description);
+        etDescrp=findViewById(com.example.ucodgt.R.id.etDescription);
 
         date=getIntent().getStringExtra("date");
         dniC=getIntent().getStringExtra("dniC");
@@ -46,8 +44,8 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
         points=getIntent().getStringExtra("points");
         licenceplate=getIntent().getStringExtra("licenceplate");
 
-        goCheckAdd=findViewById(R.id.checkPenaltyToAdd);
-        goMain=findViewById(R.id.goMainMenu);
+        goCheckAdd=findViewById(com.example.ucodgt.R.id.checkPenaltyToAdd);
+        goMain=findViewById(com.example.ucodgt.R.id.goMainMenu);
 
         goCheckAdd.setOnClickListener(this);
         goMain.setOnClickListener(this);
@@ -60,14 +58,14 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate back to the main menu
 
             Intent intentGoMain = new Intent(IntroduceDescriptionForPenalty.this, AdminActivity.class);
             startActivity(intentGoMain);
             finish();
 
-        }else if(v.getId()==R.id.checkPenaltyToAdd){
+        }else if(v.getId()==com.example.ucodgt.R.id.checkPenaltyToAdd){
             // Proceed to check and add the penalty with the provided description
 
             Intent goNext = new Intent(IntroduceDescriptionForPenalty.this, CheckPenaltyToAdd.class);

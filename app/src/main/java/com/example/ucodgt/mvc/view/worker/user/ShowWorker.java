@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import java.text.SimpleDateFormat;
 
@@ -40,17 +39,17 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_worker_for_worker);
+        setContentView(com.example.ucodgt.R.layout.show_worker_for_worker);
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        name=findViewById(R.id.textViewFoundName);
-        birth=findViewById(R.id.textViewFoundDateBirth);
-        surname=findViewById(R.id.textViewFoundSurname);
-        email=findViewById(R.id.textViewFoundEmail);
-        dni=findViewById(R.id.textViewFoundDni);
-        goMenu=findViewById(R.id.goMainMenu);
-        numberofworker=findViewById(R.id.tvNumberWorker);
+        name=findViewById(com.example.ucodgt.R.id.textViewFoundName);
+        birth=findViewById(com.example.ucodgt.R.id.textViewFoundDateBirth);
+        surname=findViewById(com.example.ucodgt.R.id.textViewFoundSurname);
+        email=findViewById(com.example.ucodgt.R.id.textViewFoundEmail);
+        dni=findViewById(com.example.ucodgt.R.id.textViewFoundDni);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        numberofworker=findViewById(com.example.ucodgt.R.id.tvNumberWorker);
 
         goMenu.setOnClickListener(this);
 
@@ -77,7 +76,7 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
      */
     public void onClick(View v){
 
-        if(v.getId()==R.id.goMainMenu){
+        if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
 
             Intent showUser=new Intent(ShowWorker.this, WorkerActivity.class);
             showUser.putExtra("numberWorker",numberWorker);

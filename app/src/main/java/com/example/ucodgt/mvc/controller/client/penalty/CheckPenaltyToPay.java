@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.example.ucodgt.R;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -44,8 +43,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
-        progressBar=findViewById(R.id.progressbar);
+        setContentView(com.example.ucodgt.R.layout.loading);
+        progressBar=findViewById(com.example.ucodgt.R.id.progressbar);
         showLoading();
         cvv=getIntent().getStringExtra("cvv");
         number=getIntent().getStringExtra("number");

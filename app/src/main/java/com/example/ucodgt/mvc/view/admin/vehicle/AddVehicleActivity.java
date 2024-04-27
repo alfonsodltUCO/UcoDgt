@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ucodgt.R;
 
 import com.example.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import com.example.ucodgt.mvc.view.admin.AdminActivity;
@@ -32,17 +31,17 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_vehicle);
+        setContentView(com.example.ucodgt.R.layout.add_vehicle);
 
-        etLicencePlate=findViewById(R.id.editTextLicencePlate);
-        etCarType=findViewById(R.id.editTextCarType);
-        etColor=findViewById(R.id.editTextColor);
-        etItvFrom=findViewById(R.id.editTextValidItvFrom);
-        etItvTo=findViewById(R.id.editTextValidItvTo);
-        check=findViewById(R.id.checkAddVehicle);
-        goMenu=findViewById(R.id.goMainMenu);
-        etDni=findViewById(R.id.editTextDniVehicleToAdd);
-        etInsurance=findViewById(R.id.editTextIdInsurance);
+        etLicencePlate=findViewById(com.example.ucodgt.R.id.editTextLicencePlate);
+        etCarType=findViewById(com.example.ucodgt.R.id.editTextCarType);
+        etColor=findViewById(com.example.ucodgt.R.id.editTextColor);
+        etItvFrom=findViewById(com.example.ucodgt.R.id.editTextValidItvFrom);
+        etItvTo=findViewById(com.example.ucodgt.R.id.editTextValidItvTo);
+        check=findViewById(com.example.ucodgt.R.id.checkAddVehicle);
+        goMenu=findViewById(com.example.ucodgt.R.id.goMainMenu);
+        etDni=findViewById(com.example.ucodgt.R.id.editTextDniVehicleToAdd);
+        etInsurance=findViewById(com.example.ucodgt.R.id.editTextIdInsurance);
         goMenu.setOnClickListener(this);
         check.setOnClickListener(this);
     }
@@ -51,7 +50,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.checkAddVehicle){
+        if(v.getId()==com.example.ucodgt.R.id.checkAddVehicle){
             // Prepare data to be sent to the controller
 
             Intent checkVehicleToAdd=new Intent(AddVehicleActivity.this, CheckVehicleToAdd.class);
@@ -66,7 +65,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
 
             startActivity(checkVehicleToAdd);
 
-        }else if(v.getId()==R.id.goMainMenu){
+        }else if(v.getId()==com.example.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
             Intent goMenu=new Intent(AddVehicleActivity.this, AdminActivity.class);
