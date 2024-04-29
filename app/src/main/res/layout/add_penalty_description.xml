@@ -22,20 +22,22 @@
         android:layout_gravity="top"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="start|center"
             android:text="Description"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/etDescription"
             android:backgroundTint="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="start"
+            android:gravity="start|center"
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
