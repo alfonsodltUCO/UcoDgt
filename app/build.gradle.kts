@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ucodgt"
+    namespace = "com.uco.ucodgt"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ucodgt"
+        applicationId = "com.uco.ucodgt"
         minSdk = 17
         targetSdk = 33
         versionCode = 1

@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
+        android:background="#C8EFD6"
         android:weightSum="1">
 
         <TextView
