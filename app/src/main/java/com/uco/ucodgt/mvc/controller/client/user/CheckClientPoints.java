@@ -190,9 +190,9 @@ public class CheckClientPoints extends AppCompatActivity {
 
         Date currentDate = new Date();
         long yearsExperience = calculateYears(obtaining, currentDate);
-        long yearsLastUpdate=calculateYears(lastUpdate,new Date());
+        long yearsLastUpdate=calculateYears(lastUpdate,currentDate);
 
-        if(yearsLastUpdate>=2){//Each 2 years check points
+        if(yearsLastUpdate>=1){//Each 1 year check points
             if(lastPenalty!=null){//Receive a penalty
                 long yearsWithoutPenalties=calculateYears(lastPenalty,new Date());
 
@@ -201,10 +201,13 @@ public class CheckClientPoints extends AppCompatActivity {
                        points+=2;
                    }
                 }else{//Not novel
-                    if(yearsWithoutPenalties>=3){
-                        points+=2;
-                        if(yearsExperience>=6 && ((yearsWithoutPenalties-yearsLastUpdate)>=3)){
-                            points+=1;
+                    if(yearsWithoutPenalties>=3 && yearsLastUpdate>=3){
+                        if(points<=12){
+                            points+=2;
+                        }else{
+                            if(yearsExperience>=6 && yearsLastUpdate>=6){
+                                points+=1;
+                            }
                         }
                     }
                 }
@@ -217,10 +220,13 @@ public class CheckClientPoints extends AppCompatActivity {
                         }
                     }
                 }else{//Not novel
-                    if(yearsLastUpdate-2>=3){
-                        points+=2;
-                        if(yearsExperience>=6 && (yearsLastUpdate-3)>=3){
-                            points+=1;
+                    if(yearsLastUpdate>=3){
+                        if(points<14){
+                            points+=2;
+                        }else{
+                            if(yearsExperience>=6 && (yearsLastUpdate)>=6){
+                                points+=1;
+                            }
                         }
                     }
                 }
