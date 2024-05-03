@@ -94,7 +94,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the login check.
      */
     private void checkWorker(final  WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -187,7 +187,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the email check.
      */
     private void checkEmailWorker(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -282,7 +282,7 @@ public class WorkerDAO {
      * @param worker   The worker object to be added.
      * @param callback The callback to handle the result of the addition.
      */    private void addToDb(final WorkerDTO worker, final UserCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/user/addWorker.php";
+        String URL = "http://34.118.8.21/api/ucodgt/user/addWorker.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(worker.getAge());
         StringRequest request = new StringRequest(
@@ -379,7 +379,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the retrieval.
      */
     private void getUserToFind(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/getWorker.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/getWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -476,32 +476,12 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the deletion.
      */
     private void deleteUserFromBd(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/deleteWorker.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/deleteWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
                 response -> {
-                    try {
-                        JSONObject jsonObject=new JSONObject(response);
-                        String name=jsonObject.getString("name");
-                        String surname=jsonObject.getString("surname");
-                        String email=jsonObject.getString("email");
-                        String dni1 =jsonObject.getString("dni_client");
-                        String age=jsonObject.getString("age");
-                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                        Date dateBirth;
-                        try {
-                            dateBirth = format.parse(age);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        Integer nworker=Integer.parseInt(jsonObject.getString("numberOfWorker"));
-                        WorkerDTO user=new WorkerDTO(dni1,null,name,surname,dateBirth,email,nworker);
-                        callback.onWorkerReceived(user);
-                    } catch (JSONException e) {
-                        WorkerDTO user=new WorkerDTO(null,null,null,null,null,null,null);
-                        callback.onWorkerReceived(user);
-                    }
+                    callback.onWorkerReceived(userToFind);
                 },
                 error -> {
                     callback.onError(error);
@@ -564,7 +544,7 @@ public class WorkerDAO {
      * @param callback The callback to handle the result of the retrieval.
      */
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/getAllWorkers.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/getAllWorkers.php";
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
@@ -666,7 +646,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the login check.
      */
     private void getUserByNumber(final  WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/getWorkerByNumber.php?number="+userToFind.getNumberOfWorker();
+        String URL="http://34.118.8.21/api/ucodgt/user/getWorkerByNumber.php?number="+userToFind.getNumberOfWorker();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -707,6 +687,90 @@ public class WorkerDAO {
         );
 
         requestQueue.add(JsonObjectRequest);
+    }
+
+
+    /**
+     * Updates the data of a worker user in the database.
+     *
+     * @param userToFind The WorkerDTO object containing the unique identifier (DNI) of the user and the updated information.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the update operation.
+     */
+    public void updateUser(WorkerDTO userToFind, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        updateUser(userToFind, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setNumberOfWorker(user.getNumberOfWorker());
+                userToFind.setDni(user.getDni());
+                callback.onWorkerReceived(userToFind);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Updates the data of a worker user in the database.
+     *
+     * @param worker The WorkerDTIO object containing the unique identifier (DNI) of the user and the updated data.
+     * @param callback The callback to handle the result of the update operation.
+     */
+    private void updateUser(final WorkerDTO worker, final UserCallback callback) {
+        String URL = "http://34.118.8.21/api/ucodgt/user/updateWorker.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onWorkerReceived(worker);
+                    }else{
+                        callback.onUserReceived(new ClientDTO(null,null,null,null,null,null,null));
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", worker.getDni());
+                params.put("email", worker.getEmail());
+                params.put("password",BCrypt.hashpw(worker.getPassword(),BCrypt.gensalt()));
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
     }
 
 }

@@ -2,6 +2,7 @@ package com.uco.ucodgt.mvc.model.data.admin;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -89,7 +90,7 @@ public class AdminDAO {
      * @param callback The callback to handle the result of the user check.
      */
     private void checkAdmin(final AdminDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
@@ -103,7 +104,6 @@ public class AdminDAO {
                         String surname = response.getString("surname");
                         String email1 = response.getString("email");
                         String passwordhashed = response.getString("password");
-
                         if (!BCrypt.checkpw(userToFind.getPassword(), passwordhashed)) {
                             callback.onError(new VolleyError());
                         } else {
@@ -190,7 +190,7 @@ public class AdminDAO {
      * @param callback The callback to handle the result of the email check.
      */
     private void checkAdminEmail(final AdminDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginAdmin.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 

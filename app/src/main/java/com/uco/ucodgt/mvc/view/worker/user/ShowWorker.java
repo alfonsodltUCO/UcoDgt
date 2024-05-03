@@ -26,6 +26,9 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
     String dniNoText;
     String numberWorker;
     Button goMenu;
+
+    Button changeData;
+
     /**
      * Called when the activity is starting.
      *
@@ -50,7 +53,9 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
         dni=findViewById(com.uco.ucodgt.R.id.textViewFoundDni);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         numberofworker=findViewById(com.uco.ucodgt.R.id.tvNumberWorker);
+        changeData=findViewById(com.uco.ucodgt.R.id.changeData);
 
+        changeData.setOnClickListener(this);
         goMenu.setOnClickListener(this);
 
         numberWorker=getIntent().getStringExtra("numberWorker");
@@ -83,6 +88,12 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
             startActivity(showUser);
             finish();
 
+        }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
+
+            Intent intent=new Intent(ShowWorker.this, IntroduceActualPassword.class);
+            intent.putExtra("numberWorker",numberWorker);
+            startActivity(intent);
+            finish();
         }
     }
 }

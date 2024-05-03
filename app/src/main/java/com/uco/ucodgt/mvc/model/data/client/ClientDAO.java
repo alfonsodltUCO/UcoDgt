@@ -94,7 +94,7 @@ public class ClientDAO {
      * @param userToFind The ClientDTO object containing the login credentials to be checked.
      * @param callback The callback to handle the result of the login check.
      */    private void checkClient(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
@@ -193,7 +193,7 @@ public class ClientDAO {
      * @param userToFind The ClientDTO object containing the email to be checked.
      * @param callback The callback to handle the result of the email check.
      */    private void checkClientEmail(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -291,7 +291,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the addition operation.
      */
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/user/addClient.php";
+        String URL = "http://34.118.8.21/api/ucodgt/user/addClient.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(client.getAge());
         StringRequest request = new StringRequest(
@@ -395,7 +395,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/getClient.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -418,7 +418,7 @@ public class ClientDAO {
                             obtaining=format.parse(obtFromJson);
                             last=format.parse(jsonResponse.getString("dateLastUpdate"));
                             Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
-                            ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
+                            ClientDTO user = new ClientDTO(dni1, jsonResponse.getString("password"), name, surname, dateBirth, email, licencep);
                             user.setDateLicenceObtaining(obtaining);
                             user.setDateLastUpdate(last);
                             callback.onUserReceived(user);
@@ -500,32 +500,12 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the deletion operation.
      */
     private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/deleteClient.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
                 response -> {
-                    try {
-                        JSONObject jsonResponse = new JSONObject(response);
-                        String name = jsonResponse.getString("name");
-                        String surname = jsonResponse.getString("surname");
-                        String email = jsonResponse.getString("email");
-                        String dni1 = jsonResponse.getString("dni_client");
-                        String age = jsonResponse.getString("age");
-                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                        Date dateBirth;
-                        try {
-                            dateBirth = format.parse(age);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        Integer licencep = Integer.parseInt(jsonResponse.getString("licencepoints"));
-                        ClientDTO user = new ClientDTO(dni1, null, name, surname, dateBirth, email, licencep);
-                        callback.onUserReceived(user);
-
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
+                    callback.onUserReceived(userToFind);
                 },
                 callback::onError
         ) {
@@ -583,7 +563,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/user/getAllClients.php";
+        String URL="http://34.118.8.21/api/ucodgt/user/getAllClients.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -688,7 +668,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the update operation.
      */
     private void updatePointsBd(final ClientDTO client, final UserCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/user/updatePoints.php";
+        String URL = "http://34.118.8.21/api/ucodgt/user/updatePoints.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -768,7 +748,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getOwner(final VehicleDTO vehicle,final UserCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/getClient.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -808,6 +788,91 @@ public class ClientDAO {
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("plate", vehicle.getLicencePlate());
+                return params;
+            }
+        };
+
+        requestQueue.add(request);
+    }
+
+
+    /**
+     * Updates the data of a client user in the database.
+     *
+     * @param userToFind The ClientDTO object containing the unique identifier (DNI) of the user and the updated information.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to handle the result of the update operation.
+     */
+    public void updateUser(ClientDTO userToFind, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        updateUser(userToFind, new UserCallback() {
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                userToFind.setEmail(user.getEmail());
+                userToFind.setAge(user.getAge());
+                userToFind.setName(user.getName());
+                userToFind.setSurname(user.getSurname());
+                userToFind.setPassword(user.getPassword());
+                userToFind.setLicencepoints(user.getLicencepoints());
+                userToFind.setDni(user.getDni());
+                callback.onUserReceived(userToFind);
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Updates the data of a client user in the database.
+     *
+     * @param client The ClientDTO object containing the unique identifier (DNI) of the user and the updated data.
+     * @param callback The callback to handle the result of the update operation.
+     */
+    private void updateUser(final ClientDTO client, final UserCallback callback) {
+        String URL = "http://34.118.8.21/api/ucodgt/user/updateClient.php";
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL,
+                response -> {
+                    if(!response.isEmpty()){
+                        callback.onUserReceived(client);
+                    }else{
+                        callback.onUserReceived(new ClientDTO(null,null,null,null,null,null,null));
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("dni", client.getDni());
+                params.put("email", client.getEmail());
+                params.put("password",BCrypt.hashpw(client.getPassword(),BCrypt.gensalt()));
                 return params;
             }
         };

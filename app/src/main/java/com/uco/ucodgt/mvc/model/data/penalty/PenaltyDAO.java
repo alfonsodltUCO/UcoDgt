@@ -73,7 +73,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the penalties received or errors encountered.
      */
     private void getPenaltiesFromBd(final VehicleDTO vh, final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getAllPenaltiesFromCar.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getAllPenaltiesFromCar.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -166,7 +166,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the received penalty or errors encountered.
      */
     private void getPenaltyToFind(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/penalty/getPenalty.php";
+        String URL="http://34.118.8.21/api/ucodgt/penalty/getPenalty.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -255,7 +255,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the received penalties or errors encountered.
      */
     private void getPenaltiesFromBd(final ClientDTO cl,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getAllPenaltiesFromUser.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getAllPenaltiesFromUser.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -344,7 +344,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the received penalties or errors encountered.
      */
     private void getPenaltiesFromBd(final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getAllPenalties.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getAllPenalties.php";
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -430,7 +430,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the result of deleting the penalty or errors encountered.
      */
     private void deletePenaltyFromBd(final PenaltyDTO penaltyToDelete,final PenaltyCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/penalty/deletePenalty.php";
+        String URL="http://34.118.8.21/api/ucodgt/penalty/deletePenalty.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -515,7 +515,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the penalties received or errors encountered.
      */
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&end="+date2;
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getPenaltiesByDates.php?start="+date1+"&end="+date2;
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
@@ -598,7 +598,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the penalties received or errors encountered.
      */
     private void getPenaltiesFromBd(final String state,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getPenaltiesByState.php?state="+state;
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getPenaltiesByState.php?state="+state;
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL,
@@ -683,7 +683,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the result of adding the penalty or errors encountered.
      */
     private void addToDb(final PenaltyDTO penalty, final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/addPenalty.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/addPenalty.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(penalty.getDate());
         StringRequest request = new StringRequest(
@@ -762,7 +762,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the payment initiation result or errors encountered.
      */
     private void doPaymentToBd(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/penalty/doPayment.php";
+        String URL="http://34.118.8.21/api/ucodgt/penalty/doPayment.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -847,7 +847,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the penalties received or errors encountered.
      */
     private void getPenaltiesFromBd(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getPenaltiesByStateOfUser.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getPenaltiesByStateOfUser.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -944,7 +944,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the penalties received or errors encountered.
      */
     private void getPenaltiesFromBd(final String date1, final String date2,final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getPenaltiesByDatesByUser.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -1037,7 +1037,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the last penalty received or errors encountered.
      */
     private void getLastPenalty(final PenaltyDTO penaltyToSend,final PenaltyCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/penalty/getLastPenalty.php";
+        String URL = "http://34.118.8.21/api/ucodgt/penalty/getLastPenalty.php";
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -1127,7 +1127,7 @@ public class PenaltyDAO {
      * @param callback The callback to handle the received penalty or errors encountered.
      */
     private void cancelPenalty(final PenaltyDTO penaltyToFInd,final PenaltyCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/penalty/cancelPenalty.php";
+        String URL="http://34.118.8.21/api/ucodgt/penalty/cancelPenalty.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -1143,6 +1143,7 @@ public class PenaltyDAO {
                 params.put("quantity",penaltyToFInd.getQuantity().toString());
                 params.put("points",penaltyToFInd.getPoints().toString());
                 params.put("dni",penaltyToFInd.getDniClient());
+                params.put("dniW",penaltyToFInd.getDniWorker());
                 return params;
             }
         };

@@ -55,7 +55,7 @@ public class ListPenaltyDAO {
      * @param callback The callback to handle the result of the check operation.
      */
     private void checkList(final PenaltyDTO penalty,final ListPenaltyCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/penalty/listPenalty/getListPenalty.php?reason="+penalty.getReason();
+        String URL="http://34.118.8.21/api/ucodgt/penalty/listPenalty/getListPenalty.php?reason="+penalty.getReason();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(

@@ -14,7 +14,12 @@ import java.util.List;
 
 import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
+import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
+import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
+import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
+import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 
@@ -84,23 +89,17 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                     finish();
                 }else{
 
-                    PenaltyDTO penaltyToSend=new PenaltyDTO(Integer.parseInt(id),Integer.parseInt(points),null,Float.parseFloat("0"),null,null,dniClient,null,null,null,false,null,null);
+                    ManagerWorker mngW=new ManagerWorker();
+                    WorkerDTO wrk=new WorkerDTO(null,null,null,null,null,null,Integer.parseInt(numberWorker));
 
-                    mngP.cancelPenalty(penaltyToSend,CheckPenaltyToCancel.this, new PenaltyCallback() {
+                    mngW.getUserByNumber(wrk, CheckPenaltyToCancel.this, new UserCallback() {
                         @Override
-                        public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+                        public void onUserReceived(ClientDTO user) {
 
-                            Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
-                            intent.putExtra("numberWorker",numberWorker);
-                            startActivity(intent);
-                            Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
-                            hideLoading();
-                            finish();
                         }
 
                         @Override
                         public void onError(VolleyError error) {
-
                             Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
                             intent.putExtra("numberWorker",numberWorker);
                             startActivity(intent);
@@ -110,10 +109,68 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onPenaltyReceived(PenaltyDTO penalty) {
+                        public void onWorkerReceived(WorkerDTO user) {
+
+                            PenaltyDTO penaltyToSend=new PenaltyDTO(Integer.parseInt(id),Integer.parseInt(points),null,Float.parseFloat("0"),null,null,dniClient,user.getDni(),null,null,false,null,null);
+
+                            mngP.cancelPenalty(penaltyToSend,CheckPenaltyToCancel.this, new PenaltyCallback() {
+                                @Override
+                                public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
+
+                                    Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                    intent.putExtra("numberWorker",numberWorker);
+                                    startActivity(intent);
+                                    Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
+                                    hideLoading();
+                                    finish();
+                                }
+
+                                @Override
+                                public void onError(VolleyError error) {
+
+                                    if(error.networkResponse.statusCode==405){
+
+                                        Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                        intent.putExtra("numberWorker",numberWorker);
+                                        startActivity(intent);
+                                        Toast.makeText(CheckPenaltyToCancel.this,"This penalty was not imposed by you", Toast.LENGTH_LONG).show();
+                                        hideLoading();
+                                        finish();
+
+                                    }else{
+
+                                        Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                        intent.putExtra("numberWorker",numberWorker);
+                                        startActivity(intent);
+                                        Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
+                                        hideLoading();
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onPenaltyReceived(PenaltyDTO penalty) {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onAdminReceived(AdminDTO user) {
+
+                        }
+
+                        @Override
+                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                        }
+
+                        @Override
+                        public void onClientsReceived(List<ClientDTO> clients) {
 
                         }
                     });
+
                 }
             }
         });
