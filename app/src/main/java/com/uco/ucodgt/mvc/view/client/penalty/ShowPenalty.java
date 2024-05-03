@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltyToPay;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 /**
@@ -25,6 +27,8 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     Button goMain,payPenalty;
     PenaltyDTO penalty;
     String dni,workerNum;
+
+
     /**
      * Called when the activity is starting.
      *
@@ -38,6 +42,8 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
         dni=getIntent().getStringExtra("dni");
         workerNum=getIntent().getStringExtra("worker");
@@ -97,8 +103,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
         }else if(v.getId()==com.uco.ucodgt.R.id.payPenalty){
             // Navigate to payment screen for the penalty
-
-            Intent goPay=new Intent(ShowPenalty.this, IntroduceDataForPay.class);
+            Intent goPay=new Intent(ShowPenalty.this, CheckPenaltyToPay.class);
             goPay.putExtra("id", penalty.getId().toString());
             goPay.putExtra("dni",dni);
             goPay.putExtra("quantity",penalty.getQuantity().toString());
@@ -107,4 +112,5 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
         }
     }
+
 }
