@@ -80,7 +80,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the result of the vehicle recognition.
      */
     private void checkVehicleFromPy(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://10.0.2.2:8080/checkImage";
+        String URL = "http://34.118.8.21:8080/checkImage";
 
         JsonObjectRequest request = new JsonObjectRequest(
 
@@ -173,7 +173,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the result of the vehicle recognition.
      */
     private void checkVehicleFromPy2(final Bitmap image, final VehicleCallback callback) {
-        String URL = "http://10.0.2.2:8080/checkImage2";
+        String URL = "http://34.118.8.21:8080/checkImage2";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -250,7 +250,7 @@ public class VehicleDAO {
      *                     retrieval.
      */
     private void getVehicleFromBd(final String licencePlate,final VehicleCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/getVehicle.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -331,7 +331,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the result of deleting the vehicle or errors encountered.
      */
     private void deleteVehicleFromBd(final VehicleDTO vehicleSend,final VehicleCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/deleteVehicle.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/deleteVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -412,7 +412,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the result of adding the vehicle or errors encountered.
      */
     private void addToDb(final VehicleDTO vehicle,final ClientDTO client, final VehicleCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/vehicle/addVehicle.php";
+        String URL = "http://34.118.8.21/api/ucodgt/vehicle/addVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -476,7 +476,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the received vehicles or errors encountered.
      */
     private void getVehiclesFromBd(final VehicleCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/getAllVehicles.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/getAllVehicles.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -556,7 +556,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the received vehicle or errors encountered.
      */
     private void getVehicleToFind(final VehicleDTO vehicle,final VehicleCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/getVehicle.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/getVehicle.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -634,7 +634,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the received vehicles or errors encountered.
      */
     private void getVehiclesFromBd(final ClientDTO client,final VehicleCallback callback){
-        String URL="http://10.0.2.2:81/api/ucodgt/vehicle/getAllVehiclesByDni.php";
+        String URL="http://34.118.8.21/api/ucodgt/vehicle/getAllVehiclesByDni.php";
 
         StringRequest stringRequest = new StringRequest(
 
@@ -721,7 +721,7 @@ public class VehicleDAO {
      * @param callback The callback to handle the result of adding the vehicle or errors encountered.
      */
     private void updateItv(final VehicleDTO vehicle, final VehicleCallback callback) {
-        String URL = "http://10.0.2.2:81/api/ucodgt/vehicle/updateItv.php";
+        String URL = "http://34.118.8.21/api/ucodgt/vehicle/updateItv.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,

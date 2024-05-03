@@ -49,7 +49,6 @@ public class CheckLogIn extends AppCompatActivity {
 
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
-
         ManagerClient mngusr=new ManagerClient();
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
 

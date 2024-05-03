@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 
 
+import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import com.uco.ucodgt.mvc.controller.client.vehicle.CheckVehiclesToListForClient;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
@@ -28,7 +29,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     String strDate,strDate2;
     String dniRec;
     String dniNoText;
-    Button goMenu,listPenalties,listVehicles;
+    Button goMenu,listPenalties,listVehicles,goChangeData;
 
     /**
      * Called when the activity is starting.
@@ -59,6 +60,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listPenalties=findViewById(com.uco.ucodgt.R.id.listPenalties);
         listVehicles=findViewById(com.uco.ucodgt.R.id.listVehicles);
         licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
+        goChangeData=findViewById(R.id.changeData);
         goMenu.setOnClickListener(this);
 
         listVehicles.setOnClickListener(this);
@@ -77,6 +79,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         strDate2= formatter.format(client.getDateLicenceObtaining());
         birth.setText("birth= "+strDate);
         obtaining.setText("Date obtainig licence= "+strDate2);
+        goChangeData.setOnClickListener(this);
 
     }
     /**
@@ -108,6 +111,14 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToListForClient.class);
             goListVeh.putExtra("dni",dniRec);
             startActivity(goListVeh);
+            finish();
+
+        }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
+            // Go change client data
+
+            Intent goChange=new Intent(ShowUser.this, IntroduceActualPassword.class);
+            goChange.putExtra("dni",dniRec);
+            startActivity(goChange);
             finish();
 
         }

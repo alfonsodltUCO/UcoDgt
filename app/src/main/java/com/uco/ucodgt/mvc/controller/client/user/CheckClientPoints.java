@@ -197,7 +197,7 @@ public class CheckClientPoints extends AppCompatActivity {
                 long yearsWithoutPenalties=calculateYears(lastPenalty,new Date());
 
                 if(yearsExperience<=3){//Novel
-                   if(yearsWithoutPenalties>=2){
+                   if(yearsWithoutPenalties>=3){//Poner 3 años
                        points+=2;
                    }
                 }else{//Not novel

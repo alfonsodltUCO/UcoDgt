@@ -374,4 +374,47 @@ public class ManagerClient {
         });
     }
 
+    /**
+     * Updates the data of a client user in the system.
+     *
+     * @param client The ClientDTO object representing the client user whose email/password is gonna be updated.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the update operation.
+     */
+    public void updateUser(ClientDTO client, Context applicationContext, UserCallback callback){
+        ClientDAO clientD=new ClientDAO();
+        clientD.updateUser(client, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                callback.onUserReceived(user);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
 }

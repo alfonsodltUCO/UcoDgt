@@ -27,17 +27,53 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
  */
 
 public class ForCheckUser {
+
     /**
-     * Checks if the provided DNI (National Identity Document) is valid.
+     * Checks if a Spanish National Identity Document (DNI) number is valid.
      *
-     * @param dni The DNI to check.
-     * @return True if the DNI is valid, false otherwise.
+     * @param dni The DNI number to be verified.
+     * @return true if the DNI is valid, false otherwise.
+     *
+     * <p>
+     * A valid Spanish DNI must have a format of 8 digits followed by a letter,
+     * and the letter must match the number according to the Spanish calculation algorithm.
+     * </p>
      */
-    public static boolean checkDni(String dni){//used in CheckUserToadd
+    public static boolean checkDni(String dni){
+
         Pattern pattern = Pattern.compile("[0-9]{8}[A-Z]");
+
         Matcher mat = pattern.matcher(dni);
-        return mat.matches();
+
+        if (!mat.matches()) {
+            return false;
+        }
+
+        String dniNumber = dni.substring(0, 8);
+
+        char letter = dni.charAt(8);
+
+        String expectedLetter = calculateDniLetter(Integer.parseInt(dniNumber));
+
+        return letter == expectedLetter.charAt(0);
     }
+
+    /**
+     * Calculates the letter of a Spanish National Identity Document (DNI) based on the number.
+     *
+     * @param dniNumber The DNI number (first 8 digits).
+     * @return The letter corresponding to the DNI number according to the Spanish algorithm.
+     */
+    private static String calculateDniLetter(int dniNumber) {
+
+        String[] letters = {"T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"};
+
+        int remainder = dniNumber % 23;
+
+        return letters[remainder];
+    }
+
+
     /**
      * Checks if the provided name and surname are valid.
      *

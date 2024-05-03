@@ -105,6 +105,13 @@
         <activity android:name="com.uco.ucodgt.mvc.view.worker.penalty.AddPenaltyActivity" />
         <activity android:name="com.uco.ucodgt.mvc.controller.worker.penalty.CheckPenaltyToCancel" />
         <activity android:name="com.uco.ucodgt.mvc.controller.admin.vehicle.CheckExtendItv" />
+        <activity android:name="com.uco.ucodgt.mvc.view.client.user.IntroduceNewData" />
+        <activity android:name="com.uco.ucodgt.mvc.controller.client.user.CheckDataForUpdate" />
+        <activity android:name="com.uco.ucodgt.mvc.view.client.user.IntroduceActualPassword" />
+        <activity android:name="com.uco.ucodgt.mvc.controller.client.user.CheckClientPassword" />
+        <activity android:name="com.uco.ucodgt.mvc.controller.worker.user.CheckWorkerPassword" />
+        <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceActualPassword" />
+        <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

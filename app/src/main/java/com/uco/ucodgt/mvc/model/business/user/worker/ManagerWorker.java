@@ -9,6 +9,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
+import com.uco.ucodgt.mvc.model.data.client.ClientDAO;
 import com.uco.ucodgt.mvc.model.data.worker.WorkerDAO;
 
 
@@ -310,6 +311,49 @@ public class ManagerWorker {
 
             @Override
             public void onWorkersReceived(List<WorkerDTO> workers) {
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Updates the data of a worker user in the system.
+     *
+     * @param worker The WorkerDTO object representing the worker user whose email/password is gonna be updated.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the update operation.
+     */
+    public void updateUser(WorkerDTO worker, Context applicationContext, UserCallback callback) {
+        WorkerDAO workerD = new WorkerDAO();
+        workerD.updateUser(worker, applicationContext, new UserCallback() {
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+                callback.onWorkerReceived(user);
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
             }
 
             @Override
