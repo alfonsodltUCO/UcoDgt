@@ -104,6 +104,7 @@ public class AdminDAO {
                         String surname = response.getString("surname");
                         String email1 = response.getString("email");
                         String passwordhashed = response.getString("password");
+                        Log.e("e",BCrypt.hashpw(userToFind.getPassword(),BCrypt.gensalt()));
                         if (!BCrypt.checkpw(userToFind.getPassword(), passwordhashed)) {
                             callback.onError(new VolleyError());
                         } else {
