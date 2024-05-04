@@ -202,6 +202,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(this,"AJAJJAJA", Toast.LENGTH_LONG).show();
 
         if(requestCode==PAYPAL_REQUEST_CODE){
             PaymentConfirmation paymentConfirmation=data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
@@ -217,7 +218,11 @@ public class CheckPenaltyToPay extends AppCompatActivity {
             Toast.makeText(this,"error", Toast.LENGTH_LONG).show();
         } else if(requestCode==PaymentActivity.RESULT_EXTRAS_INVALID) {
             Toast.makeText(this,"invalid payment", Toast.LENGTH_LONG).show();
-        } else if (requestCode==Activity.RESULT_OK) {
+        } else if (requestCode==PaymentActivity.RESULT_OK) {
+            Toast.makeText(this,"OK", Toast.LENGTH_LONG).show();
+
+        }
+        if (requestCode==PaymentActivity.RESULT_OK) {
             Toast.makeText(this,"OK", Toast.LENGTH_LONG).show();
 
         }
