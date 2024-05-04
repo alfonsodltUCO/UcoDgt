@@ -94,7 +94,7 @@ public class ClientDAO {
      * @param userToFind The ClientDTO object containing the login credentials to be checked.
      * @param callback The callback to handle the result of the login check.
      */    private void checkClient(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://34.118.84.252/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
@@ -193,7 +193,7 @@ public class ClientDAO {
      * @param userToFind The ClientDTO object containing the email to be checked.
      * @param callback The callback to handle the result of the email check.
      */    private void checkClientEmail(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
+        String URL="http://34.118.84.252/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -291,7 +291,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the addition operation.
      */
     private void addToDb(final ClientDTO client,final Context applicationContext, final UserCallback callback) {
-        String URL = "http://34.118.8.21/api/ucodgt/user/addClient.php";
+        String URL = "http://34.118.84.252/api/ucodgt/user/addClient.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(client.getAge());
         StringRequest request = new StringRequest(
@@ -395,7 +395,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getUserToFind(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/getClient.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -500,7 +500,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the deletion operation.
      */
     private void deleteUserFromBd(final ClientDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/deleteClient.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/deleteClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -563,7 +563,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/getAllClients.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/getAllClients.php";
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -668,7 +668,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the update operation.
      */
     private void updatePointsBd(final ClientDTO client, final UserCallback callback) {
-        String URL = "http://34.118.8.21/api/ucodgt/user/updatePoints.php";
+        String URL = "http://34.118.84.252/api/ucodgt/user/updatePoints.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         StringRequest request = new StringRequest(
                 Request.Method.POST,
@@ -748,7 +748,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the retrieval operation.
      */
     private void getOwner(final VehicleDTO vehicle,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/vehicle/getClient.php";
+        String URL="http://34.118.84.252/api/ucodgt/vehicle/getClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -854,7 +854,7 @@ public class ClientDAO {
      * @param callback The callback to handle the result of the update operation.
      */
     private void updateUser(final ClientDTO client, final UserCallback callback) {
-        String URL = "http://34.118.8.21/api/ucodgt/user/updateClient.php";
+        String URL = "http://34.118.84.252/api/ucodgt/user/updateClient.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,

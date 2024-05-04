@@ -94,7 +94,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the login check.
      */
     private void checkWorker(final  WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://34.118.84.252/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -187,7 +187,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the email check.
      */
     private void checkEmailWorker(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
+        String URL="http://34.118.84.252/api/ucodgt/user/checkLoginWorker.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -282,7 +282,7 @@ public class WorkerDAO {
      * @param worker   The worker object to be added.
      * @param callback The callback to handle the result of the addition.
      */    private void addToDb(final WorkerDTO worker, final UserCallback callback) {
-        String URL = "http://34.118.8.21/api/ucodgt/user/addWorker.php";
+        String URL = "http://34.118.84.252/api/ucodgt/user/addWorker.php";
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(worker.getAge());
         StringRequest request = new StringRequest(
@@ -379,7 +379,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the retrieval.
      */
     private void getUserToFind(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/getWorker.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/getWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -476,7 +476,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the deletion.
      */
     private void deleteUserFromBd(final WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/deleteWorker.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/deleteWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
@@ -544,7 +544,7 @@ public class WorkerDAO {
      * @param callback The callback to handle the result of the retrieval.
      */
     private void getUsersFromBd(final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/getAllWorkers.php";
+        String URL="http://34.118.84.252/api/ucodgt/user/getAllWorkers.php";
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(
 
@@ -646,7 +646,7 @@ public class WorkerDAO {
      * @param callback   The callback to handle the result of the login check.
      */
     private void getUserByNumber(final  WorkerDTO userToFind,final UserCallback callback){
-        String URL="http://34.118.8.21/api/ucodgt/user/getWorkerByNumber.php?number="+userToFind.getNumberOfWorker();
+        String URL="http://34.118.84.252/api/ucodgt/user/getWorkerByNumber.php?number="+userToFind.getNumberOfWorker();
 
         JsonObjectRequest JsonObjectRequest;
         JsonObjectRequest = new JsonObjectRequest(
@@ -747,7 +747,7 @@ public class WorkerDAO {
      * @param callback The callback to handle the result of the update operation.
      */
     private void updateUser(final WorkerDTO worker, final UserCallback callback) {
-        String URL = "http://34.118.8.21/api/ucodgt/user/updateWorker.php";
+        String URL = "http://34.118.84.252/api/ucodgt/user/updateWorker.php";
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL,
