@@ -184,12 +184,6 @@ public class CheckLogIn extends AppCompatActivity {
 
                             runOnUiThread(() -> {
 
-                                showLoading();
-                                try {
-                                    Thread.sleep(1500);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
 
                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
                                 startActivity(intentAdmin);
