@@ -29,7 +29,7 @@ import java.util.List;
 public class CheckDataForUpdate extends AppCompatActivity {
     private ProgressBar progressBar;
 
-    String numberWorker,email,password;
+    String numberWorker,email,password,dni;
 
 
 
@@ -40,6 +40,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
         progressBar = findViewById(com.uco.ucodgt.R.id.progressbar);
         showLoading();
 
+        dni=getIntent().getStringExtra("dni");
         numberWorker=getIntent().getStringExtra("numberWorker");
         email=getIntent().getStringExtra("email");
         password=getIntent().getStringExtra("password");
@@ -49,6 +50,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
             showLoading();
             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
             intent.putExtra("numberWorker",numberWorker);
+            intent.putExtra("dni",dni);
             startActivity(intent);
             Toast.makeText(CheckDataForUpdate.this, "The email is not valid format", Toast.LENGTH_LONG).show();
             hideLoading();
@@ -58,6 +60,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                 showLoading();
                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                 intent.putExtra("numberWorker",numberWorker);
+                intent.putExtra("dni",dni);
                 startActivity(intent);
                 Toast.makeText(CheckDataForUpdate.this, "The password is not valid\nMust be 8 characters al least\nOne number\nOne special character\nOne capital letter", Toast.LENGTH_LONG).show();
                 hideLoading();
@@ -79,6 +82,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                     showLoading();
                                     Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                                     intent.putExtra("numberWorker",numberWorker);
+                                    intent.putExtra("dni",dni);
                                     startActivity(intent);
                                     Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                     hideLoading();
@@ -99,7 +103,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                 public void onError(VolleyError error11) {
                                     runOnUiThread(() -> {
                                         ManagerWorker mngW=new ManagerWorker();
-                                        WorkerDTO wk=new WorkerDTO(null,password,null,null,null,email,null);
+                                        WorkerDTO wk=new WorkerDTO(dni,password,null,null,null,email,null);
                                         mngW.updateUser(wk,CheckDataForUpdate.this, new UserCallback() {
                                             @Override
                                             public void onUserReceived(ClientDTO user) {
@@ -112,6 +116,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                                 showLoading();
                                                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                                                 intent.putExtra("numberWorker",numberWorker);
+                                                intent.putExtra("dni",dni);
                                                 startActivity(intent);
                                                 Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
                                                 hideLoading();
@@ -156,6 +161,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                         showLoading();
                                         Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                                         intent.putExtra("numberWorker",numberWorker);
+                                        intent.putExtra("dni",dni);
                                         startActivity(intent);
                                         Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                         hideLoading();
@@ -205,6 +211,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                             showLoading();
                             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                             intent.putExtra("numberWorker",numberWorker);
+                            intent.putExtra("dni",dni);
                             startActivity(intent);
                             Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                             hideLoading();

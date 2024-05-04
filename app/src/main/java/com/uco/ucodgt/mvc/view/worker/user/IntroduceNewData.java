@@ -18,7 +18,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 public class IntroduceNewData extends AppCompatActivity implements View.OnClickListener{
 
-    String numberWorker;
+    String numberWorker,dni;
 
     Button goChange,goMain;
 
@@ -28,6 +28,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         numberWorker=getIntent().getStringExtra("numberWorker");
+        dni=getIntent().getStringExtra("dni");
         setContentView(com.uco.ucodgt.R.layout.introduce_new_data);
 
         goChange=findViewById(com.uco.ucodgt.R.id.goConfirm);
@@ -82,6 +83,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             goChange.putExtra("numberWorker",numberWorker);
             goChange.putExtra("email",email.getText().toString());
             goChange.putExtra("password",password.getText().toString());
+            goChange.putExtra("dni",dni);
             startActivity(goChange);
             finish();
             dialog.dismiss();

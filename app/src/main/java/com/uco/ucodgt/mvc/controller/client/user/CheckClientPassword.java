@@ -38,7 +38,7 @@ public class CheckClientPassword extends AppCompatActivity {
         showLoading();
 
         dniRec=getIntent().getStringExtra("dni");
-        password=getIntent().getStringExtra("pasword");
+        password=getIntent().getStringExtra("password");
 
         ManagerClient mngC=new ManagerClient();
         ClientDTO cl=new ClientDTO(dniRec,null,null,null,null,null,null);
@@ -46,7 +46,7 @@ public class CheckClientPassword extends AppCompatActivity {
         mngC.getUser(cl, CheckClientPassword.this, new UserCallback() {
             @Override
             public void onUserReceived(ClientDTO user) {
-
+                user.setPassword(password);
                 mngC.checkLogInClient(user, CheckClientPassword.this, new UserCallback() {
                     @Override
                     public void onUserReceived(ClientDTO user) {

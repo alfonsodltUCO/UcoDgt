@@ -2,6 +2,7 @@ package com.uco.ucodgt.mvc.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.MainActivity;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * A class created to handle the login of the different types of user.
@@ -51,6 +54,7 @@ public class CheckLogIn extends AppCompatActivity {
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
+        Log.d("e", BCrypt.hashpw("a", BCrypt.gensalt()));
 
         mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 

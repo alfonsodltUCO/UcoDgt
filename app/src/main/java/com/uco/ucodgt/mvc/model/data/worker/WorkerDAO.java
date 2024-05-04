@@ -105,6 +105,7 @@ public class WorkerDAO {
                 response -> {
 
                     try {
+                        String dni=response.getString("dni_worker");
                         String name=response.getString("name");
                         String surname=response.getString("surname");
                         String email1 =response.getString("email");
@@ -121,7 +122,7 @@ public class WorkerDAO {
                                 throw new RuntimeException(e);
                             }
                             String number=response.getString("numberOfWorker");
-                            WorkerDTO user=new WorkerDTO(null,userToFind.getPassword(),name,surname,dateBirth, email1,Integer.parseInt(number));
+                            WorkerDTO user=new WorkerDTO(dni,userToFind.getPassword(),name,surname,dateBirth, email1,Integer.parseInt(number));
                             callback.onWorkerReceived(user);
                         }
                     } catch (JSONException e) {

@@ -112,6 +112,7 @@
         <activity android:name="com.uco.ucodgt.mvc.controller.worker.user.CheckWorkerPassword" />
         <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceActualPassword" />
         <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData" />
+        <activity android:name="com.uco.ucodgt.mvc.controller.worker.user.CheckDataForUpdate" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 
-import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltyToPay;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;

@@ -81,6 +81,7 @@ public class CheckWorkerPassword extends AppCompatActivity {
 
                         Intent goNewData=new Intent(CheckWorkerPassword.this, IntroduceNewData.class);
                         goNewData.putExtra("numberWorker",numberWorker);
+                        goNewData.putExtra("dni",user.getDni());
                         Toast.makeText(CheckWorkerPassword.this,"Password is correct", Toast.LENGTH_LONG).show();
                         startActivity(goNewData);
                         finish();

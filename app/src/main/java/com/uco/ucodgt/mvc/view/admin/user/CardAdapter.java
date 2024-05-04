@@ -4,9 +4,13 @@ import static androidx.core.content.ContextCompat.startActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -77,6 +81,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             ClientDTO clientDTO = clientList.get(position);
             holder.textDni.setText(clientDTO.getDni());
             holder.textType.setText("client");
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
 
             holder.itemView.setOnClickListener(v -> {
 
@@ -91,6 +96,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             WorkerDTO workerDTO = workerList.get(position - clientList.size());
             holder.textDni.setText(workerDTO.getDni());
             holder.textType.setText("worker");
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.trabajador);
 
             holder.itemView.setOnClickListener(v -> {
 
@@ -123,6 +129,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
      */
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         TextView textDni,textType;
+        ImageView image;
         /**
          * Constructs a CardViewHolder.
          *
@@ -131,6 +138,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            image = itemView.findViewById(com.uco.ucodgt.R.id.imageView);
             textDni = itemView.findViewById(com.uco.ucodgt.R.id.text_dni);
             textType = itemView.findViewById(com.uco.ucodgt.R.id.text_type);
         }
