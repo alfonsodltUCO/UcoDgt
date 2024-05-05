@@ -3,13 +3,17 @@ package com.uco.ucodgt.mvc.view.admin.vehicle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -18,7 +22,9 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
  */
 public class AddVehicleActivity extends AppCompatActivity implements View.OnClickListener{
     Button check,goMenu;
-    EditText etLicencePlate,etCarType,etColor,etItvFrom,etItvTo,etDni,etInsurance;
+    Spinner spinnerType,spinnerColor;
+    String selectedType,selectedColor;
+    EditText etLicencePlate,etItvFrom,etItvTo,etDni,etInsurance;
     /**
      * Called when the activity is starting.
      *
@@ -34,14 +40,44 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         setContentView(com.uco.ucodgt.R.layout.add_vehicle);
 
         etLicencePlate=findViewById(com.uco.ucodgt.R.id.editTextLicencePlate);
-        etCarType=findViewById(com.uco.ucodgt.R.id.editTextCarType);
-        etColor=findViewById(com.uco.ucodgt.R.id.editTextColor);
         etItvFrom=findViewById(com.uco.ucodgt.R.id.editTextValidItvFrom);
         etItvTo=findViewById(com.uco.ucodgt.R.id.editTextValidItvTo);
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
         etInsurance=findViewById(com.uco.ucodgt.R.id.editTextIdInsurance);
+
+        spinnerType = findViewById(com.uco.ucodgt.R.id.carType);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerType.setAdapter(adapter);
+        spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedType = (String) parentView.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerColor = findViewById(com.uco.ucodgt.R.id.colorType);
+        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, R.array.color, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerColor.setAdapter(adapterInformed);
+        spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedColor = (String) parentView.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         goMenu.setOnClickListener(this);
         check.setOnClickListener(this);
     }
@@ -55,8 +91,8 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
 
             Intent checkVehicleToAdd=new Intent(AddVehicleActivity.this, CheckVehicleToAdd.class);
             checkVehicleToAdd.putExtra("licenceplate",etLicencePlate.getText().toString().trim());
-            checkVehicleToAdd.putExtra("cartype",etCarType.getText().toString().trim());
-            checkVehicleToAdd.putExtra("color",etColor.getText().toString().trim());
+            checkVehicleToAdd.putExtra("cartype",selectedType);
+            checkVehicleToAdd.putExtra("color",selectedColor);
             checkVehicleToAdd.putExtra("itvfrom",etItvFrom.getText().toString().trim());
             checkVehicleToAdd.putExtra("itvto",etItvTo.getText().toString().trim());
             checkVehicleToAdd.putExtra("dni",etDni.getText().toString().trim());

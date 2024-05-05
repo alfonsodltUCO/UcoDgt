@@ -4,14 +4,14 @@
     android:orientation="vertical"
     android:background="@drawable/gradient"
     android:layout_height="match_parent">
-    <ImageView
+
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
+        android:layout_height="70dp"
         android:layout_weight="0.3"
-        android:src="@drawable/logoempresa"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:src="@drawable/animatedlogo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -62,15 +62,16 @@
 
         </Button>
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="100sp"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
             android:layout_gravity="center"
-            android:src="@drawable/multa"
-            >
+            android:layout_height="wrap_content"
+            android:src="@drawable/multaanimada" />
 
-        </ImageView>
+
         <Button
             android:id="@+id/goMainMenu"
             android:layout_width="0dp"

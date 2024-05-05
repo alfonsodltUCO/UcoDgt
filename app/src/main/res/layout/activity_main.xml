@@ -13,15 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0">
-        <ImageView
+
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="290sp"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
-            android:src="@drawable/logoempresa"
-            android:layout_gravity="left"
-            >
-        </ImageView>
+            android:src="@drawable/animatedlogo"
+            android:layout_gravity="left" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

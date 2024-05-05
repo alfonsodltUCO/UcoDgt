@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#74969E"
-    android:backgroundTint="#74969E"
+    android:background="@drawable/gradient"
+
     android:layout_height="match_parent">
-    <ImageView
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_marginTop="@dimen/fab_margin_16"
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_weight="0.1"
-        android:src="@drawable/logoempresa"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:layout_weight="0.1"
+        android:src="@drawable/animatedlogo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,6 +23,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
@@ -33,7 +33,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the licence plate"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -42,7 +42,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the car type"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the color"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Valid itv from"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Valid itv until"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the dni of client"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the id of insurance"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -103,31 +103,32 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:textSize="30sp"
+                android:inputType="text"
                 android:text="4355JVJ"
                 android:backgroundTint="@android:color/transparent"
                 />
-            <EditText
-                android:id="@+id/editTextCarType"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/carType"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:text="Fiat"
-                android:backgroundTint="@android:color/transparent"
-                />
-            <EditText
-                android:id="@+id/editTextColor"
-                android:backgroundTint="@android:color/transparent"
-                android:layout_width="wrap_content"
+                android:textSize="30sp"
+                android:spinnerStyle="@style/SpinnerTextStyle" />
+
+            <Spinner
+                android:id="@+id/colorType"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:text="red"
-                android:inputType="text"
-                />
+                android:textSize="30sp"
+                android:spinnerStyle="@style/SpinnerTextStyle" />
 
             <EditText
                 android:id="@+id/editTextValidItvFrom"
@@ -136,6 +137,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:text="2002-10-10"
                 android:inputType="datetime"
                 android:backgroundTint="@android:color/transparent"
@@ -148,6 +150,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="datetime"
                 android:text="2004-10-11"
                 android:backgroundTint="@android:color/transparent"
@@ -161,6 +164,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:text="31898887A"
                 />
@@ -173,14 +177,15 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:inputType="text"
+                android:textSize="30sp"
+                android:inputType="number"
                 android:text="1"
                 />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:layout_gravity="center"
@@ -188,20 +193,37 @@
         >
         <Button
             android:id="@+id/checkAddVehicle"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100sp"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:layout_marginEnd="60sp"
             android:text="Add Vehicle"
             >
 
         </Button>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100sp"
+            android:layout_gravity="center"
+            android:src="@drawable/vehicles"
+            >
+
+        </ImageView>
+
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:singleLine="true"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="100sp"
+            android:layout_marginStart="60sp"
             android:text="Go main menu"
             >
 

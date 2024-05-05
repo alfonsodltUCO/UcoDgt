@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#74969E"
-    android:backgroundTint="#74969E"
+    android:background="@drawable/gradient"
     android:layout_height="match_parent">
-    <ImageView
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_marginTop="@dimen/fab_margin_16"
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_weight="0.1"
-        android:src="@drawable/logoempresa"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:layout_weight="0.1"
+        android:src="@drawable/animatedlogo" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,6 +23,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
@@ -33,7 +33,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the name"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
             <TextView
@@ -42,7 +42,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the surname"
-                android:textSize="18sp"
+                android:textSize="30sp"
                  />
 
             <TextView
@@ -51,7 +51,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the licence points"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                />
 
             <TextView
@@ -60,7 +61,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the date of birth"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
               />
 
             <TextView
@@ -69,7 +71,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the email"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                />
 
             <TextView
@@ -78,7 +81,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the password"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
 
             <TextView
@@ -87,7 +91,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the DNI"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                />
         </LinearLayout>
         <LinearLayout
@@ -103,6 +108,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="textPersonName"
                 android:text="Pedro"
                 android:backgroundTint="@android:color/transparent"
@@ -114,6 +120,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="textPersonName"
                 android:text="Garcia Navarro"
                 android:backgroundTint="@android:color/transparent"
@@ -125,6 +132,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:textSize="30sp"
                 android:ems="10"
                 android:text="8"
                 android:inputType="number"
@@ -137,6 +145,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:text="2002-10-10"
                 android:inputType="datetime"
                 android:backgroundTint="@android:color/transparent"
@@ -149,6 +158,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="textEmailAddress"
                 android:text="example@gmail.com"
                 android:backgroundTint="@android:color/transparent"
@@ -162,6 +172,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="textPassword"
                 android:text="MyPassword"
                />
@@ -174,6 +185,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:text="31878744P"
                 />
@@ -184,53 +196,108 @@
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:layout_gravity="center"
+        android:orientation="horizontal"
         >
-        <RadioGroup
-            android:layout_gravity="center"
-            android:id="@+id/radioGroupTypeUserToAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-           >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:id="@+id/radioGroupTypeUserToAdd"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
 
-            <RadioButton
-                android:id="@+id/radioButtonClient"
+                <RadioButton
+                    android:id="@+id/radioButtonClient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="30sp"
+                    android:text="@string/client" />
+
+
+                <RadioButton
+                    android:id="@+id/radioButtonWorker"
+                    android:layout_width="wrap_content"
+                    android:textSize="30sp"
+                    android:layout_height="match_parent"
+                    android:text="@string/worker" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            android:gravity="start|fill_horizontal"
+            android:layout_height="100sp"
+            android:orientation="vertical">
+
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/client" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/cliente">
 
-            <RadioButton
-                android:id="@+id/radioButtonWorker"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/worker" />
+            </ImageView>
 
-        </RadioGroup>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/trabajador">
+
+            </ImageView>
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+        android:layout_weight="0.3"
         >
         <Button
             android:id="@+id/checkAdd"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100sp"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="20sp"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:layout_marginEnd="60sp"
             android:text="Add User"
         >
 
         </Button>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/useranimado" />
+
+
+
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:singleLine="true"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="20sp"
+            android:layout_height="100sp"
+            android:layout_marginStart="60sp"
             android:text="Go main menu"
             >
 

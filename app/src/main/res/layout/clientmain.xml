@@ -14,15 +14,15 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:src="@drawable/logoempresa"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/animatedlogo" />
 
-        </ImageView>
+
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/news"
             android:layout_width="match_parent"

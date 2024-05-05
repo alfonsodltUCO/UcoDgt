@@ -4,26 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#74969E"
-    android:backgroundTint="#74969E"
+    android:background="@drawable/gradient"
     android:layout_height="match_parent">
-    <ImageView
+
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
+        android:layout_height="70dp"
         android:layout_weight="0.1"
-        android:src="@drawable/logoempresa"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:src="@drawable/animatedlogo" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
@@ -34,7 +37,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Client DNI"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 />
 
 
@@ -44,7 +47,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Reason"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvPlace"
@@ -52,7 +56,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Place"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvInformed"
@@ -60,7 +65,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Informed at the moment"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvLocality"
@@ -68,7 +74,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Locality"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvLicencePlate"
@@ -76,7 +83,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Licence Plate"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
 
             <TextView
@@ -85,7 +93,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Quantity"
-                android:textSize="18sp" />
+                android:textSize="30sp"
+ />
 
             <TextView
                 android:id="@+id/tvPoints"
@@ -93,7 +102,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Points"
-                android:textSize="18sp"
+                android:textSize="30sp"
+
                 />
 
         </LinearLayout>
@@ -111,21 +121,22 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:text="31878744P"
                 android:backgroundTint="@android:color/transparent"
                 />
 
-            <EditText
-                android:id="@+id/etReason"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/Reason"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
-                android:ems="10"
-                android:inputType="text"
-                android:text="drugs"
                 android:backgroundTint="@android:color/transparent"
-                />
+                android:ems="10"
+                android:textSize="30sp"
+                android:spinnerStyle="@style/SpinnerTextStyle" />
+
 
 
 
@@ -135,22 +146,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textSize="30sp"
                 android:autofillHints=""
                 android:ems="10"
                 android:inputType="text"
                 android:text="Avenida America"
                 />
-            <EditText
-                android:backgroundTint="@android:color/transparent"
-                android:id="@+id/etInformedAtTheMoment"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/Informed"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
+                android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Yes"
-                />
+                android:textSize="30sp"
+                android:spinnerStyle="@style/SpinnerTextStyle" />
             <EditText
                 android:backgroundTint="@android:color/transparent"
                 android:id="@+id/etLocality"
@@ -159,6 +170,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:text="Cordoba"
                 />
@@ -170,6 +182,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:text="3289JVJ"
                 />
@@ -181,6 +194,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="number"
                 android:text="200"
                 />
@@ -191,7 +205,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:autofillHints=""
-                android:ems="10"
+                android:ems="10"                android:textSize="30sp"
                 android:inputType="number"
                 android:text="4"
                 />
@@ -199,30 +213,45 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        >
+        android:layout_weight="0.3">
+
         <Button
             android:id="@+id/goNext"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="100sp"
             android:layout_gravity="center"
-            android:text="Add description"
-            >
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:layout_marginEnd="60sp"
+            android:text="Add description">
 
         </Button>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/multaanimada" />
+
+
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:singleLine="true"
             android:layout_gravity="center"
-            android:text="Go main menu"
-            >
+            android:layout_weight="1"
+            android:layout_height="100sp"
+            android:layout_marginStart="60sp"
+            android:text="Go main menu">
 
         </Button>
     </LinearLayout>

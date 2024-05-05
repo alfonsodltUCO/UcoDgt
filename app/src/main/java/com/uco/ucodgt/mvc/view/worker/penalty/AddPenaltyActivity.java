@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 
@@ -20,7 +24,9 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
  */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {
     Button goAddDescrp,goMain;
-    EditText etDniClient,etReason,etPlace,etInformedAtTheMoment,etLocality,etLPlate,etQuantity,etPoints;
+    Spinner spinnerReason,spinnerInformed;
+    String selectedReason,selectedInformed;
+    EditText etDniClient,etPlace,etLocality,etLPlate,etQuantity,etPoints;
 
     String numberWorker;
     /**
@@ -41,9 +47,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         String plate=getIntent().getStringExtra("licencePlate");
 
         etDniClient=findViewById(com.uco.ucodgt.R.id.etCDni);
-        etReason=findViewById(com.uco.ucodgt.R.id.etReason);
         etPlace=findViewById(com.uco.ucodgt.R.id.etPlace);
-        etInformedAtTheMoment=findViewById(com.uco.ucodgt.R.id.etInformedAtTheMoment);
         etLocality=findViewById(com.uco.ucodgt.R.id.etLocality);
         etLPlate=findViewById(com.uco.ucodgt.R.id.etLicencePlate);
         etQuantity=findViewById(com.uco.ucodgt.R.id.etQuantity);
@@ -52,6 +56,38 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         if(!TextUtils.isEmpty(plate)){
             etLPlate.setText(plate);
         }
+
+        spinnerReason = findViewById(com.uco.ucodgt.R.id.Reason);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.reason, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerReason.setAdapter(adapter);
+        spinnerReason.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedReason = (String) parentView.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerInformed = findViewById(com.uco.ucodgt.R.id.Informed);
+        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, R.array.informed, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerInformed.setAdapter(adapterInformed);
+        spinnerInformed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedInformed = (String) parentView.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         goAddDescrp.setOnClickListener(this);
         goMain.setOnClickListener(this);
     }
@@ -68,9 +104,9 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             Intent goNext = new Intent(AddPenaltyActivity.this, IntroduceDescriptionForPenalty.class);
             goNext.putExtra("dniC",etDniClient.getText().toString());
             goNext.putExtra("state","processed");
-            goNext.putExtra("reason",etReason.getText().toString());
+            goNext.putExtra("reason",selectedReason);
             goNext.putExtra("place",etPlace.getText().toString());
-            goNext.putExtra("informed",etInformedAtTheMoment.getText().toString());
+            goNext.putExtra("informed",selectedInformed);
             goNext.putExtra("locality",etLocality.getText().toString());
             goNext.putExtra("licenceplate",etLPlate.getText().toString());
             goNext.putExtra("quantity",etQuantity.getText().toString());

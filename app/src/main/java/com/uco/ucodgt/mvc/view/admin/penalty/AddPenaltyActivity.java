@@ -22,9 +22,9 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
  */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {
     Button goAddDescrp,goMain;
-    String selectedReason;
-    Spinner spinnerReason;
-    EditText etDate,etDniClient,etDniWorker,etPlace,etInformedAtTheMoment,etLocality,etLPlate,etQuantity,etPoints;
+    Spinner spinnerReason,spinnerInformed;
+    String selectedReason,selectedInformed;
+    EditText etDate,etDniClient,etDniWorker,etPlace,etLocality,etLPlate,etQuantity,etPoints;
     /**
      * Initializes the activity with UI components and sets up click listeners.
      *
@@ -42,7 +42,6 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         etDniClient=findViewById(com.uco.ucodgt.R.id.etCDni);
         etDniWorker=findViewById(com.uco.ucodgt.R.id.etWDni);
         etPlace=findViewById(com.uco.ucodgt.R.id.etPlace);
-        etInformedAtTheMoment=findViewById(com.uco.ucodgt.R.id.etInformedAtTheMoment);
         etLocality=findViewById(com.uco.ucodgt.R.id.etLocality);
         etLPlate=findViewById(com.uco.ucodgt.R.id.etLicencePlate);
         etQuantity=findViewById(com.uco.ucodgt.R.id.etQuantity);
@@ -50,7 +49,6 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
 
 
         spinnerReason = findViewById(com.uco.ucodgt.R.id.Reason);
-        String[] reasons = getResources().getStringArray(com.uco.ucodgt.R.array.reason);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.reason, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerReason.setAdapter(adapter);
@@ -58,6 +56,21 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedReason = (String) parentView.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerInformed = findViewById(com.uco.ucodgt.R.id.Informed);
+        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, R.array.informed, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerInformed.setAdapter(adapterInformed);
+        spinnerInformed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedInformed = (String) parentView.getItemAtPosition(position);
             }
 
             @Override
@@ -84,7 +97,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             goNext.putExtra("state","processed");
             goNext.putExtra("reason",selectedReason);
             goNext.putExtra("place",etPlace.getText().toString());
-            goNext.putExtra("informed",etInformedAtTheMoment.getText().toString());
+            goNext.putExtra("informed",selectedInformed);
             goNext.putExtra("locality",etLocality.getText().toString());
             goNext.putExtra("licenceplate",etLPlate.getText().toString());
             goNext.putExtra("quantity",etQuantity.getText().toString());
