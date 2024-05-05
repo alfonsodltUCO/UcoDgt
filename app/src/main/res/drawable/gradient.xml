@@ -6,7 +6,7 @@
         android:type="radial"
         android:centerX="50%"
         android:centerY="50%"
-        android:startColor="#87DEDD"
+        android:startColor="#6CB9B8"
         android:endColor="#000000"
         android:gradientRadius="2000" />
      <stroke
