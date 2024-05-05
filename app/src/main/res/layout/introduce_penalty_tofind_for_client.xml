@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74969E"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     >
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="center">
         <EditText
@@ -18,9 +18,9 @@
             android:layout_height="match_parent"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="text"
+            android:inputType="number"
             android:textSize="30sp"
-            android:text="Introduce the Id"
+            android:text="Id"
             android:textAlignment="center"
             android:backgroundTint="@android:color/transparent">
         </EditText>
@@ -31,25 +31,41 @@
 
     <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="0.6"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
             android:id="@+id/findPenalty"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:layout_marginEnd="60sp"
             android:text="Find Penalty"
             />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="100sp"
+            android:src="@drawable/multaanimada" />
+
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:singleLine="true"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60sp"
             android:text="Go main menu"
             >
 
@@ -58,7 +74,7 @@
     </LinearLayout>
     <LinearLayout
 
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="0.6"
         android:orientation="horizontal"
@@ -67,6 +83,7 @@
             android:id="@+id/searchForDates"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textSize="30sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Find By Dates"
@@ -112,12 +129,33 @@
         android:layout_weight="4"
         android:layout_gravity="center|bottom"
         >
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_gravity="center"
             android:layout_height="match_parent"
-            android:src="@drawable/logoempresa"
-            />
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/multa"
+                />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/animatedlogo" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cliente"
+                />
+        </LinearLayout>
     </FrameLayout>
 
 

@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74969E"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     >
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="center">
         <EditText
@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textSize="30sp"
             android:text="example@gmail.com"
             android:textAlignment="center"
@@ -47,25 +47,40 @@
 
     <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="0.6"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
             android:id="@+id/goConfirm"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="30sp"
+            android:layout_marginEnd="60sp"
             android:text="Confirm Changes"
             />
+        <ImageView
+            android:layout_width="90sp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/password" />
+
         <Button
             android:id="@+id/goMainMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="30sp"
+            android:singleLine="true"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60sp"
             android:text="Go main menu"
             >
 
@@ -79,12 +94,12 @@
         android:layout_weight="4"
         android:layout_gravity="center|bottom"
         >
-        <ImageView
-            android:layout_width="match_parent"
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:src="@drawable/logoempresa"
-            />
+            android:layout_height="wrap_content"
+            android:src="@drawable/animatedlogo" />
+
     </FrameLayout>
 
 
