@@ -38,8 +38,11 @@
         android:id="@+id/item11AdminDeletePenalty"
         android:title="Delete penalty" />
     <item
-        android:id="@+id/item12FindPenalty"
+        android:id="@+id/item12AdminFindPenalty"
         android:title="Find penalty" />
+    <item
+        android:id="@+id/item14AdminExtendItv"
+        android:title="Extend itv" />
 
 
 
