@@ -40,5 +40,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     implementation("com.paypal.checkout:android-sdk:0.112.2")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.22")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

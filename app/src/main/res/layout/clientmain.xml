@@ -4,34 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74969E"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="match_parent"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:src="@drawable/logoempresa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </ImageView>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/news"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_gravity="end"
+            android:layout_height="match_parent"
+            android:src="@drawable/news" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/dontdrink" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drivesmart">
+
+        </ImageView>
     </LinearLayout>
 
     <LinearLayout

@@ -5,4 +5,15 @@
     <string name="paid">paid</string>
     <string name="cancel">cancel</string>
     <string name="cancelled">cancelled</string>
+    <string-array name="reason">
+        <item>no_seatbelt</item>
+        <item>velocity</item>
+        <item>blue_zone</item>
+        <item>incorrect_parking</item>
+        <item>alcohol</item>
+        <item>drugs</item>
+        <item>no_itv</item>
+        <item>no_insurance</item>
+    </string-array>
 </resources>
+
