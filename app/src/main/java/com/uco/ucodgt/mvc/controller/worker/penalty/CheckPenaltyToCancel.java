@@ -2,6 +2,7 @@ package com.uco.ucodgt.mvc.controller.worker.penalty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -110,19 +111,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
 
                         @Override
                         public void onWorkerReceived(WorkerDTO user) {
-
                             PenaltyDTO penaltyToSend=new PenaltyDTO(Integer.parseInt(id),Integer.parseInt(points),null,Float.parseFloat("0"),null,null,dniClient,user.getDni(),null,null,false,null,null);
 
                             mngP.cancelPenalty(penaltyToSend,CheckPenaltyToCancel.this, new PenaltyCallback() {
                                 @Override
                                 public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
-                                    Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
-                                    intent.putExtra("numberWorker",numberWorker);
-                                    startActivity(intent);
-                                    Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
-                                    hideLoading();
-                                    finish();
                                 }
 
                                 @Override
@@ -150,7 +144,13 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
 
                                 @Override
                                 public void onPenaltyReceived(PenaltyDTO penalty) {
-
+                                    Log.d("e","penalty");
+                                    Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                    intent.putExtra("numberWorker",numberWorker);
+                                    startActivity(intent);
+                                    Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
+                                    hideLoading();
+                                    finish();
                                 }
                             });
                         }
