@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,9 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     TextView name,surname,email,numberofworker_licencepoints,birth,dni,obtaining;
     String strDate,strDate2;
     String dniNoText;
+    ImageView image;
+
+
     String numberWorker;
     Button goMenu,listPenalties;
     /**
@@ -53,6 +57,8 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         listPenalties=findViewById(com.uco.ucodgt.R.id.listPenalties);
         numberofworker_licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
 
         goMenu.setOnClickListener(this);
         listPenalties.setOnClickListener(this);

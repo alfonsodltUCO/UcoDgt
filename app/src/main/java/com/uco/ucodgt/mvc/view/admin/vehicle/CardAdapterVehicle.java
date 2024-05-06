@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -69,6 +70,39 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
         holder.textPlate.setText(vehicle.getLicencePlate());
         holder.textType.setText(vehicle.getCarType().toString());
 
+        if(vehicleList.get(position).getCarType().toString().equals("fiat")){
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.fiat);
+        } else if (vehicleList.get(position).getCarType().toString().equals("ferrari")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.ferrari);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("porsche")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.porsche);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("lamborghini")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.lamborghini);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("citroen")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.citroen);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("skoda")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.skoda);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("audi")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.audi);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("bmw")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.bmw);
+
+        }else if (vehicleList.get(position).getCarType().toString().equals("volkswagen")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.volkswagen);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("mercedes")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.mercedes);
+
+        } else if (vehicleList.get(position).getCarType().toString().equals("volvo")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.volvo);
+
+        }
         holder.itemView.setOnClickListener(v -> {
 
             Intent goShowVehicle = new Intent(context, CheckVehicleToFind.class);
@@ -91,6 +125,8 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
      */
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         TextView textPlate, textType;
+        ImageView image;
+
         /**
          * Constructor to initialize the views inside the ViewHolder.
          *
@@ -99,6 +135,7 @@ public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            image=itemView.findViewById((com.uco.ucodgt.R.id.imageView));
             textPlate = itemView.findViewById(com.uco.ucodgt.R.id.textLicenceP);
             textType = itemView.findViewById(com.uco.ucodgt.R.id.textCarT);
         }

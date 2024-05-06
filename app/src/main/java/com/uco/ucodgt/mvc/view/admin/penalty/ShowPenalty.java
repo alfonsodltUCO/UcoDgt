@@ -3,18 +3,22 @@ package com.uco.ucodgt.mvc.view.admin.penalty;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 
 import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToDelete;
+import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToDelete;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+import com.uco.ucodgt.mvc.view.admin.vehicle.ShowVehicle;
+
 /**
  * Activity to display details of a penalty and provide options to delete it or return to the main menu.
  * @author Alfosno de la torre
@@ -37,7 +41,6 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
 
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
-        Log.d("w",penalty.getDescription().toString());
         setContentView(com.uco.ucodgt.R.layout.show_penalty);
         goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         deletePenalty=findViewById(com.uco.ucodgt.R.id.deletePenalty);
@@ -84,12 +87,39 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deletePenalty){
             // Initiates deletion process for the current penalty
+            showConfirmationDialog();
 
+
+
+        }
+    }
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(com.uco.ucodgt.R.layout.confirm_activity, null);
+        builder.setView(dialogView);
+
+        TextView textConfirmation = dialogView.findViewById(com.uco.ucodgt.R.id.text_confirmation);
+        Button btnConfirm = dialogView.findViewById(com.uco.ucodgt.R.id.btn_confirm);
+        Button btnCancel = dialogView.findViewById(com.uco.ucodgt.R.id.btn_cancel);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        btnConfirm.setOnClickListener(v -> {
             Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
             goDelete.putExtra("id", penalty.getId().toString());
             startActivity(goDelete);
             finish();
+            dialog.dismiss();
+        });
 
-        }
+        btnCancel.setOnClickListener(v -> {
+
+
+            dialog.dismiss();
+
+        });
     }
 }
+

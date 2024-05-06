@@ -76,6 +76,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         description.setText(penalty.getDescription());
         state.setText("state= "+penalty.getState().toString());
         reason.setText("reason= "+penalty.getReason().toString());
+        description.setText("description= "+penalty.getDescription());
 
         points.setText("points= "+penalty.getPoints().toString());
         quant.setText("quantity= "+ penalty.getQuantity().toString());

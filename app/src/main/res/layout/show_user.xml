@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:text="User found:"
                 android:textSize="30sp" />
 
@@ -248,6 +248,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginBottom="@dimen/fab_margin_16"
         android:layout_gravity="end">
         <Button
             android:id="@+id/goMainMenu"

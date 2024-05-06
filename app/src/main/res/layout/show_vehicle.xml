@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:text="Vehicle found:"
                 android:textSize="30sp" />
 

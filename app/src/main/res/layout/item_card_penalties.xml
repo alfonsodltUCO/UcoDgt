@@ -46,5 +46,6 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

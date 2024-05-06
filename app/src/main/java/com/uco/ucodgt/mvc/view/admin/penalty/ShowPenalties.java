@@ -1,6 +1,7 @@
 package com.uco.ucodgt.mvc.view.admin.penalty;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 public class ShowPenalties extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CardAdapterPenalty adapter;
+
     private List<PenaltyDTO> penaltyList;
     /**
      * Initializes the activity with a list of penalties and sets up the RecyclerView.

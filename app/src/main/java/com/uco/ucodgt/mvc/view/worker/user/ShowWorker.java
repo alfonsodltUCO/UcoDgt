@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,8 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
     String dniNoText;
     String numberWorker;
     Button goMenu;
+    ImageView image;
+
 
     Button changeData;
 
@@ -54,6 +57,8 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         numberofworker=findViewById(com.uco.ucodgt.R.id.tvNumberWorker);
         changeData=findViewById(com.uco.ucodgt.R.id.changeData);
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        image.setImageResource(com.uco.ucodgt.R.drawable.trabajador);
 
         changeData.setOnClickListener(this);
         goMenu.setOnClickListener(this);

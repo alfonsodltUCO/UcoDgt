@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -28,6 +29,8 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     TextView name,surname,email,licencepoints,birth,dni,obtaining;
     String strDate,strDate2;
     String dniRec;
+    ImageView image;
+
     String dniNoText;
     Button goMenu,listPenalties,listVehicles,goChangeData;
 
@@ -61,8 +64,11 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listVehicles=findViewById(com.uco.ucodgt.R.id.listVehicles);
         licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
         goChangeData=findViewById(R.id.changeData);
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+
         goMenu.setOnClickListener(this);
 
+        image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
         listVehicles.setOnClickListener(this);
         listPenalties.setOnClickListener(this);
         ClientDTO client = (ClientDTO) getIntent().getSerializableExtra("client");

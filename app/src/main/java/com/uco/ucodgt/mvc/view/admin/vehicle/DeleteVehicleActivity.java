@@ -55,15 +55,14 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
         if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
-
-          showConfirmationDialog();
+            Intent goMain=new Intent(DeleteVehicleActivity.this, AdminActivity.class);
+            startActivity(goMain);
+            finish();
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteVehicle){
+            showConfirmationDialog();
 
-            Intent goDelete=new Intent(DeleteVehicleActivity.this, CheckVehicleToDelete.class);
-            goDelete.putExtra("licencePlate",licencePlate.getText().toString().trim());
-            startActivity(goDelete);
-            finish();
+
 
         }
     }
@@ -90,8 +89,9 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
 
         btnConfirm.setOnClickListener(v -> {
 
-            Intent goMain=new Intent(DeleteVehicleActivity.this, AdminActivity.class);
-            startActivity(goMain);
+            Intent goDelete=new Intent(DeleteVehicleActivity.this, CheckVehicleToDelete.class);
+            goDelete.putExtra("licencePlate",licencePlate.getText().toString().trim());
+            startActivity(goDelete);
             finish();
             dialog.dismiss();
         });
