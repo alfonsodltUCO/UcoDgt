@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -27,6 +28,8 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     String idtodelete;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,deletePenalty;
+    ImageView image;
+
     PenaltyDTO penalty;
 
     /**
@@ -55,7 +58,9 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         idtodelete=id.getText().toString();
         quant=findViewById(com.uco.ucodgt.R.id.tvQuantity);
         points=findViewById(com.uco.ucodgt.R.id.tvPoints);
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
         String strDate= formatter.format(penalty.getDate());
         date.setText("date= "+strDate);
         id.setText("id= "+penalty.getId().toString());
@@ -67,6 +72,11 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         points.setText("points= "+penalty.getPoints().toString());
         quant.setText("quantity= "+ penalty.getQuantity().toString());
         licenceP.setText("plate= "+penalty.getLicenceplate());
+
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        String reason = penalty.getReason().toString().toLowerCase();
+        int resourceId = getResources().getIdentifier("drawable/" + reason, null, getPackageName());
+        image.setImageResource(resourceId);
         goMain.setOnClickListener(this);
         deletePenalty.setOnClickListener(this);
     }
