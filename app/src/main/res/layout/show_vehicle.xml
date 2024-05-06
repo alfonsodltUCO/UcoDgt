@@ -5,21 +5,22 @@
     android:background="@drawable/gradient"
     android:orientation="vertical"
     >
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.2"
-        android:src="@drawable/animatedlogo" />
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.5"
+        android:layout_weight="1"
         android:layout_height="0dp"
         android:orientation="vertical"
         >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/animatedlogo" />
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -60,7 +61,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center">
@@ -220,11 +221,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_margin_16"
         android:orientation="vertical"
+        android:layout_weight="0.3"
+        android:gravity="center"
         android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"

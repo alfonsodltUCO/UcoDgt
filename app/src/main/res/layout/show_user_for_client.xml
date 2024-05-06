@@ -248,55 +248,72 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+            android:layout_marginBottom="@dimen/fab_margin_16"
         android:layout_gravity="end">
 
-        <Button
-            android:id="@+id/goMainMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="Go main menu"
-            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/goMainMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="Go main menu"
+                    >
 
-        </Button>
+                </Button>
 
-        <Button
-            android:id="@+id/listVehicles"
-            android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="List vehicles"
-            >
+                <Button
+                    android:id="@+id/listVehicles"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="List vehicles"
+                    >
 
-        </Button>
+                </Button>
 
-        <Button
-            android:id="@+id/listPenalties"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="List Penalties"
-            >
+            </LinearLayout>
 
-        </Button>
-        <Button
-            android:id="@+id/changeData"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="Change data"
-            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-        </Button>
+                <Button
+                    android:id="@+id/listPenalties"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="List Penalties"
+                    >
+
+                </Button>
+                <Button
+                    android:id="@+id/changeData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="Change data"
+                    >
+
+                </Button>
+            </LinearLayout>
+
+
     </LinearLayout>
 
     </LinearLayout>

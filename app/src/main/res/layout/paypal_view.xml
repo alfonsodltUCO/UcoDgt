@@ -33,10 +33,11 @@
                 android:id="@+id/goMainMenu"
                 android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="20sp"
+                android:layout_marginBottom="60sp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:text="Go main menu"
                 >
 
@@ -46,8 +47,9 @@
                 app:payment_button_size="medium"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:layout_marginBottom="40sp"
                 android:layout_weight="1"
-                android:layout_width="wrap_content"
+                android:layout_width="300sp"
                 android:layout_height="wrap_content">
 
             </com.paypal.checkout.paymentbutton.PayPalButton>

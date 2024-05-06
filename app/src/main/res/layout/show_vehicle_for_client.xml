@@ -5,24 +5,24 @@
     android:background="@drawable/gradient"
     android:orientation="vertical"
     >
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.3"
-        android:src="@drawable/animatedlogo" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.6"
-        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:gravity="center"
         >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/animatedlogo" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:layout_weight="0.5">
 
             <TextView
                 android:id="@+id/textviewpageinfo"
@@ -215,7 +215,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.4"
+        android:layout_weight="0.5"
         android:orientation="vertical"
         android:layout_gravity="center">
 
@@ -224,14 +224,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginBottom="@dimen/fab_margin_16"
-            android:orientation="vertical">
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/goMainMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:text="Go main menu"
                 >
 
@@ -244,7 +244,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:text="List penalties"
                 >
 

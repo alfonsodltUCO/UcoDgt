@@ -23,13 +23,14 @@
         android:layout_height="wrap_content"
         android:text="Confirm"
         android:textSize="30sp"
-
+        android:layout_marginBottom="@dimen/fab_margin_16"
         android:textColor="@android:color/white"
         android:background="@color/white"/>
 
     <Button
         android:id="@+id/btn_cancel"
         android:gravity="center"
+        android:layout_marginTop="@dimen/fab_margin_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"

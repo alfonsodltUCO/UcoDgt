@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,9 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     String idtoshow;
     TextView id,description,dniw,dnic,quant,points,date,state,reason,licenceP;
     Button goMain,payPenalty;
+
+    ImageView image;
+
     PenaltyDTO penalty;
     String dni,workerNum;
 
@@ -81,6 +85,11 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         points.setText("points= "+penalty.getPoints().toString());
         quant.setText("quantity= "+ penalty.getQuantity().toString());
         licenceP.setText("plate= "+ penalty.getLicenceplate());
+
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        String reason = penalty.getReason().toString().toLowerCase();
+        int resourceId = getResources().getIdentifier("drawable/" + reason, null, getPackageName());
+        image.setImageResource(resourceId);
 
         goMain.setOnClickListener(this);
         payPenalty.setOnClickListener(this);

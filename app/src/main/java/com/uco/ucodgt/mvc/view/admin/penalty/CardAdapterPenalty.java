@@ -85,10 +85,10 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
             holder.image.setImageResource(com.uco.ucodgt.R.drawable.alcohol);
 
         } else if (penaltyList.get(position).getReason().toString().equals("no_itv")) {
-            holder.image.setImageResource(com.uco.ucodgt.R.drawable.itv);
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_itv);
 
         } else if (penaltyList.get(position).getReason().toString().equals("no_insurance")) {
-            holder.image.setImageResource(com.uco.ucodgt.R.drawable.insurance);
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_insurance);
 
         }
         holder.itemView.setOnClickListener(v -> {

@@ -69,6 +69,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
 
     PaymentButton paypalButton;
 
+    Button goMain;
+
 
     String cliendid="AexbuQVcW3oE-e1SudUupCh0SogisvlGA1db4y61niKYgQ564U5n2vXvN5Gbj3IFCW6hFLbumoYQrcPv";
 
@@ -166,6 +168,15 @@ public class CheckPenaltyToPay extends AppCompatActivity {
 
                     setContentView(R.layout.paypal_view);
 
+                    goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
+
+                    goMain.setOnClickListener((v)->{
+                        Intent goMain = new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                        goMain.putExtra("dni", dni);
+                        startActivity(goMain);
+                        hideLoading();
+                        finish();
+                    });
                     paypalButton=findViewById(R.id.paypalButton);
 
                     paypalButton.setup(

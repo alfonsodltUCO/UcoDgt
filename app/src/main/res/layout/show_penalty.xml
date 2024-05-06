@@ -22,8 +22,8 @@
             android:id="@+id/textviewpageinfo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
             android:layout_gravity="center"
+            android:layout_weight="2"
             android:gravity="center|top"
             android:text="Penalty found:"
             android:textSize="30sp" />

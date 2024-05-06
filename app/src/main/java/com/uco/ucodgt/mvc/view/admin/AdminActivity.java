@@ -1,7 +1,9 @@
 package com.uco.ucodgt.mvc.view.admin;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
@@ -70,6 +72,7 @@ public class AdminActivity extends AppCompatActivity{
      * @return You must return true for the menu to be displayed;
      * if you return false it will not be shown.
      */
+    @SuppressLint("ResourceType")
     public boolean onCreateOptionsMenu(Menu menu){
        getMenuInflater().inflate(com.uco.ucodgt.R.menu.adminmenu,menu);
        setContentView(com.uco.ucodgt.R.layout.adminmain);
