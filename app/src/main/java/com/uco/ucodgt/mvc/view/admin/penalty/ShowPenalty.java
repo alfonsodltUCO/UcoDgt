@@ -3,6 +3,7 @@ package com.uco.ucodgt.mvc.view.admin.penalty;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
 
         penalty=(PenaltyDTO)getIntent().getSerializableExtra("penalty");
+        Log.d("w",penalty.getDescription().toString());
         setContentView(com.uco.ucodgt.R.layout.show_penalty);
         goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         deletePenalty=findViewById(com.uco.ucodgt.R.id.deletePenalty);
@@ -56,7 +58,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
         id.setText("id= "+penalty.getId().toString());
         dniw.setText("dni Worker= "+penalty.getDniWorker());
         dnic.setText("dni Client= "+penalty.getDniClient());
-        description.setText(penalty.getDescription());
+        description.setText("description= "+penalty.getDescription());
         state.setText("state= "+penalty.getState().toString());
         reason.setText("reason= "+penalty.getReason().toString());
         points.setText("points= "+penalty.getPoints().toString());
