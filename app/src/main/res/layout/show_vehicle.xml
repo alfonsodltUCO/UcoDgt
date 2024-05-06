@@ -9,30 +9,30 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="0.3"
+        android:layout_weight="0.2"
         android:src="@drawable/animatedlogo" />
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.6"
-        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:gravity="center"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.4">
+            android:gravity="center|top"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/textviewpageinfo"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="center|top"
                 android:text="Vehicle found:"
                 android:textSize="30sp" />
 
@@ -59,7 +59,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:orientation="vertical"
             android:layout_gravity="center"
@@ -217,8 +217,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.4"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/fab_margin_16"
         android:orientation="vertical"
         android:layout_gravity="center">
@@ -226,57 +225,65 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
-            <Button
-                android:id="@+id/goMainMenu"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/goMainMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="Go main menu"
+                    >
+
+                </Button>
+
+                <Button
+                    android:id="@+id/deleteVehicle"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="Delete vehicle"
+                    >
+                </Button>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:textSize="30sp"
-                android:text="Go main menu"
-                >
+                android:layout_height="wrap_content">
 
-            </Button>
+                <Button
+                    android:id="@+id/listPenalties"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:text="List penalties"
+                    android:textSize="30sp"
+                    >
 
-            <Button
-                android:id="@+id/deleteVehicle"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:textSize="30sp"
-                android:text="Delete vehicle"
-                >
-            </Button>
+                </Button>
 
-            <Button
-                android:id="@+id/listPenalties"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:singleLine="true"
-                android:text="List penalties"
-                android:textSize="30sp"
-                >
+                <Button
+                    android:id="@+id/extendItv"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textSize="30sp"
+                    android:text="Extend itv"
+                    >
 
-            </Button>
+                </Button>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/extendItv"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:textSize="30sp"
-                android:text="Extend itv"
-                >
-
-            </Button>
 
 
         </LinearLayout>
