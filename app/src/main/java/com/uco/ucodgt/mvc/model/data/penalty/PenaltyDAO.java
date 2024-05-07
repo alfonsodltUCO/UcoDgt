@@ -2,6 +2,7 @@ package com.uco.ucodgt.mvc.model.data.penalty;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 
 import com.android.volley.Request;
@@ -1132,7 +1133,7 @@ public class PenaltyDAO {
                 Request.Method.POST,
                 URL,
                 response -> {
-                    callback.onPenaltyReceived(new PenaltyDTO());
+                    callback.onPenaltyReceived(penaltyToFInd);
                 },
                 callback::onError
         ) {
@@ -1144,6 +1145,7 @@ public class PenaltyDAO {
                 params.put("points",penaltyToFInd.getPoints().toString());
                 params.put("dni",penaltyToFInd.getDniClient());
                 params.put("dniW",penaltyToFInd.getDniWorker());
+                Log.d("e",params.toString());
                 return params;
             }
         };

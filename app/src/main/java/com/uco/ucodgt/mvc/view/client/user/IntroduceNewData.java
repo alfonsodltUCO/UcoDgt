@@ -16,6 +16,12 @@ import com.uco.ucodgt.mvc.controller.client.user.CheckDataForUpdate;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 
+/**
+ * This class represents an activity in the client application where users can
+ * introduce new data, such as email and password, for updating their profile.
+ * @author Alfonso de la torre
+ */
+
 public class IntroduceNewData extends AppCompatActivity implements View.OnClickListener{
 
     String dniRec;
@@ -24,6 +30,16 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
 
     EditText email,password;
 
+
+    /**
+     * Called when the activity is starting. This method initializes the activity,
+     * sets the layout, and initializes UI components.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down, this Bundle contains
+     *                           the data it most recently supplied in
+     *                           onSaveInstanceState(Bundle).
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +55,11 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
         goChange.setOnClickListener(this);
     }
 
+    /**
+     * Called when a view has been clicked. This method handles button clicks.
+     *
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
         if(v.getId()==com.uco.ucodgt.R.id.goConfirm){

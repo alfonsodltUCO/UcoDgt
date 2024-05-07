@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#74969E"
-    android:backgroundTint="#74969E"
+    android:background="@drawable/gradient"
     android:layout_height="match_parent">
-    <ImageView
+
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_weight="0.1"
-        android:src="@drawable/logoempresa"
+        android:layout_height="70dp"
+        android:layout_weight="0.3"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:src="@drawable/animatedlogo" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="start|center"
+            android:gravity="center"
             android:text="Description"
             android:textSize="18sp" />
 
@@ -47,7 +44,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:layout_gravity="center"
@@ -57,17 +54,29 @@
             android:id="@+id/checkPenaltyToAdd"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
+            android:layout_marginEnd="150sp"
             android:layout_gravity="center"
             android:text="Add penalty"
             >
 
         </Button>
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/multaanimada" />
+
+
         <Button
             android:id="@+id/goMainMenu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="100sp"
+            android:layout_marginStart="150sp"            android:layout_weight="1"
             android:layout_gravity="center"
             android:text="Go main menu"
             >

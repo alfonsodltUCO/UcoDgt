@@ -3,16 +3,20 @@ package com.uco.ucodgt.mvc.view.admin.user;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 
+import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import com.uco.ucodgt.mvc.controller.admin.users.CheckUserToDelete;
 import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltiesToList;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehiclesToList;
@@ -20,6 +24,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.penalty.IntroducePoints;
+import com.uco.ucodgt.mvc.view.admin.penalty.ShowPenalty;
 
 /**
  * Activity for displaying user details and providing options to perform actions related to the user.
@@ -29,6 +34,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
     TextView name,surname,email,numberofworker_licencepoints,birth,dni,obtaining;
     String strDate,strDate2;
     String type;
+    ImageView image;
     String dniNoText;
     Button goMenu,deleteUser,listPenalties,listVehicles,updatePoints;
     /**
@@ -63,6 +69,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listVehicles=findViewById(com.uco.ucodgt.R.id.listVehicles);
         numberofworker_licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
         updatePoints=findViewById(com.uco.ucodgt.R.id.updatePoints);
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
 
         updatePoints.setOnClickListener(this);
         goMenu.setOnClickListener(this);
@@ -82,6 +89,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             numberofworker_licencepoints.setText("worker number= "+worker.getNumberOfWorker().toString());
             dni.setText("dni= "+worker.getDni());
             dniNoText=worker.getDni();
+            image.setImageResource(com.uco.ucodgt.R.drawable.trabajador);
             strDate= formatter.format(worker.getAge());
             birth.setText("birth= "+strDate);
 
@@ -94,6 +102,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             surname.setText("surname= "+client.getSurname());
             email.setText("email= "+client.getEmail());
             numberofworker_licencepoints.setText("licence points= "+client.getLicencepoints().toString());
+            image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
 
             dni.setText("dni= "+client.getDni());
             dniNoText=client.getDni();
@@ -118,12 +127,8 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             finish();
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteUser){
+            showConfirmationDialog();
 
-            Intent checkUserToDelete=new Intent(ShowUser.this, CheckUserToDelete.class);
-            checkUserToDelete.putExtra("dni",dniNoText);
-            checkUserToDelete.putExtra("type",type);
-            startActivity(checkUserToDelete);
-            finish();
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
 
@@ -176,5 +181,36 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 finish();
             }
         }
+    }
+
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(com.uco.ucodgt.R.layout.confirm_activity, null);
+        builder.setView(dialogView);
+
+        TextView textConfirmation = dialogView.findViewById(com.uco.ucodgt.R.id.text_confirmation);
+        Button btnConfirm = dialogView.findViewById(com.uco.ucodgt.R.id.btn_confirm);
+        Button btnCancel = dialogView.findViewById(com.uco.ucodgt.R.id.btn_cancel);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        btnConfirm.setOnClickListener(v -> {
+
+            Intent checkUserToDelete=new Intent(ShowUser.this, CheckUserToDelete.class);
+            checkUserToDelete.putExtra("dni",dniNoText);
+            checkUserToDelete.putExtra("type",type);
+            startActivity(checkUserToDelete);
+            finish();
+            dialog.dismiss();
+        });
+
+        btnCancel.setOnClickListener(v -> {
+
+
+            dialog.dismiss();
+
+        });
     }
 }

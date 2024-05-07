@@ -3,34 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#74969E">
+    android:background="@drawable/gradient"
+    >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_gravity="center"
         >
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:src="@drawable/logoempresa"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            >
-        </ImageView>
+            android:layout_height="wrap_content"
+            android:src="@drawable/animatedlogo" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="center"
         android:layout_gravity="center"
         >
         <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
+            android:foregroundGravity="center"
+            android:background="@drawable/fondolistusers"
             android:id="@+id/recycler_view"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_width="464dp"
+            android:layout_height="472dp"
             android:layout_gravity="center"
             android:layout_weight="1">
 

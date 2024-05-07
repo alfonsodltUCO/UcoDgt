@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -71,6 +72,30 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         holder.textPlate.setText(penalty.getLicenceplate());
         holder.textId.setText(penalty.getId().toString().trim());
 
+        if(penaltyList.get(position).getReason().toString().equals("drugs")){
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.drugs);
+        } else if (penaltyList.get(position).getReason().toString().equals("blue_zone")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.blue_zone);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("no_seatbelt")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_seatbelt);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("velocity")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.velocity);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("incorrect_parking")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.incorect_parking);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("alcohol")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.alcohol);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("no_itv")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_itv);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("no_insurance")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_insurance);
+
+        }
         holder.itemView.setOnClickListener(v -> {
 
             Intent goShowPenalty = new Intent(context, CheckPenaltyToFindForClient.class);
@@ -94,6 +119,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
      */
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         TextView textPlate, textId;
+        ImageView image;
         /**
          * Constructor for CardViewHolder.
          *
@@ -102,6 +128,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            image=itemView.findViewById((com.uco.ucodgt.R.id.imageView));
             textPlate = itemView.findViewById(com.uco.ucodgt.R.id.textPenaltyL);
             textId = itemView.findViewById(com.uco.ucodgt.R.id.textPenaltyId);
         }

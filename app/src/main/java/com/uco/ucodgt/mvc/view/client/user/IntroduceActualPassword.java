@@ -13,6 +13,11 @@ import com.uco.ucodgt.mvc.controller.client.user.CheckClientPassword;
  import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 
+/**
+ * This activity allows the user to input their actual password for change his/he own data.
+ * It provides options to proceed to check if the actual password is correct or to navigate back to the main menu.
+ * @author Alfonso de la torre
+ */
 public class IntroduceActualPassword extends AppCompatActivity implements View.OnClickListener {
 
     Button goMain,goCheck;
@@ -20,6 +25,13 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
     String dniRec;
     EditText pass;
 
+
+    /**
+     * Initializes the activity and sets up the UI elements.
+     * Retrieves the user's identification number from the intent extras.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if any.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +47,11 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
         goMain.setOnClickListener(this);
     }
 
+    /**
+     * Handles click events for the buttons.
+     *
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
         if(v.getId()==com.uco.ucodgt.R.id.goCheck){

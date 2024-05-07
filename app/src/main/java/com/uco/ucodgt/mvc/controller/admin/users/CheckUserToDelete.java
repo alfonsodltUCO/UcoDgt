@@ -27,6 +27,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.user.DeleteUserActivity;
 /**
  * An activity to check the validity of a user's DNI before attempting to delete the user from the database.
+ * @author Alfonso de la torre
  */
 public class CheckUserToDelete extends AppCompatActivity {
     private ProgressBar progressBar;

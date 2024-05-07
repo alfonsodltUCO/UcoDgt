@@ -2,160 +2,334 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74969E"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     >
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:src="@drawable/logoempresa"
         android:layout_gravity="center"
-        >
-    </ImageView>
+        android:layout_weight="0.3"
+        android:src="@drawable/animatedlogo" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         >
-        <TextView
-            android:id="@+id/textviewpageinfo"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="User found:"
-            android:textSize="25sp"
-            android:layout_gravity="start"
-            />
-        <TextView
-            android:id="@+id/textViewFoundName"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the name"
-            android:textSize="18sp"
-            />
+            android:layout_weight="0.4">
 
-        <TextView
-            android:id="@+id/textViewFoundSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the surname"
-            android:textSize="18sp"
-            />
+            <TextView
+                android:id="@+id/textviewpageinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="User found:"
+                android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/textViewFoundLicencePoints_numberworker"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the licence points"
-            android:textSize="18sp"
-            />
+            <LinearLayout
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="0.1"
+                android:layout_marginRight="600dp"
+                android:gravity="start">
 
-        <TextView
-            android:id="@+id/textViewFoundDateBirth"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the date of birth"
-            android:textSize="18sp"
-            />
+                <ImageView
+                    android:id="@+id/imageShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/textViewFoundEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the email"
-            android:textSize="18sp"
-            />
+                </ImageView>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewFoundDni"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the DNI"
-            android:textSize="18sp"
-            />
-        <TextView
-            android:id="@+id/textViewDateObtaining"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Introduce the date of obtaining licence"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textViewFoundName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the name"
+                    android:textSize="30sp"
+                    />
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+
+                <TextView
+                    android:id="@+id/textViewFoundSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the surname"
+                    android:textSize="30sp"
+                    />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/textViewFoundDateBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the date of birth"
+                    android:textSize="30sp"
+                    />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+               <TextView
+                    android:id="@+id/textViewFoundLicencePoints_numberworker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the licence points"
+                    android:textSize="30sp"
+                />
+
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+
+              <TextView
+                    android:id="@+id/textViewFoundEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the email"
+                    android:textSize="30sp"
+                    />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+                  <TextView
+                    android:id="@+id/textViewFoundDni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:text="Introduce the DNI"
+                    android:textSize="30sp"
+                    />
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+
+
+                <TextView
+                    android:id="@+id/textViewDateObtaining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40sp"
+                    android:layout_marginLeft="40sp"
+                    android:layout_weight="1"
+                    android:text="Introduce the date of obtaining licence"
+                    android:textSize="30sp"
+                    />
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+
+                <View
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/black"/>
+        </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="end">
-        <Button
-            android:id="@+id/goMainMenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="Go main menu"
-            >
+        android:layout_marginBottom="@dimen/fab_margin_16"
+        android:gravity="center"
+        android:layout_gravity="center">
 
-        </Button>
-        <Button
-            android:id="@+id/deleteUser"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:text="Delete User"
-            >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/fab_margin_16"
+            android:layout_height="wrap_content">
 
-        </Button>
+            <Button
+                android:id="@+id/goMainMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="Go main menu"
+                >
 
-        <Button
-            android:id="@+id/listVehicles"
-            android:layout_width="match_parent"
-            android:singleLine="true"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="List vehicles"
-            >
+            </Button>
+            <Button
+                android:id="@+id/deleteUser"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:text="Delete User"
+                >
 
-        </Button>
+            </Button>
 
-        <Button
-            android:id="@+id/listPenalties"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="List Penalties"
-            >
+        </LinearLayout>
 
-        </Button>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/fab_margin_16"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/updatePoints"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:text="Update points"
-            >
 
-        </Button>
+            <Button
+                android:id="@+id/listVehicles"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="List vehicles"
+                >
+
+            </Button>
+
+            <Button
+                android:id="@+id/listPenalties"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/fab_margin_16"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/fab_margin_16"
+                android:textSize="30sp"
+                android:text="List Penalties"
+                >
+
+            </Button>
+
+            <Button
+                android:id="@+id/updatePoints"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="Update points"
+                >
+
+            </Button>
+        </LinearLayout>
+
+
+
     </LinearLayout>
-
-
-</LinearLayout>
+    </LinearLayout>
+    </LinearLayout>

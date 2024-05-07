@@ -1,9 +1,11 @@
 package com.uco.ucodgt.mvc.view.admin.penalty;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
 
     private List<PenaltyDTO> penaltyList;
     private Context context;
+
     /**
      * Constructs a new CardAdapterPenalty.
      *
@@ -57,13 +60,37 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
      * @param holder   The CardViewHolder to bind data to.
      * @param position The position of the item within the adapter's data set.
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
 
         PenaltyDTO penalty = penaltyList.get(position);
         holder.textPlate.setText(penalty.getLicenceplate());
         holder.textId.setText(penalty.getId().toString().trim());
+        if(penaltyList.get(position).getReason().toString().equals("drugs")){
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.drugs);
+        } else if (penaltyList.get(position).getReason().toString().equals("blue_zone")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.blue_zone);
 
+        } else if (penaltyList.get(position).getReason().toString().equals("no_seatbelt")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_seatbelt);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("velocity")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.velocity);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("incorrect_parking")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.incorect_parking);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("alcohol")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.alcohol);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("no_itv")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_itv);
+
+        } else if (penaltyList.get(position).getReason().toString().equals("no_insurance")) {
+            holder.image.setImageResource(com.uco.ucodgt.R.drawable.no_insurance);
+
+        }
         holder.itemView.setOnClickListener(v -> {
 
             Intent goShowPenalty = new Intent(context, CheckPenaltyToFind.class);
@@ -85,6 +112,8 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
      */
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         TextView textPlate, textId;
+        ImageView image;
+
         /**
          * Constructs a new CardViewHolder.
          *
@@ -93,6 +122,7 @@ public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.
         public CardViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            image = itemView.findViewById(com.uco.ucodgt.R.id.imageView);
             textPlate = itemView.findViewById(com.uco.ucodgt.R.id.textPenaltyL);
             textId = itemView.findViewById(com.uco.ucodgt.R.id.textPenaltyId);
         }

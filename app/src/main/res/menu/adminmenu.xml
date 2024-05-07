@@ -1,48 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item1AdminAddUser"
-        android:title="Add user" />
+        android:id="@+id/optionUsers"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/cliente"
+        >
+
+        <menu>
+            <item
+                android:id="@+id/item1AdminAddUser"
+                android:title="Add user"
+                />
+            <item
+                android:id="@+id/item2AdminDeleteUser"
+                android:title="Delete user" />
+            <item
+                android:id="@+id/item3AdminListUsers"
+                android:title="List users" />
+
+            <item
+                android:id="@+id/item13AdminUpdateUserPoints"
+                android:title="Update points of user" />
+            <item
+                android:id="@+id/item4AdminFindUser"
+                android:title="Find user" />
+        </menu>
+
+
+    </item>
+
     <item
-        android:id="@+id/item2AdminDeleteUser"
-        android:title="Delete user" />
+        android:id="@+id/optionVehicles"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/deportivo">
+
+        <menu>
+            <item
+                android:id="@+id/item5AdminAddVehicle"
+                android:title="Add vehicle" />
+            <item
+                android:id="@+id/item6AdminDeleteVehicle"
+                android:title="Delete vehicle" />
+            <item
+                android:id="@+id/item7AdminListVehicles"
+                android:title="List vehicles" />
+            <item
+                android:id="@+id/item8AdminFindVehicle"
+                android:title="Find vehicle" />
+            <item
+                android:id="@+id/item14AdminExtendItv"
+                android:title="Extend itv" />
+        </menu>
+
+    </item>
+
     <item
-        android:id="@+id/item3AdminListUsers"
-        android:title="List users" />
+        android:id="@+id/optionPenalties"
+        app:showAsAction="always"
+        android:icon="@drawable/multa"
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/item9AdminListPenalties"
+                android:title="List penalties" />
+            <item
+                android:id="@+id/item10AdminAddPenalty"
+                android:title="Add penalty" />
+            <item
+                android:id="@+id/item11AdminDeletePenalty"
+                android:title="Delete penalty" />
+            <item
+                android:id="@+id/item12AdminFindPenalty"
+                android:title="Find penalty" />
+        </menu>
+
+    </item>
+
+
     <item
-        android:id="@+id/item13AdminUpdateUserPoints"
-        android:title="Update points of user" />
-    <item
-        android:id="@+id/item4AdminFindUser"
-        android:title="Find user" />
-    <item
-        android:id="@+id/item5AdminAddVehicle"
-        android:title="Add vehicle" />
-    <item
-        android:id="@+id/item6AdminDeleteVehicle"
-        android:title="Delete vehicle" />
-    <item
-        android:id="@+id/item7AdminListVehicles"
-        android:title="List vehicles" />
-    <item
-        android:id="@+id/item8AdminFindVehicle"
-        android:title="Find vehicle" />
-    <item
-        android:id="@+id/item9AdminListPenalties"
-        android:title="List penalties" />
-    <item
-        android:id="@+id/item10AdminAddPenalty"
-        android:title="Add penalty" />
-    <item
-        android:id="@+id/item11AdminDeletePenalty"
-        android:title="Delete penalty" />
-    <item
-        android:id="@+id/item12AdminFindPenalty"
-        android:title="Find penalty" />
-    <item
-        android:id="@+id/item14AdminExtendItv"
-        android:title="Extend itv" />
+        android:id="@+id/closeSession"
+        app:showAsAction="always"
+        android:icon="@drawable/sign_out"
+        android:title="">
+    </item>
+
 
 
 

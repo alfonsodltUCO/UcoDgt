@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item1WorkerAddPenalty"
-        android:title="Add penalty" />
-    <item
-        android:id="@+id/item2WorkerCheckVehicle"
-        android:title="Check vehicle" />
-    <item
-        android:id="@+id/item3WorkerCheckUser"
-        android:title="Check user" />
+        android:id="@+id/optionUsers"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/menu"
+        >
+        <menu>
+            <item
+                android:id="@+id/item1WorkerAddPenalty"
+                android:title="Add penalty" />
+            <item
+                android:id="@+id/item2WorkerCheckVehicle"
+                android:title="Check vehicle" />
+            <item
+                android:id="@+id/item3WorkerCheckUser"
+                android:title="Check user" />
+
+            <item
+                android:id="@+id/item4WorkerCancelPenalty"
+                android:title="Cancel Penalty" />
+            <item
+                android:id="@+id/item5WorkerGetMyInfo"
+                android:title="Get my info" />
+        </menu>
+
+
+    </item>
 
     <item
-        android:id="@+id/item4WorkerCancelPenalty"
-        android:title="Cancel Penalty" />
-    <item
-        android:id="@+id/item5WorkerGetMyInfo"
-        android:title="Get my info" />
+        android:id="@+id/closeSession"
+        app:showAsAction="always"
+        android:icon="@drawable/sign_out"
+        android:title="">
+    </item>
+
+
 </menu>

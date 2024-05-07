@@ -3,11 +3,14 @@ package com.uco.ucodgt.mvc.view.admin.vehicle;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -16,14 +19,18 @@ import java.text.SimpleDateFormat;
 import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltiesToList;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckExtendItv;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToDelete;
+import com.uco.ucodgt.mvc.controller.client.user.CheckDataForUpdate;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+import com.uco.ucodgt.mvc.view.client.user.IntroduceNewData;
+
 /**
  * Activity class to display details of a vehicle for administrators.
  * @author Alfonso de la torre
  */
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
+    ImageView image;
     TextView lplate,itv1,itv2,idIns,color,type;
     Button goMain,deleteVehicle,listPenalties,extendItv;
     /**
@@ -54,6 +61,11 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         color.setText("Color= "+vehicle.getColor().toString());
         type.setText("Type= "+vehicle.getCarType().toString());
         idIns.setText("Id insurance= "+vehicle.getIdInsurance());
+
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        String carType = vehicle.getCarType().toString().toLowerCase();
+        int resourceId = getResources().getIdentifier("drawable/" + carType, null, getPackageName());
+        image.setImageResource(resourceId);
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(vehicle.getValidItvFrom());
@@ -87,11 +99,8 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             finish();
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteVehicle){
+            showConfirmationDialog();
 
-            Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
-            goDelete.putExtra("licencePlate",licplate);
-            startActivity(goDelete);
-            finish();
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
 
@@ -109,5 +118,33 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
 
         }
     }
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(com.uco.ucodgt.R.layout.confirm_activity, null);
+        builder.setView(dialogView);
 
+        TextView textConfirmation = dialogView.findViewById(com.uco.ucodgt.R.id.text_confirmation);
+        Button btnConfirm = dialogView.findViewById(com.uco.ucodgt.R.id.btn_confirm);
+        Button btnCancel = dialogView.findViewById(com.uco.ucodgt.R.id.btn_cancel);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        btnConfirm.setOnClickListener(v -> {
+
+            Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
+            goDelete.putExtra("licencePlate",licplate);
+            startActivity(goDelete);
+            finish();
+            dialog.dismiss();
+        });
+
+        btnCancel.setOnClickListener(v -> {
+
+
+            dialog.dismiss();
+
+        });
+    }
 }

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74969E"
+    android:background="@drawable/gradient"
     android:orientation="vertical"
     >
     <LinearLayout
@@ -13,30 +12,22 @@
         android:gravity="center"
         android:layout_weight="1">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/logoempresa"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </ImageView>
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/animatedlogo" />
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="0.4"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/closeSession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Close session"
-            >
+        android:layout_weight="1">
 
-        </Button>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -27,6 +28,8 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
     String numberWorker;
+    ImageView image;
+
     Button goMain,addPenalty,listPenalties,seeUser;
 
     /**
@@ -64,8 +67,13 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         String strDate= formatter.format(vehicle.getValidItvFrom());
         itv1.setText("Itv valid from= "+strDate);
         strDate= formatter.format(vehicle.getValidItvTo());
-
         itv2.setText("Itv valid to= "+strDate);
+
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        String carType = vehicle.getCarType().toString().toLowerCase();
+        int resourceId = getResources().getIdentifier("drawable/" + carType, null, getPackageName());
+        image.setImageResource(resourceId);
+
         goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         seeUser=findViewById(com.uco.ucodgt.R.id.seeUser);
         addPenalty=findViewById(com.uco.ucodgt.R.id.addPenalty);

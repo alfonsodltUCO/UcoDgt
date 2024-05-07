@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,8 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     TextView lplate,itv1,itv2,idIns,color,type;
+    ImageView image;
+
     String dni;
     Button goMain,listPenalties;
     /**
@@ -51,6 +54,11 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         idIns=findViewById(com.uco.ucodgt.R.id.textViewFoundIdInsurance);
         itv1=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvFrom);
         itv2=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvTo);
+
+        image=findViewById(com.uco.ucodgt.R.id.imageShow);
+        String carType = vehicle.getCarType().toString().toLowerCase();
+        int resourceId = getResources().getIdentifier("drawable/" + carType, null, getPackageName());
+        image.setImageResource(resourceId);
 
         assert vehicle != null;
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());

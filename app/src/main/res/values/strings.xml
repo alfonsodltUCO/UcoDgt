@@ -5,5 +5,44 @@
     <string name="paid">paid</string>
     <string name="cancel">cancel</string>
     <string name="cancelled">cancelled</string>
-    <string name="processed">processed</string>
+    <string-array name="reason">
+        <item>no_seatbelt</item>
+        <item>velocity</item>
+        <item>blue_zone</item>
+        <item>incorrect_parking</item>
+        <item>alcohol</item>
+        <item>drugs</item>
+        <item>no_itv</item>
+        <item>no_insurance</item>
+    </string-array>
+    <string-array name="informed">
+        <item>yes</item>
+        <item>no</item>
+    </string-array>
+    <string-array name="type">
+        <item>fiat</item>
+        <item>ferrari</item>
+        <item>porsche</item>
+        <item>lamborghini</item>
+        <item>citroen</item>
+        <item>skoda</item>
+        <item>audi</item>
+        <item>volkswagen</item>
+        <item>mercedes</item>
+        <item>volvo</item>
+    </string-array>
+    <string-array name="color">
+        <item>red</item>
+        <item>blue</item>
+        <item>black</item>
+        <item>gold</item>
+        <item>yellow</item>
+        <item>purple</item>
+        <item>white</item>
+        <item>pink</item>
+        <item>carbon</item>
+        <item>brown</item>
+        <item>grey</item>
+    </string-array>
 </resources>
+

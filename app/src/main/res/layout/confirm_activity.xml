@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="20dp">
 
     <TextView
@@ -10,24 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Are you sure you want to continue?"
-        android:textSize="18sp"
+        android:textSize="40sp"
         android:textColor="@android:color/black"
         android:gravity="center"
         android:paddingBottom="20dp"/>
 
     <Button
         android:id="@+id/btn_confirm"
-        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm"
+        android:textSize="30sp"
+        android:layout_marginBottom="@dimen/fab_margin_16"
         android:textColor="@android:color/white"
         android:background="@color/white"/>
 
     <Button
         android:id="@+id/btn_cancel"
-        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/fab_margin_16"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
+        android:textSize="30sp"
         android:textColor="@android:color/white"
         android:background="@color/white"/>
 </LinearLayout>
