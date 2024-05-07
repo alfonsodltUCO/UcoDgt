@@ -124,8 +124,6 @@
             android:screenOrientation="landscape"/>
         <activity android:name="com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltyToPay"
             android:screenOrientation="landscape"/>
-        <activity android:name="com.uco.ucodgt.mvc.view.client.penalty.IntroduceDataForPay"
-            android:screenOrientation="landscape"/>
         <activity android:name="com.uco.ucodgt.mvc.view.client.penalty.IntroducePenaltyToFind"
             android:screenOrientation="landscape"/>
         <activity android:name="com.uco.ucodgt.mvc.view.client.user.ShowUser"

@@ -249,66 +249,87 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="@dimen/fab_margin_16"
-        android:layout_gravity="end">
-        <Button
-            android:id="@+id/goMainMenu"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="Go main menu"
-            >
+            android:layout_margin="@dimen/fab_margin_16"
+            android:layout_height="wrap_content">
 
-        </Button>
-        <Button
-            android:id="@+id/deleteUser"
+            <Button
+                android:id="@+id/goMainMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="Go main menu"
+                >
+
+            </Button>
+            <Button
+                android:id="@+id/deleteUser"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:text="Delete User"
+                >
+
+            </Button>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:text="Delete User"
-            >
+            android:layout_margin="@dimen/fab_margin_16"
+            android:layout_height="wrap_content">
 
-        </Button>
 
-        <Button
-            android:id="@+id/listVehicles"
-            android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="List vehicles"
-            >
+            <Button
+                android:id="@+id/listVehicles"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="List vehicles"
+                >
 
-        </Button>
+            </Button>
 
-        <Button
-            android:id="@+id/listPenalties"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="List Penalties"
-            >
+            <Button
+                android:id="@+id/listPenalties"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/fab_margin_16"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/fab_margin_16"
+                android:textSize="30sp"
+                android:text="List Penalties"
+                >
 
-        </Button>
+            </Button>
 
-        <Button
-            android:id="@+id/updatePoints"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="30sp"
-            android:text="Update points"
-            >
+            <Button
+                android:id="@+id/updatePoints"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="Update points"
+                >
 
-        </Button>
+            </Button>
+        </LinearLayout>
+
+
+
     </LinearLayout>
     </LinearLayout>
     </LinearLayout>
