@@ -144,7 +144,6 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
 
                                 @Override
                                 public void onPenaltyReceived(PenaltyDTO penalty) {
-                                    Log.d("e","penalty");
                                     Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
                                     intent.putExtra("numberWorker",numberWorker);
                                     startActivity(intent);
