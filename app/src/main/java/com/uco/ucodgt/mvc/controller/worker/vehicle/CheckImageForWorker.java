@@ -41,9 +41,9 @@ public class CheckImageForWorker extends AppCompatActivity{
         setContentView(com.uco.ucodgt.R.layout.loading);
 
         progressBar=findViewById(com.uco.ucodgt.R.id.progressbar);
-        showLoading();
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0, Objects.requireNonNull(getIntent().getByteArrayExtra("image")).length);
         ManagerVehicle mngV=new ManagerVehicle();
+        showLoading();
 
         mngV.checkVehicle(image, CheckImageForWorker.this, new VehicleCallback() {
             @Override
