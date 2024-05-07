@@ -20,12 +20,28 @@ import com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData;
 
 import java.util.List;
 
+/**
+ * This activity is responsible for checking and validating the password of a worker user.
+ * It retrieves the worker's number and password from the intent extras, then checks if the password is correct.
+ * If the password is correct, it navigates to the activity for introducing new data for the worker.
+ * If the password is incorrect, it navigates back to the activity for introducing the actual password.
+ * @author Alfonso de la torre
+ */
 public class CheckWorkerPassword extends AppCompatActivity {
     private ProgressBar progressBar;
 
     String numberWorker;
     String password;
 
+
+    /**
+     * Initializes the activity and sets up the UI elements.
+     * Retrieves the worker's number and password from the intent extras.
+     * Checks if the password is correct for the given worker user.
+     * Navigates to different activities based on the validation result.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if any.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

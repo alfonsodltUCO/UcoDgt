@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 
 
-import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClient;
 import com.uco.ucodgt.mvc.controller.client.vehicle.CheckVehiclesToListForClient;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
@@ -63,7 +62,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listPenalties=findViewById(com.uco.ucodgt.R.id.listPenalties);
         listVehicles=findViewById(com.uco.ucodgt.R.id.listVehicles);
         licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
-        goChangeData=findViewById(R.id.changeData);
+        goChangeData=findViewById(com.uco.ucodgt.R.id.changeData);
         image=findViewById(com.uco.ucodgt.R.id.imageShow);
 
         goMenu.setOnClickListener(this);

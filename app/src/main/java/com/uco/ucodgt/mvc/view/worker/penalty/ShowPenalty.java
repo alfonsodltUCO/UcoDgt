@@ -15,11 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 
-import com.uco.ucodgt.R;
-import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToDelete;
 import com.uco.ucodgt.mvc.controller.worker.penalty.CheckPenaltyToCancel;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
-import com.uco.ucodgt.mvc.view.admin.penalty.DeletePenaltyActivity;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
@@ -117,7 +114,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
     private void showConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.confirm_activity, null);
+        View dialogView = inflater.inflate(com.uco.ucodgt.R.layout.confirm_activity, null);
         builder.setView(dialogView);
 
         TextView textConfirmation = dialogView.findViewById(com.uco.ucodgt.R.id.text_confirmation);

@@ -26,13 +26,26 @@ import com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData;
 import java.util.List;
 
 
+/**
+ * This activity is responsible for checking and validating worker user data before updating it in the application.
+ * It verifies the format of the email and password, checks if the email already exists in the database,
+ * and then updates the worker's data accordingly.
+ * @author Alfonso de la torre
+ */
 public class CheckDataForUpdate extends AppCompatActivity {
     private ProgressBar progressBar;
 
     String numberWorker,email,password,dni;
 
 
-
+    /**
+     * Initializes the activity and sets up the UI elements.
+     * Retrieves worker's number, email, password, and DNI from the intent extras.
+     * Checks the validity of email and password, and verifies if the email exists in the database.
+     * Performs worker data update if all checks pass.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if any.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

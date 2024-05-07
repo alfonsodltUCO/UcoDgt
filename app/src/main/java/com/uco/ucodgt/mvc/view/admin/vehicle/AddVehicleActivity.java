@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -48,7 +47,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         etInsurance=findViewById(com.uco.ucodgt.R.id.editTextIdInsurance);
 
         spinnerType = findViewById(com.uco.ucodgt.R.id.carType);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.type, com.uco.ucodgt.R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerType.setAdapter(adapter);
         spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -63,7 +62,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             }
         });
         spinnerColor = findViewById(com.uco.ucodgt.R.id.colorType);
-        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, R.array.color, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.color, com.uco.ucodgt.R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerColor.setAdapter(adapterInformed);
         spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

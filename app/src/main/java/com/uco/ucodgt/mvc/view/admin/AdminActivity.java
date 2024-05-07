@@ -3,24 +3,18 @@ package com.uco.ucodgt.mvc.view.admin;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.viewpager.widget.ViewPager;
+ import androidx.viewpager.widget.ViewPager;
 import android.app.AlertDialog;
 
-import com.uco.ucodgt.R;
-import com.uco.ucodgt.mvc.controller.admin.users.CheckUsersToList;
+ import com.uco.ucodgt.mvc.controller.admin.users.CheckUsersToList;
 import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltiesToList;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehiclesToList;
 import com.uco.ucodgt.mvc.view.admin.penalty.AddPenaltyActivity;
@@ -78,7 +72,7 @@ public class AdminActivity extends AppCompatActivity{
        setContentView(com.uco.ucodgt.R.layout.adminmain);
 
         ViewPager viewPager = findViewById(com.uco.ucodgt.R.id.viewPager);
-        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.cliente, com.uco.ucodgt.R.drawable.multa, R.drawable.deportivo});
+        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.cliente, com.uco.ucodgt.R.drawable.multa, com.uco.ucodgt.R.drawable.deportivo});
         viewPager.setAdapter(adapter);
         /*After setting the adapter use the timer */
         final Handler handler = new Handler();

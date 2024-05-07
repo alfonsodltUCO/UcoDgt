@@ -1,14 +1,9 @@
 package com.uco.ucodgt.mvc.controller.client.penalty;
 
-import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckPenalty.checkCardData;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
+  import android.content.Intent;
+ import android.os.Bundle;
+ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -16,14 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.BuildConfig;
-import com.android.volley.VolleyError;
+ import com.android.volley.VolleyError;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Currency;
-import java.util.Date;
+ import java.util.Date;
 import java.util.List;
 
 
@@ -32,8 +24,7 @@ import com.paypal.checkout.approve.Approval;
 import com.paypal.checkout.approve.OnApprove;
 import com.paypal.checkout.config.CheckoutConfig;
 import com.paypal.checkout.config.Environment;
-import com.paypal.checkout.config.PaymentButtonIntent;
-import com.paypal.checkout.config.SettingsConfig;
+ import com.paypal.checkout.config.SettingsConfig;
 import com.paypal.checkout.config.UIConfig;
 import com.paypal.checkout.createorder.CreateOrder;
 import com.paypal.checkout.createorder.CreateOrderActions;
@@ -44,18 +35,14 @@ import com.paypal.checkout.order.Amount;
 import com.paypal.checkout.order.AppContext;
 import com.paypal.checkout.order.CaptureOrderResult;
 import com.paypal.checkout.order.OnCaptureComplete;
-import com.paypal.checkout.order.OrderActions;
-import com.paypal.checkout.order.OrderRequest;
+ import com.paypal.checkout.order.OrderRequest;
 import com.paypal.checkout.order.PurchaseUnit;
 import com.paypal.checkout.paymentbutton.PaymentButton;
-import com.uco.ucodgt.R;
-import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
+ import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * This class is responsible for handling the payment process for a penalty.
@@ -91,8 +78,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
 
 
 
-        setContentView(R.layout.loading);
-        progressBar=findViewById(R.id.progressbar);
+        setContentView(com.uco.ucodgt.R.layout.loading);
+        progressBar=findViewById(com.uco.ucodgt.R.id.progressbar);
         showLoading();
 
         dni=getIntent().getStringExtra("dni");
@@ -166,7 +153,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                     }
                     //dopayment
 
-                    setContentView(R.layout.paypal_view);
+                    setContentView(com.uco.ucodgt.R.layout.paypal_view);
 
                     goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
 
@@ -177,7 +164,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                         hideLoading();
                         finish();
                     });
-                    paypalButton=findViewById(R.id.paypalButton);
+                    paypalButton=findViewById(com.uco.ucodgt.R.id.paypalButton);
 
                     paypalButton.setup(
                             new CreateOrder() {

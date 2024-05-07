@@ -2,13 +2,11 @@ package com.uco.ucodgt.mvc.controller.client.user;
 
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkAdminEmailNotExists;
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkClientEmailNotExists;
-import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkDateOfBirth;
-import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkPassword;
+ import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkPassword;
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkValidEmail;
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkWorkerEmailNotExists;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -17,8 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.uco.ucodgt.mvc.controller.admin.users.CheckUserToAdd;
-import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
+ import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
@@ -30,13 +27,26 @@ import com.uco.ucodgt.mvc.view.client.user.IntroduceNewData;
 import java.util.List;
 
 
+/**
+ * This activity is responsible for checking and validating user data before updating it in the application.
+ * It verifies the format of the email and password, checks if the email already exists in the database,
+ * and then updates the user's data accordingly.
+ * @author Alfonso de la torre
+ */
 public class CheckDataForUpdate extends AppCompatActivity {
     private ProgressBar progressBar;
 
     String dniRec,email,pasword;
 
 
-
+    /**
+     * Initializes the activity and sets up the UI elements.
+     * Retrieves DNI, email, and password from the intent extras.
+     * Checks the validity of email and password, and verifies if the email exists in the database.
+     * Performs user data update if all checks pass.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if any.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

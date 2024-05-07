@@ -1,7 +1,7 @@
 package com.uco.ucodgt.mvc.view.client;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,31 +11,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 
-import com.uco.ucodgt.R;
-import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltiesToList;
-import com.uco.ucodgt.mvc.controller.admin.users.CheckUsersToList;
-import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehiclesToList;
-import com.uco.ucodgt.mvc.controller.client.user.CheckUserToFindForClient;
+ import com.uco.ucodgt.mvc.controller.client.user.CheckUserToFindForClient;
 import com.uco.ucodgt.mvc.controller.client.vehicle.CheckVehiclesToListForClient;
 import com.uco.ucodgt.mvc.view.ImagePagerAdapter;
 import com.uco.ucodgt.mvc.view.MainActivity;
-import com.uco.ucodgt.mvc.view.admin.AdminActivity;
-import com.uco.ucodgt.mvc.view.admin.penalty.AddPenaltyActivity;
-import com.uco.ucodgt.mvc.view.admin.penalty.DeletePenaltyActivity;
-import com.uco.ucodgt.mvc.view.admin.penalty.IntroducePenaltyForSearch;
-import com.uco.ucodgt.mvc.view.admin.user.AddUserActivity;
-import com.uco.ucodgt.mvc.view.admin.user.DeleteUserActivity;
-import com.uco.ucodgt.mvc.view.admin.user.FindUserActivity;
-import com.uco.ucodgt.mvc.view.admin.vehicle.AddVehicleActivity;
-import com.uco.ucodgt.mvc.view.admin.vehicle.DeleteVehicleActivity;
-import com.uco.ucodgt.mvc.view.admin.vehicle.GetVehiclePlate;
+
 import com.uco.ucodgt.mvc.view.client.penalty.IntroducePenaltyToFind;
 
 import java.util.Timer;
@@ -78,7 +64,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         GifImageView gif=findViewById(com.uco.ucodgt.R.id.news);
         gif.setOnClickListener(this);
         ViewPager viewPager = findViewById(com.uco.ucodgt.R.id.viewPager);
-        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.carrusel_1, com.uco.ucodgt.R.drawable.carrusel_2, R.drawable.verano});
+        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.carrusel_1, com.uco.ucodgt.R.drawable.carrusel_2, com.uco.ucodgt.R.drawable.verano});
         viewPager.setAdapter(adapter);
         /*After setting the adapter use the timer */
         final Handler handler = new Handler();

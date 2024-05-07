@@ -9,8 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
-import com.uco.ucodgt.mvc.controller.worker.penalty.CheckPenaltyToFindForWorker;
-import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
+ import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
@@ -18,16 +17,30 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.user.IntroduceActualPassword;
 import com.uco.ucodgt.mvc.view.client.user.IntroduceNewData;
-import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 import java.util.List;
 
+
+/**
+ * This activity is responsible for checking the password of a client user in the application.
+ * It retrieves the user's DNI and password from the intent extras, then verifies the password
+ * by making a network call. Depending on the result, it navigates to different activities.
+ * @author Alfonso de la torre
+ */
 public class CheckClientPassword extends AppCompatActivity {
     private ProgressBar progressBar;
 
     String dniRec;
     String password;
 
+
+    /**
+     * Initializes the activity and sets up the UI elements.
+     * Retrieves DNI and password from the intent extras.
+     * Initiates the process of checking the client's password.
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, if any.
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

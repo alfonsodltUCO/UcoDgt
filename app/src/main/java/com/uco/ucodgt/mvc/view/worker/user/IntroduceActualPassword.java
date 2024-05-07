@@ -13,6 +13,12 @@ import com.uco.ucodgt.mvc.controller.worker.user.CheckWorkerPassword;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 
+
+/**
+ * This class represents an activity in the worker application where workers can
+ * introduce their actual password for validation before performing change his/her data.
+ * @author Alfonso de la torre
+ */
 public class IntroduceActualPassword extends AppCompatActivity implements View.OnClickListener {
 
     Button goMain,goCheck;
@@ -20,6 +26,16 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
     String numberWorker;
     EditText pass;
 
+
+    /**
+     * Called when the activity is starting. This method initializes the activity,
+     * sets the layout, and initializes UI components.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down, this Bundle contains
+     *                           the data it most recently supplied in
+     *                           onSaveInstanceState(Bundle).
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +51,11 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
         goMain.setOnClickListener(this);
     }
 
+    /**
+     * Called when a view has been clicked. This method handles button clicks.
+     *
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
         if(v.getId()==com.uco.ucodgt.R.id.goCheck){

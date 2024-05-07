@@ -14,7 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.controller.admin.users.CheckUserToDelete;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
@@ -84,7 +83,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
     private void showConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.confirm_activity, null);
+        View dialogView = inflater.inflate(com.uco.ucodgt.R.layout.confirm_activity, null);
         builder.setView(dialogView);
 
         TextView textConfirmation = dialogView.findViewById(com.uco.ucodgt.R.id.text_confirmation);

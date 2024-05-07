@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.uco.ucodgt.R;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
  * Activity for adding a new penalty by admin.
@@ -49,7 +48,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
 
 
         spinnerReason = findViewById(com.uco.ucodgt.R.id.Reason);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.reason, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.reason, com.uco.ucodgt.R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerReason.setAdapter(adapter);
         spinnerReason.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -64,7 +63,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             }
         });
         spinnerInformed = findViewById(com.uco.ucodgt.R.id.Informed);
-        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, R.array.informed, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.informed, com.uco.ucodgt.R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerInformed.setAdapter(adapterInformed);
         spinnerInformed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
