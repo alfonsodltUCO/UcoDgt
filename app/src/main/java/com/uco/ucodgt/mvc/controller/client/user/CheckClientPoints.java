@@ -79,7 +79,7 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
-                                finish();
+
                             }
 
                             @Override
@@ -93,7 +93,7 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
-                                finish();
+
                             }
 
                             @Override
@@ -138,7 +138,7 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
-                                finish();
+
                             }
 
                             @Override
@@ -152,7 +152,7 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
-                                finish();
+
                             }
 
                             @Override

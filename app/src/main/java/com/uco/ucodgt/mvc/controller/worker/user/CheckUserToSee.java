@@ -71,7 +71,7 @@ public class CheckUserToSee extends AppCompatActivity {
                 goShow.putExtra("numberWorker",numberWorker);
                 goShow.putExtra("client",user);
                 startActivity(goShow);
-                finish();
+
                 hideLoading();
             }
 

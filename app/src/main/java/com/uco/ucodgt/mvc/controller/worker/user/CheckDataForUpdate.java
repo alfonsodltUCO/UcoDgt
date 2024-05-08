@@ -73,7 +73,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
             startActivity(intent);
             Toast.makeText(CheckDataForUpdate.this, "The email is not valid format", Toast.LENGTH_LONG).show();
             hideLoading();
-            finish();
+
         }else {
             if(!checkPassword(password)){
                 showLoading();
@@ -89,7 +89,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                 startActivity(intent);
                 Toast.makeText(CheckDataForUpdate.this, "The password is not valid\nMust be 8 characters al least\nOne number\nOne special character\nOne capital letter", Toast.LENGTH_LONG).show();
                 hideLoading();
-                finish();
+
             }else{
 
                 checkAdminEmailNotExists(email, CheckDataForUpdate.this,new UserCallback(){//Check if user exists
@@ -117,7 +117,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                     startActivity(intent);
                                     Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                     hideLoading();
-                                    finish();
+
 
                                 });
                             }
@@ -157,7 +157,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                                 startActivity(intent);
                                                 Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
                                                 hideLoading();
-                                                finish();
+
 
                                             }
 
@@ -175,7 +175,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                                 startActivity(intent);
                                                 Toast.makeText(CheckDataForUpdate.this, "Update done", Toast.LENGTH_LONG).show();
                                                 hideLoading();
-                                                finish();
+
                                             }
 
                                             @Override
@@ -214,7 +214,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                         startActivity(intent);
                                         Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                         hideLoading();
-                                        finish();
+
                                     });
                                 }
 
@@ -270,7 +270,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                             hideLoading();
-                            finish();
+
 
                         });
 

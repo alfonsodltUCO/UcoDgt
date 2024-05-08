@@ -93,7 +93,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent showUser=new Intent(ShowUser.this, WorkerActivity.class);
             showUser.putExtra("numberWorker",numberWorker);
             startActivity(showUser);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
 
@@ -101,7 +101,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             goList.putExtra("numberWorker",numberWorker);
             goList.putExtra("dni",dniNoText);
             startActivity(goList);
-            finish();
+
 
         }
     }

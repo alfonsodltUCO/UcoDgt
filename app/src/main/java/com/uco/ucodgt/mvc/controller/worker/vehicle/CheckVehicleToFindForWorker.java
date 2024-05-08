@@ -59,7 +59,7 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
                 Toast.makeText(CheckVehicleToFindForWorker.this,"No valid licence plate", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
 
@@ -80,7 +80,7 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
                         goShow.putExtra("vehicle",vehicle);
                         goShow.putExtra("numberWorker",numberWorker);
                         startActivity(goShow);
-                        finish();
+
                         hideLoading();
 
                     }
@@ -98,7 +98,7 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckVehicleToFindForWorker.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
-                        finish();
+
                         hideLoading();
 
                     }
@@ -121,7 +121,7 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             Toast.makeText(CheckVehicleToFindForWorker.this,"Fill the field please", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
     }

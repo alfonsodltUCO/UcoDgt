@@ -132,7 +132,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                     startActivity(goMain);
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is already paid", Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
 
                 }else if(penalty.getState().toString().equals("cancelled")){
 
@@ -147,7 +147,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                     startActivity(goMain);
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is cancelled", Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
 
 
                 }else{
@@ -174,7 +174,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                         goMain.putExtra("dni", dni);
                         startActivity(goMain);
                         hideLoading();
-                        finish();
+
                     });
                     paypalButton=findViewById(com.uco.ucodgt.R.id.paypalButton);
 
@@ -230,7 +230,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                         startActivity(goMain);
                                                         Toast.makeText(CheckPenaltyToPay.this, "The penalty probably doesnt exists", Toast.LENGTH_LONG).show();
                                                         hideLoading();
-                                                        finish();
+
 
                                                     } else {
 
@@ -245,7 +245,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                         startActivity(goMain);
                                                         Toast.makeText(CheckPenaltyToPay.this, "An error has ocurred during payment process, try again please", Toast.LENGTH_LONG).show();
                                                         hideLoading();
-                                                        finish();
+
                                                     }
 
                                                 }
@@ -264,7 +264,7 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                     Toast.makeText(CheckPenaltyToPay.this, "Payment realized", Toast.LENGTH_LONG).show();
                                                     startActivity(goMain);
                                                     hideLoading();
-                                                    finish();
+
                                                 }
                                             });
                                         }

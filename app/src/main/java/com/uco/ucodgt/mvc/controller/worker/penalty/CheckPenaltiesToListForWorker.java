@@ -68,7 +68,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goShow.putExtra("numberWorker",numberWorker);
                     startActivity(goShow);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -85,7 +85,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     Toast.makeText(CheckPenaltiesToListForWorker.this,"Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -114,7 +114,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goShow.putExtra("penalties", (Serializable) penalties);
                     startActivity(goShow);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -131,7 +131,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     Toast.makeText(CheckPenaltiesToListForWorker.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -151,7 +151,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
             Toast.makeText(CheckPenaltiesToListForWorker.this, "An error has occurred try again please", Toast.LENGTH_LONG).show();
             startActivity(goMain);
             hideLoading();
-            finish();
+
         }
     }
     /**

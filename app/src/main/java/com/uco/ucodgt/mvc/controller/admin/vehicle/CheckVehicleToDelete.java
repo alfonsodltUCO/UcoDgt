@@ -55,7 +55,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                 }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToDelete.this,"No valid plate", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
 
@@ -77,7 +77,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                         Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
-                        finish();
+
                     }
 
                     @Override
@@ -95,7 +95,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                             Intent intentGoBack=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                             startActivity(intentGoBack);
                             hideLoading();
-                            finish();
+
                         }
                     }
 
@@ -116,7 +116,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
             }
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
-            finish();
+
         }
     }
     /**

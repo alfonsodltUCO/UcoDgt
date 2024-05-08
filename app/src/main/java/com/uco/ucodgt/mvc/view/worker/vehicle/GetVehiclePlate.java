@@ -59,14 +59,14 @@ public class GetVehiclePlate extends AppCompatActivity {
             Intent intent = new Intent(GetVehiclePlate.this, WorkerActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
-            finish();
+
         });
 
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
-                finish();
+
         });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -141,7 +141,7 @@ public class GetVehiclePlate extends AppCompatActivity {
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         intentCheckVehiclePlate.putExtra("numberWorker",numberWorker);
         startActivity(intentCheckVehiclePlate);
-        finish();
+
     }
 
     /**

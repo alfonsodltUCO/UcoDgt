@@ -55,7 +55,7 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
         if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
             Intent goMain=new Intent(DeleteVehicleActivity.this, AdminActivity.class);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteVehicle){
             showConfirmationDialog();
@@ -90,7 +90,7 @@ public class DeleteVehicleActivity extends AppCompatActivity implements View.OnC
             Intent goDelete=new Intent(DeleteVehicleActivity.this, CheckVehicleToDelete.class);
             goDelete.putExtra("licencePlate",licencePlate.getText().toString().trim());
             startActivity(goDelete);
-            finish();
+
             dialog.dismiss();
         });
 

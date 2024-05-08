@@ -63,7 +63,7 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
 
             Intent goMain=new Intent(IntroducePoints.this, AdminActivity.class);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goUpdate){
             // Navigate to the CheckPointsToUpdate activity
@@ -72,7 +72,7 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
             goUpdate.putExtra("dni",dni);
             goUpdate.putExtra("points",etNumber.getText().toString());
             startActivity(goUpdate);
-            finish();
+
 
         }
     }

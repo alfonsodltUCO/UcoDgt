@@ -60,7 +60,7 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
             goChange.putExtra("dni",dniRec);
             goChange.putExtra("password",pass.getText().toString());
             startActivity(goChange);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
             // Navigate back to the main menu
@@ -68,7 +68,7 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
             Intent intentGoMain = new Intent(IntroduceActualPassword.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dniRec);
             startActivity(intentGoMain);
-            finish();
+
         }
     }
 }

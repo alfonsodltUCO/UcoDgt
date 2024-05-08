@@ -74,7 +74,7 @@ public class CheckClientPassword extends AppCompatActivity {
                         goNewData.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"Password is correct", Toast.LENGTH_LONG).show();
                         startActivity(goNewData);
-                        finish();
+
                         hideLoading();
                     }
 
@@ -91,7 +91,7 @@ public class CheckClientPassword extends AppCompatActivity {
                         goMain.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"The password is incorrect", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
-                        finish();
+
                         hideLoading();
                     }
 
@@ -130,7 +130,7 @@ public class CheckClientPassword extends AppCompatActivity {
                 goMain.putExtra("dni",dniRec);
                 Toast.makeText(CheckClientPassword.this,"An error has ocurred try again please", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
-                finish();
+
                 hideLoading();
             }
 

@@ -97,7 +97,7 @@ public class CheckUsersToList extends AppCompatActivity {
                                     startActivity(emptyLists);
                                     Toast.makeText(CheckUsersToList.this,"Not found any user",Toast.LENGTH_LONG).show();
                                     hideLoading();
-                                    finish();
+
 
                                 }else{
 
@@ -113,7 +113,7 @@ public class CheckUsersToList extends AppCompatActivity {
                                     Toast.makeText(CheckUsersToList.this,"found users",Toast.LENGTH_LONG).show();
                                     startActivity(notEmptyLists);
                                     hideLoading();
-                                    finish();
+
 
                                 }
                             });

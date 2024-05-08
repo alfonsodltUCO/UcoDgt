@@ -58,7 +58,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             goFind.putExtra("dni",dniToSearch.getText().toString().trim());
             goFind.putExtra("numberWorker",numberWorker);
             startActivity(goFind);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
@@ -66,7 +66,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             Intent goMenu=new Intent(FindUserActivity.this, WorkerActivity.class);
             goMenu.putExtra("numberWorker",numberWorker);
             startActivity(goMenu);
-            finish();
+
         }
     }
 }

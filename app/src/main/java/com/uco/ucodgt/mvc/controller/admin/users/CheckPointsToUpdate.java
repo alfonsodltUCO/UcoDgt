@@ -60,7 +60,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
             }
             Toast.makeText(CheckPointsToUpdate.this,"Points incorrect try again please", Toast.LENGTH_LONG).show();
             startActivity(goMain);
-            finish();
+
             hideLoading();
 
         }else{
@@ -76,7 +76,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
                 }
                 Toast.makeText(CheckPointsToUpdate.this,"Points must be between [1,15]", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
-                finish();
+
                 hideLoading();
 
             }else{
@@ -97,7 +97,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
                         }
                         Toast.makeText(CheckPointsToUpdate.this,"Update done", Toast.LENGTH_LONG).show();
                         startActivity(intent);
-                        finish();
+
                         hideLoading();
                     }
 
@@ -113,7 +113,7 @@ public class CheckPointsToUpdate extends AppCompatActivity {
                         }
                         Toast.makeText(CheckPointsToUpdate.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
-                        finish();
+
                         hideLoading();
 
                     }

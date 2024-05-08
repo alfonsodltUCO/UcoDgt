@@ -71,7 +71,7 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                         intentSeeUser.putExtra("dni",dni);
                         startActivity(intentSeeUser);
                         hideLoading();
-                        finish();
+
 
                     }
 
@@ -89,7 +89,7 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                         intentGoBack.putExtra("dni",dni);
                         startActivity(intentGoBack);
                         hideLoading();
-                        finish();
+
                     }
 
                     @Override
@@ -126,7 +126,7 @@ public class CheckUserToFindForClient extends AppCompatActivity {
             intent.putExtra("dni",dni);
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
 

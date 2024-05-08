@@ -67,7 +67,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                 intentWorker.putExtra("numberWorker",numberWorker);
                 startActivity(intentWorker);
                 Toast.makeText(CheckUserToFindForWorker.this,"The dni is invalid", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
 
@@ -93,7 +93,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                             intentSeeUser.putExtra("numberWorker",numberWorker);
                             startActivity(intentSeeUser);
                             hideLoading();
-                            finish();
+
 
                         }
 
@@ -111,7 +111,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                             intentGoBack.putExtra("numberWorker",numberWorker);
                             startActivity(intentGoBack);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -150,7 +150,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
             intentWorker.putExtra("numberWorker",numberWorker);
             startActivity(intentWorker);
             Toast.makeText(CheckUserToFindForWorker.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
 

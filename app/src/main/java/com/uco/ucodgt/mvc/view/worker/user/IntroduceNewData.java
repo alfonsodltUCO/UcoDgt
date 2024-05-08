@@ -71,7 +71,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             Intent intentGoMain = new Intent(IntroduceNewData.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
-            finish();
+
         }
     }
 
@@ -103,7 +103,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             goChange.putExtra("password",password.getText().toString());
             goChange.putExtra("dni",dni);
             startActivity(goChange);
-            finish();
+
             dialog.dismiss();
         });
 

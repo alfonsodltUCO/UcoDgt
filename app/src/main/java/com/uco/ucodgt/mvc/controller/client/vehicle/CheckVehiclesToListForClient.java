@@ -72,7 +72,7 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToListForClient.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -92,7 +92,7 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                     notEmptyLists.putExtra("dni",dni);
                     startActivity(notEmptyLists);
                     hideLoading();
-                    finish();
+
                 }
             });
         }

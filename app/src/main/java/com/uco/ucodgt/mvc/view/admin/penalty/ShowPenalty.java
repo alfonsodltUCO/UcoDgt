@@ -94,7 +94,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
             Intent goMain=new Intent(ShowPenalty.this, AdminActivity.class);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deletePenalty){
             // Initiates deletion process for the current penalty
@@ -121,7 +121,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
             goDelete.putExtra("id", penalty.getId().toString());
             startActivity(goDelete);
-            finish();
+
             dialog.dismiss();
         });
 

@@ -68,7 +68,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                     }
                     startActivity(goShow);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -84,7 +84,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                     }
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -112,7 +112,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                     }
                     startActivity(goShow);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -128,7 +128,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                     }
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -155,7 +155,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                     }
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
 
                 }else{
 
@@ -174,7 +174,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -190,7 +190,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
 
                         }
 
@@ -222,7 +222,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -238,7 +238,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -265,7 +265,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
 
                         }
 
@@ -282,7 +282,7 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                             }
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override

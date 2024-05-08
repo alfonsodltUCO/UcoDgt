@@ -45,7 +45,7 @@ public class FindPenaltyActivity extends AppCompatActivity {
 
             Intent intent = new Intent(FindPenaltyActivity.this, IntroduceManual.class);
             startActivity(intent);
-            finish();
+
         });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -128,7 +128,7 @@ public class FindPenaltyActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         startActivity(intentCheckVehiclePlate);
-        finish();
+
 
     }
 

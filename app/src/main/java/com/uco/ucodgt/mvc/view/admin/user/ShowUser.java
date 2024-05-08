@@ -124,7 +124,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
             Intent showUser=new Intent(ShowUser.this, AdminActivity.class);
             startActivity(showUser);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteUser){
             showConfirmationDialog();
@@ -137,13 +137,13 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
                 Toast.makeText(ShowUser.this,"Cannot list penalties of a worker",Toast.LENGTH_LONG).show();
-                finish();
+
             }else{
 
                 Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
                 goList.putExtra("dni",dniNoText);
                 startActivity(goList);
-                finish();
+
             }
 
 
@@ -155,13 +155,13 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
                 Toast.makeText(ShowUser.this,"Cannot list vehicles of a worker",Toast.LENGTH_LONG).show();
-                finish();
+
             }else{
 
                 Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
                 goListVeh.putExtra("dni",dniNoText);
                 startActivity(goListVeh);
-                finish();
+
             }
 
 
@@ -172,13 +172,13 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
                 Toast.makeText(ShowUser.this,"Cannot update points from a worker",Toast.LENGTH_LONG).show();
-                finish();
+
             }else{
 
                 Intent goUpdate=new Intent(ShowUser.this, IntroducePoints.class);
                 goUpdate.putExtra("dni",dniNoText);
                 startActivity(goUpdate);
-                finish();
+
             }
         }
     }
@@ -202,7 +202,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             checkUserToDelete.putExtra("dni",dniNoText);
             checkUserToDelete.putExtra("type",type);
             startActivity(checkUserToDelete);
-            finish();
+
             dialog.dismiss();
         });
 

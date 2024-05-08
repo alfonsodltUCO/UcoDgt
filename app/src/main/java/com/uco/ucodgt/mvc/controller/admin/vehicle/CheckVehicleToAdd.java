@@ -80,7 +80,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                 }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
-                finish();
+
                 hideLoading();
 
             }else{
@@ -96,7 +96,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                     }
                     startActivity(intentAdmin);
                     Toast.makeText(CheckVehicleToAdd.this,"No valid licence plate", Toast.LENGTH_LONG).show();
-                    finish();
+
                     hideLoading();
 
                 }else{
@@ -112,7 +112,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                         }
                         startActivity(intentAdmin);
                         Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second\n And the format is yyyy-mm-dd", Toast.LENGTH_LONG).show();
-                        finish();
+
                         hideLoading();
 
                     }else{
@@ -128,7 +128,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                             }
                             startActivity(intentAdmin);
                             Toast.makeText(CheckVehicleToAdd.this,"please enter a valid color", Toast.LENGTH_LONG).show();
-                            finish();
+
                             hideLoading();
 
                         }else{
@@ -145,7 +145,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                 startActivity(intentAdmin);
                                 Toast.makeText(CheckVehicleToAdd.this,"please enter a valid type", Toast.LENGTH_LONG).show();
                                 hideLoading();
-                                finish();
+
                             }else{
 
                                 ManagerClient mngcl=new ManagerClient();
@@ -175,7 +175,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
                                                         startActivity(intentAdmin);
                                                         hideLoading();
-                                                        finish();
+
 
                                                     }
 
@@ -194,7 +194,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                             startActivity(intentAdmin);
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
-                                                            finish();
+
 
                                                         } else if (error.networkResponse.statusCode==404) {//The id introduces doesn't exist
 
@@ -208,7 +208,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                             startActivity(intentAdmin);
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
-                                                            finish();
+
 
                                                         }
                                                     }
@@ -236,7 +236,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                         startActivity(intentAdmin);
                                         Toast.makeText(CheckVehicleToAdd.this,"Client doesnt exist", Toast.LENGTH_LONG).show();
                                         hideLoading();
-                                        finish();
+
                                     }
                                     @Override
                                     public void onWorkerReceived(WorkerDTO user) {}
@@ -271,7 +271,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
             }
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
-            finish();
+
         }
     }
     /**

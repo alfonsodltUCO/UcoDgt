@@ -81,7 +81,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                 startActivity(intent);
                 Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                 hideLoading();
-                finish();
+
             }
 
             @Override
@@ -99,7 +99,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                     startActivity(intent);
                     Toast.makeText(CheckPenaltyToCancel.this,"The penalty is already cancelled", Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
                 }else{
 
                     ManagerWorker mngW=new ManagerWorker();
@@ -124,7 +124,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -153,7 +153,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                         startActivity(intent);
                                         Toast.makeText(CheckPenaltyToCancel.this,"This penalty was not imposed by you", Toast.LENGTH_LONG).show();
                                         hideLoading();
-                                        finish();
+
 
                                     }else{
 
@@ -168,7 +168,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                         startActivity(intent);
                                         Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                                         hideLoading();
-                                        finish();
+
                                     }
                                 }
 
@@ -185,7 +185,7 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                     startActivity(intent);
                                     Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
                                     hideLoading();
-                                    finish();
+
                                 }
                             });
                         }

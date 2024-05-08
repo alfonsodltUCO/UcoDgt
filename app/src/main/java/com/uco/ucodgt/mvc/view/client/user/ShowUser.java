@@ -100,7 +100,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goMain=new Intent(ShowUser.this, ClientActivity.class);
             goMain.putExtra("dni",dniRec);
             startActivity(goMain);
-            finish();
+
 
         }else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
             // Navigate to list of penalties for the user/client
@@ -108,7 +108,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goList=new Intent(ShowUser.this, CheckPenaltiesToListForClient.class);
             goList.putExtra("dni",dniRec);
             startActivity(goList);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.listVehicles){
             // Navigate to list of vehicles for the user/client
@@ -116,7 +116,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToListForClient.class);
             goListVeh.putExtra("dni",dniRec);
             startActivity(goListVeh);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
             // Go change client data
@@ -124,7 +124,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goChange=new Intent(ShowUser.this, IntroduceActualPassword.class);
             goChange.putExtra("dni",dniRec);
             startActivity(goChange);
-            finish();
+
 
         }
     }

@@ -61,7 +61,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                 }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckUserToFind.this,"No valid DNI", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
                 // User found
@@ -90,7 +90,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 intentSeeWorker.putExtra("type","client");
                                 startActivity(intentSeeWorker);
                                 hideLoading();
-                                finish();
+
 
                             }
 
@@ -108,7 +108,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
-                                finish();
+
                             }
 
                             @Override
@@ -155,7 +155,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
-                                finish();
+
                             }
 
                             @Override
@@ -174,7 +174,7 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 intentSeeWorker.putExtra("type","worker");
                                 startActivity(intentSeeWorker);
                                 hideLoading();
-                                finish();
+
                             }
 
                             @Override
@@ -207,7 +207,7 @@ public class CheckUserToFind  extends AppCompatActivity {
             }
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToFind.this,"Please fill all fields", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
 

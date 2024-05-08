@@ -91,14 +91,14 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
             Intent showUser=new Intent(ShowWorker.this, WorkerActivity.class);
             showUser.putExtra("numberWorker",numberWorker);
             startActivity(showUser);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
 
             Intent intent=new Intent(ShowWorker.this, IntroduceActualPassword.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
-            finish();
+
         }
     }
 }

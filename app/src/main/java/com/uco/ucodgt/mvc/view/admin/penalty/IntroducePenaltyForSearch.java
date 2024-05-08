@@ -69,7 +69,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltiesToList.class);
                 intentFind.putExtra("state",selectedOption);
                 startActivity(intentFind);
-                finish();
+
 
             }else{
                 // Search penalties by specific ID
@@ -77,7 +77,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
                 intentFind.putExtra("id",etId.getText().toString());
                 startActivity(intentFind);
-                finish();
+
 
             }
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
@@ -85,14 +85,14 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
 
             Intent intentGoMain = new Intent(IntroducePenaltyForSearch.this, AdminActivity.class);
             startActivity(intentGoMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.searchForDates){
             // Navigate to search penalties by dates activity
 
             Intent searchForDates=new Intent(IntroducePenaltyForSearch.this,SearchByDatesPenalties.class);
             startActivity(searchForDates);
-            finish();
+
         }
     }
 }

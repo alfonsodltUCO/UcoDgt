@@ -176,23 +176,23 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent=new Intent(ClientActivity.this, CheckVehiclesToListForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
-            finish();
+
 
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item2ClientListPenalties){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
-            finish();
+
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item3ClientPayPenalty){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
-            finish();
+
         }else if(com.uco.ucodgt.R.id.closeSession==item.getItemId()){
 
             Intent goMain=new Intent(ClientActivity.this, MainActivity.class);
             startActivity(goMain);
-            finish();
+
         }
         return false;
     }

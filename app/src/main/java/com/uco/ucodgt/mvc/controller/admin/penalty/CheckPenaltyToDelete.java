@@ -58,7 +58,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
                 Toast.makeText(CheckPenaltyToDelete.this, "Not found the penalty", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
                 hideLoading();
-                finish();            }
+                             }
 
             @Override
             public void onPenaltyReceived(PenaltyDTO penalty) {
@@ -73,7 +73,7 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
                 Toast.makeText(CheckPenaltyToDelete.this, "Deleted done", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
                 hideLoading();
-                finish();
+
             }
         });
     }

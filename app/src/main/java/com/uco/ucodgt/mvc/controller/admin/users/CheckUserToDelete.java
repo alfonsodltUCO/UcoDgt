@@ -62,7 +62,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                 }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckUserToDelete.this,"No valid DNI", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
 
@@ -91,7 +91,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
-                                finish();
+
 
                             }
 
@@ -125,7 +125,7 @@ public class CheckUserToDelete extends AppCompatActivity {
 
                                 }
                                 hideLoading();
-                                finish();
+
                             }
 
                             @Override
@@ -174,7 +174,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
-                                finish();
+
 
                             }
 
@@ -192,7 +192,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
-                                finish();
+
                             }
 
                             @Override
@@ -238,7 +238,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
-                        finish();
+
 
                     }
 
@@ -297,7 +297,7 @@ public class CheckUserToDelete extends AppCompatActivity {
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
-                        finish();
+
                     }
 
                     @Override
@@ -327,7 +327,7 @@ public class CheckUserToDelete extends AppCompatActivity {
             }
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
 

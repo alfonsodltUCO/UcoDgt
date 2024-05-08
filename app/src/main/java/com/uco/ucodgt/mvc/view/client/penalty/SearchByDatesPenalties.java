@@ -59,7 +59,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             intentFind.putExtra("date2",etDate2.getText().toString());
             intentFind.putExtra("dni",dni);
             startActivity(intentFind);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
             // Navigate back to main menu
@@ -67,7 +67,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             Intent intentGoMain = new Intent(SearchByDatesPenalties.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dni);
             startActivity(intentGoMain);
-            finish();
+
 
         }
     }
