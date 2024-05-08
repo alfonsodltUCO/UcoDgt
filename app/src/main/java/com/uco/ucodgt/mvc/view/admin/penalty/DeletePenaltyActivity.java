@@ -57,7 +57,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
 
             Intent intentGoMain = new Intent(DeletePenaltyActivity.this, AdminActivity.class);
             startActivity(intentGoMain);
-            finish();
+
         }
 
     }
@@ -87,7 +87,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
             Intent goDelete = new Intent(DeletePenaltyActivity.this, CheckPenaltyToDelete.class);
             goDelete.putExtra("id",etId.getText().toString());
             startActivity(goDelete);
-            finish();
+
             dialog.dismiss();
         });
 

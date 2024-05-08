@@ -71,7 +71,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     goShow.putExtra("dni",dni);
                     startActivity(goShow);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -88,7 +88,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -115,7 +115,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     Toast.makeText(CheckPenaltiesToListForClient.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
                     hideLoading();
-                    finish();
+
                 }else{
 
                     PenaltyDTO penalty=new PenaltyDTO(null,null,null,null,null,null,dni,null,null,null,false,null,null);
@@ -134,7 +134,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goShow.putExtra("penalties", (Serializable) penalties);
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -150,7 +150,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -182,7 +182,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -199,7 +199,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -228,7 +228,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override
@@ -245,7 +245,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
                             hideLoading();
-                            finish();
+
                         }
 
                         @Override

@@ -96,7 +96,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
 
             Intent goMain=new Intent(ShowVehicle.this, AdminActivity.class);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteVehicle){
             showConfirmationDialog();
@@ -107,14 +107,14 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
             goList.putExtra("licencePlate",licplate);
             startActivity(goList);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.extendItv) {
 
             Intent goExtend=new Intent(ShowVehicle.this, CheckExtendItv.class);
             goExtend.putExtra("licencePlate",licplate);
             startActivity(goExtend);
-            finish();
+
 
         }
     }
@@ -136,7 +136,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
             goDelete.putExtra("licencePlate",licplate);
             startActivity(goDelete);
-            finish();
+
             dialog.dismiss();
         });
 

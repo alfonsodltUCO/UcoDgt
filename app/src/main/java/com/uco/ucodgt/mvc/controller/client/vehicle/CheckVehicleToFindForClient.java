@@ -61,7 +61,7 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
                 goShow.putExtra("vehicle",vehicle);
                 goShow.putExtra("dni",dni);
                 startActivity(goShow);
-                finish();
+
                 hideLoading();
             }
 
@@ -78,7 +78,7 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
                 }
                 goMain.putExtra("dni",dni);
                 startActivity(goMain);
-                finish();
+
                 hideLoading();
             }
 

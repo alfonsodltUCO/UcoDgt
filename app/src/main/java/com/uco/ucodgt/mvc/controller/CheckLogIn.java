@@ -82,7 +82,7 @@ public class CheckLogIn extends AppCompatActivity {
                     startActivity(intentClient);
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
                 });
             }
 
@@ -134,7 +134,7 @@ public class CheckLogIn extends AppCompatActivity {
                                         Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
                                         startActivity(intentGoMain);
                                         hideLoading();
-                                        finish();
+
                                     }
 
                                     @Override
@@ -155,7 +155,7 @@ public class CheckLogIn extends AppCompatActivity {
                                             startActivity(intentWorker);
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
                                             hideLoading();
-                                            finish();
+
                                         });
                                     }
 
@@ -197,7 +197,7 @@ public class CheckLogIn extends AppCompatActivity {
                                 startActivity(intentAdmin);
                                 hideLoading();
                                 Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
-                                finish();
+
                             });
                         }
 

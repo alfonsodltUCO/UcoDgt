@@ -98,7 +98,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowVehicle.this, WorkerActivity.class);
             goMain.putExtra("numberWorker",numberWorker);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.seeUser){
 
@@ -106,7 +106,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goSee.putExtra("licencePlate",licplate);
             goSee.putExtra("numberWorker",numberWorker);
             startActivity(goSee);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
 
@@ -114,7 +114,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goList.putExtra("licencePlate",licplate);
             goList.putExtra("numberWorker",numberWorker);
             startActivity(goList);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.addPenalty) {
 
@@ -122,7 +122,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goAdd.putExtra("licencePlate",licplate);
             goAdd.putExtra("numberWorker",numberWorker);
             startActivity(goAdd);
-            finish();
+
 
         }
     }

@@ -54,7 +54,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                 }
                 startActivity(intentGoBackAgain);
                 Toast.makeText(CheckPenaltyToFind.this,"Must be a number", Toast.LENGTH_LONG).show();
-                finish();
+
 
             }else{
 
@@ -79,7 +79,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                         }
                         Toast.makeText(CheckPenaltyToFind.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
-                        finish();
+
                         hideLoading();
                     }
 
@@ -94,7 +94,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                         }
                         goShow.putExtra("penalty",penalty);
                         startActivity(goShow);
-                        finish();
+
                         hideLoading();
                     }
 
@@ -113,7 +113,7 @@ public class CheckPenaltyToFind extends AppCompatActivity {
             }
             startActivity(intentAdmin);
             Toast.makeText(CheckPenaltyToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
-            finish();
+
         }
 
     }

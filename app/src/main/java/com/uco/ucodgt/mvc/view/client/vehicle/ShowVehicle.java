@@ -92,7 +92,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowVehicle.this, ClientActivity.class);
             goMain.putExtra("dni",dni);
             startActivity(goMain);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
 
@@ -100,7 +100,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goList.putExtra("licencePlate",licplate);
             goList.putExtra("dni",dni);
             startActivity(goList);
-            finish();
+
 
         }
     }

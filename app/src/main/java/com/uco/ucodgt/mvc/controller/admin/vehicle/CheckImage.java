@@ -56,7 +56,7 @@ public class CheckImage extends AppCompatActivity{
                     }
                     goShow.putExtra("vehicle",vehicle);
                     startActivity(goShow);
-                    finish();
+
                 });
             }
 
@@ -76,7 +76,7 @@ public class CheckImage extends AppCompatActivity{
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);
                         hideLoading();
-                        finish();
+
 
                     }else{//The API have not recognized any plate
 
@@ -90,7 +90,7 @@ public class CheckImage extends AppCompatActivity{
                         Toast.makeText(CheckImage.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         hideLoading();
-                        finish();
+
 
                     }
                 });

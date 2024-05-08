@@ -65,7 +65,7 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -83,7 +83,7 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);
                     hideLoading();
-                    finish();
+
                 }
             });
         }else{
@@ -109,7 +109,7 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
-                    finish();
+
                 }
 
                 @Override
@@ -127,7 +127,7 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);
                     hideLoading();
-                    finish();
+
                 }
             });
 

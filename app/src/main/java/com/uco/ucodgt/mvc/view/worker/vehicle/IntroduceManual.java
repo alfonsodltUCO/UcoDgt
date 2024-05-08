@@ -60,14 +60,14 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
             goIntent.putExtra("licenceplate",et.getText().toString().trim());
             goIntent.putExtra("numberWorker",numberWorker);
             startActivity(goIntent);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
 
             Intent goMenu=new Intent(IntroduceManual.this, WorkerActivity.class);
             goMenu.putExtra("numberWorker",numberWorker);
             startActivity(goMenu);
-            finish();
+
 
         }
     }

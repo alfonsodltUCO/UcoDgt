@@ -108,7 +108,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowPenalty.this, ClientActivity.class);
             goMain.putExtra("dni",dni);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.payPenalty){
             // Navigate to payment screen for the penalty
@@ -117,7 +117,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             goPay.putExtra("dni",dni);
             goPay.putExtra("quantity",penalty.getQuantity().toString());
             startActivity(goPay);
-            finish();
+
 
         }
     }

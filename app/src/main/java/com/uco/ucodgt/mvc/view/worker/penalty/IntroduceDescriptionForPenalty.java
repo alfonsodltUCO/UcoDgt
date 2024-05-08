@@ -69,7 +69,7 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
             Intent intentGoMain = new Intent(IntroduceDescriptionForPenalty.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.checkPenaltyToAdd){
             // Proceed to check and add the penalty with the provided description
@@ -87,7 +87,7 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
             goNext.putExtra("description",etDescrp.getText().toString());
             goNext.putExtra("numberWorker",numberWorker);
             startActivity(goNext);
-            finish();
+
 
         }
     }

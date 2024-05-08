@@ -71,7 +71,7 @@ public class CheckWorkerInfo extends AppCompatActivity {
                 Toast.makeText(CheckWorkerInfo.this,"An error has occured try again please", Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 hideLoading();
-                finish();
+
             }
 
             @Override
@@ -88,7 +88,7 @@ public class CheckWorkerInfo extends AppCompatActivity {
                 intent.putExtra("worker",user);
                 startActivity(intent);
                 hideLoading();
-                finish();
+
             }
 
             @Override

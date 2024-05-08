@@ -54,12 +54,12 @@ public class GetVehiclePlate extends AppCompatActivity {
         goMain.setOnClickListener(v->{
             Intent intent = new Intent(GetVehiclePlate.this, AdminActivity.class);
             startActivity(intent);
-            finish();
+
         });
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
                 startActivity(intent);
-                finish();
+
         });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -131,7 +131,7 @@ public class GetVehiclePlate extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         startActivity(intentCheckVehiclePlate);
-        finish();
+
     }
 
     /**

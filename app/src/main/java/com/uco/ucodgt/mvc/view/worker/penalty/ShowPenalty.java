@@ -95,7 +95,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowPenalty.this, WorkerActivity.class);
             goMain.putExtra("numberWorker",numberWorker);
             startActivity(goMain);
-            finish();
+
 
         }else if(v.getId()==com.uco.ucodgt.R.id.cancelPenalty){
             // Allow worker to cancel a penalty
@@ -132,7 +132,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             goCancel.putExtra("points",penalty.getPoints().toString());
             goCancel.putExtra("dni",penalty.getDniClient());
             startActivity(goCancel);
-            finish();
+
             dialog.dismiss();
         });
 

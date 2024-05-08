@@ -107,27 +107,27 @@ public class AdminActivity extends AppCompatActivity{
                                     case 0:
                                         Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
                                         startActivity(intentAddUser);
-                                        finish();
+
                                         break;
                                     case 1:
                                         Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
                                         startActivity(intentDeleteUser);
-                                        finish();
+
                                         break;
                                     case 2:
                                         Intent intentListUsers=new Intent(AdminActivity.this, CheckUsersToList.class);
                                         startActivity(intentListUsers);
-                                        finish();
+
                                         break;
                                     case 3:
                                         Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
                                         startActivity(goUpdate);
-                                        finish();
+
                                         break;
                                     case 4:
                                         Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
                                         startActivity(intentFindUser);
-                                        finish();
+
                                         break;
                                 }
                             }
@@ -144,25 +144,25 @@ public class AdminActivity extends AppCompatActivity{
                                 case 0:
                                     Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
                                     startActivity(intentListPenalties);
-                                    finish();
+
                                     break;
                                 case 1:
 
                                     Intent goAdd=new Intent(AdminActivity.this, AddPenaltyActivity.class);
                                     startActivity(goAdd);
-                                    finish();
+
                                     break;
                                 case 2:
 
                                     Intent goDelete = new Intent(AdminActivity.this, DeletePenaltyActivity.class);
                                     startActivity(goDelete);
-                                    finish();
+
 
                                     break;
                                 case 3:
                                     Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
                                     startActivity(intentFind);
-                                    finish();
+
                                     break;
 
                             }
@@ -181,27 +181,27 @@ public class AdminActivity extends AppCompatActivity{
 
                                     Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
                                     startActivity(intentFindVehicle);
-                                    finish();
+
                                     break;
                                 case 1:
                                     Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
                                     startActivity(intentDeleteVehicle);
-                                    finish();
+
                                     break;
                                 case 2:
                                     Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
                                     startActivity(intentAddVehicle);
-                                    finish();
+
                                     break;
                                 case 3:
                                     Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
                                     startActivity(intentFindVehicles);
-                                    finish();
+
                                     break;
                                 case 4:
                                     Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
                                     startActivity(goExtend);
-                                    finish();
+
                                     break;
                             }
                         });
@@ -227,87 +227,87 @@ public class AdminActivity extends AppCompatActivity{
 
             Intent intentAddUser=new Intent(AdminActivity.this, AddUserActivity.class);
             startActivity(intentAddUser);
-            finish();
+
         }else if(com.uco.ucodgt.R.id.item4AdminFindUser==item.getItemId()){
 
             Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(intentFindUser);
-            finish();
+
 
         } else if (com.uco.ucodgt.R.id.item2AdminDeleteUser==item.getItemId()) {
 
             Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
             startActivity(intentDeleteUser);
-            finish();
+
 
         } else if (com.uco.ucodgt.R.id.item3AdminListUsers==item.getItemId()) {
 
             Intent intentListUsers=new Intent(AdminActivity.this, CheckUsersToList.class);
             startActivity(intentListUsers);
-            finish();
+
 
         } else if (com.uco.ucodgt.R.id.item8AdminFindVehicle==item.getItemId()) {
 
             Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(intentFindVehicle);
-            finish();
+
 
         }else if(com.uco.ucodgt.R.id.item6AdminDeleteVehicle== item.getItemId()){
 
             Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
             startActivity(intentDeleteVehicle);
-            finish();
+
 
         }else if(com.uco.ucodgt.R.id.item5AdminAddVehicle== item.getItemId()) {
 
             Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
             startActivity(intentAddVehicle);
-            finish();
+
 
         }else if(com.uco.ucodgt.R.id.item7AdminListVehicles== item.getItemId()) {
 
             Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
             startActivity(intentFindVehicles);
-            finish();
+
 
         } else if (com.uco.ucodgt.R.id.item9AdminListPenalties==item.getItemId()) {
 
             Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
             startActivity(intentListPenalties);
-            finish();
+
 
         } else if (com.uco.ucodgt.R.id.item12AdminFindPenalty==item.getItemId()) {
 
             Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
             startActivity(intentFind);
-            finish();
+
 
         } else if(com.uco.ucodgt.R.id.item11AdminDeletePenalty==item.getItemId()){
 
             Intent goDelete=new Intent(AdminActivity.this, DeletePenaltyActivity.class);
             startActivity(goDelete);
-            finish();
+
 
         }else if(com.uco.ucodgt.R.id.item10AdminAddPenalty== item.getItemId()){
 
             Intent goAdd=new Intent(AdminActivity.this, AddPenaltyActivity.class);
             startActivity(goAdd);
-            finish();
+
         } else if (com.uco.ucodgt.R.id.item13AdminUpdateUserPoints==item.getItemId()) {
 
             Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
             startActivity(goUpdate);
-            finish();
+
         } else if (com.uco.ucodgt.R.id.item14AdminExtendItv==item.getItemId()) {
 
             Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
             startActivity(goExtend);
-            finish();
+
         }else if(com.uco.ucodgt.R.id.closeSession==item.getItemId()){
 
             Intent goMain=new Intent(AdminActivity.this, MainActivity.class);
             startActivity(goMain);
-            finish();
+
         }
         return false;
     }

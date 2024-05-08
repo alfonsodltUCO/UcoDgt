@@ -61,7 +61,7 @@ public class CheckImageForWorker extends AppCompatActivity{
                     goShow.putExtra("vehicle",vehicle);
                     goShow.putExtra("numberWorker",numberWorker);
                     startActivity(goShow);
-                    finish();
+
                 });
             }
 
@@ -83,7 +83,7 @@ public class CheckImageForWorker extends AppCompatActivity{
                         goBack.putExtra("numberWorker",numberWorker);
                         startActivity(goBack);
                         hideLoading();
-                        finish();
+
 
                     }else{
                         Intent goMain=new Intent(CheckImageForWorker.this, WorkerActivity.class);
@@ -97,7 +97,7 @@ public class CheckImageForWorker extends AppCompatActivity{
                         goMain.putExtra("numberWorker",numberWorker);
                         startActivity(goMain);
                         hideLoading();
-                        finish();
+
 
                     }
                 });

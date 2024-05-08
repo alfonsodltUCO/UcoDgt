@@ -52,14 +52,14 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             intentFind.putExtra("date1",etDate1.getText().toString());
             intentFind.putExtra("date2",etDate2.getText().toString());
             startActivity(intentFind);
-            finish();
+
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
             // Navigates back to the main menu
 
             Intent intentGoMain = new Intent(SearchByDatesPenalties.this, AdminActivity.class);
             startActivity(intentGoMain);
-            finish();
+
         }
     }
 }

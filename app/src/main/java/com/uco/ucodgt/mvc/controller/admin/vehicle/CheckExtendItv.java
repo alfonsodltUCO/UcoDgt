@@ -90,7 +90,7 @@ public class CheckExtendItv extends AppCompatActivity {
                             }
                             startActivity(intent);
                             Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
-                            finish();
+
                             hideLoading();
                         }
 
@@ -106,7 +106,7 @@ public class CheckExtendItv extends AppCompatActivity {
                             }
                             startActivity(intent);
                             Toast.makeText(CheckExtendItv.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
-                            finish();
+
                             hideLoading();
                         }
 
@@ -127,7 +127,7 @@ public class CheckExtendItv extends AppCompatActivity {
                     }
                     startActivity(intent);
                     Toast.makeText(CheckExtendItv.this,"The itv is not expired", Toast.LENGTH_LONG).show();
-                    finish();
+
                     hideLoading();
                 }
 
