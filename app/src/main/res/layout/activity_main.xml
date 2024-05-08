@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/CardView.Dark"
-    android:background="@drawable/gradient"
+    android:background="@drawable/fondomain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    tools:context="com.uco.ucodgt.mvc.view.MainActivity"
-    >
+    tools:context="com.uco.ucodgt.mvc.view.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,10 +25,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
             android:src="@drawable/uco"
-            android:layout_gravity="end"
+            android:layout_gravity="center"
             >
         </ImageView>
     </LinearLayout>
@@ -43,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Log In"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="45sp"
             />
     </LinearLayout>
@@ -66,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:text="Introduce your email"
@@ -78,6 +78,15 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
+                app:helperTextTextColor="@color/white"
+                app:cursorColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                app:boxStrokeColor="@android:color/white"
+                app:hintTextColor="@color/white"
+                app:placeholderTextColor="@color/white"
+                app:boxStrokeErrorColor="@android:color/white"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp">
 
@@ -87,6 +96,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints=""
+                    android:textColor="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
                     android:backgroundTint="@android:color/transparent"
                     android:ems="10"
                     android:gravity="left"
@@ -117,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Introduce your password"
+                android:textColor="@color/white"
                 android:textSize="40sp"
                 android:gravity="center"                tools:ignore="HardcodedText" />
 
@@ -125,6 +137,15 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="top"
+                app:helperTextTextColor="@color/white"
+                app:cursorColor="@color/white"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                app:boxStrokeColor="@android:color/white"
+                app:hintTextColor="@color/white"
+                app:placeholderTextColor="@color/white"
+                app:boxStrokeErrorColor="@android:color/white"
                 android:gravity="top"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
@@ -134,8 +155,10 @@
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:outlineSpotShadowColor="@color/white"
                     android:ems="10"
                     android:textSize="40sp"
+                    android:textColor="@color/white"
                     android:gravity="top"
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPassword"
