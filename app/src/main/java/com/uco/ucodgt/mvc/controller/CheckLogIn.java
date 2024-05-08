@@ -48,13 +48,13 @@ public class CheckLogIn extends AppCompatActivity {
         setContentView(com.uco.ucodgt.R.layout.loading);
 
         progressBar = findViewById(com.uco.ucodgt.R.id.progressbar);
+        showLoading();
         Intent intent=getIntent();
 
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
-        Log.d("e", BCrypt.hashpw("a", BCrypt.gensalt()));
 
         mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 

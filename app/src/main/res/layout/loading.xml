@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/fondoglobal"
     android:orientation="vertical"
 
     >
@@ -17,6 +17,7 @@
     </ImageView>
 
     <ProgressBar
+        style="@style/ProgressBarWhite"
         android:layout_width="wrap_content"
         android:layout_weight="1.5"
         android:id="@+id/progressbar"
