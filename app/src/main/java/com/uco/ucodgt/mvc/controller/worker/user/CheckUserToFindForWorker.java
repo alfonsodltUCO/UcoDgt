@@ -58,6 +58,12 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
             if(!checkDni(dni)){//Check dni is valid format
 
                 Intent intentWorker=new Intent(CheckUserToFindForWorker.this, WorkerActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intentWorker.putExtra("numberWorker",numberWorker);
                 startActivity(intentWorker);
                 Toast.makeText(CheckUserToFindForWorker.this,"The dni is invalid", Toast.LENGTH_LONG).show();
@@ -76,6 +82,12 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                         @Override
                         public void onUserReceived(ClientDTO user) {// User found, show details in ShowUser activity
                             Toast.makeText(CheckUserToFindForWorker.this,"Client Found", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             Intent intentSeeUser=new Intent(CheckUserToFindForWorker.this, ShowUser.class);
                             intentSeeUser.putExtra("client", user);
                             intentSeeUser.putExtra("numberWorker",numberWorker);
@@ -89,6 +101,12 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                         public void onError(VolleyError error) {
 
                             Toast.makeText(CheckUserToFindForWorker.this,"The dni doesnt exist", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             Intent intentGoBack=new Intent(CheckUserToFindForWorker.this, WorkerActivity.class);
                             intentGoBack.putExtra("numberWorker",numberWorker);
                             startActivity(intentGoBack);
@@ -123,6 +141,12 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
         }else{// If dni is empty, return to ClientActivity
 
             Intent intentWorker=new Intent(CheckUserToFindForWorker.this, WorkerActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intentWorker.putExtra("numberWorker",numberWorker);
             startActivity(intentWorker);
             Toast.makeText(CheckUserToFindForWorker.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();

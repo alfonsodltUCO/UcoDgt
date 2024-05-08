@@ -85,6 +85,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
             val=false;
         }else{
             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for informed at the moment\nMust be Yes/No", Toast.LENGTH_LONG).show();
             hideLoading();
@@ -94,6 +100,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
         if(!TextUtils.isEmpty(points) && !TextUtils.isEmpty(description) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(quantity) && !TextUtils.isEmpty(date) && !TextUtils.isEmpty(dniC) && !TextUtils.isEmpty(dniW) && !TextUtils.isEmpty(state) && !TextUtils.isEmpty(reason) && !TextUtils.isEmpty(place) && !TextUtils.isEmpty(informed) && !TextUtils.isEmpty(locality)){
             if(!checkDate(date)){//Check if date given is today
                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid date\nMust be today", Toast.LENGTH_LONG).show();
                 hideLoading();
@@ -101,6 +113,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
             }else{
                 if(!checkDni(dniC)){//Check DNI format of Client
                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(intentAdmin);
                     Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of client", Toast.LENGTH_LONG).show();
                     hideLoading();
@@ -109,6 +127,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                     if(!checkDni(dniW)){//Check DNI format of Worker
 
                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         startActivity(intentAdmin);
                         Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of worker", Toast.LENGTH_LONG).show();
                         hideLoading();
@@ -119,6 +143,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
                         if(!checkStateOf(state)){//Check State of penalty (paid,processed,cancelled)
                             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(intentAdmin);
                             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for state", Toast.LENGTH_LONG).show();
                             hideLoading();
@@ -128,6 +158,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
                             if(!checkReasonOf(reason)){//Check Reason of penalty
                                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 startActivity(intentAdmin);
                                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid format for reason", Toast.LENGTH_LONG).show();
                                 hideLoading();
@@ -138,6 +174,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                 if(!checkPlate(licenceplate)){//Check format of licence plate
 
                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     startActivity(intentAdmin);
                                     Toast.makeText(CheckPenaltyToAdd.this,"Invalid format for licence plate", Toast.LENGTH_LONG).show();
                                     hideLoading();
@@ -148,6 +190,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                     if(!checkPoints(points)){//Check format of licence points
 
                                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         startActivity(intentAdmin);
                                         Toast.makeText(CheckPenaltyToAdd.this,"Points must be a number\n", Toast.LENGTH_LONG).show();
                                         hideLoading();
@@ -158,6 +206,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                         if(!checkQuantity(quantity)){//Check format and value of quantity
 
                                             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                            try {
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
+                                            }
                                             startActivity(intentAdmin);
                                             Toast.makeText(CheckPenaltyToAdd.this,"Quantity must be a number\n", Toast.LENGTH_LONG).show();
                                             hideLoading();
@@ -191,6 +245,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
                                                                 if(error.networkResponse.statusCode==404){//Client doesn't have the vehicle introduced
                                                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                                    try {
+                                                                        Thread.sleep(2*1000);
+                                                                    }
+                                                                    catch (Exception e) {
+                                                                        System.out.println(e);
+                                                                    }
                                                                     startActivity(intentAdmin);
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"User doesnt have this vehicle", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
@@ -199,6 +259,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                 }else if(error.networkResponse.statusCode==400){//The worker or the vehicle doesn't exist
 
                                                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                                    try {
+                                                                        Thread.sleep(2*1000);
+                                                                    }
+                                                                    catch (Exception e) {
+                                                                        System.out.println(e);
+                                                                    }
                                                                     startActivity(intentAdmin);
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"Worker doesnt exist\nOr vehicle doesnt exist", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
@@ -207,6 +273,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                 }else if(error.networkResponse.statusCode==422) {//Client doesn't exist
 
                                                                     Intent intentAdmin = new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                                    try {
+                                                                        Thread.sleep(2*1000);
+                                                                    }
+                                                                    catch (Exception e) {
+                                                                        System.out.println(e);
+                                                                    }
                                                                     startActivity(intentAdmin);
                                                                     Toast.makeText(CheckPenaltyToAdd.this, "Client doesnt exists", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
@@ -215,6 +287,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                 }else{
 
                                                                     Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                                    try {
+                                                                        Thread.sleep(2*1000);
+                                                                    }
+                                                                    catch (Exception e) {
+                                                                        System.out.println(e);
+                                                                    }
                                                                     startActivity(intentAdmin);
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"An error has ocurred, check users and vehicle exist", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
@@ -226,6 +304,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                             public void onPenaltyReceived(PenaltyDTO penalty) {
 
                                                                 Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
+                                                                try {
+                                                                    Thread.sleep(2*1000);
+                                                                }
+                                                                catch (Exception e) {
+                                                                    System.out.println(e);
+                                                                }
                                                                 startActivity(intentAdmin);
                                                                 Toast.makeText(CheckPenaltyToAdd.this,"Penalty added", Toast.LENGTH_LONG).show();
                                                                 hideLoading();
@@ -236,6 +320,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                     } else {
 
                                                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         startActivity(intentAdmin);
                                                         Toast.makeText(CheckPenaltyToAdd.this,"Points and quantity must be between the range of penalty reason", Toast.LENGTH_LONG).show();
                                                         hideLoading();
@@ -254,6 +344,12 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AddPenaltyActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckPenaltyToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             hideLoading();

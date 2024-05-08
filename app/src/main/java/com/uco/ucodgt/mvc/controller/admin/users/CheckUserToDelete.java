@@ -54,6 +54,12 @@ public class CheckUserToDelete extends AppCompatActivity {
             if(!checkDni(dni)){//Check dni format
 
                 Intent intentAdmin=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckUserToDelete.this,"No valid DNI", Toast.LENGTH_LONG).show();
                 finish();
@@ -76,6 +82,12 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 // Client deleted
 
                                 Toast.makeText(CheckUserToDelete.this,"Client deleted", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
@@ -90,12 +102,24 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 if(error.networkResponse.statusCode==404) {
 
                                     Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
 
                                 }else {
 
                                     Toast.makeText(CheckUserToDelete.this,"An error has ocurred", Toast.LENGTH_LONG).show();
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
 
@@ -141,6 +165,12 @@ public class CheckUserToDelete extends AppCompatActivity {
 
                                 // Error: user not found or other error
                                 Toast.makeText(CheckUserToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
@@ -153,6 +183,12 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 // Worker deleted
 
                                 Toast.makeText(CheckUserToDelete.this,"Worker deleted", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
@@ -193,6 +229,12 @@ public class CheckUserToDelete extends AppCompatActivity {
 
                         // Client deleted
                         Toast.makeText(CheckUserToDelete.this,"Client deleted", Toast.LENGTH_LONG).show();
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
@@ -246,6 +288,12 @@ public class CheckUserToDelete extends AppCompatActivity {
 
 
                         Toast.makeText(CheckUserToDelete.this,"Worker deleted", Toast.LENGTH_LONG).show();
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
@@ -271,6 +319,12 @@ public class CheckUserToDelete extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();

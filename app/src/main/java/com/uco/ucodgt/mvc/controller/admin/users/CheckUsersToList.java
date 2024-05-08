@@ -88,6 +88,12 @@ public class CheckUsersToList extends AppCompatActivity {
                                 if(listClients.isEmpty() && listWorkers.isEmpty()){
 
                                     Intent emptyLists = new Intent(CheckUsersToList.this, AdminActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     startActivity(emptyLists);
                                     Toast.makeText(CheckUsersToList.this,"Not found any user",Toast.LENGTH_LONG).show();
                                     hideLoading();
@@ -96,6 +102,12 @@ public class CheckUsersToList extends AppCompatActivity {
                                 }else{
 
                                     Intent notEmptyLists = new Intent(CheckUsersToList.this, ShowUsers.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     notEmptyLists.putExtra("workers", (Serializable) listWorkers);
                                     notEmptyLists.putExtra("clients",(Serializable) listClients);
                                     Toast.makeText(CheckUsersToList.this,"found users",Toast.LENGTH_LONG).show();

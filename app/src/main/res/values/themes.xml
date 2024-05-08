@@ -27,7 +27,6 @@
         <item name="android:textSize">90sp</item>
     </style>
     <style name="ProgressBarWhite" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@color/white</item>
-        <item name="android:indeterminateDrawable">@color/white</item>
+        <item name="color">@color/black</item>
     </style>
 </resources>

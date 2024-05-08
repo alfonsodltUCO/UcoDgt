@@ -48,6 +48,12 @@ public class CheckImage extends AppCompatActivity{
                 runOnUiThread(()->{
                     hideLoading();
                     Intent goShow=new Intent(CheckImage.this, ShowVehicle.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goShow.putExtra("vehicle",vehicle);
                     startActivity(goShow);
                     finish();
@@ -61,6 +67,12 @@ public class CheckImage extends AppCompatActivity{
 
                     if(error.networkResponse.statusCode==404){//The system doesn't have the plate recognized
                         Intent goAdd=new Intent(CheckImage.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);
                         hideLoading();
@@ -69,6 +81,12 @@ public class CheckImage extends AppCompatActivity{
                     }else{//The API have not recognized any plate
 
                         Intent goMain=new Intent(CheckImage.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckImage.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         hideLoading();

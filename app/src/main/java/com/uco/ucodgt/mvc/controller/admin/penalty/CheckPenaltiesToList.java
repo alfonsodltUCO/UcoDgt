@@ -41,12 +41,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.uco.ucodgt.R.layout.loading);
         progressBar=findViewById(com.uco.ucodgt.R.id.progressbar);
-        showLoading();
         String state=getIntent().getStringExtra("state");
         String date1=getIntent().getStringExtra("date1");
         String date2=getIntent().getStringExtra("date2");
         String lic=getIntent().getStringExtra("licencePlate");
         String dni=getIntent().getStringExtra("dni");
+        showLoading();
 
         if(!TextUtils.isEmpty(lic)){
 
@@ -60,6 +60,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                     Intent goShow=new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
                     goShow.putExtra("penalties",(Serializable) penalties);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(goShow);
                     hideLoading();
                     finish();
@@ -70,6 +76,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                     Intent goMain=new Intent(CheckPenaltiesToList.this,AdminActivity.class);
                     Toast.makeText(CheckPenaltiesToList.this,"Not found any penalty", Toast.LENGTH_LONG).show();
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(goMain);
                     hideLoading();
                     finish();
@@ -92,6 +104,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                     Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
                     goShow.putExtra("penalties", (Serializable) penalties);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(goShow);
                     hideLoading();
                     finish();
@@ -102,6 +120,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                     Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                     Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(goMain);
                     hideLoading();
                     finish();
@@ -123,6 +147,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                     Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                     Toast.makeText(CheckPenaltiesToList.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(goMain);
                     hideLoading();
                     finish();
@@ -136,6 +166,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goShow);
                             hideLoading();
                             finish();
@@ -146,6 +182,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                             Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goMain);
                             hideLoading();
                             finish();
@@ -172,6 +214,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goShow);
                             hideLoading();
                             finish();
@@ -182,6 +230,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                             Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goMain);
                             hideLoading();
                             finish();
@@ -203,6 +257,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goShow = new Intent(CheckPenaltiesToList.this, ShowPenalties.class);
                             goShow.putExtra("penalties", (Serializable) penalties);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goShow);
                             hideLoading();
                             finish();
@@ -214,6 +274,12 @@ public class CheckPenaltiesToList extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToList.this, AdminActivity.class);
                             Toast.makeText(CheckPenaltiesToList.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(goMain);
                             hideLoading();
                             finish();

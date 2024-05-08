@@ -61,6 +61,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                 public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                     Intent goShow=new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goShow.putExtra("penalties",(Serializable) penalties);
                     goShow.putExtra("dni",dni);
                     startActivity(goShow);
@@ -72,6 +78,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                 public void onError(VolleyError error) {
 
                     Intent goMain=new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     Toast.makeText(CheckPenaltiesToListForClient.this,"Not found any penalty", Toast.LENGTH_LONG).show();
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
@@ -94,6 +106,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                 if(!checkDatesPenalties(date1,date2)){
 
                     Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     Toast.makeText(CheckPenaltiesToListForClient.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
                     hideLoading();
@@ -107,6 +125,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             goShow.putExtra("penalties", (Serializable) penalties);
                             startActivity(goShow);
                             hideLoading();
@@ -117,6 +141,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         public void onError(VolleyError error) {
 
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             startActivity(goMain);
                             hideLoading();
@@ -142,6 +172,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             goShow.putExtra("penalties", (Serializable) penalties);
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
@@ -153,6 +189,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         public void onError(VolleyError error) {
 
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
@@ -176,6 +218,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                         public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                             Intent goShow = new Intent(CheckPenaltiesToListForClient.this, ShowPenalties.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             goShow.putExtra("penalties", (Serializable) penalties);
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
@@ -188,6 +236,12 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
 
                             Intent goMain = new Intent(CheckPenaltiesToListForClient.this, ClientActivity.class);
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
                             hideLoading();

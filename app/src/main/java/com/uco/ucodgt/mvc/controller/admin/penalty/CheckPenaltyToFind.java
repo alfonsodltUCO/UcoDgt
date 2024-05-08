@@ -46,6 +46,12 @@ public class CheckPenaltyToFind extends AppCompatActivity {
             if(!checkNumeric(id)){//Check the identifier is numeric
 
                 Intent intentGoBackAgain=new Intent(CheckPenaltyToFind.this, IntroducePenaltyForSearch.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentGoBackAgain);
                 Toast.makeText(CheckPenaltyToFind.this,"Must be a number", Toast.LENGTH_LONG).show();
                 finish();
@@ -65,6 +71,12 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                     @Override
                     public void onError(VolleyError error) {
                         Intent goMain=new Intent(CheckPenaltyToFind.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckPenaltyToFind.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         finish();
@@ -74,6 +86,12 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                     @Override
                     public void onPenaltyReceived(PenaltyDTO penalty) {
                         Intent goShow=new Intent(CheckPenaltyToFind.this, ShowPenalty.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goShow.putExtra("penalty",penalty);
                         startActivity(goShow);
                         finish();
@@ -87,6 +105,12 @@ public class CheckPenaltyToFind extends AppCompatActivity {
 
         }else{
             Intent intentAdmin=new Intent(CheckPenaltyToFind.this, AdminActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckPenaltyToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
             finish();

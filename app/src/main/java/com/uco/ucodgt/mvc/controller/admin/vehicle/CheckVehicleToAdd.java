@@ -56,6 +56,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
         setContentView(com.uco.ucodgt.R.layout.loading);
         progressBar=findViewById(com.uco.ucodgt.R.id.progressbar);
         showLoading();
+
         Intent intentReceived=getIntent();
         licenceplate=intentReceived.getStringExtra("licenceplate");
         color=intentReceived.getStringExtra("color");
@@ -71,6 +72,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
             if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
                 finish();
@@ -81,6 +88,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                 if(!checkPlate(licenceplate)){//Check plate format
 
                     Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(intentAdmin);
                     Toast.makeText(CheckVehicleToAdd.this,"No valid licence plate", Toast.LENGTH_LONG).show();
                     finish();
@@ -91,6 +104,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                     if(!checkDates(itvfrom,itvto)){//Check dates is set correctly
 
                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         startActivity(intentAdmin);
                         Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second\n And the format is yyyy-mm-dd", Toast.LENGTH_LONG).show();
                         finish();
@@ -101,6 +120,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                         if(!checkColor(color)){//Check valid color for vehicle
 
                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(intentAdmin);
                             Toast.makeText(CheckVehicleToAdd.this,"please enter a valid color", Toast.LENGTH_LONG).show();
                             finish();
@@ -111,6 +136,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                             if(!checkType(type)){//Check valid type for vehicle
 
                                 Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 startActivity(intentAdmin);
                                 Toast.makeText(CheckVehicleToAdd.this,"please enter a valid type", Toast.LENGTH_LONG).show();
                                 hideLoading();
@@ -135,6 +166,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
 
                                                         Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
                                                         startActivity(intentAdmin);
                                                         hideLoading();
@@ -148,6 +185,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                         if(error.networkResponse.statusCode==400){
 
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                                            try {
+                                                                Thread.sleep(2*1000);
+                                                            }
+                                                            catch (Exception e) {
+                                                                System.out.println(e);
+                                                            }
                                                             startActivity(intentAdmin);
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
@@ -156,6 +199,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                         } else if (error.networkResponse.statusCode==404) {//The id introduces doesn't exist
 
                                                             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                                            try {
+                                                                Thread.sleep(2*1000);
+                                                            }
+                                                            catch (Exception e) {
+                                                                System.out.println(e);
+                                                            }
                                                             startActivity(intentAdmin);
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
@@ -178,6 +227,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                     public void onError(VolleyError error) {
 
                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         startActivity(intentAdmin);
                                         Toast.makeText(CheckVehicleToAdd.this,"Client doesnt exist", Toast.LENGTH_LONG).show();
                                         hideLoading();
@@ -208,6 +263,12 @@ public class CheckVehicleToAdd extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();

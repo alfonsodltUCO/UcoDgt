@@ -2,6 +2,7 @@ package com.uco.ucodgt.mvc.controller.client.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,12 +30,19 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 public class CheckClientPoints extends AppCompatActivity {
     String dni;
 
+    private ProgressBar progressBar;
+
     int actualPoints;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(com.uco.ucodgt.R.layout.loading);
+
+        progressBar = findViewById(com.uco.ucodgt.R.id.progressbar);
+        showLoading();
+
         dni = getIntent().getStringExtra("dni");
         ManagerClient mngC=new ManagerClient();
         ManagerPenalty mngP=new ManagerPenalty();
@@ -63,6 +71,12 @@ public class CheckClientPoints extends AppCompatActivity {
                             public void onUserReceived(ClientDTO user) {
 
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
                                 finish();
@@ -71,6 +85,12 @@ public class CheckClientPoints extends AppCompatActivity {
                             @Override
                             public void onError(VolleyError error) {
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
                                 finish();
@@ -110,6 +130,12 @@ public class CheckClientPoints extends AppCompatActivity {
                             public void onUserReceived(ClientDTO user) {
 
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
                                 finish();
@@ -118,6 +144,12 @@ public class CheckClientPoints extends AppCompatActivity {
                             @Override
                             public void onError(VolleyError error) {
                                 Intent intentClient=new Intent(CheckClientPoints.this, ClientActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
                                 finish();
@@ -253,6 +285,22 @@ public class CheckClientPoints extends AppCompatActivity {
 
         long differenceInMillis = endDate.getTime() - startDate.getTime();
         return TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS) / 365;
+    }
+
+
+
+    /**
+     * Shows the loading progress bar.
+     */
+    private void showLoading() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+    }
+
+    /**
+     * Hides the loading progress bar.
+     */
+    private void hideLoading() {
+        progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
 
 }

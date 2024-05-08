@@ -47,6 +47,12 @@ public class CheckVehicleToFind extends AppCompatActivity {
             if(!checkPlate(licenceplate)){//Check plate format
 
                 Intent intentAdmin=new Intent(CheckVehicleToFind.this, IntroduceManual.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToFind.this,"No valid licence plate", Toast.LENGTH_LONG).show();
                 finish();
@@ -61,6 +67,12 @@ public class CheckVehicleToFind extends AppCompatActivity {
                     public void onVehicleReceived(VehicleDTO vehicle) {
 
                         Intent goShow=new Intent(CheckVehicleToFind.this, ShowVehicle.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goShow.putExtra("vehicle",vehicle);
                         startActivity(goShow);
                         finish();
@@ -72,6 +84,12 @@ public class CheckVehicleToFind extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckVehicleToFind.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckVehicleToFind.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         finish();
@@ -88,6 +106,12 @@ public class CheckVehicleToFind extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckVehicleToFind.this, IntroduceManual.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
             finish();

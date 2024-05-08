@@ -82,6 +82,12 @@ public class CheckExtendItv extends AppCompatActivity {
                         public void onVehicleReceived(VehicleDTO vehicle) {
 
                             Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(intent);
                             Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
                             finish();
@@ -92,6 +98,12 @@ public class CheckExtendItv extends AppCompatActivity {
                         public void onError(VolleyError error) {
 
                             Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             startActivity(intent);
                             Toast.makeText(CheckExtendItv.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
                             finish();
@@ -107,6 +119,12 @@ public class CheckExtendItv extends AppCompatActivity {
                 }else{
 
                     Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(intent);
                     Toast.makeText(CheckExtendItv.this,"The itv is not expired", Toast.LENGTH_LONG).show();
                     finish();

@@ -62,6 +62,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
         if(!checkValidEmail(email)){
             showLoading();
             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intent.putExtra("dni",dniRec);
             startActivity(intent);
             Toast.makeText(CheckDataForUpdate.this, "The email is not valid format", Toast.LENGTH_LONG).show();
@@ -71,6 +77,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
             if(!checkPassword(pasword)){
                 showLoading();
                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("dni",dniRec);
                 startActivity(intent);
                 Toast.makeText(CheckDataForUpdate.this, "The password is not valid\nMust be 8 characters al least\nOne number\nOne special character\nOne capital letter", Toast.LENGTH_LONG).show();
@@ -92,6 +104,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                     showLoading();
                                     Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     intent.putExtra("dni",dniRec);
                                     startActivity(intent);
                                     Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
@@ -120,6 +138,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                                 showLoading();
                                                 Intent intent = new Intent(CheckDataForUpdate.this, ClientActivity.class);
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
                                                 intent.putExtra("dni",dniRec);
                                                 startActivity(intent);
                                                 Toast.makeText(CheckDataForUpdate.this, "Update done", Toast.LENGTH_LONG).show();
@@ -131,6 +155,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                             public void onError(VolleyError error) {
                                                 showLoading();
                                                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
                                                 intent.putExtra("dni",dniRec);
                                                 startActivity(intent);
                                                 Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
@@ -168,6 +198,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                         showLoading();
                                         Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         intent.putExtra("dni",dniRec);
                                         startActivity(intent);
                                         Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
@@ -217,6 +253,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                             showLoading();
                             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             intent.putExtra("dni",dniRec);
                             startActivity(intent);
                             Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();

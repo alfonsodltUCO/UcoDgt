@@ -57,6 +57,12 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
             if(!checkNumeric(id)){//Check identifier is numeric
 
                 Intent goMain=new Intent(CheckPenaltyToFindForClient.this, CheckPenaltiesToListForClient.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goMain.putExtra("dni",dni);
                 startActivity(goMain);
                 finish();
@@ -78,6 +84,12 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckPenaltyToFindForClient.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         goMain.putExtra("dni",dni);
                         startActivity(goMain);
@@ -108,6 +120,12 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
                             public void onWorkerReceived(WorkerDTO user) {
 
                                 Intent goShow=new Intent(CheckPenaltyToFindForClient.this, ShowPenalty.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 goShow.putExtra("penalty",penalty);
                                 goShow.putExtra("dni",dni);
                                 goShow.putExtra("worker",user.getNumberOfWorker().toString());
@@ -140,6 +158,12 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
         }else{
 
             Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             Toast.makeText(CheckPenaltyToFindForClient.this,"An error has ocurred", Toast.LENGTH_LONG).show();
             goMain.putExtra("dni",dni);
             startActivity(goMain);
