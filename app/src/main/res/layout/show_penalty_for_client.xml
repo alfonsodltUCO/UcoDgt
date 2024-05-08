@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:orientation="vertical"
     >
     <pl.droidsonroids.gif.GifImageView
@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/textviewpageinfo"
             android:layout_width="0dp"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="2"
@@ -79,6 +80,7 @@
 
                 <TextView
                     android:id="@+id/tvId"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -98,6 +100,7 @@
                     android:id="@+id/tvDate"
                     android:gravity="center"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
@@ -131,6 +134,7 @@
                     android:id="@+id/tvDniC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"                    android:text="Introduce dni of client"
@@ -147,6 +151,7 @@
                     android:id="@+id/tvDniW"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"                    android:text="Introduce dni of worker"
@@ -182,6 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the state"
@@ -198,6 +204,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the reason"
@@ -213,6 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the quantity"
@@ -228,6 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the points"
@@ -265,6 +274,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce the description"
                     android:textSize="30sp"
                     />
@@ -280,6 +290,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:text="Introduce the licence plate"
                     android:textSize="30sp"
                     />

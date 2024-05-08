@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:orientation="vertical"
     >
 
@@ -27,6 +27,7 @@
             <TextView
                 android:id="@+id/textviewpageinfo"
                 android:layout_width="0dp"
+                android:textColor="@color/white"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
@@ -83,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the licence plate"
@@ -100,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the car type"
@@ -118,6 +121,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce color"
                     android:textSize="30sp"
                     />
@@ -153,6 +157,7 @@
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the Insurance id"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
                     />
 
@@ -170,6 +175,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce the date of itv start"
                     android:textSize="30sp"
                     />
@@ -185,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the date of itv end"
                     android:textSize="30sp"
@@ -232,6 +239,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:textSize="30sp"
+                android:layout_marginRight="@dimen/fab_margin_16"
                 android:text="Go main menu"
                 >
 
@@ -245,6 +253,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:textSize="30sp"
+                android:layout_marginLeft="@dimen/fab_margin_16"
                 android:text="List penalties"
                 >
 

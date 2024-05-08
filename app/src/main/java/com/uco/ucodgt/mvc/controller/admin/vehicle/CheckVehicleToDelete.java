@@ -47,6 +47,12 @@ public class CheckVehicleToDelete extends AppCompatActivity {
             if(!checkPlate(licencePlate)){//Check plate format
 
                 Intent intentAdmin=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckVehicleToDelete.this,"No valid plate", Toast.LENGTH_LONG).show();
                 finish();
@@ -62,6 +68,12 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                     public void onVehicleReceived(VehicleDTO vehicle) {
 
                         Toast.makeText(CheckVehicleToDelete.this,"Vehicle deleted", Toast.LENGTH_LONG).show();
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
                         hideLoading();
@@ -74,6 +86,12 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                         if(error.networkResponse.statusCode==404) {
 
                             Toast.makeText(CheckVehicleToDelete.this,"Not found", Toast.LENGTH_LONG).show();
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             Intent intentGoBack=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                             startActivity(intentGoBack);
                             hideLoading();
@@ -90,6 +108,12 @@ public class CheckVehicleToDelete extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckVehicleToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();

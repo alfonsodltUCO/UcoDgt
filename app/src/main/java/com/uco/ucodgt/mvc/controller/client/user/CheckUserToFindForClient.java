@@ -59,6 +59,12 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                 mngcl.getUser(clientToFind, CheckUserToFindForClient.this, new UserCallback() {
                     @Override
                     public void onUserReceived(ClientDTO user) {// User found, show details in ShowUser activity
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckUserToFindForClient.this,"Client Found", Toast.LENGTH_LONG).show();
                         Intent intentSeeUser=new Intent(CheckUserToFindForClient.this, ShowUser.class);
                         intentSeeUser.putExtra("client", user);
@@ -73,6 +79,12 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Intent intentGoBack=new Intent(CheckUserToFindForClient.this, ClientActivity.class);
                         intentGoBack.putExtra("dni",dni);
                         startActivity(intentGoBack);
@@ -105,6 +117,12 @@ public class CheckUserToFindForClient extends AppCompatActivity {
         }else{// If dni is empty, return to ClientActivity
 
             Intent intentAdmin=new Intent(CheckUserToFindForClient.this, ClientActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intent.putExtra("dni",dni);
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();

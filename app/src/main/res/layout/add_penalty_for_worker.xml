@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
@@ -35,6 +35,7 @@
                 android:id="@+id/tvCDni"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Client DNI"
                 android:textSize="30sp"
@@ -43,6 +44,7 @@
 
             <TextView
                 android:id="@+id/tvReason"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -52,6 +54,7 @@
                 />
             <TextView
                 android:id="@+id/tvPlace"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -62,6 +65,7 @@
             <TextView
                 android:id="@+id/tvInformed"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Informed at the moment"
@@ -72,6 +76,7 @@
                 android:id="@+id/tvLocality"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Locality"
                 android:textSize="30sp"
@@ -81,6 +86,7 @@
                 android:id="@+id/tvLicencePlate"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Licence Plate"
                 android:textSize="30sp"
@@ -92,12 +98,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:text="Quantity"
                 android:textSize="30sp"
  />
 
             <TextView
                 android:id="@+id/tvPoints"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -114,18 +122,23 @@
             android:orientation="vertical"
             >
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCDni"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
-                android:text="31878744P"
-                android:backgroundTint="@android:color/transparent"
-                />
-
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="31878744P"
+                android:backgroundTint="@android:color/transparent"/>
             <Spinner
                 android:id="@+id/Reason"
                 android:layout_width="match_parent"
@@ -140,18 +153,24 @@
 
 
 
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPlace"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
-                android:textSize="30sp"
                 android:autofillHints=""
                 android:ems="10"
+                android:textSize="30sp"
                 android:inputType="text"
-                android:text="Avenida America"
-                />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="Avenida America"
+                android:backgroundTint="@android:color/transparent"/>
+
             <Spinner
                 android:id="@+id/Informed"
                 android:layout_width="match_parent"
@@ -162,53 +181,77 @@
                 android:ems="10"
                 android:textSize="30sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLocality"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="text"
-                android:text="Cordoba"
-                />
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="Cordoba"
+                android:backgroundTint="@android:color/transparent"/>
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLicencePlate"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="text"
-                android:text="3289JVJ"
-                />
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="3289JVJ"
+                android:backgroundTint="@android:color/transparent"/>
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="number"
-                android:text="200"
-                />
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="200"
+                android:backgroundTint="@android:color/transparent"/>
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPoints"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
-                android:ems="10"                android:textSize="30sp"
+                android:ems="10"
+                android:textSize="30sp"
                 android:inputType="number"
-                android:text="4"
-                />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="4"
+                android:backgroundTint="@android:color/transparent"/>
+
         </LinearLayout>
     </LinearLayout>
 

@@ -122,6 +122,12 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                 if(penalty.getState().toString().equals("paid")){
 
                     Intent goMain=new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is already paid", Toast.LENGTH_LONG).show();
@@ -131,6 +137,12 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                 }else if(penalty.getState().toString().equals("cancelled")){
 
                     Intent goMain=new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is cancelled", Toast.LENGTH_LONG).show();
@@ -208,6 +220,12 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                     if (error.networkResponse.statusCode == 404) {
 
                                                         Intent goMain = new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         goMain.putExtra("dni", dni);
                                                         startActivity(goMain);
                                                         Toast.makeText(CheckPenaltyToPay.this, "The penalty probably doesnt exists", Toast.LENGTH_LONG).show();
@@ -217,6 +235,12 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                     } else {
 
                                                         Intent goMain = new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         goMain.putExtra("dni", dni);
                                                         startActivity(goMain);
                                                         Toast.makeText(CheckPenaltyToPay.this, "An error has ocurred during payment process, try again please", Toast.LENGTH_LONG).show();
@@ -230,6 +254,12 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                 public void onPenaltyReceived(PenaltyDTO penalty) {
 
                                                     Intent goMain = new Intent(CheckPenaltyToPay.this, ClientActivity.class);
+                                                    try {
+                                                        Thread.sleep(2*1000);
+                                                    }
+                                                    catch (Exception e) {
+                                                        System.out.println(e);
+                                                    }
                                                     goMain.putExtra("dni", dni);
                                                     Toast.makeText(CheckPenaltyToPay.this, "Payment realized", Toast.LENGTH_LONG).show();
                                                     startActivity(goMain);

@@ -64,7 +64,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         });
         spinnerInformed = findViewById(com.uco.ucodgt.R.id.Informed);
         ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.informed, com.uco.ucodgt.R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterInformed.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerInformed.setAdapter(adapterInformed);
         spinnerInformed.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

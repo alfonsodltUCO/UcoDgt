@@ -58,7 +58,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
         listPenalties=findViewById(com.uco.ucodgt.R.id.listPenalties);
         numberofworker_licencepoints=findViewById(com.uco.ucodgt.R.id.textViewFoundLicencePoints_numberworker);
         image=findViewById(com.uco.ucodgt.R.id.imageShow);
-        image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
+        image.setImageResource(com.uco.ucodgt.R.drawable.userformenu);
 
         goMenu.setOnClickListener(this);
         listPenalties.setOnClickListener(this);

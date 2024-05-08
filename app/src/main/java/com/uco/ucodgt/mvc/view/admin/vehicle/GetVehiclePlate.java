@@ -111,14 +111,10 @@ public class GetVehiclePlate extends AppCompatActivity {
      * Opens the gallery to select an image if the necessary permission is granted.
      */
     private void openGallery() {
-        Log.d("e","aaaa");
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_IMAGE_PICK);
-            }
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_IMAGE_PICK);
         } else {
             galleryLauncher.launch("image/*");
         }

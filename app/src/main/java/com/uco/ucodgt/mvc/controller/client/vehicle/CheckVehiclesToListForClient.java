@@ -62,6 +62,12 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                 public void onError(VolleyError error) {
 
                     Intent emptyLists = new Intent(CheckVehiclesToListForClient.this, ClientActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     emptyLists.putExtra("dni",dni);
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToListForClient.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
@@ -75,6 +81,12 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                     // If vehicles received, display them in ShowVehicles activity
                     vehiclelist=vehicles;
                     Intent notEmptyLists = new Intent(CheckVehiclesToListForClient.this, ShowVehicles.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
                     Toast.makeText(CheckVehiclesToListForClient.this,"found vehicles",Toast.LENGTH_LONG).show();
                     notEmptyLists.putExtra("dni",dni);

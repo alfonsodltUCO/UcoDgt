@@ -61,6 +61,12 @@ public class CheckWorkerInfo extends AppCompatActivity {
             public void onError(VolleyError error) {
 
                 Intent intent=new Intent(CheckWorkerInfo.this, WorkerActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("numberWorker",numberWorker);
                 Toast.makeText(CheckWorkerInfo.this,"An error has occured try again please", Toast.LENGTH_LONG).show();
                 startActivity(intent);
@@ -72,6 +78,12 @@ public class CheckWorkerInfo extends AppCompatActivity {
             public void onWorkerReceived(WorkerDTO user) {
 
                 Intent intent=new Intent(CheckWorkerInfo.this, ShowWorker.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("numberWorker",numberWorker);
                 intent.putExtra("worker",user);
                 startActivity(intent);

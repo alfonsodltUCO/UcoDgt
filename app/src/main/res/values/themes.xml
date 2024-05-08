@@ -26,4 +26,7 @@
     <style name="SpinnerTextStyle" parent="Widget.AppCompat.Spinner">
         <item name="android:textSize">90sp</item>
     </style>
+    <style name="ProgressBarWhite" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="color">@color/black</item>
+    </style>
 </resources>

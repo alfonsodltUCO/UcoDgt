@@ -28,7 +28,6 @@ import com.uco.ucodgt.mvc.view.worker.penalty.ShowPenalties;
  */
 public class CheckPenaltiesToListForWorker extends AppCompatActivity {
     ProgressBar progressBar;
-    List<PenaltyDTO> penalties;
 
     String numberWorker;
     /**
@@ -59,6 +58,12 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                 public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                     Intent goShow=new Intent(CheckPenaltiesToListForWorker.this, ShowPenalties.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goShow.putExtra("penalties",(Serializable) penalties);
                     goShow.putExtra("numberWorker",numberWorker);
                     startActivity(goShow);
@@ -70,6 +75,12 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                 public void onError(VolleyError error) {
 
                     Intent goMain=new Intent(CheckPenaltiesToListForWorker.this, WorkerActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goMain.putExtra("numberWorker",numberWorker);
                     Toast.makeText(CheckPenaltiesToListForWorker.this,"Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
@@ -93,6 +104,12 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                 public void onPenaltiesReceived(List<PenaltyDTO> penalties) {
 
                     Intent goShow = new Intent(CheckPenaltiesToListForWorker.this, ShowPenalties.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goShow.putExtra("numberWorker",numberWorker);
                     goShow.putExtra("penalties", (Serializable) penalties);
                     startActivity(goShow);
@@ -104,6 +121,12 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                 public void onError(VolleyError error) {
 
                     Intent goMain = new Intent(CheckPenaltiesToListForWorker.this, WorkerActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     goMain.putExtra("numberWorker",numberWorker);
                     Toast.makeText(CheckPenaltiesToListForWorker.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
@@ -118,6 +141,12 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
             });
         }else{
             Intent goMain = new Intent(CheckPenaltiesToListForWorker.this, WorkerActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             goMain.putExtra("numberWorker",numberWorker);
             Toast.makeText(CheckPenaltiesToListForWorker.this, "An error has occurred try again please", Toast.LENGTH_LONG).show();
             startActivity(goMain);

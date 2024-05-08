@@ -62,6 +62,12 @@ public class CheckUserToSee extends AppCompatActivity {
             @Override
             public void onUserReceived(ClientDTO user) {
                 Intent goShow=new Intent(CheckUserToSee.this, ShowUser.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goShow.putExtra("numberWorker",numberWorker);
                 goShow.putExtra("client",user);
                 startActivity(goShow);

@@ -53,6 +53,12 @@ public class CheckUserToFind  extends AppCompatActivity {
             if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckUserToFind.this, FindUserActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckUserToFind.this,"No valid DNI", Toast.LENGTH_LONG).show();
                 finish();
@@ -73,6 +79,12 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 // User found
 
                                 Toast.makeText(CheckUserToFind.this,"Client Found", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentSeeWorker=new Intent(CheckUserToFind.this, ShowUser.class);
                                 intentSeeWorker.putExtra("client", user);
                                 intentSeeWorker.putExtra("type","client");
@@ -87,6 +99,12 @@ public class CheckUserToFind  extends AppCompatActivity {
 
                                 // Error: user not found
                                 Toast.makeText(CheckUserToFind.this,"Not found", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
@@ -128,6 +146,12 @@ public class CheckUserToFind  extends AppCompatActivity {
                             public void onError(VolleyError error) {
 
                                 Toast.makeText(CheckUserToFind.this,"Not found", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
                                 hideLoading();
@@ -139,6 +163,12 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 // User found
 
                                 Toast.makeText(CheckUserToFind.this,"Worker Found", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 Intent intentSeeWorker=new Intent(CheckUserToFind.this, ShowUser.class);
                                 intentSeeWorker.putExtra("worker", user);
                                 intentSeeWorker.putExtra("type","worker");
@@ -169,6 +199,12 @@ public class CheckUserToFind  extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckUserToFind.this, FindUserActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToFind.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();

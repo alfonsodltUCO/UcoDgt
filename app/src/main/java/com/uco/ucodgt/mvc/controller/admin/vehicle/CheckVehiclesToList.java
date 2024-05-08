@@ -56,6 +56,12 @@ public class CheckVehiclesToList extends AppCompatActivity {
                 public void onError(VolleyError error) {
 
                     Intent emptyLists = new Intent(CheckVehiclesToList.this, AdminActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
@@ -67,6 +73,12 @@ public class CheckVehiclesToList extends AppCompatActivity {
 
                     vehiclelist=vehicles;
                     Intent notEmptyLists = new Intent(CheckVehiclesToList.this, ShowVehicles.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);
@@ -88,6 +100,12 @@ public class CheckVehiclesToList extends AppCompatActivity {
                 public void onError(VolleyError error) {
 
                     Intent emptyLists = new Intent(CheckVehiclesToList.this, AdminActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     startActivity(emptyLists);
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
@@ -99,6 +117,12 @@ public class CheckVehiclesToList extends AppCompatActivity {
 
                     vehiclelist=vehicles;
                     Intent notEmptyLists = new Intent(CheckVehiclesToList.this, ShowVehicles.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);

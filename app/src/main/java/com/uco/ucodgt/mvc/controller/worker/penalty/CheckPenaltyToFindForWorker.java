@@ -47,6 +47,12 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
             if(!checkNumeric(id)){//Check identifier is valid
 
                 Intent intentGoBackAgain=new Intent(CheckPenaltyToFindForWorker.this, WorkerActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intentGoBackAgain.putExtra("numberWorker",numberWorker);
                 startActivity(intentGoBackAgain);
                 Toast.makeText(CheckPenaltyToFindForWorker.this,"Must be a number", Toast.LENGTH_LONG).show();
@@ -67,6 +73,12 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
                     @Override
                     public void onError(VolleyError error) {
                         Intent goMain=new Intent(CheckPenaltyToFindForWorker.this, WorkerActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckPenaltyToFindForWorker.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
@@ -77,6 +89,12 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
                     @Override
                     public void onPenaltyReceived(PenaltyDTO penalty) {
                         Intent goShow=new Intent(CheckPenaltyToFindForWorker.this, ShowPenalty.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goShow.putExtra("penalty",penalty);
                         goShow.putExtra("numberWorker",numberWorker);
                         startActivity(goShow);
@@ -91,6 +109,12 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
 
         }else{
             Intent intent=new Intent(CheckPenaltyToFindForWorker.this, WorkerActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             Toast.makeText(CheckPenaltyToFindForWorker.this,"Fill the field please", Toast.LENGTH_LONG).show();

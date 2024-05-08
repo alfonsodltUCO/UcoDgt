@@ -52,6 +52,12 @@ public class CheckPointsToUpdate extends AppCompatActivity {
         if(!checkNumeric(points)){//Check points are numeric
 
             Intent goMain=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             Toast.makeText(CheckPointsToUpdate.this,"Points incorrect try again please", Toast.LENGTH_LONG).show();
             startActivity(goMain);
             finish();
@@ -62,6 +68,12 @@ public class CheckPointsToUpdate extends AppCompatActivity {
             if(Integer.parseInt(points)>15 || Integer.parseInt(points)<=0){//cHECK POINTS IS BETWEEN THE Max and Min
 
                 Intent goMain=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 Toast.makeText(CheckPointsToUpdate.this,"Points must be between [1,15]", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
                 finish();
@@ -77,6 +89,12 @@ public class CheckPointsToUpdate extends AppCompatActivity {
                     public void onUserReceived(ClientDTO user) {
 
                         Intent intent=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckPointsToUpdate.this,"Update done", Toast.LENGTH_LONG).show();
                         startActivity(intent);
                         finish();
@@ -87,6 +105,12 @@ public class CheckPointsToUpdate extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckPointsToUpdate.this, AdminActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         Toast.makeText(CheckPointsToUpdate.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
                         finish();

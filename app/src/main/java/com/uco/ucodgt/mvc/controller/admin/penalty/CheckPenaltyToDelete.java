@@ -49,6 +49,12 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
             public void onError(VolleyError error) {
 
                 Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 Toast.makeText(CheckPenaltyToDelete.this, "Not found the penalty", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
                 hideLoading();
@@ -58,6 +64,12 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
             public void onPenaltyReceived(PenaltyDTO penalty) {
 
                 Intent goMain = new Intent(CheckPenaltyToDelete.this, AdminActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 Toast.makeText(CheckPenaltyToDelete.this, "Deleted done", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
                 hideLoading();

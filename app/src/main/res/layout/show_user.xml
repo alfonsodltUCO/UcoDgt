@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:orientation="vertical"
     >
     <pl.droidsonroids.gif.GifImageView
@@ -26,6 +26,7 @@
             <TextView
                 android:id="@+id/textviewpageinfo"
                 android:layout_width="0dp"
+                android:textColor="@color/white"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="center"
@@ -84,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the name"
                     android:textSize="30sp"
@@ -99,6 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the surname"
@@ -115,6 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the date of birth"
@@ -151,7 +155,8 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
-                    android:text="Introduce the licence points"
+                   android:textColor="@color/white"
+                   android:text="Introduce the licence points"
                     android:textSize="30sp"
                 />
 
@@ -168,7 +173,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
-                    android:layout_marginLeft="40sp"
+                  android:textColor="@color/white"
+                  android:layout_marginLeft="40sp"
                     android:text="Introduce the email"
                     android:textSize="30sp"
                     />
@@ -206,7 +212,8 @@
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the DNI"
-                    android:textSize="30sp"
+                      android:textColor="@color/white"
+                      android:textSize="30sp"
                     />
                 <View
                     android:layout_width="5dp"
@@ -222,6 +229,7 @@
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:text="Introduce the date of obtaining licence"
                     android:textSize="30sp"
                     />
@@ -262,6 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginRight="@dimen/fab_margin_16"
                 android:layout_gravity="center"
                 android:textSize="30sp"
                 android:text="Go main menu"
@@ -274,6 +283,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:textSize="30sp"
+                android:layout_marginLeft="@dimen/fab_margin_16"
                 android:layout_gravity="center"
                 android:text="Delete User"
                 >

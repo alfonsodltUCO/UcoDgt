@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
@@ -27,20 +27,26 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Description"
-            android:textSize="18sp" />
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etDescription"
-            android:backgroundTint="@android:color/transparent"
+              android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@color/white"
+            android:outlineSpotShadowColor="@color/white"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="start|center"
-            android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
+            android:textSize="30sp"
             android:inputType="text"
-            android:text="Description"
-            />
+            android:gravity="start|center"
+             android:hint="Description"
+            android:backgroundTint="@android:color/transparent"/>
+
     </LinearLayout>
 
     <LinearLayout

@@ -71,6 +71,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
             public void onError(VolleyError error) {
 
                 Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
                 Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
@@ -83,6 +89,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                 if(penalty.getState().toString().equals("cancelled")){
 
                     Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                    try {
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
+                    }
                     intent.putExtra("numberWorker",numberWorker);
                     startActivity(intent);
                     Toast.makeText(CheckPenaltyToCancel.this,"The penalty is already cancelled", Toast.LENGTH_LONG).show();
@@ -102,6 +114,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                         @Override
                         public void onError(VolleyError error) {
                             Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             intent.putExtra("numberWorker",numberWorker);
                             startActivity(intent);
                             Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
@@ -125,6 +143,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                     if(error.networkResponse.statusCode==405){
 
                                         Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         intent.putExtra("numberWorker",numberWorker);
                                         startActivity(intent);
                                         Toast.makeText(CheckPenaltyToCancel.this,"This penalty was not imposed by you", Toast.LENGTH_LONG).show();
@@ -134,6 +158,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                     }else{
 
                                         Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         intent.putExtra("numberWorker",numberWorker);
                                         startActivity(intent);
                                         Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
@@ -145,6 +175,12 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                 @Override
                                 public void onPenaltyReceived(PenaltyDTO penalty) {
                                     Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     intent.putExtra("numberWorker",numberWorker);
                                     startActivity(intent);
                                     Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();

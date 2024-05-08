@@ -67,6 +67,12 @@ public class CheckWorkerPassword extends AppCompatActivity {
             public void onError(VolleyError error) {
 
                 Intent goMain=new Intent(CheckWorkerPassword.this, WorkerActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goMain.putExtra("numberWorker",numberWorker);
                 Toast.makeText(CheckWorkerPassword.this,"An error has ocurred try again please", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
@@ -85,6 +91,12 @@ public class CheckWorkerPassword extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckWorkerPassword.this, IntroduceActualPassword.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckWorkerPassword.this,"The password is incorrect", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
@@ -96,6 +108,12 @@ public class CheckWorkerPassword extends AppCompatActivity {
                     public void onWorkerReceived(WorkerDTO user) {
 
                         Intent goNewData=new Intent(CheckWorkerPassword.this, IntroduceNewData.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goNewData.putExtra("numberWorker",numberWorker);
                         goNewData.putExtra("dni",user.getDni());
                         Toast.makeText(CheckWorkerPassword.this,"Password is correct", Toast.LENGTH_LONG).show();

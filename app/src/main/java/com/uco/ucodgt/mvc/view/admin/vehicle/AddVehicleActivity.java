@@ -62,9 +62,9 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             }
         });
         spinnerColor = findViewById(com.uco.ucodgt.R.id.colorType);
-        ArrayAdapter<CharSequence> adapterInformed = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.color, com.uco.ucodgt.R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerColor.setAdapter(adapterInformed);
+        ArrayAdapter<CharSequence> adapterColor = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.color, com.uco.ucodgt.R.layout.spinner_item);
+        adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerColor.setAdapter(adapterColor);
         spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {

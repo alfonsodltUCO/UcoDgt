@@ -62,6 +62,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
         if(!checkValidEmail(email)){
             showLoading();
             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intent.putExtra("numberWorker",numberWorker);
             intent.putExtra("dni",dni);
             startActivity(intent);
@@ -72,6 +78,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
             if(!checkPassword(password)){
                 showLoading();
                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("numberWorker",numberWorker);
                 intent.putExtra("dni",dni);
                 startActivity(intent);
@@ -94,6 +106,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                     showLoading();
                                     Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     intent.putExtra("numberWorker",numberWorker);
                                     intent.putExtra("dni",dni);
                                     startActivity(intent);
@@ -128,6 +146,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                                 showLoading();
                                                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
                                                 intent.putExtra("numberWorker",numberWorker);
                                                 intent.putExtra("dni",dni);
                                                 startActivity(intent);
@@ -140,6 +164,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                             @Override
                                             public void onWorkerReceived(WorkerDTO user) {
                                                 showLoading();
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
                                                 Intent intent = new Intent(CheckDataForUpdate.this, WorkerActivity.class);
                                                 intent.putExtra("numberWorker",numberWorker);
                                                 startActivity(intent);
@@ -173,6 +203,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                                         showLoading();
                                         Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                        try {
+                                            Thread.sleep(2*1000);
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         intent.putExtra("numberWorker",numberWorker);
                                         intent.putExtra("dni",dni);
                                         startActivity(intent);
@@ -223,6 +259,12 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
                             showLoading();
                             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
                             intent.putExtra("numberWorker",numberWorker);
                             intent.putExtra("dni",dni);
                             startActivity(intent);

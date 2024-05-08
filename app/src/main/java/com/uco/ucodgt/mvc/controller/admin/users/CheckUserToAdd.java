@@ -63,6 +63,12 @@ public class CheckUserToAdd extends AppCompatActivity {
             if(!checkDni(dni)){//Check DNI format
 
                 Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 startActivity(intentAdmin);
                 Toast.makeText(CheckUserToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
                 finish();
@@ -72,6 +78,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                if(!checkNameAndSUrname(name,surname)){//Check format of name and surname
 
                    Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                   try {
+                       Thread.sleep(2*1000);
+                   }
+                   catch (Exception e) {
+                       System.out.println(e);
+                   }
                    startActivity(intentAdmin);
                    Toast.makeText(CheckUserToAdd.this,"No valid input for name/surname", Toast.LENGTH_LONG).show();
                    finish();
@@ -81,6 +93,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                    if(!checkLicencePoints(licencepoints)){//Check licence points
 
                        Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                       try {
+                           Thread.sleep(2*1000);
+                       }
+                       catch (Exception e) {
+                           System.out.println(e);
+                       }
                        startActivity(intentAdmin);
                        Toast.makeText(CheckUserToAdd.this,"Number have to be 8 exactly", Toast.LENGTH_LONG).show();
                        finish();
@@ -101,6 +119,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                             showLoading();
                                             Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                            try {
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
+                                            }
                                             startActivity(intentAdmin);
                                             Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                             hideLoading();
@@ -123,6 +147,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                 if(!checkValidEmail(email)){//Chem email format
 
                                                     Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                    try {
+                                                        Thread.sleep(2*1000);
+                                                    }
+                                                    catch (Exception e) {
+                                                        System.out.println(e);
+                                                    }
                                                     startActivity(intentAdmin);
                                                     Toast.makeText(CheckUserToAdd.this, "The email have incorrect form", Toast.LENGTH_LONG).show();
                                                     finish();
@@ -132,6 +162,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                     if(!checkDateOfBirth(age)){//Check date format and if is older than 18
 
                                                         Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         startActivity(intentAdmin);
                                                         Toast.makeText(CheckUserToAdd.this, "The user is younger than 18 years old\n"+"or the format is incorrect (yyyy-mm-dd)\n", Toast.LENGTH_LONG).show();
                                                         finish();
@@ -141,6 +177,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                         if(!checkPassword(password)){
 
                                                             Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                            try {
+                                                                Thread.sleep(2*1000);
+                                                            }
+                                                            catch (Exception e) {
+                                                                System.out.println(e);
+                                                            }
                                                             startActivity(intentAdmin);
                                                             Toast.makeText(CheckUserToAdd.this, "The password must be:\n"+"more that 8 characters\n"+"one capital letter\n"+"one symbol\n"+"one number\n", Toast.LENGTH_LONG).show();
                                                             finish();
@@ -166,6 +208,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                try {
+                                                                                    Thread.sleep(2*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 startActivity(intentAdmin);
                                                                                 Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
@@ -182,6 +230,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                     showLoading();
                                                                                     Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                    try {
+                                                                                        Thread.sleep(2*1000);
+                                                                                    }
+                                                                                    catch (Exception e) {
+                                                                                        System.out.println(e);
+                                                                                    }
                                                                                     startActivity(intentAdmin);
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
@@ -193,6 +247,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                         showLoading();
                                                                                         Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
                                                                                         startActivity(intentAdmin);
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
@@ -254,6 +314,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                     showLoading();
                                                                                     Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                    try {
+                                                                                        Thread.sleep(2*1000);
+                                                                                    }
+                                                                                    catch (Exception e) {
+                                                                                        System.out.println(e);
+                                                                                    }
                                                                                     startActivity(intentAdmin);
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
@@ -265,6 +331,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                         showLoading();
                                                                                         Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
                                                                                         startActivity(intentAdmin);
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
@@ -281,6 +353,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                try {
+                                                                                    Thread.sleep(2*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 startActivity(intentAdmin);
                                                                                 Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
@@ -322,6 +400,12 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                 showLoading();
                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
                                                 startActivity(intentAdmin);
                                                 Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                                 hideLoading();
@@ -369,6 +453,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                 runOnUiThread(() -> {
                                     showLoading();
                                     Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
                                     startActivity(intentAdmin);
                                     Toast.makeText(CheckUserToAdd.this,"The email already exists as user", Toast.LENGTH_LONG).show();
                                     hideLoading();
@@ -395,6 +485,12 @@ public class CheckUserToAdd extends AppCompatActivity {
         }else{
 
             Intent intentAdmin=new Intent(CheckUserToAdd.this, AddUserActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             startActivity(intentAdmin);
             Toast.makeText(CheckUserToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             finish();

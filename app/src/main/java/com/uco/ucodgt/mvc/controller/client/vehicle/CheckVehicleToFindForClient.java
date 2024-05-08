@@ -52,6 +52,12 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
             public void onVehicleReceived(VehicleDTO vehicle) {
 
                 Intent goShow=new Intent(CheckVehicleToFindForClient.this, ShowVehicle.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goShow.putExtra("vehicle",vehicle);
                 goShow.putExtra("dni",dni);
                 startActivity(goShow);
@@ -64,6 +70,12 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
 
                 Intent goMain=new Intent(CheckVehicleToFindForClient.this, ClientActivity.class);
                 Toast.makeText(CheckVehicleToFindForClient.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goMain.putExtra("dni",dni);
                 startActivity(goMain);
                 finish();

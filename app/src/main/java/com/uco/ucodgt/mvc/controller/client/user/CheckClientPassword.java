@@ -44,7 +44,7 @@ public class CheckClientPassword extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.uco.ucodgt.R.layout.loading);
+
 
         setContentView(com.uco.ucodgt.R.layout.loading);
         progressBar = findViewById(com.uco.ucodgt.R.id.progressbar);
@@ -65,6 +65,12 @@ public class CheckClientPassword extends AppCompatActivity {
                     public void onUserReceived(ClientDTO user) {
 
                         Intent goNewData=new Intent(CheckClientPassword.this, IntroduceNewData.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goNewData.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"Password is correct", Toast.LENGTH_LONG).show();
                         startActivity(goNewData);
@@ -76,6 +82,12 @@ public class CheckClientPassword extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckClientPassword.this, IntroduceActualPassword.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goMain.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"The password is incorrect", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
@@ -109,6 +121,12 @@ public class CheckClientPassword extends AppCompatActivity {
             public void onError(VolleyError error) {
 
                 Intent goMain=new Intent(CheckClientPassword.this, ClientActivity.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 goMain.putExtra("dni",dniRec);
                 Toast.makeText(CheckClientPassword.this,"An error has ocurred try again please", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
