@@ -157,14 +157,13 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
 
         }else{
 
-            Intent goMain=new Intent(CheckPenaltyToFindForClient.this, ClientActivity.class);
+            Intent goMain=new Intent(CheckPenaltyToFindForClient.this, CheckPenaltiesToListForClient.class);
             try {
                 Thread.sleep(2*1000);
             }
             catch (Exception e) {
                 System.out.println(e);
             }
-            Toast.makeText(CheckPenaltyToFindForClient.this,"An error has ocurred", Toast.LENGTH_LONG).show();
             goMain.putExtra("dni",dni);
             startActivity(goMain);
             finish();

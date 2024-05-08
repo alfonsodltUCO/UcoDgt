@@ -188,16 +188,6 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             intent.putExtra("dni",dni);
             startActivity(intent);
             finish();
-        }else if(item.getItemId()==com.uco.ucodgt.R.id.item4ClientCheckMyPoints){
-            Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
-            intent.putExtra("dni",dni);
-            startActivity(intent);
-            finish();
-        } else if (item.getItemId()==com.uco.ucodgt.R.id.closeSession) {
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
         }else if(com.uco.ucodgt.R.id.closeSession==item.getItemId()){
 
             Intent goMain=new Intent(ClientActivity.this, MainActivity.class);

@@ -67,7 +67,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
         goMenu.setOnClickListener(this);
 
-        image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
+        image.setImageResource(com.uco.ucodgt.R.drawable.userformenu);
         listVehicles.setOnClickListener(this);
         listPenalties.setOnClickListener(this);
         ClientDTO client = (ClientDTO) getIntent().getSerializableExtra("client");

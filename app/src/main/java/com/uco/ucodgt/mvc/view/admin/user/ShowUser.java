@@ -102,7 +102,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             surname.setText("surname= "+client.getSurname());
             email.setText("email= "+client.getEmail());
             numberofworker_licencepoints.setText("licence points= "+client.getLicencepoints().toString());
-            image.setImageResource(com.uco.ucodgt.R.drawable.cliente);
+            image.setImageResource(com.uco.ucodgt.R.drawable.userformenu);
 
             dni.setText("dni= "+client.getDni());
             dniNoText=client.getDni();
