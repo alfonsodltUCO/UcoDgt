@@ -72,7 +72,7 @@ public class AdminActivity extends AppCompatActivity{
        setContentView(com.uco.ucodgt.R.layout.adminmain);
 
         ViewPager viewPager = findViewById(com.uco.ucodgt.R.id.viewPager);
-        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.cliente, com.uco.ucodgt.R.drawable.multa, com.uco.ucodgt.R.drawable.deportivo});
+        ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{com.uco.ucodgt.R.drawable.userformenu, com.uco.ucodgt.R.drawable.multa, com.uco.ucodgt.R.drawable.deportivo});
         viewPager.setAdapter(adapter);
         /*After setting the adapter use the timer */
         final Handler handler = new Handler();

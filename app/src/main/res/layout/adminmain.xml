@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/adminmenulandscape"
     android:orientation="vertical"
     >
     <LinearLayout
@@ -21,36 +21,48 @@
             android:src="@drawable/animatedlogo" />
 
     </LinearLayout>
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_gravity="top"
         android:layout_weight="1">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="bottom"
-        android:layout_weight="0.4"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:layout_weight="1">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="194dp"
+            android:layout_height="177dp"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:text="Admin Menu"
-            android:textSize="50sp"
-            />
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    </LinearLayout>
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="267dp"
+                android:layout_height="248dp"
+                android:layout_gravity="center"
+                android:src="@drawable/click">
 
+            </pl.droidsonroids.gif.GifImageView>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
 
 
 </LinearLayout>
