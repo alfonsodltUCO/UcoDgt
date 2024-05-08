@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:orientation="vertical"
     >
     <pl.droidsonroids.gif.GifImageView
@@ -28,6 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="User found:"
@@ -84,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the name"
                     android:textSize="30sp"
@@ -100,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the surname"
                     android:textSize="30sp"
@@ -117,6 +120,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce the date of birth"
                     android:textSize="30sp"
                     />
@@ -149,6 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:text="Introduce the licence points"
@@ -169,6 +174,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce the email"
                     android:textSize="30sp"
                     />
@@ -205,6 +211,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
+                    android:textColor="@color/white"
                     android:text="Introduce the DNI"
                     android:textSize="30sp"
                     />
@@ -222,6 +229,7 @@
                     android:layout_marginRight="40sp"
                     android:layout_marginLeft="40sp"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:text="Introduce the date of obtaining licence"
                     android:textSize="30sp"
                     />

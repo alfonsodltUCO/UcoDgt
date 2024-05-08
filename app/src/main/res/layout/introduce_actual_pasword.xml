@@ -2,30 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
-    android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/common"
+    android:orientation="vertical">
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/fab_margin_16"
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="center">
 
-        <EditText
-            android:id="@+id/editTextPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:layout_weight="1"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textSize="30sp"
-            android:text="Introduce the Id"
-            android:textAlignment="center"
-            android:backgroundTint="@android:color/transparent">
-        </EditText>
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:helperTextTextColor="@color/white"
+            app:cursorColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@color/white"
+            app:placeholderTextColor="@color/white"
+            app:boxStrokeErrorColor="@android:color/white"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:textSize="40sp"
+                android:inputType="textPassword"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:hint="MyPassword"
+                android:backgroundTint="@android:color/transparent"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -49,14 +75,14 @@
             android:layout_marginEnd="60sp"
             android:text="Continue"
             />
-        <ImageView
-            android:layout_width="90sp"
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_marginBottom="@dimen/fab_margin_16"
             android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:src="@drawable/password" />
+            android:layout_height="100sp"
+            android:src="@drawable/lockeranimado" />
 
         <Button
             android:id="@+id/goMainMenu"
