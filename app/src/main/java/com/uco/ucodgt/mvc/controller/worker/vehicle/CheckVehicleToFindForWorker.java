@@ -50,6 +50,12 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
             if(!checkPlate(licenceplate)){
 
                 Intent intent=new Intent(CheckVehicleToFindForWorker.this, IntroduceManual.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
                 Toast.makeText(CheckVehicleToFindForWorker.this,"No valid licence plate", Toast.LENGTH_LONG).show();
@@ -65,6 +71,12 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
                     public void onVehicleReceived(VehicleDTO vehicle) {
 
                         Intent goShow=new Intent(CheckVehicleToFindForWorker.this, ShowVehicle.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goShow.putExtra("vehicle",vehicle);
                         goShow.putExtra("numberWorker",numberWorker);
                         startActivity(goShow);
@@ -77,6 +89,12 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
                     public void onError(VolleyError error) {
 
                         Intent goMain=new Intent(CheckVehicleToFindForWorker.this, WorkerActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckVehicleToFindForWorker.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
@@ -94,6 +112,12 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
         }else{
 
             Intent intent=new Intent(CheckVehicleToFindForWorker.this, IntroduceManual.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
             Toast.makeText(CheckVehicleToFindForWorker.this,"Fill the field please", Toast.LENGTH_LONG).show();

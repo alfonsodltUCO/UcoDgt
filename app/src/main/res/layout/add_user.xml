@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+    android:background="@drawable/common"
     android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
@@ -29,6 +29,7 @@
             >
             <TextView
                 android:id="@+id/textViewName"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -39,6 +40,7 @@
             <TextView
                 android:id="@+id/textViewSurname"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the surname"
@@ -49,6 +51,7 @@
                 android:id="@+id/textViewLicencePoints"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Introduce the licence points"
                 android:textSize="30sp"
@@ -58,6 +61,7 @@
             <TextView
                 android:id="@+id/textViewDateBirth"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the date of birth"
@@ -69,6 +73,7 @@
                 android:id="@+id/textViewEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Introduce the email"
                 android:textSize="30sp"
@@ -78,6 +83,7 @@
             <TextView
                 android:id="@+id/textViewPassword"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Introduce the password"
@@ -89,6 +95,7 @@
                 android:id="@+id/textViewDni"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Introduce the DNI"
                 android:textSize="30sp"
@@ -101,94 +108,135 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <EditText
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextName"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="textPersonName"
-                android:text="Pedro"
-                android:backgroundTint="@android:color/transparent"
-                />
-            <EditText
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="Pedro"
+                android:backgroundTint="@android:color/transparent"/>
+
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextSurname"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="textPersonName"
-                android:text="Garcia Navarro"
-                android:backgroundTint="@android:color/transparent"
-                />
-            <EditText
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="Garcia Navarro"
+                android:backgroundTint="@android:color/transparent"/>
+
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextLicencePoints"
-                android:backgroundTint="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
-                android:textSize="30sp"
                 android:ems="10"
-                android:text="8"
+                android:textSize="30sp"
                 android:inputType="number"
-                />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="8"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDateBirth"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
-                android:text="2002-10-10"
-                android:inputType="datetime"
-                android:backgroundTint="@android:color/transparent"
-                />
+                android:inputType="date"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="2002-08-24"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="textEmailAddress"
-                android:text="example@gmail.com"
-                android:backgroundTint="@android:color/transparent"
-                />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="example@gmail.com"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPassword"
-                android:backgroundTint="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="textPassword"
-                android:text="MyPassword"
-               />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="MyPassword"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <EditText
-                android:backgroundTint="@android:color/transparent"
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDNI"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="text"
-                android:text="31878744P"
-                />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:hint="31878744P"
+                android:backgroundTint="@android:color/transparent"/>
+
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -214,15 +262,17 @@
                 <RadioButton
                     android:id="@+id/radioButtonClient"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="30sp"
-                    android:text="@string/client" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="@string/client"
+                    android:textSize="30sp" />
 
 
                 <RadioButton
                     android:id="@+id/radioButtonWorker"
                     android:layout_width="wrap_content"
                     android:textSize="30sp"
+                    android:textColor="@color/white"
                     android:layout_height="match_parent"
                     android:text="@string/worker" />
 
@@ -241,7 +291,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/cliente">
+                android:src="@drawable/userformenu">
 
             </ImageView>
 

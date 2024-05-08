@@ -71,9 +71,10 @@ public class CheckLogIn extends AppCompatActivity {
                     showLoading();
 
                     try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        Thread.sleep(2*1000);
+                    }
+                    catch (Exception e) {
+                        System.out.println(e);
                     }
 
                     Intent intentClient=new Intent(CheckLogIn.this, CheckClientPoints.class);
@@ -124,11 +125,11 @@ public class CheckLogIn extends AppCompatActivity {
                                         showLoading();
 
                                         try {
-                                            Thread.sleep(1000);
-                                        } catch (InterruptedException e) {
-                                            throw new RuntimeException(e);
+                                            Thread.sleep(2*1000);
                                         }
-
+                                        catch (Exception e) {
+                                            System.out.println(e);
+                                        }
                                         Toast.makeText(CheckLogIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                                         Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
                                         startActivity(intentGoMain);
@@ -143,9 +144,10 @@ public class CheckLogIn extends AppCompatActivity {
 
                                             showLoading();
                                             try {
-                                                Thread.sleep(1500);
-                                            } catch (InterruptedException e) {
-                                                throw new RuntimeException(e);
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
                                             }
 
                                             Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
@@ -186,6 +188,12 @@ public class CheckLogIn extends AppCompatActivity {
 
 
                                 Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
                                 startActivity(intentAdmin);
                                 hideLoading();
                                 Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
