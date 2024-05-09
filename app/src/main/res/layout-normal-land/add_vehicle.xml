@@ -7,215 +7,221 @@
     android:layout_height="match_parent">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
         >
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             >
-            <TextView
-                android:id="@+id/textViewLicencePlate"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Introduce the licence plate"
-                android:textSize="18sp"
-                />
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/textViewLicencePlate"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Introduce the licence plate"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewCarType"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="Introduce the car type"
-                android:textSize="18sp"
-                />
+                <TextView
+                    android:id="@+id/textViewCarType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="Introduce the car type"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewColor"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="Introduce the color"
-                android:textSize="18sp"
-                />
+                <TextView
+                    android:id="@+id/textViewColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="Introduce the color"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewItvFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Valid itv from"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                />
+                <TextView
+                    android:id="@+id/textViewItvFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Valid itv from"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewItvTo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="Valid itv until"
-                android:textSize="18sp"
-                />
+                <TextView
+                    android:id="@+id/textViewItvTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:text="Valid itv until"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewDniClient"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Introduce the dni of client"
-                android:textSize="18sp"
-                />
+                <TextView
+                    android:id="@+id/textViewDniClient"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Introduce the dni of client"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/textViewIdInsurance"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="0dp"
+                <TextView
+                    android:id="@+id/textViewIdInsurance"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Introduce the id of insurance"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Introduce the id of insurance"
-                android:textSize="18sp"
-                />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextLicencePlate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="text"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:hint="4355JVJ"
+                    android:backgroundTint="@android:color/transparent"/>
+
+                <Spinner
+                    android:id="@+id/carType"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:spinnerStyle="@style/SpinnerTextStyle" />
+
+                <Spinner
+                    android:id="@+id/colorType"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:spinnerStyle="@style/SpinnerTextStyle" />
+
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextValidItvFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="date"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:hint="2020-08-24"
+                    android:backgroundTint="@android:color/transparent"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextValidItvTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="date"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:hint="2022-08-24"
+                    android:backgroundTint="@android:color/transparent"/>
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextDniVehicleToAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="text"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:hint="31878744P"
+                    android:backgroundTint="@android:color/transparent"/>
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextIdInsurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textCursorDrawable="@color/white"
+                    android:outlineSpotShadowColor="@color/white"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:textSize="18sp"
+                    android:inputType="number"
+                    android:layout_gravity="bottom"
+                    android:gravity="bottom"
+                    android:hint="1"
+                    android:backgroundTint="@android:color/transparent"/>
+
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLicencePlate"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="text"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="4355JVJ"
-                android:backgroundTint="@android:color/transparent"/>
-
-            <Spinner
-                android:id="@+id/carType"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:backgroundTint="@android:color/transparent"
-                android:ems="10"
-                android:textSize="18sp"
-                android:spinnerStyle="@style/SpinnerTextStyle" />
-
-            <Spinner
-                android:id="@+id/colorType"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:backgroundTint="@android:color/transparent"
-                android:ems="10"
-                android:textSize="18sp"
-                android:spinnerStyle="@style/SpinnerTextStyle" />
-
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextValidItvFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="date"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="2020-08-24"
-                android:backgroundTint="@android:color/transparent"/>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextValidItvTo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="date"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="2022-08-24"
-                android:backgroundTint="@android:color/transparent"/>
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDniVehicleToAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="text"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="31878744P"
-                android:backgroundTint="@android:color/transparent"/>
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextIdInsurance"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="18sp"
-                android:inputType="number"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="1"
-                android:backgroundTint="@android:color/transparent"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"

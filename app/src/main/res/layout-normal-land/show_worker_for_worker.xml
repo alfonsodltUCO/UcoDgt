@@ -5,12 +5,6 @@
     android:background="@drawable/common"
     android:orientation="vertical"
     >
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.6"
-        android:src="@drawable/animatedlogo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="User found:"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="36dp"
@@ -77,11 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="10sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="40sp"
+                android:layout_marginLeft="10sp"
                 android:text="Introduce the name"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
             <View
                 android:layout_width="5dp"
@@ -94,11 +88,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="10sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="40sp"
+                android:layout_marginLeft="10sp"
                 android:text="Introduce the surname"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
 
             <View
@@ -111,11 +105,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="40sp"
-                android:layout_marginLeft="40sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginLeft="10sp"
                 android:textColor="@color/white"
                 android:text="Introduce the date of birth"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
 
             <View
@@ -146,11 +140,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="10sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="40sp"
+                android:layout_marginLeft="10sp"
                 android:text="Introduce the number of worker"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
 
 
@@ -165,11 +159,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="40sp"
-                android:layout_marginLeft="40sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginLeft="10sp"
                 android:text="Introduce the email"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
 
             <View
@@ -203,11 +197,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="40sp"
+                android:layout_marginRight="10sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="40sp"
+                android:layout_marginLeft="10sp"
                 android:text="Introduce the DNI"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
             <View
                 android:layout_width="5dp"
@@ -236,9 +230,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="0.3"
+        android:layout_weight="1"
         android:layout_gravity="end">
         <Button
             android:id="@+id/goMainMenu"
@@ -246,7 +240,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:text="Go main menu"
             >
 
@@ -257,8 +251,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:textSize="30sp"
-            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:textSize="20sp"
             android:text="Change Data"
             >
 
