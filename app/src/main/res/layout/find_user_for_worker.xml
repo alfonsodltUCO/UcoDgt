@@ -45,7 +45,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="31878744P"
-                android:inputType="number"
+                android:inputType="text"
                 android:textSize="40sp"
                 tools:ignore="HardcodedText,LabelFor" />
 

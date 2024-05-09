@@ -149,7 +149,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
             }
             intentWorker.putExtra("numberWorker",numberWorker);
             startActivity(intentWorker);
-            Toast.makeText(CheckUserToFindForWorker.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
+            Toast.makeText(CheckUserToFindForWorker.this,"Introduce a DNI please", Toast.LENGTH_LONG).show();
 
         }
 
