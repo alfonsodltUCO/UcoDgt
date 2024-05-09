@@ -146,7 +146,7 @@
                 android:gravity="top"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-               >
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPassword"
@@ -192,7 +192,6 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
             android:layout_gravity="start"
             android:src="@drawable/slogan"
@@ -201,7 +200,6 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
             android:layout_gravity="end"
             android:src="@drawable/deportivo"

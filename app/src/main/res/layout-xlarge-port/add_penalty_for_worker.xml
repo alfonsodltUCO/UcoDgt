@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@drawable/common"
     android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="0.1"
         android:layout_gravity="center"
-        android:layout_weight="0.2"
         android:src="@drawable/animatedlogo" />
 
 
@@ -19,73 +20,57 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
-                android:id="@+id/tvDate"
-                android:textSize="15sp"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:text="Date"
-                />
 
             <TextView
                 android:id="@+id/tvCDni"
                 android:layout_width="wrap_content"
-                android:textColor="@color/white"
                 android:layout_height="0dp"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Client DNI"
-                android:textSize="15sp"
-                />
-
-            <TextView
-                android:id="@+id/tvWDni"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Worker DNI"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 />
 
 
             <TextView
                 android:id="@+id/tvReason"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Reason"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvPlace"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textColor="@color/white"
                 android:text="Place"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvInformed"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
                 android:textColor="@color/white"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Informed at the moment"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvLocality"
@@ -94,16 +79,18 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Locality"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
             <TextView
                 android:id="@+id/tvLicencePlate"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:textColor="@color/white"
+                android:layout_weight="1"
                 android:text="Licence Plate"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
 
             <TextView
@@ -111,48 +98,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Quantity"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                />
+                android:text="Quantity"
+                android:textSize="30sp"
+ />
 
             <TextView
                 android:id="@+id/tvPoints"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Points"
-                android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="30sp"
+
                 />
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:gravity="left"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDate"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:backgroundTint="@android:color/transparent"
-                android:ems="10"
-                android:gravity="top"
-                android:hint="yyyy-mm-dd"
-                android:inputType="date"
-                android:outlineSpotShadowColor="@color/white"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:textSize="15sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCDni"
@@ -165,32 +133,12 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etWDni"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="15sp"
-                android:inputType="text"
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:hint="34899843L"
-                android:backgroundTint="@android:color/transparent"/>
-
-
             <Spinner
                 android:id="@+id/Reason"
                 android:layout_width="match_parent"
@@ -199,8 +147,10 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
+
+
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -214,7 +164,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
@@ -229,9 +179,8 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:spinnerStyle="@style/SpinnerTextStyle"
-                android:textSize="15sp" />
-
+                android:textSize="30sp"
+                android:spinnerStyle="@style/SpinnerTextStyle" />
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLocality"
                 android:layout_width="wrap_content"
@@ -243,14 +192,12 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
                 android:hint="Cordoba"
                 android:backgroundTint="@android:color/transparent"/>
-
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLicencePlate"
                 android:layout_width="wrap_content"
@@ -262,7 +209,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
@@ -280,7 +227,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
@@ -298,7 +245,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
-                android:textSize="15sp"
+                android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
@@ -312,7 +259,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="0.2">
+        android:layout_weight="0.3">
 
         <Button
             android:id="@+id/goNext"
@@ -321,7 +268,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="15sp"
+            android:textSize="30sp"
             android:text="Add description">
 
         </Button>
@@ -330,15 +277,16 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:layout_marginBottom="30sp"
             android:layout_height="wrap_content"
             android:src="@drawable/multaanimada" />
-
 
 
         <Button
             android:id="@+id/goMainMenu"
             android:layout_width="wrap_content"
-            android:textSize="15sp"
+            android:textSize="30sp"
             android:singleLine="true"
             android:layout_gravity="center"
             android:layout_weight="1"

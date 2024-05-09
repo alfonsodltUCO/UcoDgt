@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/CardView.Dark"
-    android:background="@drawable/fondomain"
+    android:background="@drawable/normalmainport"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -148,7 +148,7 @@
                 android:gravity="top"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-               >
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPassword"
