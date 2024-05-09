@@ -22,7 +22,7 @@ import java.util.List;
 
 
 /**
- * This activity is responsible for checking the password of a client user in the application.
+ * This activity allow client for checking the password of a client user in the application.
  * It retrieves the user's DNI and password from the intent extras, then verifies the password
  * by making a network call. Depending on the result, it navigates to different activities.
  * @author Alfonso de la torre

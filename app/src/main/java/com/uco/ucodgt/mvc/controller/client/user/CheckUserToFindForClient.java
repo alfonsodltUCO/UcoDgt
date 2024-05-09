@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.user.ShowUser;
 /**
- * This class is responsible for checking and finding a user for the client.
+ * This class is responsible for client for checking and finding the client own info.
  * It retrieves the user information and displays it in the ShowUser activity.
  * @author Alfonso de la torre
  */

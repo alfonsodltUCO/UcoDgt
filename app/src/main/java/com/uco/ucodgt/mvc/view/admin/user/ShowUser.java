@@ -27,7 +27,7 @@ import com.uco.ucodgt.mvc.view.admin.penalty.IntroducePoints;
 import com.uco.ucodgt.mvc.view.admin.penalty.ShowPenalty;
 
 /**
- * Activity for displaying user details and providing options to perform actions related to the user.
+ * Activity for Admin for displaying user details and providing options to perform actions related to the user.
  * @author Alfonso d la torre
  */
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {

@@ -17,7 +17,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltyToFindForClient;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 /**
- * Adapter class for displaying penalties in a RecyclerView.
+ * Adapter class for Client for displaying penalties in a RecyclerView.
  * @author Alfonso de la torre
  */
 public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.CardViewHolder> {

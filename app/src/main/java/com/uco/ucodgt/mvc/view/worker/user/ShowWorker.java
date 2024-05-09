@@ -18,7 +18,7 @@ import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * Activity for see the info of the worker.
+ * Activity  for Worker for see the info of his/her own.
  * @author Alfonso de la torre
  */
 public class ShowWorker extends AppCompatActivity implements View.OnClickListener {

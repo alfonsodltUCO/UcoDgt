@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uco.ucodgt.mvc.controller.admin.users.CheckUserToFind;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * Activity for finding a user based on criteria.
+ * Activity for Admin, for finding a user based on criteria.
  * @author Alfonso de la torre
  */
 public class FindUserActivity extends AppCompatActivity implements View.OnClickListener {

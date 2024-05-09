@@ -22,6 +22,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.ShowVehicle;
 /**
  * An activity to check the image of a vehicle and display its information.
+ * Is used sending the image to endpoint in python and receive the plain text of plate recognized
  * @author Alfonso de la torre
  */
 public class CheckImage extends AppCompatActivity{

@@ -23,7 +23,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 import com.uco.ucodgt.mvc.view.worker.penalty.ShowPenalties;
 
 /**
- * An activity to check penalties to list.
+ * An activity that allow worker after check data to check penalties to list for a vehicle/client.
  * @author Alfonso de la torre
  */
 public class CheckPenaltiesToListForWorker extends AppCompatActivity {

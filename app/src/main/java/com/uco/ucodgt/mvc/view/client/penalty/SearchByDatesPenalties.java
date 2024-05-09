@@ -14,7 +14,7 @@ import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClien
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 /**
- * Activity class to search for penalties by dates.
+ * Activity class for Client to search for penalties by dates.
  * @author Alfonso de la torre
  */
 public class SearchByDatesPenalties extends AppCompatActivity implements View.OnClickListener {

@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 import com.uco.ucodgt.mvc.view.worker.penalty.ShowPenalty;
 
 /**
- * An activity to check penalty to find.
+ * An activity that allow worker after check data to get a penalty.
  * @author Alfonso de la torre
  */
 public class CheckPenaltyToFindForWorker extends AppCompatActivity {

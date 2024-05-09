@@ -16,7 +16,7 @@ import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltiesToListForClien
 import com.uco.ucodgt.mvc.controller.client.penalty.CheckPenaltyToFindForClient;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 /**
- * Activity class to introduce a penalty to find by ID or state.
+ * Activity class for Client to introduce a penalty to find by ID or state.
  * @author Alfonso de la torre
  */
 public class IntroducePenaltyToFind extends AppCompatActivity implements View.OnClickListener {

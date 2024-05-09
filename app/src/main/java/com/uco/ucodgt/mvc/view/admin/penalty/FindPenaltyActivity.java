@@ -21,7 +21,7 @@ import java.io.ByteArrayOutputStream;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckImage;
 import com.uco.ucodgt.mvc.view.admin.vehicle.IntroduceManual;
 /**
- * Activity to find a penalty using either the device's camera or gallery.
+ * Activity for Admin to find a penalty using either the device's camera or gallery for scan a licence plate.
  * @author Alfonso de la torre
  */
 public class FindPenaltyActivity extends AppCompatActivity {

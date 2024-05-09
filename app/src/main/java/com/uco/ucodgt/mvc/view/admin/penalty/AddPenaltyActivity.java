@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * Activity for adding a new penalty by admin.
+ * Activity for Admin for adding a new penalty to a client.
  * @author Alfonso de la torre
  */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {

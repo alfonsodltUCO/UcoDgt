@@ -27,7 +27,7 @@ import java.util.List;
 
 
 /**
- * This activity is responsible for checking and validating worker user data before updating it in the application.
+ * This activity for worker is responsible for checking and validating worker user data before updating it in the application.
  * It verifies the format of the email and password, checks if the email already exists in the database,
  * and then updates the worker's data accordingly.
  * @author Alfonso de la torre

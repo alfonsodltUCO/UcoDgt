@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 import com.uco.ucodgt.mvc.view.worker.user.ShowWorker;
 
 /**
- * This activity checks the information of a worker and navigates to the ShowWorker activity to display the details.
+ * This activity for worker checks the information of a worker and navigates to the ShowWorker activity to display his/her own details.
  * @author Alfonso de la torre
  */
 public class CheckWorkerInfo extends AppCompatActivity {

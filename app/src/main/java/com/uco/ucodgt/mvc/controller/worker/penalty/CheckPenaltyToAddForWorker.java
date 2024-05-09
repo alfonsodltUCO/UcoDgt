@@ -40,7 +40,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 import com.uco.ucodgt.mvc.view.worker.penalty.AddPenaltyActivity;
 
 /**
- * An activity to check penalty to add.
+ * An activity that allow worker after check data to check penalty to add.
  * @author Alfonso de la torre
  */
 public class CheckPenaltyToAddForWorker extends AppCompatActivity {

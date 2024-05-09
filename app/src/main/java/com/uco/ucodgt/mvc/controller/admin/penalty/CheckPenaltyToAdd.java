@@ -36,7 +36,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.penalty.AddPenaltyActivity;
 
 /**
- * An activity to check penalty to add.
+ * An activity that after check the data allow Admin to add a penalty for a client.
  * @author Alfonso de la torre
  */
 public class CheckPenaltyToAdd extends AppCompatActivity {

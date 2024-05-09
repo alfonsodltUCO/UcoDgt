@@ -29,7 +29,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.admin.user.AddUserActivity;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * An activity to validate user input before adding a new user to the system.
+ * An activity that after check the data allow Admin to add a user into the system.
  * @author Alfonso de la torre
  */
 public class CheckUserToAdd extends AppCompatActivity {

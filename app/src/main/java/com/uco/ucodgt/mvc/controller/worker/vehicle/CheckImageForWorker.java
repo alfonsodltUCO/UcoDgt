@@ -23,7 +23,7 @@ import com.uco.ucodgt.mvc.view.worker.vehicle.ShowVehicle;
 
 
 /**
- * An activity to check the image of a vehicle and display its information.
+ * An activity for worker to check the image of a vehicle and display its information.
  * @author Alfonso de la torre
  */
 public class CheckImageForWorker extends AppCompatActivity{

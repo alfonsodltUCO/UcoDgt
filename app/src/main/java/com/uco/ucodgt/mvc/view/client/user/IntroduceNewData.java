@@ -17,7 +17,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 
 /**
- * This class represents an activity in the client application where users can
+ * This class represents an activity in the client application where client can
  * introduce new data, such as email and password, for updating their profile.
  * @author Alfonso de la torre
  */

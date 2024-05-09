@@ -17,7 +17,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToFind;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 /**
- * Adapter class for displaying vehicle information in a RecyclerView.
+ * Adapter Admin class for displaying vehicle information in a RecyclerView.
  * @author Alfonso de la torre
  */
 public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.CardViewHolder> {

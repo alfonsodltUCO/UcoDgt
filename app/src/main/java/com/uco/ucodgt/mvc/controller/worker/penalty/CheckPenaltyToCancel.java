@@ -25,7 +25,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 
 /**
- * This activity is responsible for canceling a penalty associated with a client giving back points and money.
+ * This activity allow worker after check data for canceling a penalty associated with a client giving back points and money.
  * It communicates with the backend to cancel the penalty and then redirects the user back to the WorkerActivity.
  * @author Alfonso de la torre
  */

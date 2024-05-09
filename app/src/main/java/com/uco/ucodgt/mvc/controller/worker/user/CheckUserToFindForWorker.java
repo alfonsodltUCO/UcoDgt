@@ -24,7 +24,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * This class is responsible for checking and finding a user for the client.
+ * This class for worker is responsible for checking and findind a client.
  * It retrieves the user information and displays it in the ShowUser activity.
  * @author Alfonso de la torre
  */
@@ -149,7 +149,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
             }
             intentWorker.putExtra("numberWorker",numberWorker);
             startActivity(intentWorker);
-            Toast.makeText(CheckUserToFindForWorker.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
+            Toast.makeText(CheckUserToFindForWorker.this,"Introduce a DNI please", Toast.LENGTH_LONG).show();
 
         }
 

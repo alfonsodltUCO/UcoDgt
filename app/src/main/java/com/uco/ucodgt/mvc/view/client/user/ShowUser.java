@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 /**
- * Activity class to display details of a user/client.
+ * Activity class to display details of a client.
  * @author Alfonso de la torre
  */
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {

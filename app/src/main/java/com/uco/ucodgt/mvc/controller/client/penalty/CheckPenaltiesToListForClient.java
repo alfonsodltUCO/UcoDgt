@@ -26,7 +26,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.penalty.ShowPenalties;
 
 /**
- * An activity to check penalties and display them for a client.
+ * An activity that allow client after check data to check penalties and display them for his/her-self.
  * @author Alfonso de la torre
  */
 public class CheckPenaltiesToListForClient extends AppCompatActivity {

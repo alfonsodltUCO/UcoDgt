@@ -193,6 +193,10 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             Intent goMain=new Intent(ClientActivity.this, MainActivity.class);
             startActivity(goMain);
 
+        }else if(com.uco.ucodgt.R.id.item4ClientGetMyInfo==item.getItemId()){
+            Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
         }
         return false;
     }

@@ -23,7 +23,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
 
 /**
- * Activity class to update the points of a client.
+ * Activity class that after check the data allow Admin to update client points.
  * @author Alfonso de la torre
  */
 public class CheckPointsToUpdate extends AppCompatActivity {

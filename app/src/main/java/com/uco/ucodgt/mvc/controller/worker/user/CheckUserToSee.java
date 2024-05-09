@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.view.worker.user.ShowUser;
 
 
 /**
- * This activity is responsible for checking a user associated with a specific vehicle
+ * This activity for worker is responsible for checking a client associated with a specific vehicle
  * and navigating to the ShowUser activity to display the user's information.
  * @author Alfonso de la torre
  */

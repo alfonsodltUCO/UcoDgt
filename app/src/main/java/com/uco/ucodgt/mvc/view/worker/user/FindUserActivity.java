@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
  import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * Activity for finding a user based on criteria.
+ * Activity for Worker for finding a user based on criteria.
  * @author Alfonso de la torre
  */
 public class FindUserActivity extends AppCompatActivity implements View.OnClickListener {

@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData;
 import java.util.List;
 
 /**
- * This activity is responsible for checking and validating the password of a worker user.
+ * This activity for worker is responsible for checking and validating the password of a worker user.
  * It retrieves the worker's number and password from the intent extras, then checks if the password is correct.
  * If the password is correct, it navigates to the activity for introducing new data for the worker.
  * If the password is incorrect, it navigates back to the activity for introducing the actual password.

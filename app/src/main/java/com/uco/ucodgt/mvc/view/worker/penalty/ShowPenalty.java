@@ -20,7 +20,7 @@ import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * Activity to display details of a penalty and provide options to delete it or return to the main menu.
+ * Activity for Worker to display details of a penalty and provide options to delete it or return to the main menu.
  * @author Alfosno de la torre
  */
 public class ShowPenalty extends AppCompatActivity implements View.OnClickListener{

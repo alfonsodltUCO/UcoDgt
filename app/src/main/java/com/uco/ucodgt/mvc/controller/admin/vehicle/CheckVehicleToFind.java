@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.IntroduceManual;
 import com.uco.ucodgt.mvc.view.admin.vehicle.ShowVehicle;
 /**
- * An activity to check the validity of a vehicle's license plate before attempting to find it in the database.
+ * An activity that after check the data allow Admin to check the validity of a vehicle's license plate before attempting to find it in the database.
  * @author Alfosno de la torre
  */
 public class CheckVehicleToFind extends AppCompatActivity {
