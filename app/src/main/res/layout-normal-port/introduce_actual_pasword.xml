@@ -3,17 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/common"
     android:orientation="vertical">
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/fab_margin_16"
-
+        android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -31,28 +29,29 @@
             app:hintTextColor="@color/white"
             app:placeholderTextColor="@color/white"
             app:boxStrokeErrorColor="@android:color/white"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextId"
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:layout_weight="1"
                 android:autofillHints=""
-                android:textColor="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:backgroundTint="@android:color/transparent"
                 android:ems="10"
+                android:textSize="30sp"
+                android:inputType="textPassword"
+                android:layout_gravity="bottom"
                 android:gravity="center"
-                android:hint="Id"
-                android:inputType="number"
-                android:textSize="40sp"
-                tools:ignore="HardcodedText,LabelFor" />
+                android:hint="MyPassword"
+                android:backgroundTint="@android:color/transparent"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
     </LinearLayout>
 
@@ -61,34 +60,33 @@
     <LinearLayout
 
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="0.6"
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
-            android:id="@+id/deletePenalty"
+            android:id="@+id/goCheck"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="30sp"
-            android:text="Delete Penalty"
+            android:textSize="20sp"
+            android:text="Continue"
             />
-
-
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="0dp"
             android:layout_weight="0.5"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
             android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:src="@drawable/multaanimada" />
-
+            android:layout_height="100sp"
+            android:src="@drawable/lockeranimado" />
 
         <Button
             android:id="@+id/goMainMenu"
             android:layout_width="0dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:singleLine="true"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -100,41 +98,17 @@
 
     </LinearLayout>
 
-
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="2"
-
+        android:layout_gravity="center|bottom"
         >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:src="@drawable/multa"
-                />
-
-            <pl.droidsonroids.gif.GifImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:src="@drawable/animatedlogo" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:src="@drawable/deportivo"
-                />
-        </LinearLayout>
-
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/animatedlogo" />
 
     </FrameLayout>
 

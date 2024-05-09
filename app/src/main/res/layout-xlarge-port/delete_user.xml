@@ -2,18 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/common"
     android:orientation="vertical">
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/fab_margin_16"
-
+        android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +34,7 @@
             android:layout_marginTop="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextId"
+                android:id="@+id/editTextDniToDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -45,8 +44,8 @@
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Id"
-                android:inputType="number"
+                android:hint="31878744P"
+                android:inputType="text"
                 android:textSize="40sp"
                 tools:ignore="HardcodedText,LabelFor" />
 
@@ -56,8 +55,37 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <RadioGroup
+            android:id="@+id/radioGroupTypeUserToDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
+            <RadioButton
+                android:id="@+id/radioButtonClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/client"
+                android:textColor="@color/white"
+                android:textSize="30sp"/>
 
+            <RadioButton
+                android:id="@+id/radioButtonWorker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:text="@string/worker" />
+
+        </RadioGroup>
+
+    </LinearLayout>
     <LinearLayout
 
         android:layout_width="wrap_content"
@@ -66,23 +94,25 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
-            android:id="@+id/deletePenalty"
+            android:id="@+id/deleteUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:singleLine="true"
             android:textSize="30sp"
-            android:text="Delete Penalty"
+            android:text="Delete User"
             />
 
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="0dp"
             android:layout_weight="0.5"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:src="@drawable/multaanimada" />
+            android:src="@drawable/useranimado" />
 
 
         <Button
@@ -99,13 +129,11 @@
         </Button>
 
     </LinearLayout>
-
-
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="2"
-
+        android:layout_weight="4"
+        android:layout_gravity="center|bottom"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,7 +144,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:src="@drawable/multa"
+                android:src="@drawable/userformenu"
                 />
 
             <pl.droidsonroids.gif.GifImageView
@@ -131,11 +159,9 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:src="@drawable/deportivo"
+                android:src="@drawable/trabajador"
                 />
         </LinearLayout>
-
-
     </FrameLayout>
 
 

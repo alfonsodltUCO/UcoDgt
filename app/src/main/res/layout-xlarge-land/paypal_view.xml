@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:background="@drawable/common"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/animatedlogo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="0dp">
+            <Button
+                android:id="@+id/goMainMenu"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_marginBottom="60sp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:text="Go main menu"
+                >
+
+            </Button>
+
+
+
+            <com.paypal.checkout.paymentbutton.PayPalButton
+                android:id="@+id/paypalButton"
+                app:payment_button_size="medium"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="40sp"
+                android:layout_weight="1"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content">
+
+            </com.paypal.checkout.paymentbutton.PayPalButton>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="0.4"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="0dp">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/multagif">
+
+        </pl.droidsonroids.gif.GifImageView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

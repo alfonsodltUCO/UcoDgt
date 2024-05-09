@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fondoglobal"
+    android:orientation="vertical"
+
+    >
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="290sp"
+        android:layout_marginTop="@dimen/fab_margin_16"
+        android:layout_weight="1"
+        android:src="@drawable/animatedlogo"
+        android:layout_gravity="center" />
+
+
+    <ProgressBar
+        android:layout_width="150sp"
+        android:layout_weight="1.5"
+        android:progressDrawable="@color/white"
+        android:id="@+id/progressbar"
+        android:animationResolution="100"
+        android:progressTint="@color/white"
+        android:visibility="visible"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/white"
+        android:progressTintMode="screen"
+        android:layout_height="200sp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Loading"
+        android:layout_weight="1.5"
+        android:textSize="60dp"
+        android:singleLine="true"
+        android:textColor="#ffffff" />
+
+
+</LinearLayout>
