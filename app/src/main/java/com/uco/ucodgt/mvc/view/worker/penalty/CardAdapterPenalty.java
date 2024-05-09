@@ -18,7 +18,7 @@ import com.uco.ucodgt.mvc.controller.worker.penalty.CheckPenaltyToFindForWorker;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 
 /**
- * Adapter for displaying PenaltyDTO objects in a RecyclerView as cards.
+ * Adapter for Workerfor displaying PenaltyDTO objects in a RecyclerView as cards.
  * @author Alfonso de la torre
  */
 public class CardAdapterPenalty extends RecyclerView.Adapter<CardAdapterPenalty.CardViewHolder> {

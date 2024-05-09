@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 /**
- * Activity for adding a new penalty.
+ * Activity for Worker for adding a new penalty.
  * @author Alfonso de la torre
  */
 public class AddPenaltyActivity extends AppCompatActivity implements View.OnClickListener {

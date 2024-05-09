@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
 /**
- * Activity class for deleting a vehicle.
+ * Activity for Admin class for deleting a vehicle.
  * @author Alfonso de la torre
  */
 public class DeleteVehicleActivity extends AppCompatActivity implements View.OnClickListener{

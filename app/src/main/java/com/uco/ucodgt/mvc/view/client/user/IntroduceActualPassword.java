@@ -14,7 +14,7 @@ import com.uco.ucodgt.mvc.controller.client.user.CheckClientPassword;
 
 
 /**
- * This activity allows the user to input their actual password for change his/he own data.
+ * This activity allows the Client to input their actual password for change his/he own data.
  * It provides options to proceed to check if the actual password is correct or to navigate back to the main menu.
  * @author Alfonso de la torre
  */

@@ -19,7 +19,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * Activity for displaying user details and providing options to perform actions related to the user.
+ * Activity  for Worker for displaying user details and providing options to perform actions related to the user.
  * @author Alfonso d la torre
  */
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {

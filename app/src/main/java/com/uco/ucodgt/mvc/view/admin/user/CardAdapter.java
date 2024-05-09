@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
  import java.util.List;
 
 /**
- * Adapter class for displaying users in a RecyclerView.
+ * Adapter Admin class for displaying users in a RecyclerView.
  * @author Alfonso de la torre
  */
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder>{

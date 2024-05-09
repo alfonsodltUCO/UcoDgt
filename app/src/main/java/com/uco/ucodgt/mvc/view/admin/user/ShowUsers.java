@@ -11,7 +11,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 /**
- * Activity for displaying a list of users (clients and workers).
+ * Activity for Admin for displaying a list of users (clients and workers).
  * @author Alfonso de la torre
  */
 public class ShowUsers extends AppCompatActivity{

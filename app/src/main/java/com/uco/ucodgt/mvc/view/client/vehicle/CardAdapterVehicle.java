@@ -17,7 +17,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.controller.client.vehicle.CheckVehicleToFindForClient;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 /**
- * Adapter class for populating a RecyclerView with vehicle cards.
+ * Adapter class for Client for populating a RecyclerView with vehicle cards.
  * @author Alfonso de la torre
  */
 public class CardAdapterVehicle extends RecyclerView.Adapter<CardAdapterVehicle.CardViewHolder> {

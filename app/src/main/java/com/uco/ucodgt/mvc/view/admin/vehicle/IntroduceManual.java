@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToFind;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * Activity class to introduce a manual search for a vehicle by licence plate.
+ * Activity class for Admin to introduce a manual search for a vehicle by licence plate.
  * @author Alfonso de la torre
  */
 public class IntroduceManual extends AppCompatActivity implements View.OnClickListener {

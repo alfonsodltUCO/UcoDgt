@@ -12,7 +12,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 
 /**
-* Activity to display a list of penalties using a RecyclerView.
+* Activity for Worker to display a list of penalties using a RecyclerView.
 * @author Alfonso de la torre
 */
 public class ShowPenalties extends AppCompatActivity {

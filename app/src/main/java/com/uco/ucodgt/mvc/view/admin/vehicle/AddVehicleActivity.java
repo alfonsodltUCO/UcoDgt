@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * Activity for adding a new vehicle.
+ * Activity for Admin for adding a new vehicle.
  * @author Alfonso de la torre
  */
 public class AddVehicleActivity extends AppCompatActivity implements View.OnClickListener{

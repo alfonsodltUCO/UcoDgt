@@ -14,7 +14,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
 
 /**
- * Activity class for introducing points for a user.
+ * Activity for Admin that allow them for introducing points for a client.
  * @author Alfonso de la torre
  */
 public class IntroducePoints extends AppCompatActivity implements View.OnClickListener {

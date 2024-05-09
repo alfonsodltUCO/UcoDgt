@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckImage;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
 /**
- * Activity class to capture or select an image of a vehicle plate.
+ * Activity class fro Admin to capture or select an image of a vehicle plate.
  * @author Alfonso de la torre
  */
 public class GetVehiclePlate extends AppCompatActivity {
