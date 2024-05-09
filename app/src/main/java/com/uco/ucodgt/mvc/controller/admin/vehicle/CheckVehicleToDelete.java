@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.DeleteVehicleActivity;
 /**
- * An activity to check the validity of the vehicle before deleting it.
+ * An activity that after check the data allow Admin to check the validity of the vehicle before deleting it.
  * @author Alfonspo de la torre
  */
 public class CheckVehicleToDelete extends AppCompatActivity {

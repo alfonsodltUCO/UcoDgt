@@ -38,7 +38,7 @@ import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.AddVehicleActivity;
 /**
- * An activity to check the vehicle details before adding it.
+ * An activity that after check the data allow Admin to check the vehicle details before adding it.
  * @author Alfonso de la torre
  */
 public class CheckVehicleToAdd extends AppCompatActivity {

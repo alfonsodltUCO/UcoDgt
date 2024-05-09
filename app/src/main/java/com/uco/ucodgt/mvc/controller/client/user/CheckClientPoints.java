@@ -225,42 +225,13 @@ public class CheckClientPoints extends AppCompatActivity {
         long yearsLastUpdate=calculateYears(lastUpdate,currentDate);
 
         if(yearsLastUpdate>=1){//Each 1 year check points
-            if(lastPenalty!=null){//Receive a penalty
-                long yearsWithoutPenalties=calculateYears(lastPenalty,new Date());
-
-                if(yearsExperience<=3){//Novel
-                   if(yearsWithoutPenalties>=3){//Poner 3 años
-                       points+=2;
-                   }
-                }else{//Not novel
-                    if(yearsWithoutPenalties>=3 && yearsLastUpdate>=3){
-                        if(points<=12){
-                            points+=2;
-                        }else{
-                            if(yearsExperience>=6 && yearsLastUpdate>=6){
-                                points+=1;
-                            }
-                        }
-                    }
+            if (yearsExperience >= 3) {//not novel
+                if(yearsLastUpdate>=3){
+                    points=points+2;
                 }
-            }else{//Never receive a penalty
-
-                if(yearsExperience<=3){//Novel
-                    if(points==8){
-                        if(yearsExperience>=2){
-                            points=12;
-                        }
-                    }
-                }else{//Not novel
-                    if(yearsLastUpdate>=3){
-                        if(points<14){
-                            points+=2;
-                        }else{
-                            if(yearsExperience>=6 && (yearsLastUpdate)>=6){
-                                points+=1;
-                            }
-                        }
-                    }
+            }else{//novel
+                if(lastPenalty==null && yearsLastUpdate>=2){
+                    points=12;
                 }
             }
         }

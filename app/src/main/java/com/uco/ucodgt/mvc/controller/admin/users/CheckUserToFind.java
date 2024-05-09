@@ -25,7 +25,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.admin.user.FindUserActivity;
 import com.uco.ucodgt.mvc.view.admin.user.ShowUser;
 /**
- * An activity to check the validity of a user's DNI before attempting to find the user in the database.
+ * An activity that after check the data allow Admin to get a user.
  * @author Alfonso de la torre
  */
 public class CheckUserToFind  extends AppCompatActivity {

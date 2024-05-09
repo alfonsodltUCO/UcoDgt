@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.penalty.IntroducePenaltyForSearch;
 import com.uco.ucodgt.mvc.view.admin.penalty.ShowPenalty;
 /**
- * An activity to check penalty to find.
+ * An activity that after check the data allow Admin to find a client.
  * @author Alfonso de la torre
  */
 public class CheckPenaltyToFind extends AppCompatActivity {

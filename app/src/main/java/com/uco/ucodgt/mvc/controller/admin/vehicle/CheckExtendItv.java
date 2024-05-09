@@ -23,7 +23,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
 
 /**
- * This activity is responsible for checking if the ITV (Inspection Technical Vehicle) for a vehicle needs to be extended.
+ * This activity is responsible for Admin that after check the data, allow Admin to check if the ITV (Inspection Technical Vehicle) for a vehicle needs to be extended.
  * It retrieves the vehicle information, checks if the current ITV is expired, and extends it if necessary.
  * @author Alfonso de la torre
  */

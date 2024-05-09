@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.vehicle.ShowVehicles;
 
 /**
- * Method used to handle the view the list of client's vehicles
+ * Method used by client to handle the view the list of client's vehicles
  * @author Alfonso de la Torre
  */
 

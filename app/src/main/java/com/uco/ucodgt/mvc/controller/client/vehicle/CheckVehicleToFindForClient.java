@@ -19,7 +19,7 @@ import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.vehicle.ShowVehicle;
 /**
- * This activity is responsible for checking the details of a vehicle for a client.
+ * This activity is responsible for client for checking the details of a vehicle for a client.
  * @author Alfonso de la Torre
  */
 public class CheckVehicleToFindForClient extends AppCompatActivity {

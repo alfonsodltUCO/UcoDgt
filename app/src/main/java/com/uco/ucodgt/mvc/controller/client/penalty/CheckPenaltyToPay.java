@@ -45,7 +45,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 
 /**
- * This class is responsible for handling the payment process for a penalty.
+ * This class allow client after check data is responsible for handling the payment process for a penalty.
  * It checks the card data and performs the payment, updating the penalty status accordingly.
  * @author Alfonso de la torre
  */

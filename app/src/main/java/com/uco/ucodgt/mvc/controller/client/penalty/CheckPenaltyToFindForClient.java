@@ -27,7 +27,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.client.penalty.ShowPenalty;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 /**
- * This class is responsible for checking a penalty associated with a client.
+ * This class is responsible for client after check the data for checking a penalty associated with a client.
  * It retrieves penalty details and displays them to the client, along with the worker responsible for the penalty.
  * Author: Alfonso de la Torre
  */

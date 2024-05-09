@@ -21,7 +21,7 @@ import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.ShowVehicles;
 /**
- * An activity to check the list of vehicles and display them.
+ * An activity that after check the data allow Admin to check the list of vehicles and display them.
  * @author Alfonso de la torre
  */
 public class CheckVehiclesToList extends AppCompatActivity {

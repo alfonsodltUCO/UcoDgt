@@ -17,7 +17,7 @@ import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 /**
- * An activity to check penalty to delete.
+ * An activity that after check the data allow Admin to delete a client.
  * @author Alfonso de la torre
  */
 public class CheckPenaltyToDelete extends AppCompatActivity {

@@ -22,7 +22,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.user.ShowUsers;
 /**
- * An activity to check users and display them.
+ * An activity that after check the data allow Admin to list users in DB.
  * @author Alfonso de la torre
  */
 public class CheckUsersToList extends AppCompatActivity {

@@ -24,7 +24,7 @@ import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.penalty.ShowPenalties;
 /**
- * An activity to check penalties to list.
+ * An activity that after check the data allow Admin check penalties by state/dates/vehicle/dni of client.
  * @author Alfonso de la torre
  */
 public class CheckPenaltiesToList extends AppCompatActivity {

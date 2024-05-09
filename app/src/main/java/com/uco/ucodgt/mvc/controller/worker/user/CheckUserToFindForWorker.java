@@ -24,7 +24,7 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
- * This class is responsible for checking and finding a user for the client.
+ * This class for worker is responsible for checking and findind a client.
  * It retrieves the user information and displays it in the ShowUser activity.
  * @author Alfonso de la torre
  */
