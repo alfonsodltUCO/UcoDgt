@@ -79,6 +79,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckVehicleToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
 
                 hideLoading();
@@ -95,6 +97,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(intentAdmin);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckVehicleToAdd.this,"No valid licence plate", Toast.LENGTH_LONG).show();
 
                     hideLoading();
@@ -111,6 +115,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                             System.out.println(e);
                         }
                         startActivity(intentAdmin);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         Toast.makeText(CheckVehicleToAdd.this,"Dates must be first older than second\n And the format is yyyy-mm-dd", Toast.LENGTH_LONG).show();
 
                         hideLoading();
@@ -127,6 +133,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(intentAdmin);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckVehicleToAdd.this,"please enter a valid color", Toast.LENGTH_LONG).show();
 
                             hideLoading();
@@ -143,6 +151,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                     System.out.println(e);
                                 }
                                 startActivity(intentAdmin);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 Toast.makeText(CheckVehicleToAdd.this,"please enter a valid type", Toast.LENGTH_LONG).show();
                                 hideLoading();
 
@@ -174,6 +184,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                         }
                                                         Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
                                                         startActivity(intentAdmin);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
                                                         hideLoading();
 
 
@@ -192,6 +204,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                                 System.out.println(e);
                                                             }
                                                             startActivity(intentAdmin);
+                                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                            finish();
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
 
@@ -206,6 +220,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                                 System.out.println(e);
                                                             }
                                                             startActivity(intentAdmin);
+                                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                            finish();
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
 
@@ -234,6 +250,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                             System.out.println(e);
                                         }
                                         startActivity(intentAdmin);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                        finish();
                                         Toast.makeText(CheckVehicleToAdd.this,"Client doesnt exist", Toast.LENGTH_LONG).show();
                                         hideLoading();
 
@@ -270,6 +288,8 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckVehicleToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
 
         }

@@ -66,6 +66,8 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                 }
                 intentWorker.putExtra("numberWorker",numberWorker);
                 startActivity(intentWorker);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckUserToFindForWorker.this,"The dni is invalid", Toast.LENGTH_LONG).show();
 
 
@@ -92,6 +94,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                             intentSeeUser.putExtra("client", user);
                             intentSeeUser.putExtra("numberWorker",numberWorker);
                             startActivity(intentSeeUser);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);finish();
                             hideLoading();
 
 
@@ -110,6 +113,7 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
                             Intent intentGoBack=new Intent(CheckUserToFindForWorker.this, WorkerActivity.class);
                             intentGoBack.putExtra("numberWorker",numberWorker);
                             startActivity(intentGoBack);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);finish();
                             hideLoading();
 
                         }
@@ -149,6 +153,8 @@ public class CheckUserToFindForWorker extends AppCompatActivity {
             }
             intentWorker.putExtra("numberWorker",numberWorker);
             startActivity(intentWorker);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckUserToFindForWorker.this,"Introduce a DNI please", Toast.LENGTH_LONG).show();
 
         }

@@ -79,6 +79,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                 }
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                 hideLoading();
 
@@ -97,6 +99,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                     }
                     intent.putExtra("numberWorker",numberWorker);
                     startActivity(intent);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckPenaltyToCancel.this,"The penalty is already cancelled", Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -122,6 +126,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                             }
                             intent.putExtra("numberWorker",numberWorker);
                             startActivity(intent);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                             hideLoading();
 
@@ -151,6 +157,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                         }
                                         intent.putExtra("numberWorker",numberWorker);
                                         startActivity(intent);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                        finish();
                                         Toast.makeText(CheckPenaltyToCancel.this,"This penalty was not imposed by you", Toast.LENGTH_LONG).show();
                                         hideLoading();
 
@@ -166,6 +174,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                         }
                                         intent.putExtra("numberWorker",numberWorker);
                                         startActivity(intent);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                        finish();
                                         Toast.makeText(CheckPenaltyToCancel.this,"An error has happened, contact the administrator please", Toast.LENGTH_LONG).show();
                                         hideLoading();
 
@@ -183,6 +193,8 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
                                     }
                                     intent.putExtra("numberWorker",numberWorker);
                                     startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
                                     hideLoading();
 

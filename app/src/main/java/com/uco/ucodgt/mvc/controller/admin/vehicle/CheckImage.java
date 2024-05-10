@@ -57,6 +57,8 @@ public class CheckImage extends AppCompatActivity{
                     }
                     goShow.putExtra("vehicle",vehicle);
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
 
                 });
             }
@@ -76,6 +78,8 @@ public class CheckImage extends AppCompatActivity{
                         }
                         Toast.makeText(CheckImage.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         startActivity(goAdd);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
 
@@ -90,6 +94,8 @@ public class CheckImage extends AppCompatActivity{
                         }
                         Toast.makeText(CheckImage.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
 

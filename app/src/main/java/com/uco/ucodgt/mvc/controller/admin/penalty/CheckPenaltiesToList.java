@@ -67,6 +67,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -83,6 +85,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -111,6 +115,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -127,6 +133,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -154,6 +162,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
 
@@ -173,6 +183,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -189,6 +201,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
 
@@ -221,6 +235,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -237,6 +253,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -264,6 +282,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
 
@@ -281,6 +301,8 @@ public class CheckPenaltiesToList extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }

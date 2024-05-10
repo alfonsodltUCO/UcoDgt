@@ -70,6 +70,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckUserToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
 
 
@@ -85,6 +87,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                        System.out.println(e);
                    }
                    startActivity(intentAdmin);
+                   overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                   finish();
                    Toast.makeText(CheckUserToAdd.this,"No valid input for name/surname", Toast.LENGTH_LONG).show();
 
 
@@ -100,6 +104,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                            System.out.println(e);
                        }
                        startActivity(intentAdmin);
+                       overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                       finish();
                        Toast.makeText(CheckUserToAdd.this,"Number have to be 8 exactly", Toast.LENGTH_LONG).show();
 
 
@@ -126,6 +132,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                 System.out.println(e);
                                             }
                                             startActivity(intentAdmin);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                            finish();
                                             Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                             hideLoading();
 
@@ -154,6 +162,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                         System.out.println(e);
                                                     }
                                                     startActivity(intentAdmin);
+                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                    finish();
                                                     Toast.makeText(CheckUserToAdd.this, "The email have incorrect form", Toast.LENGTH_LONG).show();
 
 
@@ -169,6 +179,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                             System.out.println(e);
                                                         }
                                                         startActivity(intentAdmin);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
                                                         Toast.makeText(CheckUserToAdd.this, "The user is younger than 18 years old\n"+"or the format is incorrect (yyyy-mm-dd)\n", Toast.LENGTH_LONG).show();
 
 
@@ -184,6 +196,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                 System.out.println(e);
                                                             }
                                                             startActivity(intentAdmin);
+                                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                            finish();
                                                             Toast.makeText(CheckUserToAdd.this, "The password must be:\n"+"more that 8 characters\n"+"one capital letter\n"+"one symbol\n"+"one number\n", Toast.LENGTH_LONG).show();
 
 
@@ -215,6 +229,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                     System.out.println(e);
                                                                                 }
                                                                                 startActivity(intentAdmin);
+                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                finish();
                                                                                 Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
 
@@ -237,6 +253,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         System.out.println(e);
                                                                                     }
                                                                                     startActivity(intentAdmin);
+                                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                    finish();
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
 
@@ -254,6 +272,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                             System.out.println(e);
                                                                                         }
                                                                                         startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
 
@@ -321,6 +341,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         System.out.println(e);
                                                                                     }
                                                                                     startActivity(intentAdmin);
+                                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                    finish();
                                                                                     Toast.makeText(CheckUserToAdd.this, "The dni already exists", Toast.LENGTH_LONG).show();
                                                                                     hideLoading();
 
@@ -338,6 +360,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                             System.out.println(e);
                                                                                         }
                                                                                         startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
                                                                                         Toast.makeText(CheckUserToAdd.this, "An error has happended", Toast.LENGTH_LONG).show();
                                                                                         hideLoading();
 
@@ -360,6 +384,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                     System.out.println(e);
                                                                                 }
                                                                                 startActivity(intentAdmin);
+                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                finish();
                                                                                 Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
                                                                                 hideLoading();
 
@@ -407,6 +433,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                     System.out.println(e);
                                                 }
                                                 startActivity(intentAdmin);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                finish();
                                                 Toast.makeText(CheckUserToAdd.this, "The email already exists as user", Toast.LENGTH_LONG).show();
                                                 hideLoading();
 
@@ -460,6 +488,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                         System.out.println(e);
                                     }
                                     startActivity(intentAdmin);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     Toast.makeText(CheckUserToAdd.this,"The email already exists as user", Toast.LENGTH_LONG).show();
                                     hideLoading();
 
@@ -492,6 +522,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckUserToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
 
         }

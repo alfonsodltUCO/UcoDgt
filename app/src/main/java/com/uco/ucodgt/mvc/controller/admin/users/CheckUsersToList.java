@@ -95,6 +95,8 @@ public class CheckUsersToList extends AppCompatActivity {
                                         System.out.println(e);
                                     }
                                     startActivity(emptyLists);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     Toast.makeText(CheckUsersToList.this,"Not found any user",Toast.LENGTH_LONG).show();
                                     hideLoading();
 
@@ -112,6 +114,8 @@ public class CheckUsersToList extends AppCompatActivity {
                                     notEmptyLists.putExtra("clients",(Serializable) listClients);
                                     Toast.makeText(CheckUsersToList.this,"found users",Toast.LENGTH_LONG).show();
                                     startActivity(notEmptyLists);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     hideLoading();
 
 

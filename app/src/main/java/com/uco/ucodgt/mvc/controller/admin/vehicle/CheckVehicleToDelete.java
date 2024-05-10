@@ -54,6 +54,8 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckVehicleToDelete.this,"No valid plate", Toast.LENGTH_LONG).show();
 
 
@@ -76,6 +78,8 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                         }
                         Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
                     }
@@ -94,6 +98,8 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                             }
                             Intent intentGoBack=new Intent(CheckVehicleToDelete.this, DeleteVehicleActivity.class);
                             startActivity(intentGoBack);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -115,6 +121,8 @@ public class CheckVehicleToDelete extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckVehicleToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
 
         }

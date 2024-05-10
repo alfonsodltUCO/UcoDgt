@@ -83,6 +83,7 @@ public class CheckLogIn extends AppCompatActivity {
                     startActivity(intentClient);
                     overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
+                    finish();
                     hideLoading();
 
                 });
@@ -137,6 +138,7 @@ public class CheckLogIn extends AppCompatActivity {
                                         startActivity(intentGoMain);
                                         overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                         hideLoading();
+                                        finish();
 
                                     }
 
@@ -158,6 +160,7 @@ public class CheckLogIn extends AppCompatActivity {
                                             startActivity(intentWorker);
                                             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
+                                            finish();
                                             hideLoading();
 
                                         });
@@ -201,6 +204,7 @@ public class CheckLogIn extends AppCompatActivity {
                                 startActivity(intentAdmin);
                                 overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                 hideLoading();
+                                finish();
                                 Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
 
                             });

@@ -89,6 +89,8 @@ public class CheckExtendItv extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(intent);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
 
                             hideLoading();
@@ -105,6 +107,8 @@ public class CheckExtendItv extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(intent);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckExtendItv.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
 
                             hideLoading();
@@ -126,6 +130,8 @@ public class CheckExtendItv extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(intent);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckExtendItv.this,"The itv is not expired", Toast.LENGTH_LONG).show();
 
                     hideLoading();

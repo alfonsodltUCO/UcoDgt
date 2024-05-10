@@ -67,6 +67,8 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goShow.putExtra("penalties",(Serializable) penalties);
                     goShow.putExtra("numberWorker",numberWorker);
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -84,6 +86,8 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goMain.putExtra("numberWorker",numberWorker);
                     Toast.makeText(CheckPenaltiesToListForWorker.this,"Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -113,6 +117,8 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goShow.putExtra("numberWorker",numberWorker);
                     goShow.putExtra("penalties", (Serializable) penalties);
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -130,6 +136,8 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
                     goMain.putExtra("numberWorker",numberWorker);
                     Toast.makeText(CheckPenaltiesToListForWorker.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -150,6 +158,8 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
             goMain.putExtra("numberWorker",numberWorker);
             Toast.makeText(CheckPenaltiesToListForWorker.this, "An error has occurred try again please", Toast.LENGTH_LONG).show();
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             hideLoading();
 
         }

@@ -54,6 +54,8 @@ public class CheckVehicleToFind extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckVehicleToFind.this,"No valid licence plate", Toast.LENGTH_LONG).show();
 
 
@@ -75,6 +77,8 @@ public class CheckVehicleToFind extends AppCompatActivity {
                         }
                         goShow.putExtra("vehicle",vehicle);
                         startActivity(goShow);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
 
@@ -92,6 +96,8 @@ public class CheckVehicleToFind extends AppCompatActivity {
                         }
                         Toast.makeText(CheckVehicleToFind.this,"Not found the vehicle", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
 
@@ -113,6 +119,8 @@ public class CheckVehicleToFind extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckVehicleToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
 
         }

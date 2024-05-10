@@ -70,6 +70,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     goShow.putExtra("penalties",(Serializable) penalties);
                     goShow.putExtra("dni",dni);
                     startActivity(goShow);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -87,6 +89,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     Toast.makeText(CheckPenaltiesToListForClient.this,"Not found any penalty", Toast.LENGTH_LONG).show();
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -114,6 +118,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                     }
                     Toast.makeText(CheckPenaltiesToListForClient.this, "Dates must be yyyy-mm-dd\nStart mus be older than end", Toast.LENGTH_LONG).show();
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }else{
@@ -133,6 +139,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             }
                             goShow.putExtra("penalties", (Serializable) penalties);
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -149,6 +157,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             }
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -181,6 +191,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goShow.putExtra("penalties", (Serializable) penalties);
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -198,6 +210,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             Toast.makeText(CheckPenaltiesToListForClient.this, "Not found any penalty", Toast.LENGTH_LONG).show();
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -227,6 +241,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             goShow.putExtra("penalties", (Serializable) penalties);
                             goShow.putExtra("dni",dni);
                             startActivity(goShow);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }
@@ -244,6 +260,8 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
                             }
                             goMain.putExtra("dni",dni);
                             startActivity(goMain);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             hideLoading();
 
                         }

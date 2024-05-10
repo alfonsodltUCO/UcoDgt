@@ -76,6 +76,8 @@ public class CheckWorkerPassword extends AppCompatActivity {
                 goMain.putExtra("numberWorker",numberWorker);
                 Toast.makeText(CheckWorkerPassword.this,"An error has ocurred try again please", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
             }
@@ -100,6 +102,8 @@ public class CheckWorkerPassword extends AppCompatActivity {
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckWorkerPassword.this,"The password is incorrect", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -118,6 +122,8 @@ public class CheckWorkerPassword extends AppCompatActivity {
                         goNewData.putExtra("dni",user.getDni());
                         Toast.makeText(CheckWorkerPassword.this,"Password is correct", Toast.LENGTH_LONG).show();
                         startActivity(goNewData);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }

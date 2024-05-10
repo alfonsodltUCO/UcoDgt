@@ -55,6 +55,8 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
                 }
                 intentGoBackAgain.putExtra("numberWorker",numberWorker);
                 startActivity(intentGoBackAgain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckPenaltyToFindForWorker.this,"Must be a number", Toast.LENGTH_LONG).show();
 
 
@@ -82,6 +84,8 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
                         goMain.putExtra("numberWorker",numberWorker);
                         Toast.makeText(CheckPenaltyToFindForWorker.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -98,6 +102,8 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
                         goShow.putExtra("penalty",penalty);
                         goShow.putExtra("numberWorker",numberWorker);
                         startActivity(goShow);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -117,6 +123,8 @@ public class CheckPenaltyToFindForWorker extends AppCompatActivity {
             }
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckPenaltyToFindForWorker.this,"Fill the field please", Toast.LENGTH_LONG).show();
 
         }

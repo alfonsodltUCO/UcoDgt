@@ -71,6 +71,8 @@ public class CheckUserToSee extends AppCompatActivity {
                 goShow.putExtra("numberWorker",numberWorker);
                 goShow.putExtra("client",user);
                 startActivity(goShow);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
             }
