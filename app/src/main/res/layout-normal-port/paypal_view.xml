@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="top|center"
             android:layout_height="0dp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.4"
             android:src="@drawable/animatedlogo" />
 
         <RelativeLayout
@@ -34,15 +34,15 @@
 
             <Button
                 android:id="@+id/goMainMenu"
-                android:layout_width="140dp"
-                android:layout_height="84dp"
+                android:layout_width="159dp"
+                android:layout_height="111dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="46dp"
-                android:layout_marginTop="95dp"
-                android:layout_marginBottom="147dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="85dp"
+                android:layout_marginBottom="131dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Go main menu"
@@ -52,16 +52,16 @@
 
             <com.paypal.checkout.paymentbutton.PayPalButton
                 android:id="@+id/paypalButton"
-                android:layout_width="176dp"
-                android:layout_height="88dp"
+                android:layout_width="189dp"
+                android:layout_height="118dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="91dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginBottom="147dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="82dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="126dp"
                 android:layout_toEndOf="@+id/goMainMenu"
                 android:layout_weight="1"
                 android:gravity="center"

@@ -34,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="0.1"
-                android:layout_marginRight="600dp"
                 android:gravity="start">
 
                 <ImageView

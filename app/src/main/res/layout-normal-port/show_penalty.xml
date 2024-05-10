@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="0.5">
+        android:layout_weight="0.6">
 
         <TextView
             android:id="@+id/textviewpageinfo"
@@ -269,8 +269,8 @@
 
                    <TextView
                        android:id="@+id/tvDescription"
-                       android:layout_width="500sp"
-                       android:layout_height="wrap_content"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
                        android:layout_weight="1"
                        android:layout_marginRight="10sp"
                        android:layout_marginLeft="10sp"
@@ -287,8 +287,8 @@
                        android:id="@+id/tvLicenceP"
                        android:layout_marginRight="10sp"
                        android:layout_marginLeft="10sp"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
                        android:layout_weight="1"
                        android:textColor="@color/white"
                        android:text="Introduce the licence plate"

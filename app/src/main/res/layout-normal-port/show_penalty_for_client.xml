@@ -40,272 +40,278 @@
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_weight="3"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
+            android:gravity="center"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="center">
                 <View
-                    android:layout_width="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvId"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Introduce the id"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
-                <TextView
-                    android:id="@+id/tvDate"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"                    android:text="Introduce date"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
 
+                    <TextView
+                        android:id="@+id/tvId"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:layout_marginLeft="10sp"
+                        android:text="Introduce the id"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"                    android:text="Introduce date"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tvDniC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"                    android:text="Introduce dni of client"
+                        android:textSize="20sp"
+                        />
+
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvDniW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"                    android:text="Introduce dni of worker"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tvState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:text="Introduce the state"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvReason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:text="Introduce the reason"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tvQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:text="Introduce the quantity"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tvPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:text="Introduce the points"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    >
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:textColor="@color/white"
+                        android:text="Introduce the description"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/tvLicenceP"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:text="Introduce the licence plate"
+                        android:textSize="20sp"
+                        />
+                    <View
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/black" />
+
+
+                </LinearLayout>
             </LinearLayout>
+
+
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@android:color/black"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvDniC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"                    android:text="Introduce dni of client"
-                    android:textSize="20sp"
-                    />
-
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
 
 
-                <TextView
-                    android:id="@+id/tvDniW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"                    android:text="Introduce dni of worker"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Introduce the state"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
-                <TextView
-                    android:id="@+id/tvReason"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Introduce the reason"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvQuantity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Introduce the quantity"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvPoints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:text="Introduce the points"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                >
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
-                <TextView
-                    android:id="@+id/tvDescription"
-                    android:layout_width="500sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:textColor="@color/white"
-                    android:text="Introduce the description"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/tvLicenceP"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:text="Introduce the licence plate"
-                    android:textSize="20sp"
-                    />
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
-            </LinearLayout>
         </LinearLayout>
 
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@android:color/black"/>
-
-
-
-    </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="wrap_content"
