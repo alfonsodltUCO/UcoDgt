@@ -66,6 +66,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
             goFind.putExtra("userToFind",selectedOption);
             goFind.putExtra("dni",dniToSearch.getText().toString().trim());
             startActivity(goFind);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
@@ -73,6 +74,7 @@ public class FindUserActivity extends AppCompatActivity implements View.OnClickL
 
             Intent goMenu=new Intent(FindUserActivity.this, AdminActivity.class);
             startActivity(goMenu);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }

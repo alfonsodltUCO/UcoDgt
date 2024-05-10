@@ -99,6 +99,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                                     Intent intent = new Intent(Intent.ACTION_VIEW);
                                     intent.setData(Uri.parse(url));
                                     startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 1:
@@ -123,6 +124,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                                     Intent intent = new Intent(Intent.ACTION_VIEW);
                                     intent.setData(Uri.parse(url));
                                     startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 1:
@@ -148,6 +150,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                                     Intent intent = new Intent(Intent.ACTION_VIEW);
                                     intent.setData(Uri.parse(url));
                                     startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 1:
@@ -176,27 +179,32 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent=new Intent(ClientActivity.this, CheckVehiclesToListForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item2ClientListPenalties){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item3ClientPayPenalty){
             Intent intent=new Intent(ClientActivity.this, IntroducePenaltyToFind.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }else if(com.uco.ucodgt.R.id.closeSession==item.getItemId()){
 
             Intent goMain=new Intent(ClientActivity.this, MainActivity.class);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }else if(com.uco.ucodgt.R.id.item4ClientGetMyInfo==item.getItemId()){
             Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
         return false;
     }
@@ -216,6 +224,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                                 Intent intent = new Intent(Intent.ACTION_VIEW);
                                 intent.setData(Uri.parse(url));
                                 startActivity(intent);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                 break;
                             case 1:

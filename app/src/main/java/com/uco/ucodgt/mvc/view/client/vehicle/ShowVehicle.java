@@ -92,6 +92,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowVehicle.this, ClientActivity.class);
             goMain.putExtra("dni",dni);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
@@ -100,6 +101,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             goList.putExtra("licencePlate",licplate);
             goList.putExtra("dni",dni);
             startActivity(goList);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

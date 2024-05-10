@@ -63,6 +63,7 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
 
             Intent goMain=new Intent(IntroducePoints.this, AdminActivity.class);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goUpdate){
@@ -72,6 +73,7 @@ public class IntroducePoints extends AppCompatActivity implements View.OnClickLi
             goUpdate.putExtra("dni",dni);
             goUpdate.putExtra("points",etNumber.getText().toString());
             startActivity(goUpdate);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

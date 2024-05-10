@@ -70,6 +70,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
 
             Intent goMenu=new Intent(DeleteUserActivity.this, AdminActivity.class);
             startActivity(goMenu);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
     }
 
@@ -99,6 +100,7 @@ public class DeleteUserActivity extends AppCompatActivity implements View.OnClic
             delete.putExtra("userToDelete",selectedOption);
             delete.putExtra("dni",dniToDelete.getText().toString().trim());
             startActivity(delete);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
             dialog.dismiss();
         });
 

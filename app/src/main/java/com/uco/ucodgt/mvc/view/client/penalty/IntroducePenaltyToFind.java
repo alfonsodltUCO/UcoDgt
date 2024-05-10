@@ -75,6 +75,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
                 intentFind.putExtra("state",selectedOption);
                 intentFind.putExtra("dni",dni);
                 startActivity(intentFind);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
             }else{
@@ -84,6 +85,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
                 intentFind.putExtra("id",etId.getText().toString());
                 intentFind.putExtra("dni",dni);
                 startActivity(intentFind);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             }
 
@@ -93,6 +95,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
             Intent intentGoMain = new Intent(IntroducePenaltyToFind.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dni);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.searchForDates){
@@ -101,6 +104,7 @@ public class IntroducePenaltyToFind extends AppCompatActivity implements View.On
             Intent searchForDates=new Intent(IntroducePenaltyToFind.this, SearchByDatesPenalties.class);
             searchForDates.putExtra("dni",dni);
             startActivity(searchForDates);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
     }
 }

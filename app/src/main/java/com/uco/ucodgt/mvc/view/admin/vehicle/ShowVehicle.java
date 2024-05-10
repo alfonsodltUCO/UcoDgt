@@ -96,6 +96,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
 
             Intent goMain=new Intent(ShowVehicle.this, AdminActivity.class);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteVehicle){
@@ -107,6 +108,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goList=new Intent(ShowVehicle.this, CheckPenaltiesToList.class);
             goList.putExtra("licencePlate",licplate);
             startActivity(goList);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (v.getId()==com.uco.ucodgt.R.id.extendItv) {
@@ -114,6 +116,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goExtend=new Intent(ShowVehicle.this, CheckExtendItv.class);
             goExtend.putExtra("licencePlate",licplate);
             startActivity(goExtend);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }
@@ -136,6 +139,7 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
             Intent goDelete=new Intent(ShowVehicle.this, CheckVehicleToDelete.class);
             goDelete.putExtra("licencePlate",licplate);
             startActivity(goDelete);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

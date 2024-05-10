@@ -99,12 +99,14 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             // Start the CheckVehicleToAdd activity
 
             startActivity(checkVehicleToAdd);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
             Intent goMenu=new Intent(AddVehicleActivity.this, AdminActivity.class);
             startActivity(goMenu);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
     }
 }

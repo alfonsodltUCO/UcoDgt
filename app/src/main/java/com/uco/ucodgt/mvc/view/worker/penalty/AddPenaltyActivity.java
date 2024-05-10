@@ -112,12 +112,14 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             goNext.putExtra("points",etPoints.getText().toString());
             goNext.putExtra("numberWorker",numberWorker);
             startActivity(goNext);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
 
             Intent intentGoMain = new Intent(AddPenaltyActivity.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

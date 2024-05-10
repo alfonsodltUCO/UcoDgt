@@ -60,6 +60,7 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
             goIntent.putExtra("licenceplate",et.getText().toString().trim());
             goIntent.putExtra("numberWorker",numberWorker);
             startActivity(goIntent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
@@ -69,6 +70,7 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
             startActivity(goMenu);
 
 
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
     }
 }

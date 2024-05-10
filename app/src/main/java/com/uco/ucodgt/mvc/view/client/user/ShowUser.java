@@ -100,6 +100,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goMain=new Intent(ShowUser.this, ClientActivity.class);
             goMain.putExtra("dni",dniRec);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if (v.getId()==com.uco.ucodgt.R.id.listPenalties) {
@@ -108,6 +109,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goList=new Intent(ShowUser.this, CheckPenaltiesToListForClient.class);
             goList.putExtra("dni",dniRec);
             startActivity(goList);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.listVehicles){
@@ -116,6 +118,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToListForClient.class);
             goListVeh.putExtra("dni",dniRec);
             startActivity(goListVeh);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
@@ -124,6 +127,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             Intent goChange=new Intent(ShowUser.this, IntroduceActualPassword.class);
             goChange.putExtra("dni",dniRec);
             startActivity(goChange);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

@@ -124,6 +124,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
             Intent showUser=new Intent(ShowUser.this, AdminActivity.class);
             startActivity(showUser);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deleteUser){
@@ -136,6 +137,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                 Toast.makeText(ShowUser.this,"Cannot list penalties of a worker",Toast.LENGTH_LONG).show();
 
             }else{
@@ -143,6 +145,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goList=new Intent(ShowUser.this, CheckPenaltiesToList.class);
                 goList.putExtra("dni",dniNoText);
                 startActivity(goList);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             }
 
@@ -154,6 +157,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                 Toast.makeText(ShowUser.this,"Cannot list vehicles of a worker",Toast.LENGTH_LONG).show();
 
             }else{
@@ -161,6 +165,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goListVeh=new Intent(ShowUser.this, CheckVehiclesToList.class);
                 goListVeh.putExtra("dni",dniNoText);
                 startActivity(goListVeh);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             }
 
@@ -171,6 +176,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
                 Intent goBack=new Intent(ShowUser.this, AdminActivity.class);
                 startActivity(goBack);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                 Toast.makeText(ShowUser.this,"Cannot update points from a worker",Toast.LENGTH_LONG).show();
 
             }else{
@@ -178,6 +184,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
                 Intent goUpdate=new Intent(ShowUser.this, IntroducePoints.class);
                 goUpdate.putExtra("dni",dniNoText);
                 startActivity(goUpdate);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             }
         }
@@ -202,6 +209,7 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
             checkUserToDelete.putExtra("dni",dniNoText);
             checkUserToDelete.putExtra("type",type);
             startActivity(checkUserToDelete);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

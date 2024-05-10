@@ -45,6 +45,7 @@ public class FindPenaltyActivity extends AppCompatActivity {
 
             Intent intent = new Intent(FindPenaltyActivity.this, IntroduceManual.class);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         });
         // Initialize ActivityResultLauncher for camera
@@ -128,6 +129,7 @@ public class FindPenaltyActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         startActivity(intentCheckVehiclePlate);
+        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
     }

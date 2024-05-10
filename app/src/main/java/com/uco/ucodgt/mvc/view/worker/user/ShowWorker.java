@@ -91,6 +91,7 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
             Intent showUser=new Intent(ShowWorker.this, WorkerActivity.class);
             showUser.putExtra("numberWorker",numberWorker);
             startActivity(showUser);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.changeData){
@@ -98,6 +99,7 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
             Intent intent=new Intent(ShowWorker.this, IntroduceActualPassword.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }

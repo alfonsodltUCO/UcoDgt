@@ -71,6 +71,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             Intent intentGoMain = new Intent(IntroduceNewData.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }
@@ -103,6 +104,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             goChange.putExtra("password",password.getText().toString());
             goChange.putExtra("dni",dni);
             startActivity(goChange);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

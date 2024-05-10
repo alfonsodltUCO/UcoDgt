@@ -73,6 +73,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             Intent intentGoMain = new Intent(IntroduceNewData.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dniRec);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }
@@ -104,6 +105,7 @@ public class IntroduceNewData extends AppCompatActivity implements View.OnClickL
             goChange.putExtra("email",email.getText().toString());
             goChange.putExtra("password",password.getText().toString());
             startActivity(goChange);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

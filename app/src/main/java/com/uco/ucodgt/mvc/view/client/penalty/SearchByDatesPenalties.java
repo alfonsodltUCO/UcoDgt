@@ -59,6 +59,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             intentFind.putExtra("date2",etDate2.getText().toString());
             intentFind.putExtra("dni",dni);
             startActivity(intentFind);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
@@ -67,6 +68,7 @@ public class SearchByDatesPenalties extends AppCompatActivity implements View.On
             Intent intentGoMain = new Intent(SearchByDatesPenalties.this, ClientActivity.class);
             intentGoMain.putExtra("dni",dni);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

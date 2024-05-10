@@ -117,6 +117,7 @@ public class WorkerActivity extends AppCompatActivity{
             Intent intent=new Intent(WorkerActivity.this,AddPenaltyActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item2WorkerCheckVehicle){
@@ -124,6 +125,7 @@ public class WorkerActivity extends AppCompatActivity{
             Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
 
@@ -132,6 +134,7 @@ public class WorkerActivity extends AppCompatActivity{
             Intent intent=new Intent(WorkerActivity.this, FindUserActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(item.getItemId()==com.uco.ucodgt.R.id.item5WorkerGetMyInfo){
@@ -139,6 +142,7 @@ public class WorkerActivity extends AppCompatActivity{
             Intent intent=new Intent(WorkerActivity.this, CheckWorkerInfo.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (item.getItemId()==com.uco.ucodgt.R.id.item4WorkerCancelPenalty) {
@@ -146,12 +150,14 @@ public class WorkerActivity extends AppCompatActivity{
             Intent intent=new Intent(WorkerActivity.this, GetVehiclePlate.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         } else if (item.getItemId()==com.uco.ucodgt.R.id.closeSession) {
 
             Intent intent=new Intent(WorkerActivity.this, MainActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
         return false;

@@ -59,14 +59,14 @@ public class GetVehiclePlate extends AppCompatActivity {
             Intent intent = new Intent(GetVehiclePlate.this, WorkerActivity.class);
             intent.putExtra("numberWorker",numberWorker);
             startActivity(intent);
-
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         });
 
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
                 intent.putExtra("numberWorker",numberWorker);
                 startActivity(intent);
-
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         });
         // Initialize ActivityResultLauncher for camera
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -141,6 +141,7 @@ public class GetVehiclePlate extends AppCompatActivity {
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         intentCheckVehiclePlate.putExtra("numberWorker",numberWorker);
         startActivity(intentCheckVehiclePlate);
+        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
     }
 

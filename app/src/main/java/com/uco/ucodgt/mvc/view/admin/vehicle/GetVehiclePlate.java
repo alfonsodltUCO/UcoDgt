@@ -54,11 +54,13 @@ public class GetVehiclePlate extends AppCompatActivity {
         goMain.setOnClickListener(v->{
             Intent intent = new Intent(GetVehiclePlate.this, AdminActivity.class);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         });
         manual.setOnClickListener(v -> {
                 Intent intent = new Intent(GetVehiclePlate.this, IntroduceManual.class);
                 startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         });
         // Initialize ActivityResultLauncher for camera
@@ -131,6 +133,7 @@ public class GetVehiclePlate extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
         intentCheckVehiclePlate.putExtra("image", bs.toByteArray());
         startActivity(intentCheckVehiclePlate);
+        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
     }
 
