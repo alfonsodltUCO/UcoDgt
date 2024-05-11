@@ -122,21 +122,25 @@ public class AdminActivity extends AppCompatActivity{
                                     case 1:
                                         Intent intentDeleteUser=new Intent(AdminActivity.this, DeleteUserActivity.class);
                                         startActivity(intentDeleteUser);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                         break;
                                     case 2:
                                         Intent intentListUsers=new Intent(AdminActivity.this, CheckUsersToList.class);
                                         startActivity(intentListUsers);
 
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                         break;
                                     case 3:
                                         Intent goUpdate=new Intent(AdminActivity.this, FindUserActivity.class);
                                         startActivity(goUpdate);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                         break;
                                     case 4:
                                         Intent intentFindUser=new Intent(AdminActivity.this, FindUserActivity.class);
                                         startActivity(intentFindUser);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                         break;
                                 }
@@ -154,24 +158,28 @@ public class AdminActivity extends AppCompatActivity{
                                 case 0:
                                     Intent intentListPenalties = new Intent(AdminActivity.this, CheckPenaltiesToList.class);
                                     startActivity(intentListPenalties);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 1:
 
                                     Intent goAdd=new Intent(AdminActivity.this, AddPenaltyActivity.class);
                                     startActivity(goAdd);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 2:
 
                                     Intent goDelete = new Intent(AdminActivity.this, DeletePenaltyActivity.class);
                                     startActivity(goDelete);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
                                     break;
                                 case 3:
                                     Intent intentFind = new Intent(AdminActivity.this, IntroducePenaltyForSearch.class);
                                     startActivity(intentFind);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
 
@@ -191,26 +199,34 @@ public class AdminActivity extends AppCompatActivity{
 
                                     Intent intentFindVehicle=new Intent(AdminActivity.this, GetVehiclePlate.class);
                                     startActivity(intentFindVehicle);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 1:
                                     Intent intentDeleteVehicle=new Intent(AdminActivity.this, DeleteVehicleActivity.class);
                                     startActivity(intentDeleteVehicle);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
                                     break;
                                 case 2:
                                     Intent intentAddVehicle = new Intent(AdminActivity.this, AddVehicleActivity.class);
                                     startActivity(intentAddVehicle);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+
 
                                     break;
                                 case 3:
                                     Intent intentFindVehicles = new Intent(AdminActivity.this, CheckVehiclesToList.class);
                                     startActivity(intentFindVehicles);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+
 
                                     break;
                                 case 4:
                                     Intent goExtend=new Intent(AdminActivity.this, GetVehiclePlate.class);
                                     startActivity(goExtend);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+
 
                                     break;
                             }
