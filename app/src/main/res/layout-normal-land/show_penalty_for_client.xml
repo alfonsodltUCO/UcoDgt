@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:layout_weight="3">
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/textviewpageinfo"
@@ -78,7 +78,7 @@
                     <TextView
                         android:id="@+id/tvId"
                         android:textColor="@color/white"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="left"
@@ -96,7 +96,7 @@
                     <TextView
                         android:id="@+id/tvDate"
                         android:gravity="center"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:textColor="@color/white"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -129,7 +129,7 @@
 
                     <TextView
                         android:id="@+id/tvDniC"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:layout_weight="1"
@@ -146,7 +146,7 @@
 
                     <TextView
                         android:id="@+id/tvDniW"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:layout_weight="1"
@@ -181,7 +181,7 @@
 
                     <TextView
                         android:id="@+id/tvState"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textColor="@color/white"
@@ -198,7 +198,7 @@
 
                     <TextView
                         android:id="@+id/tvReason"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textColor="@color/white"
@@ -214,7 +214,7 @@
 
                     <TextView
                         android:id="@+id/tvQuantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textColor="@color/white"
@@ -230,7 +230,7 @@
 
                     <TextView
                         android:id="@+id/tvPoints"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textColor="@color/white"

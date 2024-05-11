@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="0.3"
+        android:layout_weight="0.2"
         android:layout_height="0dp"
         android:orientation="vertical"
         >
@@ -33,7 +33,7 @@
                 android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_weight="0.1"
+                android:layout_weight="0.3"
                 android:gravity="start">
 
                 <ImageView
@@ -50,14 +50,13 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center">
@@ -80,7 +79,7 @@
 
                 <TextView
                     android:id="@+id/textViewFoundLicencePlate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/white"
@@ -98,7 +97,7 @@
 
                 <TextView
                     android:id="@+id/textViewCarType"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/white"
@@ -115,7 +114,7 @@
 
                 <TextView
                     android:id="@+id/textViewFoundColor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="10sp"
@@ -150,7 +149,7 @@
 
                 <TextView
                     android:id="@+id/textViewFoundIdInsurance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="10sp"
@@ -169,7 +168,7 @@
 
                 <TextView
                     android:id="@+id/textViewFoundValidItvFrom"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="10sp"
@@ -186,7 +185,7 @@
 
                 <TextView
                     android:id="@+id/textViewFoundValidItvTo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="10sp"
@@ -211,17 +210,13 @@
                 android:background="@android:color/black"/>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.6"
+        android:layout_weight="0.4"
         android:orientation="vertical"
         android:gravity="bottom"
         android:layout_gravity="center">
@@ -230,16 +225,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:orientation="vertical">
             <Button
                 android:id="@+id/goMainMenu"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="80sp"
+                android:layout_marginBottom="@dimen/fab_margin_16"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:layout_marginRight="@dimen/fab_margin_16"
                 android:text="Go main menu"
                 >
 
@@ -249,11 +244,9 @@
                 android:id="@+id/listPenalties"
                 android:singleLine="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="80sp"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:layout_marginLeft="@dimen/fab_margin_16"
                 android:text="List penalties"
                 >
 
