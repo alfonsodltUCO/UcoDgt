@@ -38,6 +38,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.android.volley:volley:1.2.1")
 
+    /*implementation(fileTree(mapOf(
+        "dir" to "C:\\Users\\Lenovo\\AppData\\Local\\Android\\Sdk\\platforms\\android-34",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf<T>()
+    )))*/
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     implementation("com.paypal.checkout:android-sdk:0.112.2")
