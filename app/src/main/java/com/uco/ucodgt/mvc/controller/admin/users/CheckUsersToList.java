@@ -23,6 +23,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.user.ShowUsers;
 /**
  * An activity that after check the data allow Admin to list users in DB.
+ * Also the administrator will be able to choose a user and realize some actions against him.
  * @author Alfonso de la torre
  */
 public class CheckUsersToList extends AppCompatActivity {

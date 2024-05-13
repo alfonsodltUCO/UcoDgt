@@ -25,6 +25,7 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.penalty.ShowPenalties;
 /**
  * An activity that after check the data allow Admin check penalties by state/dates/vehicle/dni of client.
+ * Also the administrator can choose a penalty and realize action against it.
  * @author Alfonso de la torre
  */
 public class CheckPenaltiesToList extends AppCompatActivity {
