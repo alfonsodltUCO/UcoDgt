@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/common"
+    android:orientation="vertical">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/fab_margin_16"
+        android:layout_gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:helperTextTextColor="@color/white"
+            app:cursorColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@color/white"
+            app:placeholderTextColor="@color/white"
+            app:boxStrokeErrorColor="@android:color/white"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDniToFind"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:textColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:backgroundTint="@android:color/transparent"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="31878744P"
+                android:inputType="text"
+                android:textSize="30sp"
+                tools:ignore="HardcodedText,LabelFor" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/findUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:text="Find User"
+            />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="90sp"
+            android:src="@drawable/useranimado" />
+
+        <Button
+            android:id="@+id/goMainMenu"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Go main menu"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center|bottom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/userformenu"
+                />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/animatedlogo" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trabajador"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+</LinearLayout>

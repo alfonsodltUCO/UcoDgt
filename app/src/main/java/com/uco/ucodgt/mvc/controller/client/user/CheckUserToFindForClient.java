@@ -70,6 +70,8 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                         intentSeeUser.putExtra("client", user);
                         intentSeeUser.putExtra("dni",dni);
                         startActivity(intentSeeUser);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
 
@@ -88,6 +90,8 @@ public class CheckUserToFindForClient extends AppCompatActivity {
                         Intent intentGoBack=new Intent(CheckUserToFindForClient.this, ClientActivity.class);
                         intentGoBack.putExtra("dni",dni);
                         startActivity(intentGoBack);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
                     }
@@ -125,6 +129,8 @@ public class CheckUserToFindForClient extends AppCompatActivity {
             }
             intent.putExtra("dni",dni);
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckUserToFindForClient.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
 
         }

@@ -53,4 +53,5 @@ public class ShowUsers extends AppCompatActivity{
         adapter = new CardAdapter(this,clientList, workerList);
         recyclerView.setAdapter(adapter);
     }
+
 }

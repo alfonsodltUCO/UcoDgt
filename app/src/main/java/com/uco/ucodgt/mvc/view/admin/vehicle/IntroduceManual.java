@@ -52,12 +52,14 @@ public class IntroduceManual extends AppCompatActivity implements View.OnClickLi
             Intent goIntent=new Intent(IntroduceManual.this, CheckVehicleToFind.class);
             goIntent.putExtra("licenceplate",et.getText().toString().trim());
             startActivity(goIntent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
 
             Intent goMenu=new Intent(IntroduceManual.this, AdminActivity.class);
             startActivity(goMenu);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

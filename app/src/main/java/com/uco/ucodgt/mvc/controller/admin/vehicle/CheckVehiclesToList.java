@@ -63,6 +63,8 @@ public class CheckVehiclesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(emptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -82,6 +84,8 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }
@@ -107,6 +111,8 @@ public class CheckVehiclesToList extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(emptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckVehiclesToList.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -126,6 +132,8 @@ public class CheckVehiclesToList extends AppCompatActivity {
                     notEmptyLists.putExtra("vehicles", (Serializable) vehiclelist);
                     Toast.makeText(CheckVehiclesToList.this,"found vehicles",Toast.LENGTH_LONG).show();
                     startActivity(notEmptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }

@@ -65,6 +65,8 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
                 }
                 goMain.putExtra("dni",dni);
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
 
@@ -93,6 +95,8 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
                         Toast.makeText(CheckPenaltyToFindForClient.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         goMain.putExtra("dni",dni);
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -130,6 +134,8 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
                                 goShow.putExtra("dni",dni);
                                 goShow.putExtra("worker",user.getNumberOfWorker().toString());
                                 startActivity(goShow);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
 
                                 hideLoading();
                             }
@@ -166,6 +172,8 @@ public class CheckPenaltyToFindForClient extends AppCompatActivity {
             }
             goMain.putExtra("dni",dni);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
 
             hideLoading();
         }

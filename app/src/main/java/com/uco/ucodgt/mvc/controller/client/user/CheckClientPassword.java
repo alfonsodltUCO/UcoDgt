@@ -74,6 +74,8 @@ public class CheckClientPassword extends AppCompatActivity {
                         goNewData.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"Password is correct", Toast.LENGTH_LONG).show();
                         startActivity(goNewData);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -91,6 +93,8 @@ public class CheckClientPassword extends AppCompatActivity {
                         goMain.putExtra("dni",dniRec);
                         Toast.makeText(CheckClientPassword.this,"The password is incorrect", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -130,6 +134,8 @@ public class CheckClientPassword extends AppCompatActivity {
                 goMain.putExtra("dni",dniRec);
                 Toast.makeText(CheckClientPassword.this,"An error has ocurred try again please", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
             }

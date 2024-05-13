@@ -94,6 +94,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
 
             Intent goMain=new Intent(ShowPenalty.this, AdminActivity.class);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.deletePenalty){
@@ -121,6 +122,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goDelete=new Intent(ShowPenalty.this, CheckPenaltyToDelete.class);
             goDelete.putExtra("id", penalty.getId().toString());
             startActivity(goDelete);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

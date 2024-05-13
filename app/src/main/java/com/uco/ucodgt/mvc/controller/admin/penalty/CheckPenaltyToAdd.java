@@ -92,6 +92,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for informed at the moment\nMust be Yes/No", Toast.LENGTH_LONG).show();
             hideLoading();
 
@@ -107,6 +109,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid date\nMust be today", Toast.LENGTH_LONG).show();
                 hideLoading();
 
@@ -120,6 +124,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                         System.out.println(e);
                     }
                     startActivity(intentAdmin);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of client", Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -134,6 +140,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                             System.out.println(e);
                         }
                         startActivity(intentAdmin);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         Toast.makeText(CheckPenaltyToAdd.this,"Invalid format DNI of worker", Toast.LENGTH_LONG).show();
                         hideLoading();
 
@@ -150,6 +158,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                 System.out.println(e);
                             }
                             startActivity(intentAdmin);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckPenaltyToAdd.this,"Invalid value for state", Toast.LENGTH_LONG).show();
                             hideLoading();
 
@@ -165,6 +175,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                     System.out.println(e);
                                 }
                                 startActivity(intentAdmin);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 Toast.makeText(CheckPenaltyToAdd.this,"Invalid format for reason", Toast.LENGTH_LONG).show();
                                 hideLoading();
 
@@ -181,6 +193,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                         System.out.println(e);
                                     }
                                     startActivity(intentAdmin);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     Toast.makeText(CheckPenaltyToAdd.this,"Invalid format for licence plate", Toast.LENGTH_LONG).show();
                                     hideLoading();
 
@@ -197,6 +211,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                             System.out.println(e);
                                         }
                                         startActivity(intentAdmin);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                        finish();
                                         Toast.makeText(CheckPenaltyToAdd.this,"Points must be a number\n", Toast.LENGTH_LONG).show();
                                         hideLoading();
 
@@ -213,6 +229,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                 System.out.println(e);
                                             }
                                             startActivity(intentAdmin);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                            finish();
                                             Toast.makeText(CheckPenaltyToAdd.this,"Quantity must be a number\n", Toast.LENGTH_LONG).show();
                                             hideLoading();
 
@@ -252,6 +270,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                         System.out.println(e);
                                                                     }
                                                                     startActivity(intentAdmin);
+                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                    finish();
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"User doesnt have this vehicle", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
 
@@ -266,6 +286,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                         System.out.println(e);
                                                                     }
                                                                     startActivity(intentAdmin);
+                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                    finish();
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"Worker doesnt exist\nOr vehicle doesnt exist", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
 
@@ -280,6 +302,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                         System.out.println(e);
                                                                     }
                                                                     startActivity(intentAdmin);
+                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                    finish();
                                                                     Toast.makeText(CheckPenaltyToAdd.this, "Client doesnt exists", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
 
@@ -294,6 +318,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                         System.out.println(e);
                                                                     }
                                                                     startActivity(intentAdmin);
+                                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                    finish();
                                                                     Toast.makeText(CheckPenaltyToAdd.this,"An error has ocurred, check users and vehicle exist", Toast.LENGTH_LONG).show();
                                                                     hideLoading();
 
@@ -311,6 +337,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                     System.out.println(e);
                                                                 }
                                                                 startActivity(intentAdmin);
+                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                finish();
                                                                 Toast.makeText(CheckPenaltyToAdd.this,"Penalty added", Toast.LENGTH_LONG).show();
                                                                 hideLoading();
 
@@ -327,6 +355,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                             System.out.println(e);
                                                         }
                                                         startActivity(intentAdmin);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
                                                         Toast.makeText(CheckPenaltyToAdd.this,"Points and quantity must be between the range of penalty reason", Toast.LENGTH_LONG).show();
                                                         hideLoading();
 
@@ -351,6 +381,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckPenaltyToAdd.this,"Please fill all fields", Toast.LENGTH_LONG).show();
             hideLoading();
 

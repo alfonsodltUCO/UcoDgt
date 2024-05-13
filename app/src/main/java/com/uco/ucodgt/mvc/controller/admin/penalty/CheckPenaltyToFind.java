@@ -53,6 +53,8 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentGoBackAgain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckPenaltyToFind.this,"Must be a number", Toast.LENGTH_LONG).show();
 
 
@@ -79,6 +81,8 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                         }
                         Toast.makeText(CheckPenaltyToFind.this,"Not found the penalty", Toast.LENGTH_LONG).show();
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -94,6 +98,8 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                         }
                         goShow.putExtra("penalty",penalty);
                         startActivity(goShow);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
 
                         hideLoading();
                     }
@@ -112,6 +118,8 @@ public class CheckPenaltyToFind extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckPenaltyToFind.this,"Fill the field please", Toast.LENGTH_LONG).show();
 
         }

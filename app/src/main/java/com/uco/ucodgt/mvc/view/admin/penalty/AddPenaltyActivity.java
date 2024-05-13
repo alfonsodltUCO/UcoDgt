@@ -102,12 +102,14 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
             goNext.putExtra("quantity",etQuantity.getText().toString());
             goNext.putExtra("points",etPoints.getText().toString());
             startActivity(goNext);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
 
             Intent intentGoMain = new Intent(AddPenaltyActivity.this, AdminActivity.class);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

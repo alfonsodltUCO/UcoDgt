@@ -61,6 +61,8 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
                 goShow.putExtra("vehicle",vehicle);
                 goShow.putExtra("dni",dni);
                 startActivity(goShow);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
             }
@@ -78,6 +80,8 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
                 }
                 goMain.putExtra("dni",dni);
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
 
                 hideLoading();
             }

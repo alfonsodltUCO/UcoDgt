@@ -69,6 +69,7 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
             Intent intentGoMain = new Intent(IntroduceDescriptionForPenalty.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.checkPenaltyToAdd){
@@ -87,6 +88,7 @@ public class IntroduceDescriptionForPenalty extends AppCompatActivity implements
             goNext.putExtra("description",etDescrp.getText().toString());
             goNext.putExtra("numberWorker",numberWorker);
             startActivity(goNext);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

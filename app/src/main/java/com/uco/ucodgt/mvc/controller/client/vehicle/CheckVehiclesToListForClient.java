@@ -70,6 +70,8 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                     }
                     emptyLists.putExtra("dni",dni);
                     startActivity(emptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckVehiclesToListForClient.this,"Not found any vehicle",Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -91,6 +93,8 @@ public class CheckVehiclesToListForClient extends AppCompatActivity  {
                     Toast.makeText(CheckVehiclesToListForClient.this,"found vehicles",Toast.LENGTH_LONG).show();
                     notEmptyLists.putExtra("dni",dni);
                     startActivity(notEmptyLists);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     hideLoading();
 
                 }

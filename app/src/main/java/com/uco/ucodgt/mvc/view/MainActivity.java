@@ -62,5 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("email", email);
         intent.putExtra("password", password);
         startActivity(intent);
+        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
     }
 }

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/common"
+    android:orientation="vertical">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/fab_margin_16"
+        android:layout_gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:helperTextTextColor="@color/white"
+            app:cursorColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@color/white"
+            app:placeholderTextColor="@color/white"
+            app:boxStrokeErrorColor="@android:color/white"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:textSize="30sp"
+                android:inputType="textEmailAddress"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="example@gmail.com"
+                android:backgroundTint="@android:color/transparent"/>
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:helperTextTextColor="@color/white"
+            app:cursorColor="@color/white"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"
+            app:boxStrokeColor="@android:color/white"
+            app:hintTextColor="@color/white"
+            app:placeholderTextColor="@color/white"
+            app:boxStrokeErrorColor="@android:color/white"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:ems="10"
+                android:textSize="30sp"
+                android:inputType="textPassword"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:hint="MyPassword"
+                android:backgroundTint="@android:color/transparent"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/goConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:text="Confirm Changes"
+            />
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/fab_margin_16"
+            android:layout_marginBottom="@dimen/fab_margin_16"
+            android:layout_gravity="center"
+            android:layout_height="100sp"
+            android:src="@drawable/lockeranimado" />
+
+        <Button
+            android:id="@+id/goMainMenu"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Go main menu"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:layout_gravity="center|bottom"
+        >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/animatedlogo" />
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

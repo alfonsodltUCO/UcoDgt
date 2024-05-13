@@ -70,6 +70,8 @@ public class CheckWorkerInfo extends AppCompatActivity {
                 intent.putExtra("numberWorker",numberWorker);
                 Toast.makeText(CheckWorkerInfo.this,"An error has occured try again please", Toast.LENGTH_LONG).show();
                 startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 hideLoading();
 
             }
@@ -87,6 +89,8 @@ public class CheckWorkerInfo extends AppCompatActivity {
                 intent.putExtra("numberWorker",numberWorker);
                 intent.putExtra("worker",user);
                 startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 hideLoading();
 
             }

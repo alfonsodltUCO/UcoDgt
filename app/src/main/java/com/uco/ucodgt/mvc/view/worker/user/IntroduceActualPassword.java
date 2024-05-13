@@ -64,6 +64,7 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
             goChange.putExtra("numberWorker",numberWorker);
             goChange.putExtra("password",pass.getText().toString());
             startActivity(goChange);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
@@ -72,6 +73,7 @@ public class IntroduceActualPassword extends AppCompatActivity implements View.O
             Intent intentGoMain = new Intent(IntroduceActualPassword.this, WorkerActivity.class);
             intentGoMain.putExtra("numberWorker",numberWorker);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }

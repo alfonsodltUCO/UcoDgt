@@ -71,6 +71,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
             intent.putExtra("numberWorker",numberWorker);
             intent.putExtra("dni",dni);
             startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckDataForUpdate.this, "The email is not valid format", Toast.LENGTH_LONG).show();
             hideLoading();
 
@@ -87,6 +89,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                 intent.putExtra("numberWorker",numberWorker);
                 intent.putExtra("dni",dni);
                 startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckDataForUpdate.this, "The password is not valid\nMust be 8 characters al least\nOne number\nOne special character\nOne capital letter", Toast.LENGTH_LONG).show();
                 hideLoading();
 
@@ -115,6 +119,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                     intent.putExtra("numberWorker",numberWorker);
                                     intent.putExtra("dni",dni);
                                     startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
                                     Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                     hideLoading();
 
@@ -155,6 +161,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                                 intent.putExtra("numberWorker",numberWorker);
                                                 intent.putExtra("dni",dni);
                                                 startActivity(intent);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                finish();
                                                 Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
                                                 hideLoading();
 
@@ -173,6 +181,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                                 Intent intent = new Intent(CheckDataForUpdate.this, WorkerActivity.class);
                                                 intent.putExtra("numberWorker",numberWorker);
                                                 startActivity(intent);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                finish();
                                                 Toast.makeText(CheckDataForUpdate.this, "Update done", Toast.LENGTH_LONG).show();
                                                 hideLoading();
 
@@ -212,6 +222,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                         intent.putExtra("numberWorker",numberWorker);
                                         intent.putExtra("dni",dni);
                                         startActivity(intent);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                         finish();
                                         Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                                         hideLoading();
 
@@ -268,6 +280,8 @@ public class CheckDataForUpdate extends AppCompatActivity {
                             intent.putExtra("numberWorker",numberWorker);
                             intent.putExtra("dni",dni);
                             startActivity(intent);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
                             Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
                             hideLoading();
 

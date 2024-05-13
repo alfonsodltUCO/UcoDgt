@@ -60,6 +60,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckUserToFind.this,"No valid DNI", Toast.LENGTH_LONG).show();
 
 
@@ -89,6 +91,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 intentSeeWorker.putExtra("client", user);
                                 intentSeeWorker.putExtra("type","client");
                                 startActivity(intentSeeWorker);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
 
@@ -107,6 +111,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 }
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
                             }
@@ -154,6 +160,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 }
                                 Intent intentGoBack=new Intent(CheckUserToFind.this, FindUserActivity.class);
                                 startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
                             }
@@ -173,6 +181,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                                 intentSeeWorker.putExtra("worker", user);
                                 intentSeeWorker.putExtra("type","worker");
                                 startActivity(intentSeeWorker);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
                             }
@@ -206,6 +216,8 @@ public class CheckUserToFind  extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckUserToFind.this,"Please fill all fields", Toast.LENGTH_LONG).show();
 
         }

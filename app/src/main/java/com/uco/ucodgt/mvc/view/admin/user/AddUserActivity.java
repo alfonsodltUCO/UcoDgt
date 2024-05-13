@@ -82,11 +82,13 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
            checkUserToAdd.putExtra("typeofusertoadd",selectedOption);
 
            startActivity(checkUserToAdd);
+           overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
        }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
             //Handle the option to go back
             Intent goMenu=new Intent(AddUserActivity.this, AdminActivity.class);
             startActivity(goMenu);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }

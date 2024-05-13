@@ -36,7 +36,8 @@ public class CheckLogIn extends AppCompatActivity {
     private ProgressBar progressBar;
 
     /**
-     * Called when the activity is starting. This method creates the activity.
+     * Called when the activity is starting. This method creates the
+     *        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);activity.
      * It initializes the UI elements and retrieves data from the intent,
      * then performs a login check for the user.
      * @param savedInstanceState A Bundle containing the activity's previously saved state, if there was one.
@@ -80,7 +81,9 @@ public class CheckLogIn extends AppCompatActivity {
                     Intent intentClient=new Intent(CheckLogIn.this, CheckClientPoints.class);
                     intentClient.putExtra("dni",user.getDni());
                     startActivity(intentClient);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                     Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
+                    finish();
                     hideLoading();
 
                 });
@@ -133,7 +136,9 @@ public class CheckLogIn extends AppCompatActivity {
                                         Toast.makeText(CheckLogIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                                         Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
                                         startActivity(intentGoMain);
+                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                         hideLoading();
+                                        finish();
 
                                     }
 
@@ -153,7 +158,9 @@ public class CheckLogIn extends AppCompatActivity {
                                             Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
                                             intentWorker.putExtra("numberWorker",user.getNumberOfWorker().toString());
                                             startActivity(intentWorker);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                             Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
+                                            finish();
                                             hideLoading();
 
                                         });
@@ -195,7 +202,9 @@ public class CheckLogIn extends AppCompatActivity {
                                     System.out.println(e);
                                 }
                                 startActivity(intentAdmin);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                                 hideLoading();
+                                finish();
                                 Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
 
                             });

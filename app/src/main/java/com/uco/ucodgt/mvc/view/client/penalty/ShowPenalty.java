@@ -108,6 +108,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             Intent goMain=new Intent(ShowPenalty.this, ClientActivity.class);
             goMain.putExtra("dni",dni);
             startActivity(goMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.payPenalty){
@@ -117,6 +118,7 @@ public class ShowPenalty extends AppCompatActivity implements View.OnClickListen
             goPay.putExtra("dni",dni);
             goPay.putExtra("quantity",penalty.getQuantity().toString());
             startActivity(goPay);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }

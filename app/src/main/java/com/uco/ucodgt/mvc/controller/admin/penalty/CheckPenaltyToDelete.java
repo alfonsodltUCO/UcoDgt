@@ -57,6 +57,8 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
                 }
                 Toast.makeText(CheckPenaltyToDelete.this, "Not found the penalty", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 hideLoading();
                              }
 
@@ -72,6 +74,8 @@ public class CheckPenaltyToDelete extends AppCompatActivity {
                 }
                 Toast.makeText(CheckPenaltyToDelete.this, "Deleted done", Toast.LENGTH_LONG).show();
                 startActivity(goMain);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 hideLoading();
 
             }

@@ -61,7 +61,8 @@ public class CheckImageForWorker extends AppCompatActivity{
                     goShow.putExtra("vehicle",vehicle);
                     goShow.putExtra("numberWorker",numberWorker);
                     startActivity(goShow);
-
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                 });
             }
 
@@ -82,7 +83,9 @@ public class CheckImageForWorker extends AppCompatActivity{
                         Toast.makeText(CheckImageForWorker.this,"Not found this vehicle on Data Base", Toast.LENGTH_LONG).show();
                         goBack.putExtra("numberWorker",numberWorker);
                         startActivity(goBack);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                         hideLoading();
+                        finish();
 
 
                     }else{
@@ -96,7 +99,9 @@ public class CheckImageForWorker extends AppCompatActivity{
                         Toast.makeText(CheckImageForWorker.this,"Not licence plate recognized", Toast.LENGTH_LONG).show();
                         goMain.putExtra("numberWorker",numberWorker);
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                         hideLoading();
+                        finish();
 
 
                     }

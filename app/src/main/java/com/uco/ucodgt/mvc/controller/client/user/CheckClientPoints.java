@@ -79,6 +79,8 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
 
                             }
 
@@ -93,6 +95,8 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
 
                             }
 
@@ -138,6 +142,8 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
 
                             }
 
@@ -152,6 +158,8 @@ public class CheckClientPoints extends AppCompatActivity {
                                 }
                                 intentClient.putExtra("dni",user.getDni());
                                 startActivity(intentClient);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
 
                             }
 

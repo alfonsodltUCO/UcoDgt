@@ -130,6 +130,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                     }
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is already paid", Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -145,6 +147,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                     }
                     goMain.putExtra("dni",dni);
                     startActivity(goMain);
+                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                    finish();
                     Toast.makeText(CheckPenaltyToPay.this, "The penalty is cancelled", Toast.LENGTH_LONG).show();
                     hideLoading();
 
@@ -173,6 +177,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                         Intent goMain = new Intent(CheckPenaltyToPay.this, ClientActivity.class);
                         goMain.putExtra("dni", dni);
                         startActivity(goMain);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
                     });
@@ -228,6 +234,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                         }
                                                         goMain.putExtra("dni", dni);
                                                         startActivity(goMain);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
                                                         Toast.makeText(CheckPenaltyToPay.this, "The penalty probably doesnt exists", Toast.LENGTH_LONG).show();
                                                         hideLoading();
 
@@ -243,6 +251,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                         }
                                                         goMain.putExtra("dni", dni);
                                                         startActivity(goMain);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
                                                         Toast.makeText(CheckPenaltyToPay.this, "An error has ocurred during payment process, try again please", Toast.LENGTH_LONG).show();
                                                         hideLoading();
 
@@ -263,6 +273,8 @@ public class CheckPenaltyToPay extends AppCompatActivity {
                                                     goMain.putExtra("dni", dni);
                                                     Toast.makeText(CheckPenaltyToPay.this, "Payment realized", Toast.LENGTH_LONG).show();
                                                     startActivity(goMain);
+                                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                    finish();
                                                     hideLoading();
 
                                                 }

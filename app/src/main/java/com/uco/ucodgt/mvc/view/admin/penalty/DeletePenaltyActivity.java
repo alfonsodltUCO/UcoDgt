@@ -57,6 +57,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
 
             Intent intentGoMain = new Intent(DeletePenaltyActivity.this, AdminActivity.class);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
 
@@ -87,6 +88,7 @@ public class DeletePenaltyActivity extends AppCompatActivity implements View.OnC
             Intent goDelete = new Intent(DeletePenaltyActivity.this, CheckPenaltyToDelete.class);
             goDelete.putExtra("id",etId.getText().toString());
             startActivity(goDelete);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
             dialog.dismiss();
         });

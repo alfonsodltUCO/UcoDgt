@@ -69,6 +69,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltiesToList.class);
                 intentFind.putExtra("state",selectedOption);
                 startActivity(intentFind);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
             }else{
@@ -77,6 +78,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
                 intentFind.putExtra("id",etId.getText().toString());
                 startActivity(intentFind);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
             }
@@ -85,6 +87,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
 
             Intent intentGoMain = new Intent(IntroducePenaltyForSearch.this, AdminActivity.class);
             startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
         }else if(v.getId()==com.uco.ucodgt.R.id.searchForDates){
@@ -92,6 +95,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
 
             Intent searchForDates=new Intent(IntroducePenaltyForSearch.this,SearchByDatesPenalties.class);
             startActivity(searchForDates);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }
     }

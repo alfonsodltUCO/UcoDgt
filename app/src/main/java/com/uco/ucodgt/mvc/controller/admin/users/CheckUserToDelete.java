@@ -61,6 +61,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                     System.out.println(e);
                 }
                 startActivity(intentAdmin);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
                 Toast.makeText(CheckUserToDelete.this,"No valid DNI", Toast.LENGTH_LONG).show();
 
 
@@ -90,6 +92,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
 
@@ -110,6 +114,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                                     }
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
 
                                 }else {
 
@@ -122,6 +128,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                                     }
                                     Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                     startActivity(intentGoBack);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
 
                                 }
                                 hideLoading();
@@ -173,6 +181,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, DeleteUserActivity.class);
                                 startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
 
@@ -191,6 +201,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                                 }
                                 Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                                 startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
                                 hideLoading();
 
                             }
@@ -237,6 +249,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                         }
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
 
@@ -296,6 +310,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                         }
                         Intent intentGoBack=new Intent(CheckUserToDelete.this, AdminActivity.class);
                         startActivity(intentGoBack);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
                         hideLoading();
 
                     }
@@ -326,6 +342,8 @@ public class CheckUserToDelete extends AppCompatActivity {
                 System.out.println(e);
             }
             startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
             Toast.makeText(CheckUserToDelete.this,"Please fill all fields", Toast.LENGTH_LONG).show();
 
         }
