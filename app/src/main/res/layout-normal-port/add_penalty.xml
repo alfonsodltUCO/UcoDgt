@@ -147,7 +147,7 @@
                 android:ems="10"
                 android:gravity="top"
                 android:hint="yyyy-mm-dd"
-                android:inputType="date"
+                android:inputType="datetime"
                 android:outlineSpotShadowColor="@color/white"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"

@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.uco.ucodgt.mvc.emailsender;
 import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.business.penalty.list.ListPenaltyDTO;
@@ -340,33 +341,17 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                     @Override
                                                                     public void onUserReceived(ClientDTO user) {
 
-                                                                        Intent i = new Intent(Intent.ACTION_SEND);
-                                                                        i.setType("message/rfc822");
-                                                                        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{user.getEmail()});
-                                                                        i.putExtra(Intent.EXTRA_SUBJECT, "New penalty");
-                                                                        i.putExtra(Intent.EXTRA_TEXT   , "User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
+                                                                        String email = user.getEmail();
+                                                                        String subject = "New penalty";
+                                                                        String message = "User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
                                                                                 "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
                                                                                 penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
                                                                                 penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
                                                                                 "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
                                                                                 "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
-                                                                                "Be safe, be smart, take care.");
-                                                                        try {
-                                                                            startActivity(Intent.createChooser(i, "Send mail..."));
-                                                                        } catch (android.content.ActivityNotFoundException ex) {
-                                                                            Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
-                                                                            try {
-                                                                                Thread.sleep(2*1000);
-                                                                            }
-                                                                            catch (Exception e) {
-                                                                                System.out.println(e);
-                                                                            }
-                                                                            startActivity(intentAdmin);
-                                                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                                            finish();
-                                                                            hideLoading();
-                                                                            Toast.makeText(CheckPenaltyToAdd.this, "Penalty added, but no email was sent.There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                                                                        }
+                                                                                "Be safe, be smart, take care.";
+                                                                        emailsender sm = new emailsender(CheckPenaltyToAdd.this, email, subject, message);
+                                                                        sm.execute();
                                                                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
                                                                         try {
                                                                             Thread.sleep(2*1000);
