@@ -118,6 +118,7 @@
         <activity android:name="com.uco.ucodgt.mvc.controller.worker.user.CheckDataForUpdate"/>
         <activity android:name="com.uco.ucodgt.mvc.controller.CheckDniImage" />
         <activity android:name="com.uco.ucodgt.mvc.view.client.IntroduceRegisterData" />
+        <activity android:name="com.uco.ucodgt.mvc.controller.client.user.CheckUserToAdd" />
 
     </application>
 </manifest>

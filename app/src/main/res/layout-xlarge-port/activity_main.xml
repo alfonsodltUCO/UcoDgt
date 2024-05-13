@@ -216,16 +216,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
-            android:layout_gravity="start"
+            android:layout_gravity="start|bottom"
             android:src="@drawable/slogan"
             >
         </ImageView>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="200sp"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
-            android:layout_gravity="end"
+            android:layout_gravity="end|bottom"
             android:src="@drawable/deportivo"
             >
         </ImageView>

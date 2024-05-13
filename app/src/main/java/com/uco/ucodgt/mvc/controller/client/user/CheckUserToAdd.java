@@ -14,6 +14,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
+import com.uco.ucodgt.mvc.view.MainActivity;
 import com.uco.ucodgt.mvc.view.client.IntroduceRegisterData;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -79,6 +81,7 @@ public class CheckUserToAdd extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                 finish();
+                Log.d("e",dni.toString());
                 Toast.makeText(CheckUserToAdd.this,"No valid DNI", Toast.LENGTH_LONG).show();
 
 
@@ -230,7 +233,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                         runOnUiThread(() -> runOnUiThread(() -> {
 
-                                                                            Intent intent=new Intent(CheckUserToAdd.this, IntroduceRegisterData.class);
+                                                                            Intent intent=new Intent(CheckUserToAdd.this, MainActivity.class);
                                                                             intent.putExtra("dni",dni);
                                                                             try {
                                                                                 Thread.sleep(2*1000);

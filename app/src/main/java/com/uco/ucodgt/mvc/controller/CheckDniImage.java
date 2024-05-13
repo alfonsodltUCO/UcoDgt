@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -60,7 +61,6 @@ public class CheckDniImage extends AppCompatActivity {
 
         progressBar = findViewById(com.uco.ucodgt.R.id.progressbar);
         showLoading();
-
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
                 Intent data = result.getData();
@@ -75,6 +75,8 @@ public class CheckDniImage extends AppCompatActivity {
                 }
             }
         });
+        openCamera();
+
     }
 
 
@@ -96,8 +98,6 @@ public class CheckDniImage extends AppCompatActivity {
      * @param bitmap The bitmap image to be checked.
      */
     private void launchCheckImageActivity(Bitmap bitmap) {
-        setContentView(com.uco.ucodgt.R.layout.loading);
-        showLoading();
 
         ManagerClient mngC= new ManagerClient();
 
@@ -205,7 +205,22 @@ public class CheckDniImage extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Callback for the result from requesting permissions.
+     *
+     * @param requestCode  The request code passed in requestPermissions.
+     * @param permissions  The requested permissions.
+     * @param grantResults The grant results for the corresponding permissions.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            }
+        }
+    }
     /**
      * Shows the progress bar indicator.
      */
