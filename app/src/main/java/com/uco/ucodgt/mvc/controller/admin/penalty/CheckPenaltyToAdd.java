@@ -9,7 +9,9 @@ import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckPenalty.chec
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkDni;
 import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckVehicle.checkPlate;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
@@ -340,30 +342,9 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                     @Override
                                                                     public void onUserReceived(ClientDTO user) {
 
-                                                                        Intent intent= new Intent(Intent.ACTION_SEND);
-                                                                        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"New penalty");
-                                                                        intent.putExtra(Intent.EXTRA_TEXT,"User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
-                                                                                "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
-                                                                                penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
-                                                                                penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
-                                                                                "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
-                                                                                "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
-                                                                                "Be safe, be smart, take care.");
-                                                                        intent.setType("message/rfc822");
-                                                                        startActivity(Intent.createChooser(intent,"Choose email client:"));
-                                                                        Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
-                                                                        try {
-                                                                            Thread.sleep(2*1000);
-                                                                        }
-                                                                        catch (Exception e) {
-                                                                            System.out.println(e);
-                                                                        }
-                                                                        startActivity(intentAdmin);
-                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                                        finish();
-                                                                        Toast.makeText(CheckPenaltyToAdd.this,"Penalty added", Toast.LENGTH_LONG).show();
-                                                                        hideLoading();
+                                                                        SendEmailTask sendEmailTask = new SendEmailTask(CheckPenaltyToAdd.this, user,penalty);
+                                                                        sendEmailTask.execute();
+
                                                                     }
 
                                                                     @Override
@@ -441,7 +422,54 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
 
     }
 
+    private void sendEmail(ClientDTO client,PenaltyDTO penalty) {
+        Intent intent= new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{client.getEmail()});
+        intent.putExtra(Intent.EXTRA_SUBJECT,"New penalty");
+        intent.putExtra(Intent.EXTRA_TEXT,"User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
+                "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
+                penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
+                penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
+                "If you decide to pay it until 1 month a discount of 50% will be applied. "+"For more information please visit the app.\n"+
+                "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
+                "Be safe, be smart, take care.");
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent,"Choose email client:"));
+    }
 
+    private class SendEmailTask extends AsyncTask<Void, Void, Void> {
+        private PenaltyDTO penalty;
+        private Context context;
+        private ClientDTO client;
+
+        public SendEmailTask(Context context,ClientDTO client, PenaltyDTO penalty) {
+            this.context = context;
+            this.client=client;
+            this.penalty = penalty;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            sendEmail(client,penalty);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
+            startActivity(intentAdmin);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
+            Toast.makeText(CheckPenaltyToAdd.this,"Penalty added", Toast.LENGTH_LONG).show();
+            hideLoading();
+        }
+    }
     /**
      * Show loading progress bar.
      */

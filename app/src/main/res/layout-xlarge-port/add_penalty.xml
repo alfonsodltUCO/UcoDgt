@@ -199,6 +199,8 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
+                android:gravity="top"
+                android:layout_gravity="top"
                 android:textSize="30sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
 
@@ -229,6 +231,8 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
+                android:gravity="top"
+                android:layout_gravity="top"
                 android:spinnerStyle="@style/SpinnerTextStyle"
                 android:textSize="30sp" />
 
