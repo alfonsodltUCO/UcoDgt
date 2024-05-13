@@ -230,6 +230,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         "Be safe, be smart, take care.");
                                                                                 intent.setType("message/rfc822");
                                                                                 startActivity(Intent.createChooser(intent,"Choose email client:"));
+                                                                                try {
+                                                                                    Thread.sleep(10*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
                                                                                 try {
@@ -394,6 +400,12 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         "We trust you!.");
                                                                                 intent.setType("message/rfc822");
                                                                                 startActivity(Intent.createChooser(intent,"Choose email client:"));
+                                                                                try {
+                                                                                    Thread.sleep(10*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
                                                                                 try {
