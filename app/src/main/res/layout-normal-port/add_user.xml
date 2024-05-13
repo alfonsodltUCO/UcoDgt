@@ -116,7 +116,7 @@
                 android:textSize="18sp"
                 android:inputType="textPersonName"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="Pedro"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -136,7 +136,7 @@
                 android:textSize="18sp"
                 android:inputType="textPersonName"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="Garcia Navarro"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -156,7 +156,7 @@
                 android:textSize="18sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="8"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -175,7 +175,7 @@
                 android:textSize="18sp"
                 android:inputType="datetime"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="2002-08-24"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -194,7 +194,7 @@
                 android:textSize="18sp"
                 android:inputType="textEmailAddress"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="example@gmail.com"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -213,7 +213,7 @@
                 android:textSize="18sp"
                 android:inputType="textPassword"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="MyPassword"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -232,7 +232,7 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
 
