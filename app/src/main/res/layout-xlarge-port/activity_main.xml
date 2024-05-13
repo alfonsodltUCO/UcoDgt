@@ -177,19 +177,32 @@
             </LinearLayout>
         </LinearLayout>
 
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="bottom|center"
             android:layout_gravity="center|bottom"
             >
             <Button
                 android:id="@+id/checkLogIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:text="check"
+                android:gravity="bottom|center"
+                android:layout_marginRight="@dimen/fab_margin_16"
+                android:textSize="30sp"
+                android:text="Log in"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/register"
+                android:layout_marginLeft="@dimen/fab_margin_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center"
+                android:textSize="30sp"
+                android:text="Register"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
@@ -203,16 +216,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
-            android:layout_gravity="start"
+            android:layout_gravity="start|bottom"
             android:src="@drawable/slogan"
             >
         </ImageView>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="200sp"
             android:layout_marginTop="@dimen/fab_margin_16"
             android:layout_weight="1"
-            android:layout_gravity="end"
+            android:layout_gravity="end|bottom"
             android:src="@drawable/deportivo"
             >
         </ImageView>

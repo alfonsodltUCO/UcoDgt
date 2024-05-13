@@ -45,18 +45,8 @@
                 android:layout_weight="1"
                 android:text="Introduce the surname"
                 android:textSize="30sp"
-                 />
+                />
 
-            <TextView
-                android:id="@+id/textViewLicencePoints"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="Introduce the licence points"
-                android:textSize="30sp"
-
-               />
 
             <TextView
                 android:id="@+id/textViewDateBirth"
@@ -67,7 +57,7 @@
                 android:text="Introduce the date of birth"
                 android:textSize="30sp"
 
-              />
+                />
 
             <TextView
                 android:id="@+id/textViewEmail"
@@ -78,7 +68,7 @@
                 android:text="Introduce the email"
                 android:textSize="30sp"
 
-               />
+                />
 
             <TextView
                 android:id="@+id/textViewPassword"
@@ -90,17 +80,6 @@
                 android:textSize="30sp"
 
                 />
-
-            <TextView
-                android:id="@+id/textViewDni"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="Introduce the DNI"
-                android:textSize="30sp"
-
-               />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -123,7 +102,7 @@
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="textPersonName"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:gravity="top"
                 android:hint="Pedro"
                 android:backgroundTint="@android:color/transparent"/>
@@ -149,24 +128,6 @@
                 android:backgroundTint="@android:color/transparent"/>
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLicencePoints"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:cursorVisible="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="30sp"
-                android:inputType="number"
-                android:layout_gravity="bottom"
-                android:gravity="top"
-                android:hint="8"
-                android:backgroundTint="@android:color/transparent"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDateBirth"
@@ -225,92 +186,8 @@
                 android:hint="MyPassword"
                 android:backgroundTint="@android:color/transparent"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDNI"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:cursorVisible="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="30sp"
-                android:inputType="text"
-                android:layout_gravity="bottom"
-                android:gravity="top"
-                android:hint="31878744P"
-                android:backgroundTint="@android:color/transparent"/>
 
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:layout_height="wrap_content">
-            <RadioGroup
-                android:id="@+id/radioGroupTypeUserToAdd"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <RadioButton
-                    android:id="@+id/radioButtonClient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="@string/client"
-                    android:textSize="30sp" />
-
-
-                <RadioButton
-                    android:id="@+id/radioButtonWorker"
-                    android:layout_width="wrap_content"
-                    android:textSize="30sp"
-                    android:textColor="@color/white"
-                    android:layout_height="match_parent"
-                    android:text="@string/worker" />
-
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="start"
-            android:gravity="start|fill_horizontal"
-            android:layout_height="100sp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/userformenu">
-
-            </ImageView>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:src="@drawable/trabajador">
-
-            </ImageView>
-        </LinearLayout>
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -320,17 +197,17 @@
         android:layout_weight="0.3"
         >
         <Button
-            android:id="@+id/checkAdd"
+            android:id="@+id/finish"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:layout_marginLeft="20sp"
             android:singleLine="true"
             android:textSize="30sp"
             android:layout_marginEnd="60sp"
-            android:text="Add User"
-        >
+            android:text="Finish"
+            >
 
         </Button>
 
@@ -353,7 +230,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:layout_marginRight="20sp"
-            android:layout_height="wrap_content"
+            android:layout_height="100sp"
             android:layout_marginStart="60sp"
             android:text="Go main menu"
             >

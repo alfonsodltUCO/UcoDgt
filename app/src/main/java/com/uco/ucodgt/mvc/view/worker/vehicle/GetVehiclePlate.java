@@ -24,6 +24,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
  * Activity class for Worker to capture or select an image of a vehicle plate.
+ * The worker will be allow to choose the method to search a plate
  * @author Alfonso de la torre
  */
 public class GetVehiclePlate extends AppCompatActivity {

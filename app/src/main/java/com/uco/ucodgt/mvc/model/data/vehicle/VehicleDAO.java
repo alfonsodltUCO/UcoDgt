@@ -42,7 +42,7 @@ import com.uco.ucodgt.mvc.model.data.VehicleCallback;
  */
 public class VehicleDAO {
     RequestQueue requestQueue;
-    int TIMEOUT_MS = 20000; // 20 segundos
+    int TIMEOUT_MS = 20000; // 20 seconds
 
     /**
      * Get a vehicle using an image of licence plate.

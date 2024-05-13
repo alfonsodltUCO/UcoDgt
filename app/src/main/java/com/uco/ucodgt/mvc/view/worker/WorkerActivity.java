@@ -28,6 +28,7 @@ import java.util.TimerTask;
 
 /**
  * This class represents the activity for managing worker options.
+ * Will allow worker to choose any action to do.
  * @author Alfonso de la torre
  */
 public class WorkerActivity extends AppCompatActivity{

@@ -19,6 +19,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
  * Activity  for Worker for see the info of his/her own.
+ * He will be able to change if he want the data.
  * @author Alfonso de la torre
  */
 public class ShowWorker extends AppCompatActivity implements View.OnClickListener {
