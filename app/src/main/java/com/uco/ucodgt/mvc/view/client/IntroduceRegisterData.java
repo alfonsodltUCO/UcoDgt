@@ -9,13 +9,13 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.uco.ucodgt.mvc.controller.client.user.CheckUserToAdd;
 import com.uco.ucodgt.mvc.view.MainActivity;
-import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
-import com.uco.ucodgt.mvc.view.worker.vehicle.ShowVehicle;
 
 public class IntroduceRegisterData extends AppCompatActivity implements View.OnClickListener{
 
     Button goMain,finish;
+    String dni;
 
     EditText name,surname,birth,email,password;
 
@@ -23,7 +23,7 @@ public class IntroduceRegisterData extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.uco.ucodgt.R.layout.register_data);
-
+        dni=getIntent().getStringExtra("dni");
         goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         finish=findViewById(com.uco.ucodgt.R.id.finish);
         name=findViewById(com.uco.ucodgt.R.id.editTextName);
@@ -46,7 +46,16 @@ public class IntroduceRegisterData extends AppCompatActivity implements View.OnC
             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
         }else if(v.getId()==com.uco.ucodgt.R.id.finish){
-
+            Intent goFinish=new Intent(IntroduceRegisterData.this, CheckUserToAdd.class);
+            goFinish.putExtra("dni",dni);
+            goFinish.putExtra("name",name.getText().toString());
+            goFinish.putExtra("surname",surname.getText().toString());
+            goFinish.putExtra("email",email.getText().toString());
+            goFinish.putExtra("password",password.getText().toString());
+            goFinish.putExtra("licencepoints",String.valueOf(8));
+            goFinish.putExtra("age",birth.getText().toString());
+            startActivity(goFinish);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
     }
 }

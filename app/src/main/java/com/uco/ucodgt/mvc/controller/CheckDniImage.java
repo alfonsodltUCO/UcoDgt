@@ -1,6 +1,8 @@
 package com.uco.ucodgt.mvc.controller;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -17,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.android.volley.VolleyError;
+import com.uco.ucodgt.mvc.controller.admin.users.CheckUsersToList;
 import com.uco.ucodgt.mvc.controller.client.user.CheckClientPoints;
 import com.uco.ucodgt.mvc.controller.worker.vehicle.CheckImageForWorker;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
@@ -25,6 +28,10 @@ import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.MainActivity;
+import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+import com.uco.ucodgt.mvc.view.admin.user.AddUserActivity;
+import com.uco.ucodgt.mvc.view.admin.user.DeleteUserActivity;
+import com.uco.ucodgt.mvc.view.admin.user.FindUserActivity;
 import com.uco.ucodgt.mvc.view.client.IntroduceRegisterData;
 import com.uco.ucodgt.mvc.view.worker.vehicle.GetVehiclePlate;
 
@@ -111,12 +118,35 @@ public class CheckDniImage extends AppCompatActivity {
 
                     @Override
                     public void onError(VolleyError error) {
+                        final String[] options = {"Yes", "No"};
 
-                        Intent intentClient=new Intent(CheckDniImage.this, IntroduceRegisterData.class);
-                        startActivity(intentClient);
-                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                        finish();
-                        hideLoading();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CheckDniImage.this);
+                        builder.setTitle("Is:"+ user.getDni()+" your DNI")
+                                .setItems(options, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        switch (which) {
+                                            case 0:
+                                                Intent intentClient=new Intent(CheckDniImage.this, IntroduceRegisterData.class);
+                                                intentClient.putExtra("dni",user.getDni());
+                                                startActivity(intentClient);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                finish();
+                                                hideLoading();
+
+                                                break;
+                                            case 1:
+                                                Intent intentDeleteUser=new Intent(CheckDniImage.this, MainActivity.class);
+                                                startActivity(intentDeleteUser);
+                                                Toast.makeText(CheckDniImage.this,"Introduce again the DNI please",Toast.LENGTH_LONG).show();
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+
+                                                break;
+                                        }
+                                    }
+                                });
+                        builder.create().show();
+
                     }
 
                     @Override
@@ -174,6 +204,7 @@ public class CheckDniImage extends AppCompatActivity {
         });
 
     }
+
 
     /**
      * Shows the progress bar indicator.
