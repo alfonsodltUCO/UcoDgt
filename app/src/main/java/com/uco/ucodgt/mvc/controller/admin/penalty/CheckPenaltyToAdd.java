@@ -341,17 +341,18 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                     @Override
                                                                     public void onUserReceived(ClientDTO user) {
 
-                                                                        String email = user.getEmail();
-                                                                        String subject = "New penalty";
-                                                                        String message = "User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
+                                                                        Intent intent= new Intent(Intent.ACTION_SEND);
+                                                                        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"New penalty");
+                                                                        intent.putExtra(Intent.EXTRA_TEXT,"User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
                                                                                 "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
                                                                                 penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
                                                                                 penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
                                                                                 "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
                                                                                 "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
-                                                                                "Be safe, be smart, take care.";
-                                                                        emailsender sm = new emailsender(CheckPenaltyToAdd.this, email, subject, message);
-                                                                        sm.execute();
+                                                                                "Be safe, be smart, take care.");
+                                                                        intent.setType("message/rfc822");
+                                                                        startActivity(Intent.createChooser(intent,"Choose email client:"));
                                                                         Intent intentAdmin=new Intent(CheckPenaltyToAdd.this, AdminActivity.class);
                                                                         try {
                                                                             Thread.sleep(2*1000);
