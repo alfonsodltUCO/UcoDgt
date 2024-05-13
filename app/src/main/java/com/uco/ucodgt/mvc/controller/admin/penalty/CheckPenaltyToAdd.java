@@ -25,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import com.uco.ucodgt.mvc.emailsender;
 import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.business.penalty.list.ListPenaltyDTO;
