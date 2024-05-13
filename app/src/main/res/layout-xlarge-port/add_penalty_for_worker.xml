@@ -136,7 +136,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
             <Spinner
@@ -167,7 +167,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="Avenida America"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -195,7 +195,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="Cordoba"
                 android:backgroundTint="@android:color/transparent"/>
             <com.google.android.material.textfield.TextInputEditText
@@ -212,7 +212,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="3289JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -230,7 +230,7 @@
                 android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="200"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -248,7 +248,7 @@
                 android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="4"
                 android:backgroundTint="@android:color/transparent"/>
 

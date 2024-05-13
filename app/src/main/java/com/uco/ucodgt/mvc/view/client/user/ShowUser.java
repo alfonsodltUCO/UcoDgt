@@ -22,6 +22,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 /**
  * Activity class to display details of a client.
+ * Also allow to release some activities with him/her
  * @author Alfonso de la torre
  */
 public class ShowUser extends AppCompatActivity implements View.OnClickListener {

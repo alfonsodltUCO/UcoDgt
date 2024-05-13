@@ -39,7 +39,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * An activity that after check the data allow Admin to add a user into the system.
+ * An activity that after check the data allow Admin to register a user into the system.
  * @author Alfonso de la torre
  */
 public class CheckUserToAdd extends AppCompatActivity {

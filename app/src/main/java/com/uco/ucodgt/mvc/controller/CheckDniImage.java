@@ -39,6 +39,10 @@ import com.uco.ucodgt.mvc.view.worker.vehicle.GetVehiclePlate;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+/**
+ * This activity check an image of a DNI to do the register of a client
+ * @author Alfonso de la torre
+ */
 public class CheckDniImage extends AppCompatActivity {
     private ProgressBar progressBar;
 

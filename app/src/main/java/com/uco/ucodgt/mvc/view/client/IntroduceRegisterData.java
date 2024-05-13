@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.uco.ucodgt.mvc.controller.client.user.CheckUserToAdd;
 import com.uco.ucodgt.mvc.view.MainActivity;
 
+/**
+ * IntroduceRegisterData is an activity class that allows users to input registration data.
+ * This class extends AppCompatActivity and implements View.OnClickListener to handle button clicks.
+ */
 public class IntroduceRegisterData extends AppCompatActivity implements View.OnClickListener{
 
     Button goMain,finish;
@@ -19,6 +23,10 @@ public class IntroduceRegisterData extends AppCompatActivity implements View.OnC
 
     EditText name,surname,birth,email,password;
 
+    /**
+     * Called when the activity is starting. This is where most initialization should go.
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,11 @@ public class IntroduceRegisterData extends AppCompatActivity implements View.OnC
 
     }
 
+
+    /**
+     * Called when a view has been clicked.
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
         if (v.getId()==com.uco.ucodgt.R.id.goMainMenu){

@@ -19,6 +19,7 @@ import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 import com.uco.ucodgt.mvc.view.client.ClientActivity;
 /**
  * Activity class to display details of a single vehicle for a client.
+ * @author Alfonso de la torre
  */
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;

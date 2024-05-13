@@ -118,7 +118,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="4355JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -160,7 +160,7 @@
                 android:textSize="30sp"
                 android:inputType="date"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="2020-08-24"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -178,7 +178,7 @@
                 android:textSize="30sp"
                 android:inputType="date"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="2022-08-24"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -197,7 +197,7 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -216,7 +216,7 @@
                 android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:hint="1"
                 android:backgroundTint="@android:color/transparent"/>
 

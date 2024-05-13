@@ -12,6 +12,7 @@ import java.util.List;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 /**
  * Activity class for Client to display a list of vehicles.
+ * It also allow to select a vehicle
  * @author Alfonso de la torre
  */
 public class ShowVehicles extends AppCompatActivity {
