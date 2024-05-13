@@ -116,6 +116,8 @@
         <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceActualPassword"/>
         <activity android:name="com.uco.ucodgt.mvc.view.worker.user.IntroduceNewData"/>
         <activity android:name="com.uco.ucodgt.mvc.controller.worker.user.CheckDataForUpdate"/>
+        <activity android:name="com.uco.ucodgt.mvc.controller.CheckDniImage" />
+        <activity android:name="com.uco.ucodgt.mvc.view.client.IntroduceRegisterData" />
 
     </application>
 </manifest>

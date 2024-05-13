@@ -22,6 +22,7 @@ import com.uco.ucodgt.mvc.view.worker.penalty.AddPenaltyActivity;
 
 /**
  * Activity class to display details of a vehicle for workers.
+ * The worker will be able to do an action with de vehicle that is shown
  * @author Alfonso de la torre
  */
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {

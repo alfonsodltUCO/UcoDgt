@@ -2,13 +2,22 @@ package com.uco.ucodgt.mvc.model.data.client;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +35,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
+import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 
 
 /**
@@ -35,6 +45,110 @@ import com.uco.ucodgt.mvc.model.data.UserCallback;
 public class ClientDAO {
 
     RequestQueue requestQueue;
+    int TIMEOUT_MS = 20000; // 20 seconds
+
+    /**
+     * Get a dni client using an image of Dni.
+     *
+     * @param image              The image of the dni to be checked.
+     * @param applicationContext The application context.
+     * @param callback           The callback to handle the result of the dni check.
+     */
+    public void checkDniImage(Bitmap image, Context applicationContext, UserCallback callback){
+
+        requestQueue= Volley.newRequestQueue(applicationContext);
+        checkDniImage(image, new UserCallback() {
+
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                callback.onUserReceived(user);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
+
+    /**
+     * Sends an image for dni recognition and handles the response accordingly.
+     *
+     * @param image    The image of the dni to be recognized.
+     * @param callback The callback to handle the result of the dni recognition.
+     */
+    private void checkDniImage(final Bitmap image, final UserCallback callback) {
+        String URL = "http://34.118.84.252:8080/checkDni";
+
+        JsonObjectRequest request = new JsonObjectRequest(
+
+                Request.Method.POST,
+                URL,
+                null,
+                response -> {
+                    Log.d("Response", response.toString());
+                    try {
+                        String dni= (String) response.get("dni_client");
+                        ClientDTO cl=new ClientDTO(dni,null,null,null,null,null,null);
+                        callback.onUserReceived(cl);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                callback::onError
+        ) {
+            @Override
+            public byte[] getBody() {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
+
+                try {
+                    JSONObject jsonBody = new JSONObject();
+                    jsonBody.put("image", encodedImage);
+                    return jsonBody.toString().getBytes("utf-8");
+                } catch (JSONException | UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+            public RetryPolicy getRetryPolicy() {
+                return new DefaultRetryPolicy(
+                        TIMEOUT_MS,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                );
+            }
+        };
+
+        requestQueue.add(request);
+    }
 
     /**
      * Checks the login credentials of a client user.

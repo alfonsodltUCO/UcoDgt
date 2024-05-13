@@ -14,6 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * A PagerAdapter implementation for displaying images in a ViewPager for the Admin/Client/Worker menu.
+ * It will show a flow of images on menus
  * @author Alfonso de la torre
  */
 public class ImagePagerAdapter extends PagerAdapter {

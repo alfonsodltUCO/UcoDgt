@@ -1,6 +1,7 @@
 package com.uco.ucodgt.mvc.model.business.user.client;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.android.volley.VolleyError;
 
@@ -417,4 +418,46 @@ public class ManagerClient {
         });
     }
 
+    /**
+     * Give back an user by image of Dni.
+     *
+     * @param image The image object representing the client user who will be checked to introduced into the system.
+     * @param applicationContext The context of the application.
+     * @param callback The callback to be invoked upon completion of the update operation.
+     */
+    public void checkDniImage(Bitmap image, Context applicationContext, UserCallback callback){
+        ClientDAO clientD=new ClientDAO();
+        clientD.checkDniImage(image, applicationContext, new UserCallback(){
+
+            @Override
+            public void onUserReceived(ClientDTO user) {
+                callback.onUserReceived(user);
+            }
+
+            @Override
+            public void onError(VolleyError error) {
+                callback.onError(error);
+            }
+
+            @Override
+            public void onWorkerReceived(WorkerDTO user) {
+
+            }
+
+            @Override
+            public void onAdminReceived(AdminDTO user) {
+
+            }
+
+            @Override
+            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+            }
+
+            @Override
+            public void onClientsReceived(List<ClientDTO> clients) {
+
+            }
+        });
+    }
 }

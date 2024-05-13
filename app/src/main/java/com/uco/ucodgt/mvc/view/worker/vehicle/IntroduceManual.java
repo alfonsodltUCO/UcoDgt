@@ -16,6 +16,7 @@ import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 
 /**
  * Activity class for Worker to introduce a manual search for a vehicle by licence plate.
+ * The worker will be able to introduce a plate by manual if him doesnt want to do by media.
  * @author Alfonso de la torre
  */
 public class IntroduceManual extends AppCompatActivity implements View.OnClickListener {
