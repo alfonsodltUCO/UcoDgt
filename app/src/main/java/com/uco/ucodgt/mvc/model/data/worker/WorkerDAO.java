@@ -557,8 +557,8 @@ public class WorkerDAO {
                         try {
                             JSONArray listofworkers = response.getJSONArray("workers");
                             List<WorkerDTO> workersToSend = new ArrayList<WorkerDTO>();
-                            WorkerDTO worker = new WorkerDTO();
                             for (int i = 0; i < listofworkers.length(); i++) {
+                                WorkerDTO worker = new WorkerDTO();
                                 JSONObject workerJson = listofworkers.getJSONObject(i);
                                 worker.setEmail(workerJson.getString("email"));
                                 worker.setName(workerJson.getString("name"));
