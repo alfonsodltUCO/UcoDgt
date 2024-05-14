@@ -359,7 +359,7 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                         intent.setType("message/rfc822");
                                                                         startActivity(Intent.createChooser(intent,"Choose email client:"));
                                                                         try {
-                                                                            Thread.sleep(10*1000);
+                                                                            Thread.sleep(12*1000);
                                                                         }
                                                                         catch (Exception e) {
                                                                             System.out.println(e);

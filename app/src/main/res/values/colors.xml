@@ -12,5 +12,6 @@
     <color name="blue_dark">#005B9F</color>
     <color name="dark_blue">#5F788C</color>
     <color name="blue_light">#81D4FA</color>
+    <color name="plata">#b5b9b9</color>
     <string name="processed">processed</string>
 </resources>
