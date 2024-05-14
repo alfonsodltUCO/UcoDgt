@@ -47,168 +47,127 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
-
+            android:layout_weight="1">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left"
+                android:gravity="left">
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
 
                 <TextView
                     android:id="@+id/textViewFoundLicencePlate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:text="Introduce the licence plate"
                     android:textSize="20sp"
                     />
 
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
                     android:background="@android:color/black" />
 
 
                 <TextView
                     android:id="@+id/textViewCarType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
                     android:textColor="@color/white"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:text="Introduce the car type"
                     android:textSize="20sp"
                     />
 
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
                     android:background="@android:color/black" />
 
                 <TextView
                     android:id="@+id/textViewFoundColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:textColor="@color/white"
                     android:text="Introduce color"
                     android:textSize="20sp"
                     />
 
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
 
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="horizontal">
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
+
+
 
                 <TextView
                     android:id="@+id/textViewFoundIdInsurance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="10sp"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:text="Introduce the Insurance id"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     />
 
 
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
                     android:background="@android:color/black" />
 
 
                 <TextView
                     android:id="@+id/textViewFoundValidItvFrom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:textColor="@color/white"
                     android:text="Introduce the date of itv start"
                     android:textSize="20sp"
                     />
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
                     android:background="@android:color/black" />
 
 
                 <TextView
                     android:id="@+id/textViewFoundValidItvTo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginRight="10sp"
-                    android:layout_marginLeft="10sp"
                     android:textColor="@color/white"
+                    android:layout_margin="@dimen/fab_margin_16"
                     android:text="Introduce the date of itv end"
                     android:textSize="20sp"
                     />
 
-
                 <View
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/black"/>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
+        </ScrollView>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@android:color/black"/>
-        </LinearLayout>
     </LinearLayout>
 
 
