@@ -1,5 +1,6 @@
 package com.uco.ucodgt.mvc.view.admin.penalty;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Activity for Admin for adding a new penalty to a client.
  * @author Alfonso de la torre
@@ -23,7 +28,7 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
     Button goAddDescrp,goMain;
     Spinner spinnerReason,spinnerInformed;
     String selectedReason,selectedInformed;
-    EditText etDate,etDniClient,etDniWorker,etPlace,etLocality,etLPlate,etQuantity,etPoints;
+    EditText etDniClient,etDniWorker,etPlace,etLocality,etLPlate,etQuantity,etPoints;
     /**
      * Initializes the activity with UI components and sets up click listeners.
      *
@@ -37,7 +42,6 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
         goAddDescrp=findViewById(com.uco.ucodgt.R.id.goNext);
         goMain=findViewById(com.uco.ucodgt.R.id.goMainMenu);
 
-        etDate=findViewById(com.uco.ucodgt.R.id.etDate);
         etDniClient=findViewById(com.uco.ucodgt.R.id.etCDni);
         etDniWorker=findViewById(com.uco.ucodgt.R.id.etWDni);
         etPlace=findViewById(com.uco.ucodgt.R.id.etPlace);
@@ -89,8 +93,12 @@ public class AddPenaltyActivity extends AppCompatActivity implements View.OnClic
 
         if(v.getId()==com.uco.ucodgt.R.id.goNext){
 
+            Date now = new Date();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String formatedDate = format.format(now);
+
             Intent goNext = new Intent(AddPenaltyActivity.this, IntroduceDescriptionForPenalty.class);
-            goNext.putExtra("date",etDate.getText().toString());
+            goNext.putExtra("date",formatedDate);
             goNext.putExtra("dniC",etDniClient.getText().toString());
             goNext.putExtra("dniW",etDniWorker.getText().toString());
             goNext.putExtra("state","processed");

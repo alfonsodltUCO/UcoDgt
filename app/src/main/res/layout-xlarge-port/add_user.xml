@@ -48,17 +48,6 @@
                  />
 
             <TextView
-                android:id="@+id/textViewLicencePoints"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="Introduce the licence points"
-                android:textSize="30sp"
-
-               />
-
-            <TextView
                 android:id="@+id/textViewDateBirth"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
@@ -148,25 +137,6 @@
                 android:hint="Garcia Navarro"
                 android:backgroundTint="@android:color/transparent"/>
 
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLicencePoints"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:cursorVisible="true"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="30sp"
-                android:inputType="number"
-                android:layout_gravity="bottom"
-                android:gravity="top"
-                android:hint="8"
-                android:backgroundTint="@android:color/transparent"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDateBirth"

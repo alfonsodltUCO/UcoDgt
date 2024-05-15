@@ -43,16 +43,7 @@
                    android:textSize="18sp"
                    />
 
-               <TextView
-                   android:id="@+id/textViewLicencePoints"
-                   android:layout_width="wrap_content"
-                   android:layout_height="0dp"
-                   android:textColor="@color/white"
-                   android:layout_weight="1"
-                   android:text="Introduce the licence points"
-                   android:textSize="18sp"
 
-                   />
 
                <TextView
                    android:id="@+id/textViewDateBirth"
@@ -102,6 +93,8 @@
                android:layout_width="0dp"
                android:layout_weight="1"
                android:layout_height="match_parent"
+               android:layout_gravity="center"
+               android:gravity="center"
                android:orientation="vertical"
                >
 
@@ -119,8 +112,8 @@
                    android:ems="10"
                    android:textSize="18sp"
                    android:inputType="textPersonName"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top|left"
                    android:hint="Pedro"
                    android:backgroundTint="@android:color/transparent"/>
 
@@ -139,30 +132,12 @@
                    android:ems="10"
                    android:textSize="18sp"
                    android:inputType="textPersonName"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top"
                    android:hint="Garcia Navarro"
                    android:backgroundTint="@android:color/transparent"/>
 
 
-               <com.google.android.material.textfield.TextInputEditText
-                   android:id="@+id/editTextLicencePoints"
-                   android:layout_width="wrap_content"
-                   android:layout_height="0dp"
-                   android:cursorVisible="true"
-                   android:textColor="@color/white"
-                   android:textColorHint="@color/white"
-                   android:textCursorDrawable="@color/white"
-                   android:outlineSpotShadowColor="@color/white"
-                   android:layout_weight="1"
-                   android:autofillHints=""
-                   android:ems="10"
-                   android:textSize="18sp"
-                   android:inputType="number"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
-                   android:hint="8"
-                   android:backgroundTint="@android:color/transparent"/>
 
                <com.google.android.material.textfield.TextInputEditText
                    android:id="@+id/editTextDateBirth"
@@ -178,8 +153,8 @@
                    android:ems="10"
                    android:textSize="18sp"
                    android:inputType="date"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top"
                    android:hint="2002-08-24"
                    android:backgroundTint="@android:color/transparent"/>
 
@@ -197,8 +172,8 @@
                    android:ems="10"
                    android:textSize="18sp"
                    android:inputType="textEmailAddress"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top"
                    android:hint="example@gmail.com"
                    android:backgroundTint="@android:color/transparent"/>
 
@@ -216,8 +191,8 @@
                    android:ems="10"
                    android:textSize="18sp"
                    android:inputType="textPassword"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top"
                    android:hint="MyPassword"
                    android:backgroundTint="@android:color/transparent"/>
 
@@ -235,8 +210,8 @@
                    android:textSize="18sp"
                    android:inputType="text"
                    android:cursorVisible="true"
-                   android:layout_gravity="bottom"
-                   android:gravity="bottom"
+                   android:layout_gravity="top"
+                   android:gravity="top"
                    android:hint="31878744P"
                    android:backgroundTint="@android:color/transparent"/>
 
