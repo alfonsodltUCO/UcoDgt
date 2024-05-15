@@ -37,6 +37,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Client DNI"
+                android:gravity="center"
                 android:textSize="15sp"
                 />
 
@@ -46,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Worker DNI"
                 android:textSize="15sp"
                 />
@@ -57,6 +59,7 @@
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Reason"
                 android:textSize="15sp"
                 />
@@ -65,12 +68,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Place"
                 android:textSize="15sp"
                 />
             <TextView
                 android:id="@+id/tvInformed"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
@@ -80,6 +85,7 @@
                 />
             <TextView
                 android:id="@+id/tvLocality"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
@@ -92,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Licence Plate"
                 android:textSize="15sp"
@@ -103,6 +110,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Quantity"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 />
@@ -113,6 +121,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Points"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 />
@@ -142,7 +151,6 @@
                 android:textSize="15sp"
                 android:inputType="text"
                 android:layout_gravity="top"
-                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -160,7 +168,6 @@
                 android:textSize="15sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="34899843L"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -192,7 +199,6 @@
                 android:textSize="15sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Avenida America"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -221,7 +227,6 @@
                 android:textSize="15sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Cordoba"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -240,7 +245,6 @@
                 android:textSize="15sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="3289JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -258,7 +262,6 @@
                 android:textSize="15sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="200"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -276,7 +279,6 @@
                 android:textSize="15sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="4"
                 android:backgroundTint="@android:color/transparent"/>
 

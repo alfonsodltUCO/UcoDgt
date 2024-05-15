@@ -29,6 +29,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the licence plate"
                 android:textSize="18sp"
                 />
@@ -37,6 +38,7 @@
                 android:id="@+id/textViewCarType"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:text="Introduce the car type"
@@ -48,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Introduce the color"
                 android:textSize="18sp"
@@ -60,6 +63,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the dni of client"
                 android:textSize="18sp"
                 />
@@ -70,6 +74,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the id of insurance"
                 android:textSize="18sp"
                 />
@@ -95,7 +100,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="4355JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -136,7 +140,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -155,7 +158,6 @@
                 android:textSize="18sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="1"
                 android:backgroundTint="@android:color/transparent"/>
 
