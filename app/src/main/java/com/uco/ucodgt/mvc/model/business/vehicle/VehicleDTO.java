@@ -23,8 +23,6 @@ public class VehicleDTO implements Serializable {
 
     private Date validItvFrom;
 
-    private int idInsurance;
-
     private Date validItvTo;
 
     /**
@@ -44,32 +42,13 @@ public class VehicleDTO implements Serializable {
      * @param typeColor The color of the car.
      * @param validItvFrom The start date of the ITV validity period.
      * @param validItvTo The end date of the ITV validity period.
-     * @param idInsurance The ID of the vehicle's insurance.
      */
-    public VehicleDTO(String licencePlate,typeof typeCar,typeofColor typeColor,Date validItvFrom,Date validItvTo,int idInsurance){
+    public VehicleDTO(String licencePlate,typeof typeCar,typeofColor typeColor,Date validItvFrom,Date validItvTo){
         this.licencePlate=licencePlate;
         this.carType=typeCar;
         this.color=typeColor;
         this.validItvFrom=validItvFrom;
-        this.idInsurance=idInsurance;
         this.validItvTo=validItvTo;
-    }
-    /**
-     * Getter for the insurance ID of the vehicle.
-     *
-     * @return The insurance ID of the vehicle.
-     */
-    public int getIdInsurance() {
-        return idInsurance;
-    }
-
-    /**
-     * Setter for the insurance ID of the vehicle.
-     *
-     * @param id The insurance ID to set.
-     */
-    public void setIdInsurance(int id){
-        this.idInsurance = id;
     }
 
     /**

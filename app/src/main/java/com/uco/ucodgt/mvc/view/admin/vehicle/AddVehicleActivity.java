@@ -30,7 +30,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     Button check,goMenu;
     Spinner spinnerType,spinnerColor;
     String selectedType,selectedColor;
-    EditText etLicencePlate,etDni,etInsurance;
+    EditText etLicencePlate,etDni;
     /**
      * Called when the activity is starting.
      *
@@ -49,7 +49,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
-        etInsurance=findViewById(com.uco.ucodgt.R.id.editTextIdInsurance);
 
         spinnerType = findViewById(com.uco.ucodgt.R.id.carType);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.type, com.uco.ucodgt.R.layout.spinner_item);
@@ -108,7 +107,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             checkVehicleToAdd.putExtra("itvfrom",formatedDate);
             checkVehicleToAdd.putExtra("itvto",nowFourYearsLater);
             checkVehicleToAdd.putExtra("dni",etDni.getText().toString().trim());
-            checkVehicleToAdd.putExtra("insurance",etInsurance.getText().toString().trim());
             // Start the CheckVehicleToAdd activity
 
             startActivity(checkVehicleToAdd);

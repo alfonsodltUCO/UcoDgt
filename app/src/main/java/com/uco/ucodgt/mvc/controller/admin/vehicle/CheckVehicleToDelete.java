@@ -63,7 +63,7 @@ public class CheckVehicleToDelete extends AppCompatActivity {
 
                 showLoading();
                 ManagerVehicle mngV=new ManagerVehicle();
-                VehicleDTO vehicle=new VehicleDTO(licencePlate,null,null,null,null,0);
+                VehicleDTO vehicle=new VehicleDTO(licencePlate,null,null,null,null);
                 mngV.deleteVehicle(vehicle, CheckVehicleToDelete.this, new VehicleCallback(){
 
                     @Override

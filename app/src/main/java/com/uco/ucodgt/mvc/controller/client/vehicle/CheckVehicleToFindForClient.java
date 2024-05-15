@@ -46,7 +46,7 @@ public class CheckVehicleToFindForClient extends AppCompatActivity {
         if(!TextUtils.isEmpty(licenceplate)){
 
             ManagerVehicle mngV=new ManagerVehicle();
-            VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null,0);
+            VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null);
             mngV.getVehicle(vehicle, CheckVehicleToFindForClient.this, new VehicleCallback() {
             @Override
             public void onVehicleReceived(VehicleDTO vehicle) {

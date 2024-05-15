@@ -42,7 +42,7 @@ import com.uco.ucodgt.mvc.view.admin.vehicle.AddVehicleActivity;
  * @author Alfonso de la torre
  */
 public class CheckVehicleToAdd extends AppCompatActivity {
-    String licenceplate,color,type,itvfrom,itvto,dni,insurance;
+    String licenceplate,color,type,itvfrom,itvto,dni;
 
     private ProgressBar progressBar;
     /**
@@ -63,11 +63,10 @@ public class CheckVehicleToAdd extends AppCompatActivity {
         type=intentReceived.getStringExtra("cartype");
         itvfrom=intentReceived.getStringExtra("itvfrom");
         dni=intentReceived.getStringExtra("dni");
-        insurance=intentReceived.getStringExtra("insurance");
         itvto=intentReceived.getStringExtra("itvto");
 
 
-        if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(color) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(itvfrom) && !TextUtils.isEmpty(itvto) && !TextUtils.isEmpty(insurance)){
+        if(!TextUtils.isEmpty(dni) && !TextUtils.isEmpty(licenceplate) && !TextUtils.isEmpty(color) && !TextUtils.isEmpty(type) && !TextUtils.isEmpty(itvfrom) && !TextUtils.isEmpty(itvto)){
 
             if(!checkDni(dni)){//Check DNI format
 
@@ -170,7 +169,7 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                             ManagerVehicle mngV=new ManagerVehicle();
                                             @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                             try {
-                                                VehicleDTO vh=new VehicleDTO(licenceplate,getTypeOf(type),getTypeOfColor(color),format.parse(itvfrom),format.parse(itvto),Integer.parseInt(insurance));
+                                                VehicleDTO vh=new VehicleDTO(licenceplate,getTypeOf(type),getTypeOfColor(color),format.parse(itvfrom),format.parse(itvto));
                                                 mngV.addVehicle(vh,cl, CheckVehicleToAdd.this, new VehicleCallback() {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
@@ -222,22 +221,6 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                             finish();
                                                             hideLoading();
                                                             Toast.makeText(CheckVehicleToAdd.this,"the vehicle already exists", Toast.LENGTH_LONG).show();
-
-
-                                                        } else if (error.networkResponse.statusCode==404) {//The id introduces doesn't exist
-
-                                                            Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AddVehicleActivity.class);
-                                                            try {
-                                                                Thread.sleep(2*1000);
-                                                            }
-                                                            catch (Exception e) {
-                                                                System.out.println(e);
-                                                            }
-                                                            startActivity(intentAdmin);
-                                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                            finish();
-                                                            hideLoading();
-                                                            Toast.makeText(CheckVehicleToAdd.this,"the insurance id doesnt exist", Toast.LENGTH_LONG).show();
 
 
                                                         }

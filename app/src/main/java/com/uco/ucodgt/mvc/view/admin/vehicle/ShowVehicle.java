@@ -31,7 +31,7 @@ import com.uco.ucodgt.mvc.view.client.user.IntroduceNewData;
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
     ImageView image;
-    TextView lplate,itv1,itv2,idIns,color,type;
+    TextView lplate,itv1,itv2,color,type;
     Button goMain,deleteVehicle,listPenalties,extendItv;
     /**
      * Called when the activity is starting.
@@ -53,14 +53,12 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         extendItv=findViewById(com.uco.ucodgt.R.id.extendItv);
 
         type=findViewById(com.uco.ucodgt.R.id.textViewCarType);
-        idIns=findViewById(com.uco.ucodgt.R.id.textViewFoundIdInsurance);
         itv1=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvFrom);
         itv2=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvTo);
 
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());
         color.setText("Color= "+vehicle.getColor().toString());
         type.setText("Type= "+vehicle.getCarType().toString());
-        idIns.setText("Id insurance= "+vehicle.getIdInsurance());
 
         image=findViewById(com.uco.ucodgt.R.id.imageShow);
         String carType = vehicle.getCarType().toString().toLowerCase();

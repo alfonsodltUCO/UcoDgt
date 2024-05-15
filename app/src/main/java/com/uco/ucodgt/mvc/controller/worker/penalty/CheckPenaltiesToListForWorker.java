@@ -49,7 +49,7 @@ public class CheckPenaltiesToListForWorker extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(lic)){//List penalties by licence plate
 
-            VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
+            VehicleDTO vh=new VehicleDTO(lic,null,null,null,null);
             ManagerPenalty mngP=new ManagerPenalty();
 
             mngP.getPenalties(vh, CheckPenaltiesToListForWorker.this, new PenaltyCallback() {

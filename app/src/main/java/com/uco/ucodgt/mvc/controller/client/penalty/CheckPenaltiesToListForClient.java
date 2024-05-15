@@ -53,7 +53,7 @@ public class CheckPenaltiesToListForClient extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(lic)){// Check penalties by vehicle
 
-            VehicleDTO vh=new VehicleDTO(lic,null,null,null,null,0);
+            VehicleDTO vh=new VehicleDTO(lic,null,null,null,null);
             ManagerPenalty mngP=new ManagerPenalty();
             mngP.getPenalties(vh, CheckPenaltiesToListForClient.this, new PenaltyCallback() {
 
