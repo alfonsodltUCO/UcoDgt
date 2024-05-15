@@ -23,6 +23,7 @@ import com.uco.ucodgt.mvc.view.ImagePagerAdapter;
 import com.uco.ucodgt.mvc.view.MainActivity;
 
 import com.uco.ucodgt.mvc.view.client.penalty.IntroducePenaltyToFind;
+import com.uco.ucodgt.mvc.view.client.vehicle.AddVehicleActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -202,6 +203,12 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
 
         }else if(com.uco.ucodgt.R.id.item4ClientGetMyInfo==item.getItemId()){
             Intent intent=new Intent(ClientActivity.this, CheckUserToFindForClient.class);
+            intent.putExtra("dni",dni);
+            startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+        } else if (com.uco.ucodgt.R.id.item5ClientAddVehicle==item.getItemId()) {
+
+            Intent intent=new Intent(ClientActivity.this, AddVehicleActivity.class);
             intent.putExtra("dni",dni);
             startActivity(intent);
             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);

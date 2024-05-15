@@ -1,4 +1,4 @@
-package com.uco.ucodgt.mvc.view.admin.vehicle;
+package com.uco.ucodgt.mvc.view.client.vehicle;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,16 +14,15 @@ import android.widget.Spinner;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
-import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+import com.uco.ucodgt.mvc.controller.client.vehicle.CheckVehicleToAdd;
+import com.uco.ucodgt.mvc.view.client.ClientActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Activity for Admin for adding a new vehicle.
+ * Activity for client for adding a new vehicle.
  * @author Alfonso de la torre
  */
 public class AddVehicleActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,6 +30,8 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     Spinner spinnerType,spinnerColor;
     String selectedType,selectedColor;
     EditText etLicencePlate,etDni;
+
+    String dni;
     /**
      * Called when the activity is starting.
      *
@@ -44,12 +45,14 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
 
         super.onCreate(savedInstanceState);
         setContentView(com.uco.ucodgt.R.layout.add_vehicle);
+        dni=getIntent().getStringExtra("dni");
 
         etLicencePlate=findViewById(com.uco.ucodgt.R.id.editTextLicencePlate);
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
 
+        etDni.setText(dni);
         spinnerType = findViewById(com.uco.ucodgt.R.id.carType);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.type, com.uco.ucodgt.R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -114,7 +117,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             checkVehicleToAdd.putExtra("color",selectedColor);
             checkVehicleToAdd.putExtra("itvfrom",formatedDate);
             checkVehicleToAdd.putExtra("itvto",nowFourYearsLater);
-            checkVehicleToAdd.putExtra("dni",etDni.getText().toString().trim());
+            checkVehicleToAdd.putExtra("dni",dni);
             // Start the CheckVehicleToAdd activity
 
             startActivity(checkVehicleToAdd);
@@ -123,7 +126,8 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         }else if(v.getId()==com.uco.ucodgt.R.id.goMainMenu){
             // Navigate back to the AdminActivity
 
-            Intent goMenu=new Intent(AddVehicleActivity.this, AdminActivity.class);
+            Intent goMenu=new Intent(AddVehicleActivity.this, ClientActivity.class);
+            goMenu.putExtra("dni",dni);
             startActivity(goMenu);
             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
         }
