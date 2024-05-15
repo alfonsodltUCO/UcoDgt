@@ -1,7 +1,9 @@
 package com.uco.ucodgt.mvc.view.admin.vehicle;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Activity for Admin for adding a new vehicle.
  * @author Alfonso de la torre
@@ -23,7 +30,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     Button check,goMenu;
     Spinner spinnerType,spinnerColor;
     String selectedType,selectedColor;
-    EditText etLicencePlate,etItvFrom,etItvTo,etDni,etInsurance;
+    EditText etLicencePlate,etDni,etInsurance;
     /**
      * Called when the activity is starting.
      *
@@ -39,8 +46,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         setContentView(com.uco.ucodgt.R.layout.add_vehicle);
 
         etLicencePlate=findViewById(com.uco.ucodgt.R.id.editTextLicencePlate);
-        etItvFrom=findViewById(com.uco.ucodgt.R.id.editTextValidItvFrom);
-        etItvTo=findViewById(com.uco.ucodgt.R.id.editTextValidItvTo);
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
@@ -87,13 +92,21 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
 
         if(v.getId()==com.uco.ucodgt.R.id.checkAddVehicle){
             // Prepare data to be sent to the controller
+            Date now = new Date();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String formatedDate = format.format(now);
 
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(now);
+            calendar.add(Calendar.YEAR, 4);
+            String nowFourYearsLater = format.format(calendar.getTime());
+            Log.d("e",formatedDate+nowFourYearsLater);
             Intent checkVehicleToAdd=new Intent(AddVehicleActivity.this, CheckVehicleToAdd.class);
             checkVehicleToAdd.putExtra("licenceplate",etLicencePlate.getText().toString().trim());
             checkVehicleToAdd.putExtra("cartype",selectedType);
             checkVehicleToAdd.putExtra("color",selectedColor);
-            checkVehicleToAdd.putExtra("itvfrom",etItvFrom.getText().toString().trim());
-            checkVehicleToAdd.putExtra("itvto",etItvTo.getText().toString().trim());
+            checkVehicleToAdd.putExtra("itvfrom",formatedDate);
+            checkVehicleToAdd.putExtra("itvto",nowFourYearsLater);
             checkVehicleToAdd.putExtra("dni",etDni.getText().toString().trim());
             checkVehicleToAdd.putExtra("insurance",etInsurance.getText().toString().trim());
             // Start the CheckVehicleToAdd activity
