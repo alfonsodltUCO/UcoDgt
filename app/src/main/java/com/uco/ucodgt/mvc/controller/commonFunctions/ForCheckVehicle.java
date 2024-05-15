@@ -46,25 +46,20 @@ public class ForCheckVehicle {
             try {
                 Date itvFrom = sdf.parse(from);
                 Date itvTo = sdf.parse(to);
-                Date now=new Date();
+
                 Calendar cal = Calendar.getInstance();
                 Calendar cal2 = Calendar.getInstance();
-                Calendar calNow = Calendar.getInstance();
 
                 cal.setTime(itvFrom);
                 cal2.setTime(itvTo);
-                calNow.setTime(now);
 
-
-                if(cal.compareTo(calNow)==0){
-                    return cal.compareTo(cal2) < 0;
-                }else if(cal.compareTo(calNow) < 0) {
+                Calendar currentDate = Calendar.getInstance();
+                currentDate.setTime(new Date());
+                currentDate.add(Calendar.HOUR,-24);
+                if (cal.compareTo(currentDate) < 0) {
                     return false;
-                }else{
-                    return cal.compareTo(cal2) < 0;
                 }
-
-
+                return cal.compareTo(cal2) < 0;
 
             } catch (ParseException e) {
                 throw new RuntimeException(e);
