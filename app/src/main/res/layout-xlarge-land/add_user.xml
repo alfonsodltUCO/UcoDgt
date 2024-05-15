@@ -243,6 +243,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:text="@string/client"
+                    android:buttonTint="@color/white"
                     android:textSize="30sp" />
 
 
@@ -250,6 +251,7 @@
                     android:id="@+id/radioButtonWorker"
                     android:layout_width="wrap_content"
                     android:textSize="30sp"
+                    android:buttonTint="@color/white"
                     android:textColor="@color/white"
                     android:layout_height="match_parent"
                     android:text="@string/worker" />

@@ -128,6 +128,7 @@
             android:id="@+id/radioButtonCancelled"
             android:layout_width="match_parent"
             android:textSize="20sp"
+            android:buttonTint="@color/white"
             android:textColor="@color/white"            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:text="@string/cancelled" />
@@ -135,6 +136,7 @@
         <RadioButton
             android:id="@+id/radioButtonPaid"
             android:layout_width="match_parent"
+            android:buttonTint="@color/white"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_height="match_parent"
@@ -145,6 +147,7 @@
             android:id="@+id/radioButtonProcessed"
             android:layout_width="wrap_content"
             android:textSize="20sp"
+            android:buttonTint="@color/white"
             android:textColor="@color/white"
             android:layout_height="match_parent"
             android:gravity="center"
