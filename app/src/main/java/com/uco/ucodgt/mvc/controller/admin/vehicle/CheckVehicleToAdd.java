@@ -174,7 +174,21 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                 mngV.addVehicle(vh,cl, CheckVehicleToAdd.this, new VehicleCallback() {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
-
+                                                        Intent intent= new Intent(Intent.ACTION_SEND);
+                                                        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"New vehicle added!");
+                                                        intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nThe vehicle: "+vehicle.getLicencePlate()+"has been introduced into the system.\n"+
+                                                                "Remember to do not violate the rules of system and you will be rewarded.\n"+
+                                                                "Be safe, be smart, take care.\n"+
+                                                                "UcoDgt,");
+                                                        intent.setType("message/rfc822");
+                                                        startActivity(Intent.createChooser(intent,"Choose email client:"));
+                                                        try {
+                                                            Thread.sleep(10*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
                                                         Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
                                                         try {
                                                             Thread.sleep(2*1000);

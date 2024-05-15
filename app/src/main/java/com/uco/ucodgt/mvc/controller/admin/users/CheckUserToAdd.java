@@ -227,7 +227,8 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                                         "Your credentials are (password-email): "+password+", "+user.getEmail()+"\n "+
                                                                                        "Remember to do not violate the rules of system and you will be rewarded.\n"+
                                                                                         "Also remember you could change your data in main menu.\n"+
-                                                                                        "Be safe, be smart, take care.");
+                                                                                        "Be safe, be smart, take care.\n"+
+                                                                                        "UcoDgt");
                                                                                 intent.setType("message/rfc822");
                                                                                 startActivity(Intent.createChooser(intent,"Choose email client:"));
                                                                                 try {

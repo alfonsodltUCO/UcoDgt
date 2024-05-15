@@ -17,6 +17,7 @@ import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
@@ -184,20 +185,64 @@ public class CheckPenaltyToCancel extends AppCompatActivity {
 
                                 @Override
                                 public void onPenaltyReceived(PenaltyDTO penalty) {
-                                    Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
-                                    try {
-                                        Thread.sleep(2*1000);
-                                    }
-                                    catch (Exception e) {
-                                        System.out.println(e);
-                                    }
-                                    intent.putExtra("numberWorker",numberWorker);
-                                    startActivity(intent);
-                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                    finish();
-                                    Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
-                                    hideLoading();
+                                    ManagerClient mngC=new ManagerClient();
+                                    ClientDTO cl=new ClientDTO(penalty.getDniClient(),null,null,null,null,null,null);
+                                    mngC.getUser(cl, CheckPenaltyToCancel.this, new UserCallback() {
 
+                                        @Override
+                                        public void onUserReceived(ClientDTO user) {
+
+                                            Intent intentE= new Intent(Intent.ACTION_SEND);
+                                            intentE.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                            intentE.putExtra(Intent.EXTRA_SUBJECT,"Penalty cancelled!");
+                                            intentE.putExtra(Intent.EXTRA_TEXT,"User "+user.getDni()+",\nThe penalty "+penalty.getId()+"have been removed, sorry for this error.\n"+
+                                                    "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
+                                                    penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
+                                                    penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
+                                                    "Just for remember that the points will be give back to you and the quantity will not have to be paid." +
+                                                    "UcoDgt,");
+                                            intentE.setType("message/rfc822");
+                                            startActivity(Intent.createChooser(intentE,"Choose email client:"));
+                                            Intent intent=new Intent(CheckPenaltyToCancel.this, WorkerActivity.class);
+                                            try {
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
+                                            }
+                                            intent.putExtra("numberWorker",numberWorker);
+                                            startActivity(intent);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                            finish();
+                                            Toast.makeText(CheckPenaltyToCancel.this,"Penalty was cancelled", Toast.LENGTH_LONG).show();
+                                            hideLoading();
+                                        }
+
+                                        @Override
+                                        public void onError(VolleyError error) {
+
+                                        }
+
+                                        @Override
+                                        public void onWorkerReceived(WorkerDTO user) {
+
+                                        }
+
+                                        @Override
+                                        public void onAdminReceived(AdminDTO user) {
+
+                                        }
+
+                                        @Override
+                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                        }
+
+                                        @Override
+                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                        }
+                                    });
                                 }
                             });
                         }
