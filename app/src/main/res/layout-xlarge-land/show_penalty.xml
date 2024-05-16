@@ -66,7 +66,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvId"
@@ -95,7 +95,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -112,13 +112,13 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -130,7 +130,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvDniC"
@@ -146,7 +146,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -162,7 +162,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
             </LinearLayout>
@@ -170,7 +170,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvState"
@@ -198,7 +198,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -215,7 +215,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvQuantity"
@@ -231,7 +231,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvPoints"
@@ -247,13 +247,13 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -266,7 +266,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -283,7 +283,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/tvLicenceP"
@@ -299,7 +299,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
             </LinearLayout>
@@ -310,7 +310,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@android:color/black"/>
+            android:background="@color/plata"/>
 
 
 

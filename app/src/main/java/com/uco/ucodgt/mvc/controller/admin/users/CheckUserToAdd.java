@@ -220,6 +220,22 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                             runOnUiThread(() -> runOnUiThread(() -> {
 
+                                                                                Intent intent= new Intent(Intent.ACTION_SEND);
+                                                                                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                                                                intent.putExtra(Intent.EXTRA_SUBJECT,"Welcome!");
+                                                                                intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
+                                                                                        "Your credentials are (password-email): "+password+", "+user.getEmail()+"\n "+
+                                                                                       "Remember to do not violate the rules of system and you will be rewarded.\n"+
+                                                                                        "Also remember you could change your data in main menu.\n"+
+                                                                                        "Be safe, be smart, take care.");
+                                                                                intent.setType("message/rfc822");
+                                                                                startActivity(Intent.createChooser(intent,"Choose email client:"));
+                                                                                try {
+                                                                                    Thread.sleep(10*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
                                                                                 try {
@@ -374,7 +390,22 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                         public void onWorkerReceived(WorkerDTO user) {
 
                                                                             runOnUiThread(() -> runOnUiThread(() -> {
-
+                                                                                Intent intent= new Intent(Intent.ACTION_SEND);
+                                                                                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                                                                intent.putExtra(Intent.EXTRA_SUBJECT,"Welcome!");
+                                                                                intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
+                                                                                        "Your credentials are (password-email): "+password+", "+user.getEmail()+"\n "+
+                                                                                        "Remember to maintain the city safe, you are really important for the system.\n"+
+                                                                                        "Also remember you could change your data in main menu.\n"+
+                                                                                        "We trust you!.");
+                                                                                intent.setType("message/rfc822");
+                                                                                startActivity(Intent.createChooser(intent,"Choose email client:"));
+                                                                                try {
+                                                                                    Thread.sleep(10*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
                                                                                 showLoading();
                                                                                 Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
                                                                                 try {

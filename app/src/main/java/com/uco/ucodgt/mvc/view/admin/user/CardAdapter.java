@@ -93,7 +93,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
         } else {
 
-            WorkerDTO workerDTO = workerList.get(position - clientList.size());
+            WorkerDTO workerDTO = workerList.get(position- clientList.size());
             holder.textDni.setText(workerDTO.getDni());
             holder.textType.setText("worker");
             holder.image.setImageResource(com.uco.ucodgt.R.drawable.trabajador);

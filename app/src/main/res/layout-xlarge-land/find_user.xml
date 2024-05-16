@@ -71,6 +71,7 @@
                 android:id="@+id/radioButtonClient"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
+                android:buttonTint="@color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/client"
                 android:textSize="30sp"/>
@@ -80,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:buttonTint="@color/white"
                 android:textSize="30sp"
                 android:text="@string/worker" />
 

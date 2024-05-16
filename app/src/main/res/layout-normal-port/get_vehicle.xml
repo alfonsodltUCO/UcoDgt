@@ -14,41 +14,54 @@
         android:layout_weight="1"
         android:layout_gravity="top"
         android:src="@drawable/animatedlogo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/takePhotoButton"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="100sp"
+            android:layout_weight="1"
+            android:text="Take Photo" />
 
-    <Button
-        android:id="@+id/takePhotoButton"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-         android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/pickPhotoButton"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_height="100sp"
+            android:layout_weight="1"
+            android:text="Pick Photo" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Take Photo" />
+        android:layout_gravity="top"
+        android:gravity="top"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/manualWay"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:singleLine="false"
+            android:layout_height="100sp"
+            android:layout_weight="1"
+            android:text="Introduce manual" />
+        <Button
+            android:id="@+id/goMainMenu"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="100sp"
+            android:layout_weight="1"
+            android:text="Go Main" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/pickPhotoButton"
-         android:layout_width="wrap_content"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Pick Photo" />
 
-    <Button
-        android:id="@+id/manualWay"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:singleLine="false"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-         android:text="Introduce manual" />
-    <Button
-        android:id="@+id/goMainMenu"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:textSize="20sp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Go Main" />
 
 </LinearLayout>

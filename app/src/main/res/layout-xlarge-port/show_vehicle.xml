@@ -12,12 +12,6 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         >
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/animatedlogo" />
 
 
 
@@ -42,14 +36,14 @@
                 android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_weight="0.1"
-                android:layout_marginRight="600dp"
+                android:layout_weight="1"
+                android:layout_marginRight="500dp"
                 android:gravity="start">
 
                 <ImageView
                     android:id="@+id/imageShow"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="start"
                     android:layout_weight="1">
 
@@ -69,7 +63,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,7 +75,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/textViewFoundLicencePlate"
@@ -98,7 +92,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -116,7 +110,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/textViewFoundColor"
@@ -133,13 +127,13 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,7 +145,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
                 <TextView
                     android:id="@+id/textViewFoundIdInsurance"
@@ -169,7 +163,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -186,7 +180,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
                 <TextView
@@ -205,7 +199,7 @@
                 <View
                     android:layout_width="5dp"
                     android:layout_height="match_parent"
-                    android:background="@android:color/black" />
+                    android:background="@color/plata" />
 
 
             </LinearLayout>
@@ -213,13 +207,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
 
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@android:color/black"/>
+                android:background="@color/plata"/>
         </LinearLayout>
     </LinearLayout>
 

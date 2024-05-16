@@ -54,7 +54,8 @@ public class ForCheckVehicle {
                 cal2.setTime(itvTo);
 
                 Calendar currentDate = Calendar.getInstance();
-
+                currentDate.setTime(new Date());
+                currentDate.add(Calendar.HOUR,-24);
                 if (cal.compareTo(currentDate) < 0) {
                     return false;
                 }

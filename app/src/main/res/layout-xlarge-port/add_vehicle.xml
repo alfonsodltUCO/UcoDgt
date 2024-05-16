@@ -33,6 +33,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the licence plate"
                 android:textSize="30sp"
                 />
@@ -42,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Introduce the car type"
                 android:textSize="30sp"
@@ -52,30 +54,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Introduce the color"
                 android:textSize="30sp"
                 />
 
-            <TextView
-                android:id="@+id/textViewItvFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Valid itv from"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                />
 
-            <TextView
-                android:id="@+id/textViewItvTo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:text="Valid itv until"
-                android:textSize="30sp"
-                />
 
             <TextView
                 android:id="@+id/textViewDniClient"
@@ -83,6 +68,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the dni of client"
                 android:textSize="30sp"
                 />
@@ -93,6 +79,7 @@
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Introduce the id of insurance"
                 android:textSize="30sp"
                 />
@@ -118,7 +105,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="4355JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -130,6 +116,8 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
+                android:layout_gravity="top"
+                android:gravity="top"
                 android:textSize="30sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
 
@@ -141,46 +129,10 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
+                android:layout_gravity="top"
+                android:gravity="top"
                 android:textSize="30sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
-
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextValidItvFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="30sp"
-                android:inputType="date"
-                android:layout_gravity="bottom"
-                android:gravity="top"
-                android:hint="2020-08-24"
-                android:backgroundTint="@android:color/transparent"/>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextValidItvTo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textCursorDrawable="@color/white"
-                android:outlineSpotShadowColor="@color/white"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:textSize="30sp"
-                android:inputType="date"
-                android:layout_gravity="bottom"
-                android:gravity="top"
-                android:hint="2022-08-24"
-                android:backgroundTint="@android:color/transparent"/>
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -197,7 +149,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -215,8 +166,6 @@
                 android:ems="10"
                 android:textSize="30sp"
                 android:inputType="number"
-                android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="1"
                 android:backgroundTint="@android:color/transparent"/>
 

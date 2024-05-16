@@ -63,7 +63,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:background="@android:color/black"/>
+                    android:background="@color/plata"/>
 
 
                     <TextView
@@ -79,7 +79,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
-                        android:background="@android:color/black" />
+                        android:background="@color/plata" />
 
 
                     <TextView
@@ -96,7 +96,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
-                        android:background="@android:color/black" />
+                        android:background="@color/plata" />
 
                     <TextView
                         android:id="@+id/textViewFoundDateBirth"
@@ -113,7 +113,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:background="@android:color/black"/>
+                    android:background="@color/plata"/>
 
 
 
@@ -132,7 +132,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
-                        android:background="@android:color/black" />
+                        android:background="@color/plata" />
 
 
                     <TextView
@@ -150,7 +150,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:background="@android:color/black"/>
+                    android:background="@color/plata"/>
 
                     <TextView
                         android:id="@+id/textViewFoundDni"
@@ -165,7 +165,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
-                        android:background="@android:color/black" />
+                        android:background="@color/plata" />
 
 
 
@@ -182,7 +182,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
-                    android:background="@android:color/black"/>
+                    android:background="@color/plata"/>
             </LinearLayout>
 
         </ScrollView>

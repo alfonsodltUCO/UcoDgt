@@ -20,8 +20,9 @@ import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
     Button checkAddUser,goMenu;
     String typeofuser;
+    String initialPoints="8";
     String selectedOption;
-    EditText editTextName,editTextDni,editTextSurname,editTextAge,editTextPassword,editTextLicencePoints,editTextEmail;
+    EditText editTextName,editTextDni,editTextSurname,editTextAge,editTextPassword,editTextEmail;
 
     RadioGroup radiogrouptypeuser;
     /**
@@ -46,7 +47,6 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         checkAddUser=findViewById(com.uco.ucodgt.R.id.checkAdd);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         radiogrouptypeuser=findViewById(com.uco.ucodgt.R.id.radioGroupTypeUserToAdd);
-        editTextLicencePoints=findViewById(com.uco.ucodgt.R.id.editTextLicencePoints);
         editTextPassword=findViewById(com.uco.ucodgt.R.id.editTextPassword);
 
         radiogrouptypeuser.setOnCheckedChangeListener((group, checkedId) -> {
@@ -77,7 +77,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
            checkUserToAdd.putExtra("email",editTextEmail.getText().toString().trim());
            checkUserToAdd.putExtra("password",editTextPassword.getText().toString().trim());
            checkUserToAdd.putExtra("age",editTextAge.getText().toString().trim());
-           checkUserToAdd.putExtra("licencepoints",editTextLicencePoints.getText().toString().trim());
+           checkUserToAdd.putExtra("licencepoints",initialPoints);
            checkUserToAdd.putExtra("type",typeofuser);
            checkUserToAdd.putExtra("typeofusertoadd",selectedOption);
 

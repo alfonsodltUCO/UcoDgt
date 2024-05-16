@@ -43,7 +43,7 @@ dependencies {
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf<T>()
     )))*/
-
+    implementation("com.github.1902shubh:SendMail:1.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     implementation("com.paypal.checkout:android-sdk:0.112.2")
