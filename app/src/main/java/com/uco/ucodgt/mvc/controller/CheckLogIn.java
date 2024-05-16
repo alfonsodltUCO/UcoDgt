@@ -1,5 +1,8 @@
 package com.uco.ucodgt.mvc.controller;
 
+import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkPassword;
+import static com.uco.ucodgt.mvc.controller.commonFunctions.ForCheckUser.checkValidEmail;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.VolleyError;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.uco.ucodgt.mvc.controller.client.user.CheckClientPoints;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
@@ -56,195 +60,210 @@ public class CheckLogIn extends AppCompatActivity {
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
+        if(!checkValidEmail(email) || !checkPassword(Objects.requireNonNull(password))){
+            showLoading();
 
-        mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
-
-            /**
-             * Called when the client is successfully retrieved from the database.
-             * Shows a loading indicator, waits for 1.5 seconds, then launches the ClientActivity.
-             * @param user The client object retrieved from the database.
-             */
-            @Override
-            public void onUserReceived(ClientDTO user) {
-
-                runOnUiThread(() -> {
-
-                    showLoading();
-
-                    try {
-                        Thread.sleep(2*1000);
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
-
-                    Intent intentClient=new Intent(CheckLogIn.this, CheckClientPoints.class);
-                    intentClient.putExtra("dni",user.getDni());
-                    startActivity(intentClient);
-                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                    Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
-                    finish();
-                    hideLoading();
-
-                });
+            try {
+                Thread.sleep(2*1000);
             }
+            catch (Exception e) {
+                System.out.println(e);
+            }
+            Toast.makeText(CheckLogIn.this, "Invalid credentials format", Toast.LENGTH_SHORT).show();
+            Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
+            startActivity(intentGoMain);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            hideLoading();
+            finish();
 
-            /**
-             * Called when an error occurs during the login check for the client.
-             * If the client login fails, it checks for admin login.
-             * If admin login also fails, it checks for worker login.
-             * @param error The error object describing the error that occurred.
-             */
-            @Override
-            public void onError(VolleyError error) {
-                runOnUiThread(() -> {
+        }else{
+            mngusr.checkLogInClient(client, CheckLogIn.this, new UserCallback() {
 
-                    ManagerAdmin mngadm=new ManagerAdmin();
-                    AdminDTO admin = new AdminDTO(null,password,null,null,null,email);
-                    mngadm.checkLogInAdmin(admin, CheckLogIn.this, new UserCallback() {
+                /**
+                 * Called when the client is successfully retrieved from the database.
+                 * Shows a loading indicator, waits for 1.5 seconds, then launches the ClientActivity.
+                 * @param user The client object retrieved from the database.
+                 */
+                @Override
+                public void onUserReceived(ClientDTO user) {
 
-                        @Override
-                        public void onUserReceived(ClientDTO user) {
+                    runOnUiThread(() -> {
 
+                        showLoading();
+
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
                         }
 
-                        @Override
-                        public void onError(VolleyError error) {
+                        Intent intentClient=new Intent(CheckLogIn.this, CheckClientPoints.class);
+                        intentClient.putExtra("dni",user.getDni());
+                        startActivity(intentClient);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        Toast.makeText(CheckLogIn.this,"Successful client",Toast.LENGTH_LONG).show();
+                        finish();
+                        hideLoading();
 
-                            runOnUiThread(() -> {
+                    });
+                }
 
-                                ManagerWorker mngwrk=new ManagerWorker();
-                                WorkerDTO worker = new WorkerDTO(null,password,null,null,null,email,null);
-                                mngwrk.checkLogInWorker(worker, CheckLogIn.this, new UserCallback() {
+                /**
+                 * Called when an error occurs during the login check for the client.
+                 * If the client login fails, it checks for admin login.
+                 * If admin login also fails, it checks for worker login.
+                 * @param error The error object describing the error that occurred.
+                 */
+                @Override
+                public void onError(VolleyError error) {
+                    runOnUiThread(() -> {
 
-                                    @Override
-                                    public void onUserReceived(ClientDTO user) {
+                        ManagerAdmin mngadm=new ManagerAdmin();
+                        AdminDTO admin = new AdminDTO(null,password,null,null,null,email);
+                        mngadm.checkLogInAdmin(admin, CheckLogIn.this, new UserCallback() {
 
-                                    }
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
 
-                                    @Override
-                                    public void onError(VolleyError error) {
+                            }
 
-                                        showLoading();
+                            @Override
+                            public void onError(VolleyError error) {
 
-                                        try {
-                                            Thread.sleep(2*1000);
+                                runOnUiThread(() -> {
+
+                                    ManagerWorker mngwrk=new ManagerWorker();
+                                    WorkerDTO worker = new WorkerDTO(null,password,null,null,null,email,null);
+                                    mngwrk.checkLogInWorker(worker, CheckLogIn.this, new UserCallback() {
+
+                                        @Override
+                                        public void onUserReceived(ClientDTO user) {
+
                                         }
-                                        catch (Exception e) {
-                                            System.out.println(e);
-                                        }
-                                        Toast.makeText(CheckLogIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                                        Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
-                                        startActivity(intentGoMain);
-                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                        hideLoading();
-                                        finish();
 
-                                    }
-
-                                    @Override
-                                    public void onWorkerReceived(WorkerDTO user) {
-
-                                        runOnUiThread(() -> {
+                                        @Override
+                                        public void onError(VolleyError error) {
 
                                             showLoading();
+
                                             try {
                                                 Thread.sleep(2*1000);
                                             }
                                             catch (Exception e) {
                                                 System.out.println(e);
                                             }
-
-                                            Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
-                                            intentWorker.putExtra("numberWorker",user.getNumberOfWorker().toString());
-                                            startActivity(intentWorker);
+                                            Toast.makeText(CheckLogIn.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                                            Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
+                                            startActivity(intentGoMain);
                                             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                            Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
-                                            finish();
                                             hideLoading();
+                                            finish();
 
-                                        });
-                                    }
+                                        }
 
-                                    @Override
-                                    public void onAdminReceived(AdminDTO user) {
+                                        @Override
+                                        public void onWorkerReceived(WorkerDTO user) {
 
-                                    }
+                                            runOnUiThread(() -> {
 
-                                    @Override
-                                    public void onWorkersReceived(List<WorkerDTO> workers) {
+                                                showLoading();
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
 
-                                    }
+                                                Intent intentWorker=new Intent(CheckLogIn.this, WorkerActivity.class);
+                                                intentWorker.putExtra("numberWorker",user.getNumberOfWorker().toString());
+                                                startActivity(intentWorker);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                Toast.makeText(CheckLogIn.this, "Success worker", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                                hideLoading();
 
-                                    @Override
-                                    public void onClientsReceived(List<ClientDTO> clients) {
+                                            });
+                                        }
 
-                                    }
+                                        @Override
+                                        public void onAdminReceived(AdminDTO user) {
+
+                                        }
+
+                                        @Override
+                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                        }
+
+                                        @Override
+                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                        }
+                                    });
                                 });
-                            });
-                        }
-                        @Override
-                        public void onWorkerReceived(WorkerDTO user) {
+                            }
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onAdminReceived(AdminDTO user) {
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
 
-                            runOnUiThread(() -> {
+                                runOnUiThread(() -> {
 
 
-                                Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
-                                try {
-                                    Thread.sleep(2*1000);
-                                }
-                                catch (Exception e) {
-                                    System.out.println(e);
-                                }
-                                startActivity(intentAdmin);
-                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                hideLoading();
-                                finish();
-                                Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
+                                    Intent intentAdmin=new Intent(CheckLogIn.this,AdminActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                    startActivity(intentAdmin);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    hideLoading();
+                                    finish();
+                                    Toast.makeText(CheckLogIn.this,"Successful LogIn",Toast.LENGTH_LONG).show();
 
-                            });
-                        }
+                                });
+                            }
 
-                        @Override
-                        public void onWorkersReceived(List<WorkerDTO> workers) {
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onClientsReceived(List<ClientDTO> clients) {
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
 
-                        }
+                            }
+                        });
                     });
-                });
-            }
+                }
 
-            @Override
-            public void onWorkerReceived(WorkerDTO user) {
+                @Override
+                public void onWorkerReceived(WorkerDTO user) {
 
-            }
+                }
 
-            @Override
-            public void onAdminReceived(AdminDTO user) {
+                @Override
+                public void onAdminReceived(AdminDTO user) {
 
-            }
+                }
 
-            @Override
-            public void onWorkersReceived(List<WorkerDTO> workers) {
+                @Override
+                public void onWorkersReceived(List<WorkerDTO> workers) {
 
-            }
+                }
 
-            @Override
-            public void onClientsReceived(List<ClientDTO> clients) {
+                @Override
+                public void onClientsReceived(List<ClientDTO> clients) {
 
-            }
-        });
-
-
+                }
+            });
+        }
     }
     /**
      * Shows the progress bar indicator.
