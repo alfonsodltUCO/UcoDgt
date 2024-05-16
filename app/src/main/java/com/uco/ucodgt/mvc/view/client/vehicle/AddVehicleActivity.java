@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     Spinner spinnerType,spinnerColor;
     String selectedType,selectedColor;
     EditText etLicencePlate,etDni;
+    TextView tvDni;
 
     String dni;
     /**
@@ -51,6 +53,10 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
+        tvDni=findViewById(com.uco.ucodgt.R.id.textViewDniClient);
+
+        tvDni.setVisibility(View.GONE);
+        etDni.setVisibility(View.GONE);
 
         etDni.setText(dni);
         spinnerType = findViewById(com.uco.ucodgt.R.id.carType);

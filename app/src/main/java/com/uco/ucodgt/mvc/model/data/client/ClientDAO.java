@@ -207,7 +207,8 @@ public class ClientDAO {
      *
      * @param userToFind The ClientDTO object containing the login credentials to be checked.
      * @param callback The callback to handle the result of the login check.
-     */    private void checkClient(final ClientDTO userToFind,final UserCallback callback){
+     */
+    private void checkClient(final ClientDTO userToFind,final UserCallback callback){
         String URL="http://34.118.84.252/api/ucodgt/user/checkLoginClient.php?email="+userToFind.getEmail();
 
         JsonObjectRequest JsonObjectRequest = new JsonObjectRequest(

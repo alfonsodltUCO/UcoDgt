@@ -15,8 +15,13 @@ import com.android.volley.VolleyError;
 
 import java.util.List;
 
+import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
+import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.business.vehicle.ManagerVehicle;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
+import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.admin.vehicle.DeleteVehicleActivity;
@@ -62,26 +67,70 @@ public class CheckVehicleToDelete extends AppCompatActivity {
             }else{
 
                 showLoading();
+                ManagerClient mngC=new ManagerClient();
                 ManagerVehicle mngV=new ManagerVehicle();
                 VehicleDTO vehicle=new VehicleDTO(licencePlate,null,null,null,null);
                 mngV.deleteVehicle(vehicle, CheckVehicleToDelete.this, new VehicleCallback(){
 
                     @Override
                     public void onVehicleReceived(VehicleDTO vehicle) {
+                        mngC.getOwner(vehicle, CheckVehicleToDelete.this, new UserCallback() {
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
+                                Intent intentE= new Intent(Intent.ACTION_SEND);
+                                intentE.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                intentE.putExtra(Intent.EXTRA_SUBJECT,"Vehicle deleted!");
+                                intentE.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nThe vehicle: "+vehicle.getLicencePlate()+" has been removed from system.\n"+
+                                        "Remember to do not violate the rules of system and you will be rewarded.\n"+
+                                        "Be safe, be smart, take care.\n"+
+                                        "UcoDgt,");
+                                intentE.setType("message/rfc822");
+                                startActivity(Intent.createChooser(intentE,"Choose email client:"));
+                                try {
+                                    Thread.sleep(10*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                Toast.makeText(CheckVehicleToDelete.this,"Vehicle deleted", Toast.LENGTH_LONG).show();
+                                try {
+                                    Thread.sleep(2*1000);
+                                }
+                                catch (Exception e) {
+                                    System.out.println(e);
+                                }
+                                Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
+                                startActivity(intentGoBack);
+                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                finish();
+                                hideLoading();
+                            }
 
-                        Toast.makeText(CheckVehicleToDelete.this,"Vehicle deleted", Toast.LENGTH_LONG).show();
-                        try {
-                            Thread.sleep(2*1000);
-                        }
-                        catch (Exception e) {
-                            System.out.println(e);
-                        }
-                        Intent intentGoBack=new Intent(CheckVehicleToDelete.this, AdminActivity.class);
-                        startActivity(intentGoBack);
-                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                        finish();
-                        hideLoading();
+                            @Override
+                            public void onError(VolleyError error) {
 
+                            }
+
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {
+
+                            }
+
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {
+
+                            }
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
+                        });
                     }
 
                     @Override
