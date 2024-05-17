@@ -69,7 +69,7 @@ public class CheckLogIn extends AppCompatActivity {
             catch (Exception e) {
                 System.out.println(e);
             }
-            Toast.makeText(CheckLogIn.this, "Invalid credentials format", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CheckLogIn.this, "Invalid credentials format\nPassword: 8 characters at least, 1 special character, 1 number\nEmail: example@gmail.com", Toast.LENGTH_SHORT).show();
             Intent intentGoMain=new Intent(CheckLogIn.this, MainActivity.class);
             startActivity(intentGoMain);
             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
