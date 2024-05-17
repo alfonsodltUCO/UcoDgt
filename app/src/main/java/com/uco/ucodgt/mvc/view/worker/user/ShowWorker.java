@@ -68,15 +68,15 @@ public class ShowWorker extends AppCompatActivity implements View.OnClickListene
         WorkerDTO worker = (WorkerDTO) getIntent().getSerializableExtra("worker");
 
         assert worker != null;
-        name.setText("name= "+worker.getName());
-        surname.setText("surname= "+worker.getSurname());
-        email.setText("email= "+worker.getEmail());
-        numberofworker.setText("licence points= "+worker.getNumberOfWorker().toString());
+        name.setText("name= \n"+worker.getName());
+        surname.setText("surname= \n"+worker.getSurname());
+        email.setText("email= \n"+worker.getEmail());
+        numberofworker.setText("number of worker= \n"+worker.getNumberOfWorker().toString());
 
-        dni.setText("dni= "+worker.getDni());
+        dni.setText("dni= \n"+worker.getDni());
         dniNoText=worker.getDni();
         strDate= formatter.format(worker.getAge());
-        birth.setText("birth= "+strDate);
+        birth.setText("birth= \n"+strDate);
 
     }
 

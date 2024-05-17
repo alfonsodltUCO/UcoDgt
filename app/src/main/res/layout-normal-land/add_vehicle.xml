@@ -30,6 +30,7 @@
                     android:id="@+id/textViewLicencePlate"
                     android:layout_width="wrap_content"
                     android:textColor="@color/white"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Introduce the licence plate"
@@ -41,6 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:text="Introduce the car type"
                     android:textSize="18sp"
@@ -51,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:text="Introduce the color"
                     android:textSize="18sp"
@@ -63,6 +66,7 @@
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="Introduce the dni of client"
                     android:textSize="18sp"
                     />
@@ -87,7 +91,6 @@
                     android:ems="10"
                     android:textSize="18sp"
                     android:inputType="text"
-                    android:layout_gravity="top"
                     android:hint="4355JVJ"
                     android:backgroundTint="@android:color/transparent"/>
 
@@ -132,7 +135,6 @@
                     android:ems="10"
                     android:textSize="18sp"
                     android:inputType="text"
-                    android:layout_gravity="top"
                     android:hint="31878744P"
                     android:backgroundTint="@android:color/transparent"/>
 
