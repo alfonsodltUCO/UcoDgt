@@ -67,8 +67,8 @@
 
             <TextView
                 android:id="@+id/textViewFoundName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10sp"
                 android:textColor="@color/white"
@@ -84,8 +84,8 @@
 
             <TextView
                 android:id="@+id/textViewFoundSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10sp"
                 android:textColor="@color/white"
@@ -101,8 +101,8 @@
 
             <TextView
                 android:id="@+id/textViewFoundDateBirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10sp"
                 android:layout_marginLeft="10sp"
@@ -136,8 +136,8 @@
 
             <TextView
                 android:id="@+id/tvNumberWorker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10sp"
                 android:textColor="@color/white"
@@ -155,8 +155,8 @@
 
             <TextView
                 android:id="@+id/textViewFoundEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="10sp"
                 android:layout_marginLeft="10sp"
@@ -192,8 +192,8 @@
 
             <TextView
                 android:id="@+id/textViewFoundDni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_marginRight="10sp"
@@ -202,11 +202,6 @@
                 android:text="Introduce the DNI"
                 android:textSize="20sp"
                 />
-            <View
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:background="@color/plata" />
-
 
             <View
                 android:layout_width="5dp"

@@ -220,12 +220,6 @@
                 android:layout_height="match_parent"
                 android:background="@color/plata" />
 
-
-            <View
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:background="@color/plata" />
-
         </LinearLayout>
         <View
             android:layout_width="match_parent"

@@ -188,6 +188,7 @@
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/fab_margin_16"
         android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="center|bottom"
@@ -235,7 +236,6 @@
             <Button
                 android:id="@+id/listVehicles"
                 android:layout_width="wrap_content"
-                android:singleLine="true"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
@@ -250,7 +250,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:singleLine="true"
                 android:layout_marginLeft="@dimen/fab_margin_16"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/fab_margin_16"
@@ -264,7 +263,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="0.3">
+            android:layout_weight="1">
             <Button
                 android:id="@+id/updatePoints"
                 android:layout_width="wrap_content"

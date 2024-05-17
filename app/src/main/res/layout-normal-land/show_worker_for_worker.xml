@@ -202,11 +202,6 @@
                 android:text="Introduce the DNI"
                 android:textSize="20sp"
                 />
-            <View
-                android:layout_width="5dp"
-                android:layout_height="match_parent"
-                android:background="@color/plata" />
-
 
             <View
                 android:layout_width="5dp"

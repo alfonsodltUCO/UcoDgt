@@ -3,6 +3,7 @@ package com.uco.ucodgt.mvc.view.admin.user;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -79,13 +80,16 @@ public class ShowUser extends AppCompatActivity implements View.OnClickListener 
 
         // Check the type of user and set the TextViews accordingly
         if(type.equals("worker")){
+            updatePoints.setVisibility(View.GONE);
+            listPenalties.setVisibility(View.GONE);
+            listVehicles.setVisibility(View.GONE);
 
             WorkerDTO worker = (WorkerDTO) getIntent().getSerializableExtra("worker");
             assert worker != null;
             name.setText("name= "+worker.getName());
             surname.setText("surname= "+worker.getSurname());
             email.setText("email= "+worker.getEmail());
-            obtaining.setText("");
+            obtaining.setText("Not available for worker");
             numberofworker_licencepoints.setText("worker number= "+worker.getNumberOfWorker().toString());
             dni.setText("dni= "+worker.getDni());
             dniNoText=worker.getDni();
