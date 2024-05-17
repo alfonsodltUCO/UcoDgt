@@ -23,7 +23,7 @@ import com.uco.ucodgt.mvc.view.client.ClientActivity;
  */
 public class ShowVehicle extends AppCompatActivity implements View.OnClickListener {
     String licplate;
-    TextView lplate,itv1,itv2,idIns,color,type;
+    TextView lplate,itv1,itv2,color,type;
     ImageView image;
 
     String dni;
@@ -52,7 +52,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         color=findViewById(com.uco.ucodgt.R.id.textViewFoundColor);
         type=findViewById(com.uco.ucodgt.R.id.textViewCarType);
 
-        idIns=findViewById(com.uco.ucodgt.R.id.textViewFoundIdInsurance);
         itv1=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvFrom);
         itv2=findViewById(com.uco.ucodgt.R.id.textViewFoundValidItvTo);
 
@@ -65,7 +64,6 @@ public class ShowVehicle extends AppCompatActivity implements View.OnClickListen
         lplate.setText("Licence plate= "+vehicle.getLicencePlate());
         color.setText("Color= "+vehicle.getColor().toString());
         type.setText("Type= "+vehicle.getCarType().toString());
-        idIns.setText("Id insurance= "+vehicle.getIdInsurance());
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String strDate= formatter.format(vehicle.getValidItvFrom());
         itv1.setText("Itv valid from= "+strDate);

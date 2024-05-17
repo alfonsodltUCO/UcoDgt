@@ -38,6 +38,7 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Client DNI"
+                android:gravity="center"
                 android:textSize="18sp"
                 />
 
@@ -47,6 +48,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Reason"
                 android:textSize="18sp"
@@ -59,6 +61,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Place"
+                android:gravity="center"
                 android:textSize="18sp"
 
                 />
@@ -70,6 +73,7 @@
                 android:layout_weight="1"
                 android:text="Informed at the moment"
                 android:textSize="18sp"
+                android:gravity="center"
 
                 />
             <TextView
@@ -79,6 +83,7 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Locality"
+                android:gravity="center"
                 android:textSize="18sp"
 
                 />
@@ -89,6 +94,7 @@
                 android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Licence Plate"
+                android:gravity="center"
                 android:textSize="18sp"
 
                 />
@@ -101,7 +107,8 @@
                 android:textColor="@color/white"
                 android:text="Quantity"
                 android:textSize="18sp"
- />
+                android:gravity="center"
+                />
 
             <TextView
                 android:id="@+id/tvPoints"
@@ -110,6 +117,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Points"
+                android:gravity="center"
                 android:textSize="18sp"
 
                 />
@@ -136,7 +144,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
             <Spinner
@@ -168,7 +175,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Avenida America"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -197,7 +203,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Cordoba"
                 android:backgroundTint="@android:color/transparent"/>
             <com.google.android.material.textfield.TextInputEditText
@@ -214,7 +219,6 @@
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="3289JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -232,7 +236,6 @@
                 android:textSize="18sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="200"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -250,7 +253,6 @@
                 android:textSize="18sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="4"
                 android:backgroundTint="@android:color/transparent"/>
 

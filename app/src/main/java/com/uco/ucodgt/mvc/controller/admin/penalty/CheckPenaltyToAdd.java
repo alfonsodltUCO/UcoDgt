@@ -355,7 +355,8 @@ public class CheckPenaltyToAdd extends AppCompatActivity {
                                                                                 penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
                                                                                 "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
                                                                                 "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
-                                                                                "Be safe, be smart, take care.");
+                                                                                "Be safe, be smart, take care.\n"+
+                                                                                "UcoDgt,");
                                                                         intent.setType("message/rfc822");
                                                                         startActivity(Intent.createChooser(intent,"Choose email client:"));
                                                                         try {

@@ -39,7 +39,7 @@ public class CheckImageForWorker extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(com.uco.ucodgt.R.layout.loading);
-
+        numberWorker=getIntent().getStringExtra("numberWorker");
         progressBar=findViewById(com.uco.ucodgt.R.id.progressbar);
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("image"),0, Objects.requireNonNull(getIntent().getByteArrayExtra("image")).length);
         ManagerVehicle mngV=new ManagerVehicle();

@@ -110,27 +110,6 @@
                     android:text="Introduce color"
                     android:textSize="20sp"
                     />
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:background="@color/plata"/>
-
-
-
-                <TextView
-                    android:id="@+id/textViewFoundIdInsurance"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_margin="@dimen/fab_margin_16"
-                    android:text="Introduce the Insurance id"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    />
-
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="5dp"

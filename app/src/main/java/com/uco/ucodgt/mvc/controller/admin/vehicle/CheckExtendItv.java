@@ -16,8 +16,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
- import com.uco.ucodgt.mvc.model.business.vehicle.ManagerVehicle;
+import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
+import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
+import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
+import com.uco.ucodgt.mvc.model.business.vehicle.ManagerVehicle;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
+import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 
@@ -59,27 +64,86 @@ public class CheckExtendItv extends AppCompatActivity {
         mngV.getVehicle(vehicleToSend, CheckExtendItv.this, new VehicleCallback() {
             @Override
             public void onVehicleReceived(VehicleDTO vehicle) {
+                ManagerClient mngC=new ManagerClient();
+                mngC.getOwner(vehicle, CheckExtendItv.this, new UserCallback() {
+                    @Override
+                    public void onUserReceived(ClientDTO user) {
+                        Date start,end;
 
-                Date start,end;
+                        start=vehicle.getValidItvFrom();
+                        end=vehicle.getValidItvTo();
 
-                start=vehicle.getValidItvFrom();
-                end=vehicle.getValidItvTo();
+                        if(!isBetween(start,end)){//Check dates are correct (now between start and end)
 
-                if(!isBetween(start,end)){//Check dates are correct (now between start and end)
+                            Calendar calendar = Calendar.getInstance();
 
-                    Calendar calendar = Calendar.getInstance();
+                            calendar.add(Calendar.YEAR, 1);
 
-                    calendar.add(Calendar.YEAR, 1);
+                            Date dateTo = calendar.getTime();
 
-                    Date dateTo = calendar.getTime();
+                            vehicle.setValidItvFrom(new Date());
+                            vehicle.setValidItvTo(dateTo);
 
-                    vehicle.setValidItvFrom(new Date());
-                    vehicle.setValidItvTo(dateTo);
+                            mngV.updateItv(vehicle,CheckExtendItv.this, new VehicleCallback() {
 
-                    mngV.updateItv(vehicle,CheckExtendItv.this, new VehicleCallback() {
+                                @Override
+                                public void onVehicleReceived(VehicleDTO vehicle) {
+                                    Intent intentE= new Intent(Intent.ACTION_SEND);
+                                    intentE.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
+                                    intentE.putExtra(Intent.EXTRA_SUBJECT,"Itv date extend!");
+                                    intentE.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nThe Itv date of vehicle: "+vehicle.getLicencePlate()+" has been modified.\n"+
+                                            "The new dates are, from: "+vehicle.getValidItvFrom().toString()+" to: "+vehicle.getValidItvTo().toString()+".\n"+
+                                            "Remember to do not violate the rules of system and you will be rewarded.\n"+
+                                            "Be safe, be smart, take care.\n"+
+                                            "UcoDgt,");
+                                    intentE.setType("message/rfc822");
+                                    startActivity(Intent.createChooser(intentE,"Choose email client:"));
+                                    try {
+                                        Thread.sleep(10*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                    Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                    startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
+                                    Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
 
-                        @Override
-                        public void onVehicleReceived(VehicleDTO vehicle) {
+                                    hideLoading();
+                                }
+
+                                @Override
+                                public void onError(VolleyError error) {
+
+                                    Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                    startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
+                                    Toast.makeText(CheckExtendItv.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
+
+                                    hideLoading();
+                                }
+
+                                @Override
+                                public void onVehiclesReceived(List<VehicleDTO> vehicles) {
+
+                                }
+                            });
+
+                        }else{
 
                             Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
                             try {
@@ -91,53 +155,39 @@ public class CheckExtendItv extends AppCompatActivity {
                             startActivity(intent);
                             overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
                             finish();
-                            Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CheckExtendItv.this,"The itv is not expired", Toast.LENGTH_LONG).show();
 
                             hideLoading();
                         }
 
-                        @Override
-                        public void onError(VolleyError error) {
 
-                            Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
-                            try {
-                                Thread.sleep(2*1000);
-                            }
-                            catch (Exception e) {
-                                System.out.println(e);
-                            }
-                            startActivity(intent);
-                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                            finish();
-                            Toast.makeText(CheckExtendItv.this,"An error has occurred try again please", Toast.LENGTH_LONG).show();
-
-                            hideLoading();
-                        }
-
-                        @Override
-                        public void onVehiclesReceived(List<VehicleDTO> vehicles) {
-
-                        }
-                    });
-
-                }else{
-
-                    Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
-                    try {
-                        Thread.sleep(2*1000);
                     }
-                    catch (Exception e) {
-                        System.out.println(e);
+
+                    @Override
+                    public void onError(VolleyError error) {
+
                     }
-                    startActivity(intent);
-                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                    finish();
-                    Toast.makeText(CheckExtendItv.this,"The itv is not expired", Toast.LENGTH_LONG).show();
 
-                    hideLoading();
-                }
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {
 
+                    }
 
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
+
+                    }
+
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                    }
+
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                    }
+                });
             }
 
             @Override

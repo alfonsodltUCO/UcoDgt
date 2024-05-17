@@ -37,6 +37,7 @@
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Client DNI"
                 android:textSize="30sp"
                 />
@@ -47,6 +48,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Reason"
                 android:textSize="30sp"
@@ -57,6 +59,7 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Place"
                 android:textSize="30sp"
@@ -67,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="Informed at the moment"
                 android:textSize="30sp"
@@ -78,6 +82,7 @@
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Locality"
                 android:textSize="30sp"
 
@@ -90,6 +95,7 @@
                 android:layout_weight="1"
                 android:text="Licence Plate"
                 android:textSize="30sp"
+                android:gravity="center"
 
                 />
 
@@ -98,6 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:text="Quantity"
                 android:textSize="30sp"
@@ -106,6 +113,7 @@
             <TextView
                 android:id="@+id/tvPoints"
                 android:textColor="@color/white"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -136,7 +144,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="31878744P"
                 android:backgroundTint="@android:color/transparent"/>
             <Spinner
@@ -167,7 +174,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Avenida America"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -195,7 +201,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="Cordoba"
                 android:backgroundTint="@android:color/transparent"/>
             <com.google.android.material.textfield.TextInputEditText
@@ -212,7 +217,6 @@
                 android:textSize="30sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="3289JVJ"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -230,7 +234,6 @@
                 android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="200"
                 android:backgroundTint="@android:color/transparent"/>
 
@@ -248,7 +251,6 @@
                 android:textSize="30sp"
                 android:inputType="number"
                 android:layout_gravity="bottom"
-                android:gravity="top"
                 android:hint="4"
                 android:backgroundTint="@android:color/transparent"/>
 

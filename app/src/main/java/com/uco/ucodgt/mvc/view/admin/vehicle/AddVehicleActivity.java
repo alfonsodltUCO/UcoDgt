@@ -30,7 +30,7 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
     Button check,goMenu;
     Spinner spinnerType,spinnerColor;
     String selectedType,selectedColor;
-    EditText etLicencePlate,etDni,etInsurance;
+    EditText etLicencePlate,etDni;
     /**
      * Called when the activity is starting.
      *
@@ -49,7 +49,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         check=findViewById(com.uco.ucodgt.R.id.checkAddVehicle);
         goMenu=findViewById(com.uco.ucodgt.R.id.goMainMenu);
         etDni=findViewById(com.uco.ucodgt.R.id.editTextDniVehicleToAdd);
-        etInsurance=findViewById(com.uco.ucodgt.R.id.editTextIdInsurance);
 
         spinnerType = findViewById(com.uco.ucodgt.R.id.carType);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, com.uco.ucodgt.R.array.type, com.uco.ucodgt.R.layout.spinner_item);
@@ -86,7 +85,16 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
         check.setOnClickListener(this);
     }
 
-
+    /**
+     * Handles click events on UI elements.
+     *
+     * This method is implemented to handle click events on various views in the activity.
+     * Depending on the ID of the clicked view, it performs different actions:
+     * - If the view clicked is the "Add Vehicle" button, it prepares data and starts the CheckVehicleToAdd activity.
+     * - If the view clicked is the "Go to Main Menu" button, it navigates back to the AdminActivity.
+     *
+     * @param v The view that was clicked.
+     */
     @Override
     public void onClick(View v) {
 
@@ -100,7 +108,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             calendar.setTime(now);
             calendar.add(Calendar.YEAR, 4);
             String nowFourYearsLater = format.format(calendar.getTime());
-            Log.d("e",formatedDate+nowFourYearsLater);
             Intent checkVehicleToAdd=new Intent(AddVehicleActivity.this, CheckVehicleToAdd.class);
             checkVehicleToAdd.putExtra("licenceplate",etLicencePlate.getText().toString().trim());
             checkVehicleToAdd.putExtra("cartype",selectedType);
@@ -108,7 +115,6 @@ public class AddVehicleActivity extends AppCompatActivity implements View.OnClic
             checkVehicleToAdd.putExtra("itvfrom",formatedDate);
             checkVehicleToAdd.putExtra("itvto",nowFourYearsLater);
             checkVehicleToAdd.putExtra("dni",etDni.getText().toString().trim());
-            checkVehicleToAdd.putExtra("insurance",etInsurance.getText().toString().trim());
             // Start the CheckVehicleToAdd activity
 
             startActivity(checkVehicleToAdd);

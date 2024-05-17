@@ -66,7 +66,7 @@ public class CheckVehicleToFindForWorker extends AppCompatActivity {
             }else{
 
                 ManagerVehicle mngV=new ManagerVehicle();
-                VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null,0);
+                VehicleDTO vehicle=new VehicleDTO(licenceplate,null,null,null,null);
 
                 mngV.getVehicle(vehicle, CheckVehicleToFindForWorker.this, new VehicleCallback() {
                     @Override

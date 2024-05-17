@@ -261,7 +261,6 @@ public class VehicleDAO {
                         typeof carType = typeof.valueOf(jsonResponse.getString("carType"));
                         typeofColor color = typeofColor.valueOf(jsonResponse.getString("color"));
                         String validItvFrom = jsonResponse.getString("validItvFrom");
-                        String idInsurance = jsonResponse.getString("idInsurance");
                         String validItvTo = jsonResponse.getString("validItvTo");
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date itv1;
@@ -273,9 +272,8 @@ public class VehicleDAO {
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-                        int id=Integer.parseInt(idInsurance);
 
-                        VehicleDTO vehicle=new VehicleDTO(licenceplate,carType,color,itv1,itv2,id);
+                        VehicleDTO vehicle=new VehicleDTO(licenceplate,carType,color,itv1,itv2);
                         callback.onVehicleReceived(vehicle);
 
                     } catch (JSONException e) {
@@ -342,7 +340,6 @@ public class VehicleDAO {
                         typeof carType = typeof.valueOf(jsonResponse.getString("carType"));
                         typeofColor color = typeofColor.valueOf(jsonResponse.getString("color"));
                         String validItvFrom = jsonResponse.getString("validItvFrom");
-                        String idInsurance = jsonResponse.getString("idInsurance");
                         String validItvTo = jsonResponse.getString("validItvTo");
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date itv1;
@@ -354,8 +351,7 @@ public class VehicleDAO {
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-                        int id=Integer.parseInt(idInsurance);
-                        VehicleDTO vehicle=new VehicleDTO(vehicleSend.getLicencePlate(),carType,color,itv1,itv2,id);
+                        VehicleDTO vehicle=new VehicleDTO(vehicleSend.getLicencePlate(),carType,color,itv1,itv2);
                         callback.onVehicleReceived(vehicle);
 
                     } catch (JSONException e) {
@@ -435,7 +431,6 @@ public class VehicleDAO {
                 params.put("validItvFrom", strDate1);
                 params.put("validItvTo", strDate2);
                 params.put("dni_client", client.getDni());
-                params.put("idInsurance", String.valueOf(vehicle.getIdInsurance()));
                 return params;
             }
         };
@@ -496,7 +491,6 @@ public class VehicleDAO {
                                 vehicle.setLicencePlate(vehicleJson.getString("licenceplate"));
                                 vehicle.setCarType(typeof.valueOf(vehicleJson.getString("carType")));
                                 vehicle.setColor(typeofColor.valueOf(vehicleJson.getString("color")));
-                                vehicle.setIdInsurance(Integer.parseInt(vehicleJson.getString("idInsurance")));
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dateItvF,dateItvT;
                                 try {
@@ -568,7 +562,6 @@ public class VehicleDAO {
                         String carType = jsonResponse.getString("carType");
                         String validItvFrom = jsonResponse.getString("validItvFrom");
                         String validItvTo = jsonResponse.getString("validItvTo");
-                        String idIns=jsonResponse.getString("idInsurance");
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                         Date dt1,dt2;
                         try {
@@ -578,7 +571,7 @@ public class VehicleDAO {
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-                        VehicleDTO vehicleToSend = new VehicleDTO(licenceplate,typeof.valueOf(carType),typeofColor.valueOf(color),dt1,dt2,Integer.parseInt(idIns));
+                        VehicleDTO vehicleToSend = new VehicleDTO(licenceplate,typeof.valueOf(carType),typeofColor.valueOf(color),dt1,dt2);
                         callback.onVehicleReceived(vehicleToSend);
 
                     } catch (JSONException e) {
@@ -653,7 +646,6 @@ public class VehicleDAO {
                                 vehicle.setLicencePlate(vehicleJson.getString("licenceplate"));
                                 vehicle.setCarType(typeof.valueOf(vehicleJson.getString("carType")));
                                 vehicle.setColor(typeofColor.valueOf(vehicleJson.getString("color")));
-                                vehicle.setIdInsurance(Integer.parseInt(vehicleJson.getString("idInsurance")));
                                 @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 Date dateItvF,dateItvT;
                                 try {
