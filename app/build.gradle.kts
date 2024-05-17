@@ -7,8 +7,8 @@ plugins {
 android {
     namespace = "com.uco.ucodgt"
     compileSdk = 34
-    //aaptOptions.cruncherEnabled = false
-    //aaptOptions.useNewCruncher = false
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId = "com.uco.ucodgt"
         minSdk = 23
