@@ -72,7 +72,7 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
-            }else{
+            }else if(etId.getText().toString().trim()!=null && !etId.getText().toString().trim().isEmpty()){
                 // Search penalties by specific ID
 
                 Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltyToFind.class);
@@ -81,6 +81,12 @@ public class IntroducePenaltyForSearch extends AppCompatActivity implements View
                 overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
 
 
+            }else{
+                // List all penalties
+
+                Intent intentFind = new Intent(IntroducePenaltyForSearch.this, CheckPenaltiesToList.class);
+                startActivity(intentFind);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
             }
         } else if (v.getId()==com.uco.ucodgt.R.id.goMainMenu) {
             // Navigate back to the main menu
