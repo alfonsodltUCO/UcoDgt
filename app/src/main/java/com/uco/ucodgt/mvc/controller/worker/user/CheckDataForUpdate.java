@@ -227,7 +227,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                         public void onError(VolleyError error11) {
                                             runOnUiThread(() -> {
                                                 ManagerWorker mngW=new ManagerWorker();
-                                                WorkerDTO wk=new WorkerDTO(dni,password,null,null,null,email,null);
+                                                WorkerDTO wk=new WorkerDTO(dni,null,null,null,null,email,null);
                                                 mngW.updateUser(wk,CheckDataForUpdate.this, new UserCallback() {
                                                     @Override
                                                     public void onUserReceived(ClientDTO user) {

@@ -73,7 +73,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
             finish();
             Toast.makeText(CheckDataForUpdate.this, "The data is empty, please fill the fields", Toast.LENGTH_LONG).show();
             hideLoading();
-        }else if(email.isEmpty()){
+        }else if(email.isEmpty()){//change password
 
             if(!checkPassword(password)){
                 showLoading();
@@ -156,7 +156,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                 });
             }
 
-        }else if(password.isEmpty()){
+        }else if(password.isEmpty()){//change email
             if(!checkValidEmail(email)){
                 showLoading();
                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
@@ -217,7 +217,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                         public void onError(VolleyError error11) {
                                             runOnUiThread(() -> {
                                                 ManagerClient mngC=new ManagerClient();
-                                                ClientDTO cl=new ClientDTO(dniRec,password,null,null,null,email,null);
+                                                ClientDTO cl=new ClientDTO(dniRec,null,null,null,null,email,null);
                                                 mngC.updateUser(cl,CheckDataForUpdate.this, new UserCallback() {
                                                     @Override
                                                     public void onUserReceived(ClientDTO user) {

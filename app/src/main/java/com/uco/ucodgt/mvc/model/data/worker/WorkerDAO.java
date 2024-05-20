@@ -766,7 +766,11 @@ public class WorkerDAO {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", worker.getDni());
                 params.put("email", worker.getEmail());
-                params.put("password",BCrypt.hashpw(worker.getPassword(),BCrypt.gensalt()));
+                if(worker.getPassword()==null || worker.getPassword()==""){
+                    params.put("password",new String());
+                }else{
+                    params.put("password",BCrypt.hashpw(worker.getPassword(),BCrypt.gensalt()));
+                }
                 return params;
             }
         };
