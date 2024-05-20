@@ -59,6 +59,7 @@ public class CheckLogIn extends AppCompatActivity {
         String email=intent.getStringExtra("email");
         String password=intent.getStringExtra("password");
         ManagerClient mngusr=new ManagerClient();
+        Log.d("e",BCrypt.hashpw(password,BCrypt.gensalt()));
         ClientDTO client = new ClientDTO(null,password,null,null,null,email,null);
         if(!checkValidEmail(email) || !checkPassword(Objects.requireNonNull(password))){
             showLoading();
