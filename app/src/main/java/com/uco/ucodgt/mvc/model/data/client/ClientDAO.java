@@ -987,7 +987,11 @@ public class ClientDAO {
                 Map<String, String> params = new HashMap<>();
                 params.put("dni", client.getDni());
                 params.put("email", client.getEmail());
-                params.put("password",BCrypt.hashpw(client.getPassword(),BCrypt.gensalt()));
+                if(client.getPassword()==null || client.getPassword()==""){
+                    params.put("password",new String());
+                }else{
+                    params.put("password",BCrypt.hashpw(client.getPassword(),BCrypt.gensalt()));
+                }
                 return params;
             }
         };

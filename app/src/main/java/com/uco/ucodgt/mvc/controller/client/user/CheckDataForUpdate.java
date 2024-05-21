@@ -36,7 +36,7 @@ import java.util.List;
 public class CheckDataForUpdate extends AppCompatActivity {
     private ProgressBar progressBar;
 
-    String dniRec,email,pasword;
+    String dniRec,email,password;
 
 
     /**
@@ -56,10 +56,328 @@ public class CheckDataForUpdate extends AppCompatActivity {
 
         dniRec=getIntent().getStringExtra("dni");
         email=getIntent().getStringExtra("email");
-        pasword=getIntent().getStringExtra("password");
+        password=getIntent().getStringExtra("password");
+
+        if(email.isEmpty() && password.isEmpty()){//not change
+
+            Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+            try {
+                Thread.sleep(2*1000);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
+            intent.putExtra("dni",dniRec);
+            startActivity(intent);
+            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+            finish();
+            Toast.makeText(CheckDataForUpdate.this, "The data is empty, please fill the fields", Toast.LENGTH_LONG).show();
+            hideLoading();
+        }else if(email.isEmpty()){//change password
+
+            if(!checkPassword(password)){
+                showLoading();
+                Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+                intent.putExtra("dni",dniRec);
+                startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
+                Toast.makeText(CheckDataForUpdate.this, "The password is not valid\nMust be 8 characters al least\nOne number\nOne special character\nOne capital letter", Toast.LENGTH_LONG).show();
+                hideLoading();
+
+            }else{
+                ManagerClient mngC=new ManagerClient();
+                ClientDTO cl=new ClientDTO(dniRec,password,null,null,null,email,null);
+                mngC.updateUser(cl,CheckDataForUpdate.this, new UserCallback() {
+                    @Override
+                    public void onUserReceived(ClientDTO user) {
+
+                        showLoading();
+                        Intent intent = new Intent(CheckDataForUpdate.this, ClientActivity.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
+                        intent.putExtra("dni",dniRec);
+                        startActivity(intent);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
+                        Toast.makeText(CheckDataForUpdate.this, "Update done", Toast.LENGTH_LONG).show();
+                        hideLoading();
+
+                    }
+
+                    @Override
+                    public void onError(VolleyError error) {
+                        showLoading();
+                        Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                        try {
+                            Thread.sleep(2*1000);
+                        }
+                        catch (Exception e) {
+                            System.out.println(e);
+                        }
+                        intent.putExtra("dni",dniRec);
+                        startActivity(intent);
+                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                        finish();
+                        Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
+                        hideLoading();
+
+                    }
+
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {
+
+                    }
+
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
+
+                    }
+
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                    }
+
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                    }
+                });
+            }
+
+        }else if(password.isEmpty()){//change email
+            if(!checkValidEmail(email)){
+                showLoading();
+                Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                try {
+                    Thread.sleep(2*1000);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+                intent.putExtra("dni",dniRec);
+                startActivity(intent);
+                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                finish();
+                Toast.makeText(CheckDataForUpdate.this, "The email is not valid format", Toast.LENGTH_LONG).show();
+                hideLoading();
+
+            }else{
+                checkAdminEmailNotExists(email, CheckDataForUpdate.this,new UserCallback(){//Check if user exists
+
+                    @Override
+                    public void onUserReceived(ClientDTO user) {}
+                    @Override
+                    public void onError(VolleyError error) {
+                        runOnUiThread(() -> checkClientEmailNotExists(email,CheckDataForUpdate.this,new UserCallback(){
+                            @Override
+                            public void onUserReceived(ClientDTO user) {
+
+                                runOnUiThread(() -> {
+
+                                    showLoading();
+                                    Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                    try {
+                                        Thread.sleep(2*1000);
+                                    }
+                                    catch (Exception e) {
+                                        System.out.println(e);
+                                    }
+                                    intent.putExtra("dni",dniRec);
+                                    startActivity(intent);
+                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                    finish();
+                                    Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
+                                    hideLoading();
 
 
-        if(!checkValidEmail(email)){
+                                });
+                            }
+                            @Override
+                            public void onError(VolleyError error1) { runOnUiThread(() ->
+                                    checkWorkerEmailNotExists(email,CheckDataForUpdate.this,new UserCallback(){
+
+                                        @Override
+                                        public void onUserReceived(ClientDTO user) {
+
+                                        }
+
+                                        @Override
+                                        public void onError(VolleyError error11) {
+                                            runOnUiThread(() -> {
+                                                ManagerClient mngC=new ManagerClient();
+                                                ClientDTO cl=new ClientDTO(dniRec,null,null,null,null,email,null);
+                                                mngC.updateUser(cl,CheckDataForUpdate.this, new UserCallback() {
+                                                    @Override
+                                                    public void onUserReceived(ClientDTO user) {
+
+                                                        showLoading();
+                                                        Intent intent = new Intent(CheckDataForUpdate.this, ClientActivity.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
+                                                        intent.putExtra("dni",dniRec);
+                                                        startActivity(intent);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
+                                                        Toast.makeText(CheckDataForUpdate.this, "Update done", Toast.LENGTH_LONG).show();
+                                                        hideLoading();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onError(VolleyError error) {
+                                                        showLoading();
+                                                        Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                                        try {
+                                                            Thread.sleep(2*1000);
+                                                        }
+                                                        catch (Exception e) {
+                                                            System.out.println(e);
+                                                        }
+                                                        intent.putExtra("dni",dniRec);
+                                                        startActivity(intent);
+                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                        finish();
+                                                        Toast.makeText(CheckDataForUpdate.this, "An error has occurred, try again please", Toast.LENGTH_LONG).show();
+                                                        hideLoading();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onWorkerReceived(WorkerDTO user) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onAdminReceived(AdminDTO user) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                                    }
+
+                                                    @Override
+                                                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                                                    }
+                                                });
+                                            });
+                                        }
+
+                                        @Override
+                                        public void onWorkerReceived(WorkerDTO user) {
+
+                                            runOnUiThread(() -> {
+
+                                                showLoading();
+                                                Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                                                try {
+                                                    Thread.sleep(2*1000);
+                                                }
+                                                catch (Exception e) {
+                                                    System.out.println(e);
+                                                }
+                                                intent.putExtra("dni",dniRec);
+                                                startActivity(intent);
+                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                finish();
+                                                Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
+                                                hideLoading();
+
+                                            });
+                                        }
+
+                                        @Override
+                                        public void onAdminReceived(AdminDTO user) {
+
+                                        }
+
+                                        @Override
+                                        public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                                        }
+
+                                        @Override
+                                        public void onClientsReceived(List<ClientDTO> clients) {
+
+                                        }
+                                    }));}
+                            @Override
+                            public void onWorkerReceived(WorkerDTO user) {}
+                            @Override
+                            public void onAdminReceived(AdminDTO user) {}
+
+                            @Override
+                            public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                            }
+
+                            @Override
+                            public void onClientsReceived(List<ClientDTO> clients) {
+
+                            }
+                        }));
+                    }
+                    @Override
+                    public void onWorkerReceived(WorkerDTO user) {}
+
+                    @Override
+                    public void onAdminReceived(AdminDTO user) {
+
+                        runOnUiThread(() -> {
+
+                            showLoading();
+                            Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
+                            try {
+                                Thread.sleep(2*1000);
+                            }
+                            catch (Exception e) {
+                                System.out.println(e);
+                            }
+                            intent.putExtra("dni",dniRec);
+                            startActivity(intent);
+                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                            finish();
+                            Toast.makeText(CheckDataForUpdate.this, "The email is not valid, use other please", Toast.LENGTH_LONG).show();
+                            hideLoading();
+
+
+                        });
+
+
+                    }
+
+                    @Override
+                    public void onWorkersReceived(List<WorkerDTO> workers) {
+
+                    }
+
+                    @Override
+                    public void onClientsReceived(List<ClientDTO> clients) {
+
+                    }
+                });
+
+            }
+        }
+        else if(!checkValidEmail(email)){
             showLoading();
             Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
             try {
@@ -76,7 +394,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
             hideLoading();
 
         }else {
-            if(!checkPassword(pasword)){
+            if(!checkPassword(password)){
                 showLoading();
                 Intent intent = new Intent(CheckDataForUpdate.this, IntroduceNewData.class);
                 try {
@@ -137,7 +455,7 @@ public class CheckDataForUpdate extends AppCompatActivity {
                                 public void onError(VolleyError error11) {
                                     runOnUiThread(() -> {
                                         ManagerClient mngC=new ManagerClient();
-                                        ClientDTO cl=new ClientDTO(dniRec,pasword,null,null,null,email,null);
+                                        ClientDTO cl=new ClientDTO(dniRec,password,null,null,null,email,null);
                                         mngC.updateUser(cl,CheckDataForUpdate.this, new UserCallback() {
                                             @Override
                                             public void onUserReceived(ClientDTO user) {
