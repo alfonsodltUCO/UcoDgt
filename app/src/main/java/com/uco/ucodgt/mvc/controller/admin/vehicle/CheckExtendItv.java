@@ -16,12 +16,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.uco.ucodgt.mvc.controller.worker.penalty.CheckPenaltyToCancel;
+import com.uco.ucodgt.mvc.model.business.email.EmailDTO;
+import com.uco.ucodgt.mvc.model.business.email.ManagerEmail;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.business.vehicle.ManagerVehicle;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
+import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
@@ -88,35 +92,50 @@ public class CheckExtendItv extends AppCompatActivity {
 
                                 @Override
                                 public void onVehicleReceived(VehicleDTO vehicle) {
-                                    Intent intentE= new Intent(Intent.ACTION_SEND);
-                                    intentE.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                    intentE.putExtra(Intent.EXTRA_SUBJECT,"Itv date extend!");
-                                    intentE.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nThe Itv date of vehicle: "+vehicle.getLicencePlate()+" has been modified.\n"+
+
+                                    ManagerEmail mngE=new ManagerEmail();
+                                    EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nThe Itv date of vehicle: "+vehicle.getLicencePlate()+" has been modified.\n"+
                                             "The new dates are, from: "+vehicle.getValidItvFrom().toString()+" to: "+vehicle.getValidItvTo().toString()+".\n"+
                                             "Remember to do not violate the rules of system and you will be rewarded.\n"+
                                             "Be safe, be smart, take care.\n"+
-                                            "UcoDgt,");
-                                    intentE.setType("message/rfc822");
-                                    startActivity(Intent.createChooser(intentE,"Choose email client:"));
-                                    try {
-                                        Thread.sleep(10*1000);
-                                    }
-                                    catch (Exception e) {
-                                        System.out.println(e);
-                                    }
-                                    Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
-                                    try {
-                                        Thread.sleep(2*1000);
-                                    }
-                                    catch (Exception e) {
-                                        System.out.println(e);
-                                    }
-                                    startActivity(intent);
-                                    overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                    finish();
-                                    Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
+                                            "UcoDgt,","Itv date extend!");
+                                    mngE.sendEmail(email, CheckExtendItv.this, new EmailCallback() {
+                                        @Override
+                                        public void onEmailSended(EmailDTO email) {
+                                            Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                                            try {
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
+                                            }
+                                            startActivity(intent);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                            finish();
+                                            Toast.makeText(CheckExtendItv.this,"Itv modified successfully and email sent", Toast.LENGTH_LONG).show();
 
-                                    hideLoading();
+                                            hideLoading();
+                                        }
+
+                                        @Override
+                                        public void onError(VolleyError error) {
+                                            Intent intent=new Intent(CheckExtendItv.this, AdminActivity.class);
+                                            try {
+                                                Thread.sleep(2*1000);
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println(e);
+                                            }
+                                            startActivity(intent);
+                                            overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                            finish();
+                                            Toast.makeText(CheckExtendItv.this,"Itv modified successfully", Toast.LENGTH_LONG).show();
+
+                                            hideLoading();
+                                        }
+                                    });
+
+
                                 }
 
                                 @Override
