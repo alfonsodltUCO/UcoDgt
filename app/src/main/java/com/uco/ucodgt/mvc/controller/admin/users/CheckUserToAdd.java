@@ -20,11 +20,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.uco.ucodgt.mvc.model.business.email.EmailDTO;
+import com.uco.ucodgt.mvc.model.business.email.ManagerEmail;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
+import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.admin.user.AddUserActivity;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
@@ -219,38 +222,46 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                         public void onUserReceived(ClientDTO user) {
 
                                                                             runOnUiThread(() -> runOnUiThread(() -> {
-
-                                                                                Intent intent= new Intent(Intent.ACTION_SEND);
-                                                                                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                                                                intent.putExtra(Intent.EXTRA_SUBJECT,"Welcome!");
-                                                                                intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
+                                                                                ManagerEmail mngE=new ManagerEmail();
+                                                                                EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
                                                                                         "Your credentials are (password-email): "+password+", "+user.getEmail()+"\n "+
-                                                                                       "Remember to do not violate the rules of system and you will be rewarded.\n"+
+                                                                                        "Remember to do not violate the rules of system and you will be rewarded.\n"+
                                                                                         "Also remember you could change your data in main menu.\n"+
                                                                                         "Be safe, be smart, take care.\n"+
-                                                                                        "UcoDgt");
-                                                                                intent.setType("message/rfc822");
-                                                                                startActivity(Intent.createChooser(intent,"Choose email client:"));
-                                                                                try {
-                                                                                    Thread.sleep(10*1000);
-                                                                                }
-                                                                                catch (Exception e) {
-                                                                                    System.out.println(e);
-                                                                                }
-                                                                                showLoading();
-                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
-                                                                                try {
-                                                                                    Thread.sleep(2*1000);
-                                                                                }
-                                                                                catch (Exception e) {
-                                                                                    System.out.println(e);
-                                                                                }
-                                                                                startActivity(intentAdmin);
-                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                                                finish();
-                                                                                Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
-                                                                                hideLoading();
+                                                                                        "UcoDgt","Welcome!");
+                                                                                mngE.sendEmail(email, CheckUserToAdd.this, new EmailCallback() {
+                                                                                    @Override
+                                                                                    public void onEmailSended(EmailDTO email) {
+                                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
+                                                                                        startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
+                                                                                        Toast.makeText(CheckUserToAdd.this, "Client added and email sent", Toast.LENGTH_LONG).show();
+                                                                                        hideLoading();
+                                                                                    }
 
+                                                                                    @Override
+                                                                                    public void onError(VolleyError error) {
+                                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
+                                                                                        startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
+                                                                                        Toast.makeText(CheckUserToAdd.this, "Client added", Toast.LENGTH_LONG).show();
+                                                                                        hideLoading();
+                                                                                    }
+                                                                                });
                                                                             }));
 
                                                                         }
@@ -391,35 +402,48 @@ public class CheckUserToAdd extends AppCompatActivity {
                                                                         public void onWorkerReceived(WorkerDTO user) {
 
                                                                             runOnUiThread(() -> runOnUiThread(() -> {
-                                                                                Intent intent= new Intent(Intent.ACTION_SEND);
-                                                                                intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                                                                intent.putExtra(Intent.EXTRA_SUBJECT,"Welcome!");
-                                                                                intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
+
+                                                                                ManagerEmail mngE=new ManagerEmail();
+                                                                                EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nYou have been introduced into the system.\n"+
                                                                                         "Your credentials are (password-email): "+password+", "+user.getEmail()+"\n "+
                                                                                         "Remember to maintain the city safe, you are really important for the system.\n"+
                                                                                         "Also remember you could change your data in main menu.\n"+
-                                                                                        "We trust you!.");
-                                                                                intent.setType("message/rfc822");
-                                                                                startActivity(Intent.createChooser(intent,"Choose email client:"));
-                                                                                try {
-                                                                                    Thread.sleep(10*1000);
-                                                                                }
-                                                                                catch (Exception e) {
-                                                                                    System.out.println(e);
-                                                                                }
-                                                                                showLoading();
-                                                                                Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
-                                                                                try {
-                                                                                    Thread.sleep(2*1000);
-                                                                                }
-                                                                                catch (Exception e) {
-                                                                                    System.out.println(e);
-                                                                                }
-                                                                                startActivity(intentAdmin);
-                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                                                finish();
-                                                                                Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
-                                                                                hideLoading();
+                                                                                        "We trust you!.","Welcome!");
+                                                                                mngE.sendEmail(email, CheckUserToAdd.this, new EmailCallback() {
+                                                                                    @Override
+                                                                                    public void onEmailSended(EmailDTO email) {
+                                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
+                                                                                        startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
+                                                                                        Toast.makeText(CheckUserToAdd.this, "Worker added and email sended", Toast.LENGTH_LONG).show();
+                                                                                        hideLoading();
+                                                                                    }
+
+                                                                                    @Override
+                                                                                    public void onError(VolleyError error) {
+                                                                                        Intent intentAdmin = new Intent(CheckUserToAdd.this, AdminActivity.class);
+                                                                                        try {
+                                                                                            Thread.sleep(2*1000);
+                                                                                        }
+                                                                                        catch (Exception e) {
+                                                                                            System.out.println(e);
+                                                                                        }
+                                                                                        startActivity(intentAdmin);
+                                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                        finish();
+                                                                                        Toast.makeText(CheckUserToAdd.this, "Worker added", Toast.LENGTH_LONG).show();
+                                                                                        hideLoading();
+                                                                                    }
+                                                                                });
+
+
 
                                                                             }));
                                                                         }
