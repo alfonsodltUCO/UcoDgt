@@ -13,9 +13,21 @@ import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The EmailDAO class handles the sending of emails using the Volley library calling Integromat system.
+ * @author Alfonso de la torre
+ */
 public class EmailDAO {
 
     RequestQueue requestQueue;
+
+    /**
+     * Sends an email using the provided EmailDTO object and context.
+     *
+     * @param email the EmailDTO object containing email details
+     * @param applicationContext the application context used to initialize the RequestQueue
+     * @param emailCallback the callback interface to handle success or error responses
+     */
     public void sendEmail(EmailDTO email, Context applicationContext, EmailCallback emailCallback) {
         requestQueue= Volley.newRequestQueue(applicationContext);
         sendEmail(email, new EmailCallback() {
@@ -31,6 +43,13 @@ public class EmailDAO {
         });
     }
 
+
+    /**
+     * Sends an email using the provided EmailDTO object.
+     *
+     * @param email the EmailDTO object containing email details
+     * @param emailCallback the callback interface to handle success or error responses
+     */
     public void sendEmail(EmailDTO email,EmailCallback emailCallback){
         String URL="https://hook.eu2.make.com/r6lq1o7ox2wdlc4kk97v5ba846grx94l";
         StringRequest request = new StringRequest(
