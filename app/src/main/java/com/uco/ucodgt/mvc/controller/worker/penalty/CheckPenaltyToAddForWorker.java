@@ -25,6 +25,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToAdd;
+import com.uco.ucodgt.mvc.controller.admin.vehicle.CheckVehicleToAdd;
+import com.uco.ucodgt.mvc.model.business.email.EmailDTO;
+import com.uco.ucodgt.mvc.model.business.email.ManagerEmail;
 import com.uco.ucodgt.mvc.model.business.penalty.ManagerPenalty;
 import com.uco.ucodgt.mvc.model.business.penalty.PenaltyDTO;
 import com.uco.ucodgt.mvc.model.business.penalty.list.ListPenaltyDTO;
@@ -35,6 +38,7 @@ import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
+import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import com.uco.ucodgt.mvc.model.data.ListPenaltyCallback;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
@@ -333,38 +337,49 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
                                                                 mngC.getUser(cl, CheckPenaltyToAddForWorker.this, new UserCallback() {
                                                                     @Override
                                                                     public void onUserReceived(ClientDTO user) {
-
-                                                                        Intent intent= new Intent(Intent.ACTION_SEND);
-                                                                        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"New penalty");
-                                                                        intent.putExtra(Intent.EXTRA_TEXT,"User "+penalty.getDniClient()+",\nYou have received a new penalty.\n"+
+                                                                        ManagerEmail mngE=new ManagerEmail();
+                                                                        EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nYou have received a new penalty.\n"+
                                                                                 "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
                                                                                 penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
                                                                                 penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
                                                                                 "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
                                                                                 "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
                                                                                 "Be safe, be smart, take care.\n"+
-                                                                                "UcoDgt,");
-                                                                        intent.setType("message/rfc822");
-                                                                        startActivity(Intent.createChooser(intent,"Choose email client:"));
-                                                                        try {
-                                                                            Thread.sleep(10*1000);
-                                                                        }
-                                                                        catch (Exception e) {
-                                                                            System.out.println(e);
-                                                                        }
-                                                                        Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, AdminActivity.class);
-                                                                        try {
-                                                                            Thread.sleep(2*1000);
-                                                                        }
-                                                                        catch (Exception e) {
-                                                                            System.out.println(e);
-                                                                        }
-                                                                        startActivity(intentAdmin);
-                                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                                        finish();
-                                                                        Toast.makeText(CheckPenaltyToAddForWorker.this,"Penalty added", Toast.LENGTH_LONG).show();
-                                                                        hideLoading();
+                                                                                "UcoDgt,","New penalty");
+                                                                        mngE.sendEmail(email, CheckPenaltyToAddForWorker.this, new EmailCallback() {
+                                                                            @Override
+                                                                            public void onEmailSended(EmailDTO email) {
+                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, AdminActivity.class);
+                                                                                try {
+                                                                                    Thread.sleep(2*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
+                                                                                startActivity(intentAdmin);
+                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                finish();
+                                                                                Toast.makeText(CheckPenaltyToAddForWorker.this,"Penalty added and email sent", Toast.LENGTH_LONG).show();
+                                                                                hideLoading();
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onError(VolleyError error) {
+                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, AdminActivity.class);
+                                                                                try {
+                                                                                    Thread.sleep(2*1000);
+                                                                                }
+                                                                                catch (Exception e) {
+                                                                                    System.out.println(e);
+                                                                                }
+                                                                                startActivity(intentAdmin);
+                                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                                finish();
+                                                                                Toast.makeText(CheckPenaltyToAddForWorker.this,"Penalty added", Toast.LENGTH_LONG).show();
+                                                                                hideLoading();
+                                                                            }
+                                                                        });
+
                                                                     }
 
                                                                     @Override

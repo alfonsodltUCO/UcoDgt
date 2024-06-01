@@ -27,12 +27,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import com.uco.ucodgt.mvc.controller.admin.penalty.CheckPenaltyToAdd;
+import com.uco.ucodgt.mvc.model.business.email.EmailDTO;
+import com.uco.ucodgt.mvc.model.business.email.ManagerEmail;
 import com.uco.ucodgt.mvc.model.business.user.admin.AdminDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ClientDTO;
 import com.uco.ucodgt.mvc.model.business.user.client.ManagerClient;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.business.vehicle.ManagerVehicle;
 import com.uco.ucodgt.mvc.model.business.vehicle.VehicleDTO;
+import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.model.data.VehicleCallback;
 import com.uco.ucodgt.mvc.view.admin.AdminActivity;
@@ -173,35 +177,46 @@ public class CheckVehicleToAdd extends AppCompatActivity {
                                                 mngV.addVehicle(vh,cl, CheckVehicleToAdd.this, new VehicleCallback() {
                                                     @Override
                                                     public void onVehicleReceived(VehicleDTO vehicle) {
-                                                        Intent intent= new Intent(Intent.ACTION_SEND);
-                                                        intent.putExtra(Intent.EXTRA_EMAIL,new String[]{user.getEmail()});
-                                                        intent.putExtra(Intent.EXTRA_SUBJECT,"New vehicle added!");
-                                                        intent.putExtra(Intent.EXTRA_TEXT,"Dear "+user.getName()+",\nThe vehicle: "+vehicle.getLicencePlate()+"has been introduced into the system.\n"+
+
+                                                        ManagerEmail mngE=new ManagerEmail();
+                                                        EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nThe vehicle: "+vehicle.getLicencePlate()+"has been introduced into the system.\n"+
                                                                 "Remember to do not violate the rules of system and you will be rewarded.\n"+
                                                                 "Be safe, be smart, take care.\n"+
-                                                                "UcoDgt,");
-                                                        intent.setType("message/rfc822");
-                                                        startActivity(Intent.createChooser(intent,"Choose email client:"));
-                                                        try {
-                                                            Thread.sleep(10*1000);
-                                                        }
-                                                        catch (Exception e) {
-                                                            System.out.println(e);
-                                                        }
-                                                        Toast.makeText(CheckVehicleToAdd.this,"added", Toast.LENGTH_LONG).show();
-                                                        try {
-                                                            Thread.sleep(2*1000);
-                                                        }
-                                                        catch (Exception e) {
-                                                            System.out.println(e);
-                                                        }
-                                                        Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
-                                                        startActivity(intentAdmin);
-                                                        overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
-                                                        finish();
-                                                        hideLoading();
+                                                                "UcoDgt,","New vehicle added!");
+                                                        mngE.sendEmail(email, CheckVehicleToAdd.this, new EmailCallback() {
+                                                            @Override
+                                                            public void onEmailSended(EmailDTO email) {
 
+                                                                Toast.makeText(CheckVehicleToAdd.this,"Vehicle added and email sent", Toast.LENGTH_LONG).show();
+                                                                try {
+                                                                    Thread.sleep(2*1000);
+                                                                }
+                                                                catch (Exception e) {
+                                                                    System.out.println(e);
+                                                                }
+                                                                Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
+                                                                startActivity(intentAdmin);
+                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                finish();
+                                                                hideLoading();
+                                                            }
 
+                                                            @Override
+                                                            public void onError(VolleyError error) {
+                                                                Toast.makeText(CheckVehicleToAdd.this,"Vehicle added", Toast.LENGTH_LONG).show();
+                                                                try {
+                                                                    Thread.sleep(2*1000);
+                                                                }
+                                                                catch (Exception e) {
+                                                                    System.out.println(e);
+                                                                }
+                                                                Intent intentAdmin=new Intent(CheckVehicleToAdd.this, AdminActivity.class);
+                                                                startActivity(intentAdmin);
+                                                                overridePendingTransition(com.uco.ucodgt.R.anim.fadein, com.uco.ucodgt.R.anim.fadeout);
+                                                                finish();
+                                                                hideLoading();
+                                                            }
+                                                        });
                                                     }
 
                                                     @Override

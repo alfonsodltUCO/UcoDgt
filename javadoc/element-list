@@ -9,6 +9,7 @@ com.uco.ucodgt.mvc.controller.commonFunctions
 com.uco.ucodgt.mvc.controller.worker.penalty
 com.uco.ucodgt.mvc.controller.worker.user
 com.uco.ucodgt.mvc.controller.worker.vehicle
+com.uco.ucodgt.mvc.model.business.email
 com.uco.ucodgt.mvc.model.business.penalty
 com.uco.ucodgt.mvc.model.business.penalty.list
 com.uco.ucodgt.mvc.model.business.user.admin
@@ -18,6 +19,7 @@ com.uco.ucodgt.mvc.model.business.vehicle
 com.uco.ucodgt.mvc.model.data
 com.uco.ucodgt.mvc.model.data.admin
 com.uco.ucodgt.mvc.model.data.client
+com.uco.ucodgt.mvc.model.data.email
 com.uco.ucodgt.mvc.model.data.penalty
 com.uco.ucodgt.mvc.model.data.penalty.listPenalty
 com.uco.ucodgt.mvc.model.data.vehicle
