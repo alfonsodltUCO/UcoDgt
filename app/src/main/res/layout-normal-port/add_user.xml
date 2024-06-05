@@ -22,8 +22,9 @@
             <TextView
                 android:id="@+id/textViewName"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:gravity="center|top"
                 android:layout_weight="1"
                 android:text="Introduce the name"
                 android:textSize="18sp"
@@ -31,9 +32,10 @@
 
             <TextView
                 android:id="@+id/textViewSurname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
+                android:gravity="center|top"
                 android:layout_weight="1"
                 android:text="Introduce the surname"
                 android:textSize="18sp"
@@ -42,7 +44,7 @@
 
             <TextView
                 android:id="@+id/textViewDateBirth"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -54,7 +56,7 @@
 
             <TextView
                 android:id="@+id/textViewEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -65,10 +67,11 @@
 
             <TextView
                 android:id="@+id/textViewPassword"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center|top"
                 android:text="Introduce the password"
                 android:textSize="18sp"
 
@@ -76,7 +79,7 @@
 
             <TextView
                 android:id="@+id/textViewDni"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
