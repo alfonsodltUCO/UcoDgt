@@ -142,7 +142,7 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="20sp"
-                android:inputType="date"
+                android:inputType="date|datetime"
                 android:layout_gravity="bottom"
                 android:gravity="top"
                 android:hint="2002-08-24"

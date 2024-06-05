@@ -156,7 +156,7 @@
                 android:cursorVisible="true"
                 android:ems="10"
                 android:textSize="30sp"
-                android:inputType="date"
+                android:inputType="date|datetime"
                 android:layout_gravity="bottom"
                 android:hint="2002-08-24"
                 android:backgroundTint="@android:color/transparent"/>

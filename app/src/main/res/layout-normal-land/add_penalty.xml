@@ -127,6 +127,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCDni"
+                    android:paddingTop="0sp"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:textColor="@color/white"
@@ -145,6 +146,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etWDni"
+                    android:paddingTop="0sp"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:textColor="@color/white"
@@ -164,6 +166,7 @@
 
                 <Spinner
                     android:id="@+id/Reason"
+                    android:paddingTop="0sp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -176,6 +179,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPlace"
+                    android:paddingTop="0sp"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:textColor="@color/white"
@@ -198,6 +202,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:autofillHints=""
+                    android:paddingTop="0sp"
                     android:backgroundTint="@android:color/transparent"
                     android:ems="10"
                     android:spinnerStyle="@style/SpinnerTextStyle"
@@ -207,6 +212,7 @@
                     android:id="@+id/etLocality"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:paddingTop="0sp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textCursorDrawable="@color/white"
@@ -226,6 +232,7 @@
                     android:id="@+id/etLicencePlate"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:paddingTop="0sp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textCursorDrawable="@color/white"
@@ -250,6 +257,7 @@
                     android:outlineSpotShadowColor="@color/white"
                     android:layout_weight="1"
                     android:autofillHints=""
+                    android:paddingTop="0sp"
                     android:ems="10"
                     android:textSize="15sp"
                     android:inputType="number"
@@ -269,6 +277,7 @@
                     android:layout_weight="1"
                     android:autofillHints=""
                     android:ems="10"
+                    android:paddingTop="0sp"
                     android:textSize="15sp"
                     android:inputType="number"
                     android:layout_gravity="bottom"

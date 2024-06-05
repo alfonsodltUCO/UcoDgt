@@ -22,8 +22,9 @@
             <TextView
                 android:id="@+id/textViewName"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:gravity="center|top"
                 android:layout_weight="1"
                 android:text="Introduce the name"
                 android:textSize="18sp"
@@ -31,9 +32,10 @@
 
             <TextView
                 android:id="@+id/textViewSurname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
+                android:gravity="center|top"
                 android:layout_weight="1"
                 android:text="Introduce the surname"
                 android:textSize="18sp"
@@ -42,10 +44,11 @@
 
             <TextView
                 android:id="@+id/textViewDateBirth"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center|top"
                 android:text="Introduce the date of birth"
                 android:textSize="18sp"
 
@@ -53,7 +56,7 @@
 
             <TextView
                 android:id="@+id/textViewEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -64,10 +67,11 @@
 
             <TextView
                 android:id="@+id/textViewPassword"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center|top"
                 android:text="Introduce the password"
                 android:textSize="18sp"
 
@@ -75,7 +79,7 @@
 
             <TextView
                 android:id="@+id/textViewDni"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textColor="@color/white"
                 android:layout_weight="1"
@@ -95,6 +99,7 @@
                 android:id="@+id/editTextName"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:paddingTop="0sp"
                 android:cursorVisible="true"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -113,6 +118,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextSurname"
+                android:paddingTop="0sp"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:cursorVisible="true"
@@ -137,6 +143,7 @@
                 android:layout_height="0dp"
                 android:cursorVisible="true"
                 android:textColor="@color/white"
+                android:paddingTop="0sp"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@color/white"
                 android:outlineSpotShadowColor="@color/white"
@@ -144,7 +151,7 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:textSize="18sp"
-                android:inputType="datetime"
+                android:inputType="date|datetime"
                 android:layout_gravity="bottom"
                 android:gravity="top"
                 android:hint="2002-08-24"
@@ -162,6 +169,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:paddingTop="0sp"
                 android:textSize="18sp"
                 android:inputType="textEmailAddress"
                 android:layout_gravity="bottom"
@@ -181,6 +189,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:paddingTop="0sp"
                 android:textSize="18sp"
                 android:inputType="textPassword"
                 android:layout_gravity="bottom"
@@ -202,6 +211,7 @@
                 android:ems="10"
                 android:textSize="18sp"
                 android:inputType="text"
+                android:paddingTop="0sp"
                 android:layout_gravity="bottom"
                 android:gravity="top"
                 android:hint="31878744P"

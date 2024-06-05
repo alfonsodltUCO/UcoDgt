@@ -80,6 +80,7 @@
                 android:id="@+id/editTextLicencePlate"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:paddingTop="0sp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@color/white"
@@ -98,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:paddingTop="0sp"
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
@@ -113,6 +115,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
                 android:textSize="18sp"
+                android:paddingTop="0sp"
                 android:spinnerStyle="@style/SpinnerTextStyle" />
 
 
@@ -127,6 +130,7 @@
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:paddingTop="0sp"
                 android:textSize="18sp"
                 android:inputType="text"
                 android:layout_gravity="bottom"
