@@ -29,6 +29,7 @@ import com.uco.ucodgt.mvc.model.business.user.worker.ManagerWorker;
 import com.uco.ucodgt.mvc.model.business.user.worker.WorkerDTO;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
 import com.uco.ucodgt.mvc.view.MainActivity;
+import com.uco.ucodgt.mvc.view.client.ClientActivity;
 import com.uco.ucodgt.mvc.view.client.IntroduceRegisterData;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -233,7 +234,7 @@ public class CheckUserToAdd extends AppCompatActivity {
 
                                                                         runOnUiThread(() -> runOnUiThread(() -> {
 
-                                                                            Intent intent=new Intent(CheckUserToAdd.this, MainActivity.class);
+                                                                            Intent intent=new Intent(CheckUserToAdd.this, ClientActivity.class);
                                                                             intent.putExtra("dni",dni);
                                                                             try {
                                                                                 Thread.sleep(2*1000);

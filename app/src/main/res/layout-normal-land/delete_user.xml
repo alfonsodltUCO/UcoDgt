@@ -72,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/client"
+                android:buttonTint="@color/white"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
@@ -81,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:buttonTint="@color/white"
                 android:text="@string/worker" />
 
         </RadioGroup>
