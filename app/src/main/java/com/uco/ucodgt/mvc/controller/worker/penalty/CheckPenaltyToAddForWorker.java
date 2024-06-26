@@ -42,7 +42,6 @@ import com.uco.ucodgt.mvc.model.data.EmailCallback;
 import com.uco.ucodgt.mvc.model.data.ListPenaltyCallback;
 import com.uco.ucodgt.mvc.model.data.PenaltyCallback;
 import com.uco.ucodgt.mvc.model.data.UserCallback;
-import com.uco.ucodgt.mvc.view.admin.AdminActivity;
 import com.uco.ucodgt.mvc.view.worker.WorkerActivity;
 import com.uco.ucodgt.mvc.view.worker.penalty.AddPenaltyActivity;
 
@@ -349,7 +348,7 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
                                                                         mngE.sendEmail(email, CheckPenaltyToAddForWorker.this, new EmailCallback() {
                                                                             @Override
                                                                             public void onEmailSended(EmailDTO email) {
-                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, AdminActivity.class);
+                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, WorkerActivity.class);
                                                                                 try {
                                                                                     Thread.sleep(2*1000);
                                                                                 }
@@ -365,7 +364,7 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
 
                                                                             @Override
                                                                             public void onError(VolleyError error) {
-                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, AdminActivity.class);
+                                                                                Intent intentAdmin=new Intent(CheckPenaltyToAddForWorker.this, WorkerActivity.class);
                                                                                 try {
                                                                                     Thread.sleep(2*1000);
                                                                                 }
