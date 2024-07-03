@@ -339,7 +339,7 @@ public class CheckPenaltyToAddForWorker extends AppCompatActivity {
                                                                         ManagerEmail mngE=new ManagerEmail();
                                                                         EmailDTO email=new EmailDTO(user.getEmail(),"Dear "+user.getName()+",\nYou have received a new penalty.\n"+
                                                                                 "The reason was: "+penalty.getReason().toString()+", the date of this penalty was imposed on: "+
-                                                                                penalty.getDate().toString()+"\n."+"The quantity and the licence points for the penalty is: "+
+                                                                                penalty.getDate().toString()+".\n"+"The quantity and the licence points for the penalty is: "+
                                                                                 penalty.getPoints().toString()+", "+penalty.getQuantity().toString()+".\n"+
                                                                                 "If you decide to pay it until 1 month a discount of 50% will be aplied. "+"For more information please visite the app.\n"+
                                                                                 "Please remember to not violate the rules, you could hurt others and also yourself.\n"+
